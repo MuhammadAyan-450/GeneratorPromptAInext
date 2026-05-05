@@ -1,4 +1,4 @@
-import URLEncoder from './URLEncoder'
+import UrlEncoder from './UrlEncoder'
 
 export const metadata = {
   title: 'Encode URL Special Characters Online Free – Percent Encoding Decoder Tool',
@@ -105,7 +105,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
       
-      <URLEncoder />
+      <UrlEncoder />
     </>
   )
 }

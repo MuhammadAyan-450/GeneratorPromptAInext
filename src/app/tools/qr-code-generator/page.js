@@ -1,4 +1,4 @@
-import QRCodeGenerator from './QRCodeGenerator'
+import QrCodeGenerator from './QrCodeGenerator'
 
 export const metadata = {
   title: 'Create Custom QR Code for WiFi URL WhatsApp Free Online – Download PNG SVG',
@@ -105,7 +105,7 @@ export default function Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
       
-      <QRCodeGenerator />
+      <QrCodeGenerator />
     </>
   )
 }

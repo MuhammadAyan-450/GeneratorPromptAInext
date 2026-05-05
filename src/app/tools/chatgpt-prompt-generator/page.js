@@ -1,4 +1,4 @@
-import ChatGptPromptGenerator from './ChatGptPromptGenerator'
+import ChatgptPromptGenerator from './ChatgptPromptGenerator'
 
 export const metadata = {
   title: 'Generate ChatGPT Prompts for Coding & Writing – Custom Tone & Depth Builder',
@@ -96,7 +96,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }}
       />
-      <ChatGptPromptGenerator />
+      <ChatgptPromptGenerator />
     </>
   )
 }

@@ -1,4 +1,4 @@
-import YoutubeScriptGenerator  from './YoutubeScriptGenerator'
+import YoutubeScriptGenerator from './YoutubeScriptGenerator'
 
 export const metadata = {
   title: 'Viral YouTube Script Generator – Viral Video Ideas & Scripts',
