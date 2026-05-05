@@ -120,7 +120,7 @@ const JsonValidator = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
 
-      {/* ── Breadcrumb ── */}
+      {/* Breadcrumb */}
       <div className="max-w-4xl mx-auto w-full px-4 pt-6">
         <nav aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm text-gray-500">
@@ -141,13 +141,13 @@ const JsonValidator = () => {
 
       <div className="flex-grow max-w-6xl mx-auto w-full px-4 pb-20">
 
-        {/* ── Hero ── */}
+        {/* Hero */}
         <div className="text-center mb-10 mt-4">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-100 mb-4">
             <FileJson className="text-sky-600" size={28} />
           </div>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
-            Check If JSON Is Valid Online –{" "}
+            Check If JSON Is Valid Online{" "}
             <span className="text-sky-600">Free Syntax Checker with Line Number</span>
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
@@ -155,7 +155,7 @@ const JsonValidator = () => {
           </p>
         </div>
 
-        {/* ── Tool Card ── */}
+        {/* Tool Card */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden mb-8">
           <div className="p-6 md:p-8">
             <div className="grid lg:grid-cols-5 gap-8">
@@ -286,20 +286,20 @@ const JsonValidator = () => {
           </div>
         </div>
 
-        {/* ── SEO Content 1 ── */}
+        {/* SEO Content */}
         <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             Free Online JSON Validator with Line and Column Error Detection
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Validate any JSON string instantly and catch hidden syntax errors before they break your application. Our tool provides <strong>precise line and column numbers</strong> for errors, making it easy to fix missing commas, unmatched brackets, invalid quotes, and trailing commas — the most common JSON mistakes.
+            Validate any JSON string instantly and catch hidden syntax errors before they break your application. Our tool provides <strong>precise line and column numbers</strong> for errors, making it easy to fix missing commas, unmatched brackets, invalid quotes, and trailing commas.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
             Built for developers, API testers, and students who need a quick JSON check without pasting data into external servers. The validator runs <strong>100% in your browser</strong>, so your sensitive API payloads, authentication tokens, and data structures remain completely private.
           </p>
         </div>
 
-        {/* ── How to Use ── */}
+        {/* How to Use */}
         <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             How to Check JSON Validity Without Uploading to Server
@@ -312,17 +312,17 @@ const JsonValidator = () => {
           </ol>
         </div>
 
-        {/* ── Features Grid ── */}
+        {/* Features Grid */}
         <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Find Missing Comma in JSON Online – Key Features
+            Find Missing Comma in JSON Online - Key Features
           </h2>
           <div className="grid md:grid-cols-2 gap-5">
             {[
-              { title: "Exact Error Position", desc: "When JSON is invalid, the tool calculates and displays the precise line and column number where the syntax error occurs — not just a generic error message." },
-              { title: "Real-Time Validation", desc: "With Auto mode enabled, JSON is validated as you type. See the result update instantly with every keystroke, no need to click a button." },
-              { title: "Structure Stats", desc: "When JSON is valid, see the total key count, maximum nesting depth, character count, and line count — useful for understanding complexity at a glance." },
-              { title: "100% Private — No Server", desc: "All validation runs locally in your browser using native JavaScript. Your data is never uploaded, stored, or transmitted to any server." }
+              { title: "Exact Error Position", desc: "When JSON is invalid, the tool calculates and displays the precise line and column number where the syntax error occurs." },
+              { title: "Real-Time Validation", desc: "With Auto mode enabled, JSON is validated as you type. See the result update instantly with every keystroke." },
+              { title: "Structure Stats", desc: "When JSON is valid, see the total key count, maximum nesting depth, character count, and line count." },
+              { title: "100% Private - No Server", desc: "All validation runs locally in your browser using native JavaScript. Your data is never uploaded or transmitted." }
             ].map((feature, i) => (
               <div key={i} className="bg-gray-50 rounded-xl p-5 border border-gray-100">
                 <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
@@ -332,37 +332,40 @@ const JsonValidator = () => {
           </div>
         </div>
 
-        {/* ── FAQ Accordion ── */}
+        {/* FAQ Accordion */}
         <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            JSON Validator – Frequently Asked Questions
+            JSON Validator - Frequently Asked Questions
           </h2>
-
           <div className="space-y-4 max-w-4xl mx-auto">
             {[
               {
                 q: "How to check if JSON is valid online with line and column number?",
-                a: "Paste your JSON into our validator and it automatically checks syntax in real-time. If the JSON is invalid, the tool shows the exact error message along with the precise line and column number where the problem occurs."
+                a: "Paste your JSON into our validator and it automatically checks syntax in real-time. If invalid, the tool shows the exact error message along with the precise line and column number."
               },
               {
                 q: "What does Invalid JSON mean and how to fix it?",
-                a: "Invalid JSON means the text does not follow strict JSON syntax rules. Common causes include missing commas between key-value pairs, extra trailing commas at the end of arrays or objects, single quotes instead of double quotes, and unmatched curly braces or square brackets."
+                a: "Invalid JSON means the text does not follow strict JSON syntax rules. Common causes include missing commas, extra trailing commas, single quotes instead of double quotes, and unmatched brackets."
               },
               {
                 q: "Is my JSON data sent to a server when I validate it?",
-                a: "No. The validation runs entirely inside your browser using native JavaScript. Your data never leaves your device, making it completely safe for validating API responses that contain sensitive information like tokens and keys."
+                a: "No. The validation runs entirely inside your browser using native JavaScript. Your data never leaves your device."
               },
               {
                 q: "What is the difference between JSON Validator and JSON Formatter?",
-                a: "A JSON Validator only checks whether the syntax is correct or not. A JSON Formatter does the same check but also re-indents and spaces the JSON to make it easily readable by humans."
+                a: "A JSON Validator only checks whether the syntax is correct. A JSON Formatter does the same check but also re-indents the JSON to make it readable."
               },
               {
                 q: "Can I validate large JSON files online for free?",
-                a: "Yes. Since the validation runs in your browser without server limits, it can handle large JSON payloads. Performance depends on your device, but most files validate instantly."
+                a: "Yes. Since the validation runs in your browser without server limits, it can handle large JSON payloads. Performance depends on your device."
               }
             ].map((item, i) => (
               <div key={i} className="border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-sky-200 transition-colors duration-300">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left" aria-expanded={openFaq === i}>
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left"
+                  aria-expanded={openFaq === i}
+                >
                   <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">{item.q}</h3>
                   <ChevronDown size={22} className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
@@ -374,14 +377,14 @@ const JsonValidator = () => {
           </div>
         </div>
 
-        {/* ── Related Tools ── */}
+        {/* Related Tools */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Developer Tools</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { href: "/tools/json-formatter",          title: "JSON Formatter & Validator", desc: "Beautify, minify and validate JSON with syntax highlighting." },
-              { to: "/tools/fake-data-generator",       title: "Fake Data Generator",        desc: "Generate realistic dummy JSON data for testing." },
-              { to: "/tools/excel-formula-beautifier", title: "Excel Formula Beautifier",   desc: "Format messy Excel formulas for readability." }
+              { href: "/tools/json-formatter",           title: "JSON Formatter & Validator", desc: "Beautify, minify and validate JSON with syntax highlighting." },
+              { href: "/tools/fake-data-generator",      title: "Fake Data Generator",        desc: "Generate realistic dummy JSON data for testing." },
+              { href: "/tools/excel-formula-beautifier", title: "Excel Formula Beautifier",   desc: "Format messy Excel formulas for readability." }
             ].map((tool) => (
               <Link key={tool.href} href={tool.href} className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-sky-400 transition-all">
                 <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-sky-600 transition-colors">{tool.title}</h3>
