@@ -1,0 +1,103 @@
+export const BLOG_POSTS = [
+  {
+    id: 1,
+    slug: "claude-vs-chatgpt-which-is-better",
+    title: "Claude vs ChatGPT in 2026: Which AI is Actually Better?",
+    excerpt:
+      "We tested both AI models across 20 real-world tasks — writing, coding, analysis, creativity.",
+    category: "AI Comparison",
+    tag: "Claude",
+    readTime: 12,
+    date: "April 5, 2026",
+    dateISO: "2026-04-05",
+    featured: true,
+    image: null,
+    color: "from-orange-500 to-red-500",
+    emoji: "⚔️",
+  },
+  {
+    id: 2,
+    slug: "compress-image-to-100kb-online-free",
+    title: "Compress Image to 100KB Online Free (Fast & Easy Guide 2026)",
+    excerpt:
+      "Learn how to compress images to 100KB online for free without losing quality. Step-by-step guide with best tools and tips.",
+    category: "Image Tools",
+    tag: "Image Compression",
+    readTime: 8,
+    date: "April 10, 2026",
+    dateISO: "2026-04-10",
+    featured: false,
+    image: null,
+    color: "from-blue-500 to-indigo-500",
+    emoji: "🖼️",
+  },
+  {
+    id: 3,
+    slug: "how-to-convert-pdf-to-word-without-formatting-loss",
+    title: "How to Convert PDF to Word Without Losing Formatting (2026)",
+    excerpt:
+      "Tired of PDF to Word converters that mess up your formatting? Here's what actually works — free methods tested with real documents, plus the one mistake everyone makes.",
+    category: "Web Tips",
+    tag: "PDF Tools",
+    readTime: 8,
+    date: "April 16, 2026",
+    dateISO: "2026-04-16",
+    featured: false,
+    image: null,
+    color: "from-red-500 to-rose-600",
+    emoji: "📄",
+  },
+  {
+    id: 4,
+    slug: "jpeg-vs-png-complete-comparison-guide",
+    title:
+      "JPEG vs PNG — Complete Comparison Guide (When to Use Which in 2026)",
+    excerpt:
+      "JPEG vs PNG: which format should you use? Complete comparison of file size, quality, transparency, and use cases.",
+    category: "Web Tips",
+    tag: "Images",
+    readTime: 7,
+    date: "April 14, 2026",
+    dateISO: "2026-04-14",
+    featured: false,
+    color: "from-emerald-500 to-teal-600",
+    emoji: "🖼️",
+  },
+  {
+    id: 5,
+    slug: "how-to-generate-lorem-ipsum-text-custom-length",
+    title: "How to Generate Lorem Ipsum Text of Any Length (2026 Guide)",
+    excerpt:
+      "Need placeholder text for your design or project? Learn how to generate Lorem Ipsum text with exact word or paragraph count — free, instant, no signup.",
+    category: "Web Tips",
+    tag: "Text Tools",
+    readTime: 5,
+    date: "April 18, 2026",
+    dateISO: "2026-04-18",
+    featured: false,
+    image: null,
+    color: "from-violet-500 to-purple-600",
+    emoji: "📝",
+  },
+{
+  id: 6,
+  slug: "how-to-calculate-cpm",
+  title: "How to Calculate CPM: Step-by-Step Formula, Examples & Benchmarks",
+  excerpt:
+    "Learn the exact CPM formula, follow a step-by-step calculation tutorial, see real-world ad campaign examples, and check 2025 CPM benchmarks by platform.",
+  category: "Digital Marketing",
+  tag: "Ad Calculators",
+  readTime: 8,
+  date: "January 15, 2025",
+  dateISO: "2025-01-15",
+  featured: false,
+  image: null,
+  color: "from-sky-500 to-blue-600",
+  emoji: "📊",
+}
+];
+
+export const CATEGORIES = [
+  "All",
+  ...new Set(BLOG_POSTS.map((p) => p.category)),
+];
