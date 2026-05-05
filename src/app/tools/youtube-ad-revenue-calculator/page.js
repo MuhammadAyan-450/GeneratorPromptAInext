@@ -1,7 +1,5 @@
 import YoutubeAdRevenueCalculator from './YoutubeAdRevenueCalculator'
 // Apne project ke hisaab se yahan Navbar aur Footer ka path set karna hai
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
 
 export const metadata = {
   title: 'YouTube Ad Revenue Calculator – Estimate YouTube Earnings by Category',
@@ -96,9 +94,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }}
       />
-      <Navbar />
       <YoutubeAdRevenueCalculator />
-      <Footer />
     </>
   )
 }

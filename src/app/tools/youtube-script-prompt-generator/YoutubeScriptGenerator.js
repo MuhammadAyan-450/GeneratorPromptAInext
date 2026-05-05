@@ -23,7 +23,7 @@ const youtubeTemplates = [
   "Generate seasonal/trending video script connecting {topic} to current events/holidays/trends — timely hook, relevance explanation, viral angle, shareable moments, urgent CTA."
 ];
 
-const YoutubePromptGenerator = () => {
+const YoutubeScriptGenerator  = () => {
   const [topic, setTopic] = useState("");
   const [videoType, setVideoType] = useState("random");
   const [lengthFormat, setLengthFormat] = useState("medium");
@@ -425,4 +425,4 @@ const YoutubePromptGenerator = () => {
   );
 };
 
-export default YoutubePromptGenerator;
+export default YoutubeScriptGenerator;

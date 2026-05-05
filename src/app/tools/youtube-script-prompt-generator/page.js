@@ -1,4 +1,4 @@
-import YoutubePromptGenerator from './YoutubePromptGenerator'
+import YoutubeScriptGenerator  from './YoutubeScriptGenerator'
 
 export const metadata = {
   title: 'Viral YouTube Script Generator – Viral Video Ideas & Scripts',
@@ -39,7 +39,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }}
       />
-      <YoutubePromptGenerator />
+      <YoutubeScriptGenerator />
     </>
   )
 }
