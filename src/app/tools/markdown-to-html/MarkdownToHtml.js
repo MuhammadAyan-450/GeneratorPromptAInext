@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { marked } from "marked";
-import DOMPurify from "dompurify";
+import DOMPurify from 'isomorphic-dompurify'
 import {
   Copy,
   Download,
