@@ -1,13 +1,4 @@
-// /app/api/chat/route.js
-
 export async function POST(req) {
-  if (req.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), {
-      status: 405,
-      headers: { "Content-Type": "application/json" }
-    });
-  }
-
   const { messages } = await req.json();
 
   if (!process.env.GROQ_API_KEY) {
@@ -35,7 +26,7 @@ export async function POST(req) {
     const data = await response.json();
 
     if (!data?.choices?.length || !data.choices[0].message) {
-      return new Response(JSON.stringify({ error: "Invalid response from Groq API" }), {
+      return new Response(JSON.stringify({ error: "Invalid API response" }), {
         status: 500,
         headers: { "Content-Type": "application/json" }
       });
@@ -46,8 +37,7 @@ export async function POST(req) {
       headers: { "Content-Type": "application/json" }
     });
   } catch (error) {
-    console.error("Groq API Error:", error);
-    return new Response(JSON.stringify({ error: "Server error connecting to Groq API" }), {
+    return new Response(JSON.stringify({ error: "Server error" }), {
       status: 500,
       headers: { "Content-Type": "application/json" }
     });

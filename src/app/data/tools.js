@@ -269,6 +269,13 @@ export const tools = [
       "Calculate the CPC online free. Find cost per click, campaign cost, or total clicks instantly with CTR and CPM metrics.",
     category: "Calculators",
   },
+  {
+    name: "Markdown to HTML Converter",
+    path: "/tools/markdown-to-html",
+    description:
+      "Convert Markdown to clean, sanitized HTML code instantly with live preview. Free, secure, no signup required.",
+    category: "Developer Tools",
+  },
 ];
 
 export const toolCategories = [

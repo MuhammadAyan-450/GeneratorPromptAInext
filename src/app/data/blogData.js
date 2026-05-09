@@ -79,22 +79,39 @@ export const BLOG_POSTS = [
     color: "from-violet-500 to-purple-600",
     emoji: "📝",
   },
-{
-  id: 6,
-  slug: "how-to-calculate-cpm",
-  title: "How to Calculate CPM: Step-by-Step Formula, Examples & Benchmarks",
-  excerpt:
-    "Learn the exact CPM formula, follow a step-by-step calculation tutorial, see real-world ad campaign examples, and check 2025 CPM benchmarks by platform.",
-  category: "Digital Marketing",
-  tag: "Ad Calculators",
-  readTime: 8,
-  date: "January 15, 2025",
-  dateISO: "2025-01-15",
-  featured: false,
-  image: null,
-  color: "from-sky-500 to-blue-600",
-  emoji: "📊",
-}
+  {
+    id: 6,
+    slug: "how-to-calculate-cpm",
+    title: "How to Calculate CPM: Step-by-Step Formula, Examples & Benchmarks",
+    excerpt:
+      "Learn the exact CPM formula, follow a step-by-step calculation tutorial, see real-world ad campaign examples, and check 2025 CPM benchmarks by platform.",
+    category: "Digital Marketing",
+    tag: "Ad Calculators",
+    readTime: 8,
+    date: "January 15, 2025",
+    dateISO: "2025-01-15",
+    featured: false,
+    image: null,
+    color: "from-sky-500 to-blue-600",
+    emoji: "📊",
+  },
+  {
+    id: 7,
+    slug: "how-to-increase-adsense-earnings",
+    title:
+      "How to Increase AdSense Earnings (RPM Secrets & Ad Placements That Work)",
+    excerpt:
+      "Want to increase your AdSense earnings in 2026? Learn proven RPM optimization strategies, best ad placements, high-CPC niches, and SEO tips that can help you grow your revenue faster.",
+    category: "Monetization",
+    tag: "AdSense",
+    readTime: 9,
+    date: "May 10, 2026",
+    dateISO: "2026-05-10",
+    featured: false,
+    image: null,
+    color: "from-emerald-500 to-teal-600",
+    emoji: "💰",
+  },
 ];
 
 export const CATEGORIES = [

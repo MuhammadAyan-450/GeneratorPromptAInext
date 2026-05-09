@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-
+import { ArrowLeft, Sparkles, ShieldCheck, Users, Globe2 } from 'lucide-react'
 
 export const metadata = {
   title: 'About Us | GeneratorPromptAI',

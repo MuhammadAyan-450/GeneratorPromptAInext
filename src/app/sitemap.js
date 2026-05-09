@@ -1,108 +1,102 @@
 export default function sitemap() {
 
-  // ═══════════════════════════════════════
-  // ALL 40 TOOLS
-  // ═══════════════════════════════════════
   const tools = [
-    'ad-revenue-calculator',
-    'adsense-revenue-calculator',
-    'age-calculator',
-    'ai-agent',
-    'base64-encode',
-    'case-converter',
-    'chatgpt-prompt-generator',
-    'claude-prompt-generator',
-    'cpc-calculator',
-    'cpm-calculator',
-    'currency-converter',
-    'ebay-charges-calculator',
-    'email-validator',
-    'emoji-picker',
-    'excel-formula-beautifier',
-    'fake-data-generator',
-    'hashtag-generator',
-    'image-compressor',
-    'image-converter',
-    'image-cropper',
-    'image-resizer',
-    'image-to-text',
-    'json-formatter',
-    'json-validator',
-    'lorem-ipsum-generator',
-    'midjourney-prompt-generator',
-    'password-generator',
-    'percentage-calculator',
-    'qr-code-generator',
-    'remove-duplicate-lines',
-    'sitemap-generator',
-    'time-zone-converter',
-    'unix-timestamp',
-    'uppercase-to-lowercase',
-    'url-encoder',
-    'uuid-generator',
-    'watermark-remover',
-    'word-counter',
-    'youtube-ad-revenue-calculator',
-    'youtube-script-prompt-generator',
-  ]
+    "ad-revenue-calculator",
+    "adsense-revenue-calculator",
+    "age-calculator",
+    "ai-agent",
+    "base64-encode",
+    "case-converter",
+    "chatgpt-prompt-generator",
+    "claude-prompt-generator",
+    "cpc-calculator",
+    "cpm-calculator",
+    "currency-converter",
+    "ebay-charges-calculator",
+    "email-validator",
+    "emoji-picker",
+    "excel-formula-beautifier",
+    "fake-data-generator",
+    "hashtag-generator",
+    "image-compressor",
+    "image-converter",
+    "image-cropper",
+    "image-resizer",
+    "image-to-text",
+    "json-formatter",
+    "json-validator",
+    "lorem-ipsum-generator",
+    "midjourney-prompt-generator",
+    "password-generator",
+    "percentage-calculator",
+    "qr-code-generator",
+    "remove-duplicate-lines",
+    "sitemap-generator",
+    "time-zone-converter",
+    "unix-timestamp",
+    "uppercase-to-lowercase",
+    "url-encoder",
+    "uuid-generator",
+    "watermark-remover",
+    "word-counter",
+    "youtube-ad-revenue-calculator",
+    "youtube-script-prompt-generator",
+    "markdown-to-html",
+  ];
 
-  // ═══════════════════════════════════════
-  // ALL 6 BLOG POSTS
-  // ═══════════════════════════════════════
+ 
   const blogPosts = [
-    'claude-vs-chatgpt-which-is-better',
-    'compress-image-to-100kb-online-free',
-    'how-to-calculate-cpm',
-    'how-to-convert-pdf-to-word-without-formatting-loss',
-    'how-to-generate-lorem-ipsum-text-custom-length',
-    'jpeg-vs-png-complete-comparison-guide',
-  ]
+    "claude-vs-chatgpt-which-is-better",
+    "compress-image-to-100kb-online-free",
+    "how-to-calculate-cpm",
+    "how-to-convert-pdf-to-word-without-formatting-loss",
+    "how-to-generate-lorem-ipsum-text-custom-length",
+    "jpeg-vs-png-complete-comparison-guide",
+    "how-to-increase-adsense-earnings",
+  ];
 
   return [
 
-    // ═══════════════════════════════════════
-    // MAIN PAGES
-    // ═══════════════════════════════════════
     {
-      url: 'https://www.generatorpromptai.com',
+      url: "https://www.generatorpromptai.com",
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1.0,
     },
     {
-      url: 'https://www.generatorpromptai.com/pages/all-tools',
+      url: "https://www.generatorpromptai.com/pages/all-tools",
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: 'https://www.generatorpromptai.com/blog',
+      url: "https://www.generatorpromptai.com/blog",
       lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: "daily",
       priority: 0.9,
     },
     {
-      url: 'https://www.generatorpromptai.com/about',
+      url: "https://www.generatorpromptai.com/about",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: 'https://www.generatorpromptai.com/contact',
+      url: "https://www.generatorpromptai.com/contact",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: 'https://www.generatorpromptai.com/privacy-policy',
+      url: "https://www.generatorpromptai.com/privacy-policy",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.5,
     },
     {
-      url: 'https://www.generatorpromptai.com/terms-of-service',
+      url: "https://www.generatorpromptai.com/terms-of-service",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.5,
     },
 
@@ -112,7 +106,7 @@ export default function sitemap() {
     ...tools.map((tool) => ({
       url: `https://www.generatorpromptai.com/tools/${tool}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 0.8,
     })),
 
@@ -122,8 +116,8 @@ export default function sitemap() {
     ...blogPosts.map((post) => ({
       url: `https://www.generatorpromptai.com/blog/${post}`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.9,
     })),
-  ]
+  ];
 }
