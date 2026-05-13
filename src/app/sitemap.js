@@ -42,7 +42,8 @@ export default function sitemap() {
     "youtube-script-prompt-generator",
     "markdown-to-html",
     "serp-snippet-preview",
-    "profit-margin-calculator"
+    "profit-margin-calculator",
+    "meta-description-generator",
   ];
 
  
