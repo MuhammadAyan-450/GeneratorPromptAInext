@@ -86,7 +86,7 @@ export const tools = [
     path: "/tools/hashtag-generator",
     description:
       "Generate relevant hashtags for Instagram, TikTok, X – based on your keywords or topic.",
-    category: "Social Media Tools", // or "Generators"
+    category: "Social Media Tools",
   },
   {
     name: "Lorem Ipsum Generator",
@@ -115,13 +115,6 @@ export const tools = [
     description:
       "Search, copy, and collect emojis for chats, posts, and docs – with recent history.",
     category: "Social Media Tools",
-  },
-  {
-    name: "Watermark Remover",
-    path: "/tools/watermark-remover",
-    description:
-      "Remove simple watermarks and logos from images using color-based inpainting.",
-    category: "Image Tools",
   },
   {
     name: "Image to Text (OCR)",
@@ -276,49 +269,79 @@ export const tools = [
       "Convert Markdown to clean, sanitized HTML code instantly with live preview. Free, secure, no signup required.",
     category: "Developer Tools",
   },
+  {
+    name: "SERP Snippet Preview",
+    path: "/tools/serp-snippet-preview",
+    description:
+      "Preview how your page looks in Google search results. Check meta title pixel width, description length and keyword highlighting.",
+    category: "SEO Tools",
+  },
+  {
+    name: "Profit Margin Calculator",
+    path: "/tools/profit-margin-calculator",
+    description:
+      "Calculate profit margin %, markup %, and profit amount from cost & selling price. Free business calculator.",
+    category: "Business & Finance",
+  },
+  {
+    name: "Meta Description Checker",
+    path: "/tools/meta-description-checker",
+    description:
+      "Check meta description length, SEO score, pixel width, power words and keyword placement instantly.",
+    category: "SEO Tools",
+  },
 ];
 
+// ─── CATEGORIES (Auto-synced with tools) ─────────────────────────────────────
 export const toolCategories = [
-  {
-    category: "AI Tools",
-    tools: tools.filter((t) => t.category === "AI Tools"),
-  },
-  {
-    category: "SEO & Web Tools",
-    tools: tools.filter((t) => t.category === "SEO & Web Tools"),
-  },
   {
     category: "Calculators",
     tools: tools.filter((t) => t.category === "Calculators"),
   },
   {
-    category: "Social Media Tools",
-    tools: tools.filter((t) => t.category === "Social Media Tools"),
-  },
-  {
-    category: "Video Tools",
-    tools: tools.filter((t) => t.category === "Video Tools"),
-  },
-  {
-    category: "Developers & Testing",
-    tools: tools.filter((t) => t.category === "Developers & Testing"),
-  },
-  {
-    category: "File Converters",
-    tools: tools.filter((t) => t.category === "File Converters"),
+    category: "Text & Code Tools",
+    tools: tools.filter((t) => t.category === "Text & Code Tools"),
   },
   {
     category: "Image Tools",
     tools: tools.filter((t) => t.category === "Image Tools"),
   },
   {
+    category: "AI Tools",
+    tools: tools.filter((t) => t.category === "AI Tools"),
+  },
+  {
+    category: "Developers & Testing",
+    tools: tools.filter((t) => t.category === "Developers & Testing"),
+  },
+  {
     category: "Generators",
     tools: tools.filter((t) => t.category === "Generators"),
   },
   {
-    category: "Text & Code Tools",
-    tools: tools.filter((t) => t.category === "Text & Code Tools"),
+    category: "Social Media Tools",
+    tools: tools.filter((t) => t.category === "Social Media Tools"),
   },
-];
+  {
+    category: "SEO & Web Tools",
+    tools: tools.filter((t) => t.category === "SEO & Web Tools"),
+  },
+  {
+    category: "SEO Tools",
+    tools: tools.filter((t) => t.category === "SEO Tools"),
+  },
+  {
+    category: "Developer Tools",
+    tools: tools.filter((t) => t.category === "Developer Tools"),
+  },
+  {
+    category: "Formatters",
+    tools: tools.filter((t) => t.category === "Formatters"),
+  },
+  {
+    category: "Validator Tools",
+    tools: tools.filter((t) => t.category === "Validator Tools"),
+  },
+].filter((cat) => cat.tools.length > 0); // ← Yeh line empty categories ko自动remove kar degi
 
 export default tools;

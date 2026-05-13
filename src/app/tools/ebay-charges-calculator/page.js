@@ -1,23 +1,23 @@
 import EbayChargesCalculator from './EbayChargesCalculator'
 
 export const metadata = {
-  title: 'eBay Charges Calculator – Calculate eBay Fees & Profit Free',
-  description: 'Free eBay charges calculator. Calculate eBay seller fees, final value fees, and profit instantly. Best eBay fee calculator online.',
+  title: 'eBay Charges Calculator – Estimate Selling Fees & Profit',
+  description: 'Use our free eBay Fee Calculator to calculate eBay selling fees, final value fees, PayPal charges, and estimated seller profit in free',
   keywords: 'ebay charges calculator, ebay fee calculator 2026, ebay profit calculator, final value fee ebay calculator',
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/ebay-charges-calculator',
   },
   openGraph: {
-    title: 'eBay Charges Calculator – Calculate eBay Fees & Profit Free',
-    description: 'Free eBay charges calculator. Calculate eBay seller fees, final value fees, and profit instantly. Best eBay fee calculator online.',
+    title: 'eBay Charges Calculator – Estimate Selling Fees & Profit',
+    description: 'Use our free eBay Fee Calculator to calculate eBay selling fees, final value fees, PayPal charges, and estimated seller profit instantly.',
     url: 'https://www.generatorpromptai.com/tools/ebay-charges-calculator',
     siteName: 'GeneratorPromptAI',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'eBay Charges Calculator – Calculate eBay Fees & Profit Free',
-    description: 'Free eBay charges calculator. Calculate eBay seller fees, final value fees, and profit instantly.',
+    title: 'eBay Charges Calculator – Estimate Selling Fees & Profit',
+    description: 'Use our free eBay Fee Calculator to calculate eBay selling fees, final value fees, PayPal charges, and estimated seller profit instantly.',
   },
   robots: {
     index: true,
@@ -34,7 +34,7 @@ const schemaWebApp = {
   "url": "https://www.generatorpromptai.com/tools/ebay-charges-calculator",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
-  "description": "Free eBay charges calculator to calculate seller fees, final value fees, and profit instantly.",
+  "description": "Use our free eBay Fee Calculator to calculate eBay selling fees, final value fees, PayPal charges, and estimated seller profit instantly.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
 

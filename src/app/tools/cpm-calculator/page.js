@@ -1,14 +1,14 @@
 import CpmCalculator from './CpmCalculator'
 
 export const metadata = {
-  title: 'Calculate the CPM Online Free – Cost Per 1000 Impressions Calculator',
+  title: 'Free CPM Calculator | Calculate Cost Per 1000 Impressions',
   description: 'Free online CPM calculator. Calculate cost per 1000 impressions, total campaign cost, or total impressions instantly. No signup, no limits.',
   keywords: 'calculate the cpm online free, cpm calculator online free, cost per 1000 impressions calculator, how to calculate cpm for ads, calculate campaign cost from cpm, cpm formula calculator, digital advertising cpm calculator, calculate impressions from cpm and cost, free cpm calculator tool, what is my cpm calculator',
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/cpm-calculator',
   },
   openGraph: {
-    title: 'Calculate the CPM Online Free – CPM Calculator',
+    title: 'Free CPM Calculator | Calculate Cost Per 1000 Impressions',
     description: 'Free CPM calculator. Calculate cost per 1000 impressions, campaign cost, or impressions instantly.',
     url: 'https://www.generatorpromptai.com/tools/cpm-calculator',
     siteName: 'GeneratorPromptAI',
@@ -16,7 +16,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Calculate the CPM Online Free – CPM Calculator',
+    title: 'Free CPM Calculator | Calculate Cost Per 1000 Impressions',
     description: 'Free CPM calculator to calculate cost per 1000 impressions instantly.',
   },
   robots: {

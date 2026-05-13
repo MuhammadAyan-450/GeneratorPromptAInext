@@ -1,23 +1,23 @@
 import CpcCalculator from './CpcCalculator'
 
 export const metadata = {
-  title: 'Calculate CPC Online Free – Cost Per Click Calculator',
-  description: 'Free online CPC calculator. Calculate cost per click, total campaign cost, or total clicks instantly. No signup, no limits.',
+  title: 'Free CPC Calculator – Calculate Cost Per Click Instantly',
+  description: 'Use our free CPC Calculator to calculate cost per click instantly. Estimate advertising CPC, PPC campaign costs, and Google Ads.',
   keywords: 'calculate cpc online free, cost per click calculator, how to calculate cpc for ads, cpc formula calculator, calculate campaign cost from cpc, free cpc calculator tool, digital advertising cpc calculator, what is my cpc, calculate clicks from cpc and budget, google ads cpc calculator',
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/cpc-calculator',
   },
   openGraph: {
-    title: 'Calculate CPC Online Free – Cost Per Click Calculator',
-    description: 'Free CPC calculator to calculate cost per click, campaign cost, or total clicks instantly.',
+    title: 'Free CPC Calculator – Calculate Cost Per Click Instantly',
+    description: 'Use our free CPC Calculator to calculate cost per click instantly. Estimate advertising CPC, PPC campaign costs, and Google Ads.',
     url: 'https://www.generatorpromptai.com/tools/cpc-calculator',
     siteName: 'GeneratorPromptAI',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Calculate CPC Online Free – CPC Calculator',
-    description: 'Free CPC calculator to calculate cost per click instantly.',
+    title: 'Free CPC Calculator – Calculate Cost Per Click Instantly',
+    description: 'Use our free CPC Calculator to calculate cost per click instantly. Estimate advertising CPC, PPC campaign costs, and Google Ads.',
   },
   robots: {
     index: true,
@@ -34,7 +34,7 @@ const schemaWebApp = {
   "url": "https://www.generatorpromptai.com/tools/cpc-calculator",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
-  "description": "Free online CPC calculator. Calculate cost per click, total campaign cost, or total clicks instantly. Includes CTR and CPM metrics.",
+  "description": "Use our free CPC Calculator to calculate cost per click instantly. Estimate advertising CPC, PPC campaign costs, and Google Ads.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "creator": { "@type": "Organization", "name": "GeneratorPromptAI" },
 }

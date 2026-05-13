@@ -37,11 +37,12 @@ export default function sitemap() {
     "uppercase-to-lowercase",
     "url-encoder",
     "uuid-generator",
-    "watermark-remover",
     "word-counter",
     "youtube-ad-revenue-calculator",
     "youtube-script-prompt-generator",
     "markdown-to-html",
+    "serp-snippet-preview",
+    "profit-margin-calculator"
   ];
 
  

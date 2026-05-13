@@ -1,23 +1,23 @@
 import AgeCalculator from './AgeCalculator'
 
 export const metadata = {
-  title: 'Calculate Exact Age in Years, Months, Days – How Many Days Old Am I?',
-  description: 'Calculate your exact age in years, months, days, hours, and minutes. Find out how many days old you are and days until your next birthday. Free online chronological age calculator by date of birth.',
+  title: 'Age Calculator – Calculate Your Exact Age Online Free',
+  description: 'Calculate your Exact age in seconds with our free online tool. Find out how many days old you are and the countdown to your next birthday!',
   keywords: 'calculate exact age in years months days, how many days old am i calculator, chronological age calculator by date of birth, age in days hours minutes calculator, days until next birthday calculator, calculate my age from date of birth online, exact age calculator free, age calculator with zodiac sign',
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/age-calculator',
   },
   openGraph: {
-    title: 'Calculate Exact Age in Years, Months, Days – Free Online Tool',
-    description: 'Find your exact age breakdown and total days lived. Includes next birthday countdown and zodiac sign.',
+    title: 'Age Calculator – Calculate Your Exact Age Online Free',
+    description: 'Calculate your Exact age in seconds with our free online tool. Find out how many days old you are and the countdown to your next birthday!',
     url: 'https://www.generatorpromptai.com/tools/age-calculator',
     siteName: 'GeneratorPromptAI',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Exact Age Calculator – Years, Months, Days, Hours',
-    description: 'Calculate your precise age and days until your next birthday. 100% free online tool.',
+    title: 'Age Calculator – Calculate Your Exact Age Online Free',
+    description: 'Calculate your Exact age in seconds with our free online tool. Find out how many days old you are and the countdown to your next birthday!',
   },
   robots: {
     index: true,

@@ -1,23 +1,23 @@
 import Base64Encoder from './Base64Encoder'
 
 export const metadata = {
-  title: 'Encode Text to Base64 Online Free – Decode Base64 to UTF-8 String',
-  description: 'Encode text to Base64 and decode Base64 strings back to UTF-8 text instantly. Supports emojis, special characters, and unicode. Free online Base64 converter – no signup.',
+  title: 'Encode Text To Base64 Online Free – Decode Base64 To Utf-8',
+  description: 'Easily convert text to Base64 and decode Base64 strings back to UTF-8. Enjoy support for emojis and Unicode with our free, no-signup online tool!',
   keywords: 'encode text to base64 online, decode base64 to utf-8 text, base64 string converter with emojis, how to convert text to base64 manually, base64 encoding for utf-8 special characters, decode base64 string to readable text, free base64 encoder decoder tool, base64 to text converter online',
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/base64-encode',
   },
   openGraph: {
-    title: 'Encode Text to Base64 Online Free – Decode Base64 to UTF-8',
-    description: 'Convert text to Base64 and decode Base64 strings back to readable UTF-8 text. Supports emojis and special characters.',
+    title: 'Encode Text To Base64 Online Free – Decode Base64 To Utf-8',
+    description: 'Easily convert text to Base64 and decode Base64 strings back to UTF-8. Enjoy support for emojis and Unicode with our free, no-signup online tool!',
     url: 'https://www.generatorpromptai.com/tools/base64-encode',
     siteName: 'GeneratorPromptAI',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Encode Text to Base64 Online – UTF-8 & Emoji Support',
-    description: 'Free Base64 encoder and decoder. Convert text to Base64 and back. Supports emojis and special characters.',
+    title: 'Encode Text To Base64 Online Free – Decode Base64 To Utf-8',
+    description: 'Easily convert text to Base64 and decode Base64 strings back to UTF-8. Enjoy support for emojis and Unicode with our free, no-signup online tool!',
   },
   robots: {
     index: true,
@@ -34,7 +34,7 @@ const schemaWebApp = {
   "url": "https://www.generatorpromptai.com/tools/base64-encode",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "All",
-  "description": "Free online tool to encode text to Base64 and decode Base64 strings back to UTF-8 text. Supports emojis and special characters.",
+  "description": "Easily convert text to Base64 and decode Base64 strings back to UTF-8. Enjoy support for emojis and Unicode with our free, no-signup online tool!",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
 }

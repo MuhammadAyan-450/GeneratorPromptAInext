@@ -2,6 +2,14 @@ import './globals.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Script from 'next/script'
+import { Inter } from 'next/font/google'
+
+// ─── FONT SETUP ───────────────────────────────────────────────────────────────
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
 export const metadata = {
   title: {
@@ -21,7 +29,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         {/* ✅ Google Analytics */}
         <Script
@@ -37,7 +45,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body className="min-h-screen flex flex-col">
+      <body className={`${inter.className} min-h-screen flex flex-col antialiased`}>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

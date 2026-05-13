@@ -1,23 +1,23 @@
 import CurrencyConverter from './CurrencyConverter'
 
 export const metadata = {
-  title: 'Convert USD to PKR Online – Live Dollar to PKR Rate Calculator',
-  description: 'Convert USD to PKR, AED to PKR, SAR to PKR online with live exchange rates. Calculate 1 dollar to PKR today, 1000 AED to PKR instantly. Auto-refresh every 60s – free online currency converter.',
+  title: 'USD to PKR Rate Today – Live Dollar to PKR Calculator',
+  description: 'Convert USD to PKR instantly with our live currency calculator. Check real-time USD to PKR exchange rates, currency conversion, and latest dollar prices online.',
   keywords: 'convert usd to pkr online with live exchange rate, 1 dollar to pkr today live rate calculator, aed to pkr conversion calculator live, how much is 1000 aed in pkr today, sar to pkr live rate converter, gbp to pkr exchange rate today calculator, live currency exchange rate calculator for pkr',
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/currency-converter',
   },
   openGraph: {
-    title: 'Convert USD to PKR Online – Live Dollar to PKR Rate Calculator',
-    description: 'Get live USD to PKR, AED to PKR, SAR to PKR exchange rates instantly. Auto-refresh every 60 seconds. Free online currency converter.',
+    title: 'USD to PKR Rate Today – Live Dollar to PKR Calculator',
+    description: 'Convert USD to PKR instantly with our live currency calculator. Check real-time USD to PKR exchange rates, currency conversion, and latest dollar prices online.',
     url: 'https://www.generatorpromptai.com/tools/currency-converter',
     siteName: 'GeneratorPromptAI',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Live USD to PKR Rate Calculator – Convert Currency Free',
-    description: 'Convert USD to PKR, AED to PKR & 170+ currencies with live rates. Auto-refresh every minute.',
+    title: 'USD to PKR Rate Today – Live Dollar to PKR Calculator',
+    description: 'Convert USD to PKR instantly with our live currency calculator. Check real-time USD to PKR exchange rates, currency conversion, and latest dollar prices online.',
   },
   robots: {
     index: true,
@@ -34,7 +34,7 @@ const schemaWebApp = {
   "url": "https://www.generatorpromptai.com/tools/currency-converter",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
-  "description": "Free live currency converter to calculate USD to PKR, AED to PKR, SAR to PKR rates. Auto-refreshes every 60 seconds.",
+  "description": "Convert USD to PKR instantly with our live currency calculator. Check real-time USD to PKR exchange rates, currency conversion, and latest dollar prices online.",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
 }

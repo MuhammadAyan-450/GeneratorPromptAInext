@@ -6,7 +6,7 @@ const websiteSchema = {
   "@type": "WebSite",
   "name": "Generator Prompt AI - Free Online Tools",
   "url": "https://www.generatorpromptai.com/",
-  "description": "Free online tools including JSON formatter, image compressor, base64 encoder, QR code generator, and AI prompt builder. No signup required.",
+  "description": "Use our free AI Prompt Generator to create high-quality prompts for ChatGPT, Claude, SEO, and more. Fast, free, and easy to use.",
   "potentialAction": {
     "@type": "SearchAction",
     "target": "https://www.generatorpromptai.com/search?q={search_term_string}",
@@ -78,8 +78,8 @@ const orgSchema = {
 }
 
 export const metadata = {
-  title: 'Free JSON Formatter, Image Compressor & AI Prompt Builder Online | No Signup',
-  description: 'Use 30+ free online tools: JSON formatter & validator, image compressor without losing quality, base64 encoder decoder, QR code generator with logo, AI prompt builder for ChatGPT. No signup, no installation – 100% browser-based.',
+  title: 'Free AI Prompt Generator | Smart Tools & Prompt Generators',
+  description: 'Use our free AI Prompt Generator to create high-quality prompts for ChatGPT, Claude, SEO, and more. Fast, free, and easy to use.',
   alternates: {
     canonical: 'https://www.generatorpromptai.com',
   },
@@ -87,15 +87,15 @@ export const metadata = {
   openGraph: {
     type: 'website',
     url: 'https://www.generatorpromptai.com/',
-    title: 'Free JSON Formatter, Image Compressor & 30+ Online Tools – No Signup',
-    description: 'JSON formatter, image compressor, base64 encoder, QR generator, AI prompt builder and 30+ free tools. Works in browser – no signup needed.',
+    title: 'Free AI Prompt Generator | Smart Tools & Prompt Generators',
+    description: 'Use our free AI Prompt Generator to create high-quality prompts for ChatGPT, Claude, SEO, and more. Fast, free, and easy to use.',
     images: ['https://www.generatorpromptai.com/og-image.jpg'],
     siteName: 'Generator Prompt AI',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free JSON Formatter, Image Compressor & 30+ Online Tools',
-    description: 'JSON formatter, image compressor, base64 encoder, QR generator, AI prompt builder and 30+ free tools. No signup needed.',
+    title: 'Free AI Prompt Generator | Smart Tools & Prompt Generators',
+    description: 'Use our free AI Prompt Generator to create high-quality prompts for ChatGPT, Claude, SEO, and more. Fast, free, and easy to use.',
     images: ['https://www.generatorpromptai.com/twitter-image.jpg'],
   },
 }

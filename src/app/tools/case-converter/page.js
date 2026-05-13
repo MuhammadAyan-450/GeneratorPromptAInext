@@ -1,23 +1,23 @@
 import CaseConverter from './CaseConverter'
 
 export const metadata = {
-  title: 'Convert Text to Uppercase, Lowercase, Title Case & camelCase Free',
-  description: 'Convert text to UPPERCASE, lowercase, Title Case, Sentence case, and camelCase instantly. Fix caps lock mistakes easily. Free online text case converter – no signup.',
+  title: 'Case Converter | Convert Uppercase To Lowercase & More',
+  description: 'Transform your text to any case—UPPERCASE, lowercase, Title Case, and more—with our free online converter. Quick, easy, and no signup required',
   keywords: 'convert text to uppercase lowercase title case online, change text case to sentence case free, camelcase text converter online free, fix caps lock text online tool, inverse case text converter, free online text case changer, uppercase to lowercase converter without paste',
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/case-converter',
   },
   openGraph: {
-    title: 'Convert Text to Uppercase, Lowercase, Title Case & camelCase Free',
-    description: 'Change text to UPPERCASE, lowercase, Title Case, Sentence case, or camelCase in 1 click. Free online tool for writers and developers.',
+    title: 'Case Converter | Convert Uppercase To Lowercase & More',
+    description: 'Transform your text to any case—UPPERCASE, lowercase, Title Case, and more—with our free online converter. Quick, easy, and no signup required',
     url: 'https://www.generatorpromptai.com/tools/case-converter',
     siteName: 'GeneratorPromptAI',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Text Case Converter – Uppercase, Lowercase, camelCase',
-    description: 'Change text case instantly. Fix caps lock mistakes and convert to camelCase for coding. 100% free tool.',
+    title: 'Case Converter | Convert Uppercase To Lowercase & More',
+    description: 'Transform your text to any case—UPPERCASE, lowercase, Title Case, and more—with our free online converter. Quick, easy, and no signup required',
   },
   robots: {
     index: true,
@@ -34,7 +34,7 @@ const schemaWebApp = {
   "url": "https://www.generatorpromptai.com/tools/case-converter",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "All",
-  "description": "Free online tool to convert text to UPPERCASE, lowercase, Title Case, Sentence case, and camelCase instantly. Fix caps lock mistakes easily.",
+  "description": "Transform your text to any case—UPPERCASE, lowercase, Title Case, and more—with our free online converter. Quick, easy, and no signup required",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
 }

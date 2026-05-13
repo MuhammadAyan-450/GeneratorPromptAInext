@@ -1,23 +1,23 @@
 import ClaudePromptGenerator from './ClaudePromptGenerator'
 
 export const metadata = {
-  title: 'Generate Claude Prompts for Claude 3.5 Sonnet & Opus – XML Tags Builder',
-  description: 'Free Claude AI prompt builder with XML tags support. Generate custom Claude prompts for Claude 3.5 Sonnet, Opus, and Haiku. Set tone, depth, and format (XML, Markdown) for better AI results.',
+  title: 'Claude Prompt Generator – Create Powerful AI Prompts Free',
+  description: 'Generate powerful Claude AI prompts instantly with our free Claude Prompt Generator. Create better prompts for writing, coding, SEO, marketing, and more',
   keywords: 'how to write prompts for claude 3.5 sonnet, claude ai prompt builder with xml tags, claude prompt format with thinking and output tags, generate claude prompts for coding and analysis, custom claude prompt template generator free, claude 3 opus sonnet prompt engineering tool, claude xml tags format prompt',
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/claude-prompt-generator',
   },
   openGraph: {
-    title: 'Generate Claude Prompts for Claude 3.5 Sonnet & Opus – XML Tags Builder',
-    description: 'Build custom Claude prompts with XML tags, tone, and depth settings. Optimized for Claude 3.5 Sonnet, Opus, and Haiku.',
+    title: 'Claude Prompt Generator – Create Powerful AI Prompts Free',
+    description: 'Generate powerful Claude AI prompts instantly with our free Claude Prompt Generator. Create better prompts for writing, coding, SEO, marketing, and more',
     url: 'https://www.generatorpromptai.com/tools/claude-prompt-generator',
     siteName: 'GeneratorPromptAI',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Claude AI Prompt Builder with XML Tags Support',
-    description: 'Generate structured Claude prompts with thinking/output tags, tone, and depth. Free online tool.',
+    title: 'Claude Prompt Generator – Create Powerful AI Prompts Free',
+    description: 'Generate powerful Claude AI prompts instantly with our free Claude Prompt Generator. Create better prompts for writing, coding, SEO, marketing, and more',
   },
   robots: {
     index: true,
@@ -34,7 +34,7 @@ const schemaWebApp = {
   "url": "https://www.generatorpromptai.com/tools/claude-prompt-generator",
   "applicationCategory": "AIApplication",
   "operatingSystem": "All",
-  "description": "Free tool to generate custom Claude prompts with XML tags, tone, and depth settings. Optimized for Claude 3.5 Sonnet, Opus, and Haiku.",
+  "description": "Generate powerful Claude AI prompts instantly with our free Claude Prompt Generator. Create better prompts for writing, coding, SEO, marketing, and more",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
   "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
 }
