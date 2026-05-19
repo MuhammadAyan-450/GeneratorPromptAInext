@@ -1,14 +1,14 @@
 import UnixTimestamp from './UnixTimestamp'
 
 export const metadata = {
-  title: 'Convert Unix Timestamp to Human Readable Date Online Free – Epoch Time Converter',
+  title: 'Free Unix Timestamp Converter – Convert Epoch Time to Human Date',
   description: 'Free online Unix timestamp converter. Convert epoch seconds to human-readable dates and vice versa. Live Unix clock with stats. No signup required.',
   keywords: "how to convert unix timestamp to human readable date online free, epoch time converter seconds to date free tool, convert human date to unix epoch timestamp online, what is unix timestamp and why 1970 epoch explained, unix timestamp milliseconds vs seconds difference converter, check year 2038 problem unix timestamp overflow free, live unix epoch clock current timestamp online, free online unix timestamp converter for developers no signup, convert timestamp to date javascript php python format, best free epoch time converter with download and copy 2026",
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/unix-timestamp',
   },
   openGraph: {
-    title: 'Convert Unix Timestamp to Date Free – Epoch Time Converter with Live Clock',
+    title: 'Free Unix Timestamp Converter – Convert Epoch Time to Human Date',
     description: 'Convert epoch seconds to readable dates and vice versa. Live Unix clock, stats, copy and download. Free developer tool.',
     url: 'https://www.generatorpromptai.com/tools/unix-timestamp',
     siteName: 'GeneratorPromptAI',
@@ -16,7 +16,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Unix Timestamp Converter – Epoch to Date & Back',
+    title: 'Free Unix Timestamp Converter – Convert Epoch Time to Human Date',
     description: 'Convert Unix timestamps to readable dates instantly. Live clock included. Free online tool.',
   },
   robots: {
@@ -31,7 +31,7 @@ export const metadata = {
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Convert Unix Timestamp to Human Readable Date Online Free – Epoch Time Converter",
+  "name": "Free Unix Timestamp Converter – Convert Epoch Time to Human Date",
   "url": "https://www.generatorpromptai.com/tools/unix-timestamp",
   "applicationCategory": "DeveloperTools",
   "operatingSystem": "All",

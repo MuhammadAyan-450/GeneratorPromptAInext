@@ -42,7 +42,13 @@ export default function sitemap() {
     "youtube-script-prompt-generator",
     "markdown-to-html",
     "serp-snippet-preview",
-    "profit-margin-calculator"
+    "profit-margin-calculator",
+    "meta-description-checker",
+    "seo-meta-tags-generator",
+    "ai-content-detector",
+    "ai-text-humanizer",
+    "apush-score-calculator",
+    "racine-carree-calculator"
   ];
 
  
@@ -54,6 +60,8 @@ export default function sitemap() {
     "how-to-generate-lorem-ipsum-text-custom-length",
     "jpeg-vs-png-complete-comparison-guide",
     "how-to-increase-adsense-earnings",
+    "cpm-vs-cpc-explained",
+    "cpm-calculator-how-much-can-you-earn-from-ads"
   ];
 
   return [
@@ -61,7 +69,7 @@ export default function sitemap() {
     {
       url: "https://www.generatorpromptai.com",
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "daily",
       priority: 1.0,
     },
     {

@@ -2,7 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Copy, RefreshCw, Calendar, Home, ChevronDown } from "lucide-react";
+import {
+  Copy,
+  RefreshCw,
+  Calendar,
+  Home,
+  ChevronDown,
+  Calculator,
+  FileText,
+  Heart,
+  Briefcase,
+  Clock,
+} from "lucide-react";
 
 const AgeCalculator = () => {
   const [birthDate, setBirthDate] = useState("");
@@ -38,7 +49,7 @@ const AgeCalculator = () => {
       const lastDayOfPrevMonth = new Date(
         today.getFullYear(),
         today.getMonth(),
-        0,
+        0
       ).getDate();
       days += lastDayOfPrevMonth;
     }
@@ -56,12 +67,12 @@ const AgeCalculator = () => {
     const nextBirthday = new Date(
       today.getFullYear(),
       birth.getMonth(),
-      birth.getDate(),
+      birth.getDate()
     );
     if (nextBirthday <= today)
       nextBirthday.setFullYear(today.getFullYear() + 1);
     const daysToNext = Math.ceil(
-      (nextBirthday - today) / (1000 * 60 * 60 * 24),
+      (nextBirthday - today) / (1000 * 60 * 60 * 24)
     );
 
     const birthDay = birth.toLocaleDateString("en-US", { weekday: "long" });
@@ -129,7 +140,7 @@ const AgeCalculator = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* ── Breadcrumb Only (Back to Home Removed) ── */}
+      {/* Breadcrumb */}
       <div className="max-w-4xl mx-auto w-full px-4 pt-6">
         <nav aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm text-gray-500">
@@ -170,16 +181,14 @@ const AgeCalculator = () => {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-100 mb-4">
             <Calendar className="text-sky-600" size={28} />
           </div>
-          {/* H1 targeting exact match long-tails */}
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
-            Calculate Exact Age in{" "}
-            <span className="text-sky-600">Years, Months & Days</span>
+            Age Calculator
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
-            Find out <strong>how many days old you are</strong>, your age in
-            hours and minutes, and the exact{" "}
-            <strong>days until your next birthday</strong>. Free chronological
-            age calculator.
+            Need to know your exact age down to the day? Or maybe you&apos;re
+            curious how many hours you&apos;ve been alive. Either way, punch in
+            your birthday and get the full breakdown — years, months, days, and
+            a countdown to your next one.
           </p>
         </div>
 
@@ -300,127 +309,444 @@ const AgeCalculator = () => {
           )}
         </div>
 
-        {/* ── SEO Content 1 ── */}
+        {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          {/* H2 targeting: "chronological age calculator by date of birth" */}
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Chronological Age Calculator by Date of Birth
-          </h2>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Our free online age calculator lets you find your{" "}
-            <strong>exact age in years, months, and days</strong> in seconds.
-            Whether you need your precise chronological age for official
-            documents, legal forms, or simply want to know{" "}
-            <strong>how many days old you are</strong>, this tool gives you an
-            accurate breakdown instantly.
-          </p>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Unlike basic calculators, our tool goes further by calculating your
-            age in weeks, hours, and minutes. It also features a built-in{" "}
-            <strong>days until next birthday calculator</strong> and reveals
-            your birth day (e.g. ,`Monday`) and zodiac sign.
-          </p>
-        </section>
-
-        {/* ── How to Use Section ── */}
-        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          {/* H2 targeting: "how to calculate my exact age online" */}
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            How to Calculate Your Exact Age Online
+            How to Calculate Your Age
           </h2>
-
-          <ol className="list-decimal list-inside text-gray-600 space-y-3 text-base">
-            <li>
-              Select your <strong>date of birth</strong> using the date picker
-              above.
-            </li>
-            <li>
-              Click the <strong>“Calculate Age”</strong> button to process your
-              details.
-            </li>
-            <li>
-              View your complete age breakdown in{" "}
-              <strong>years, months, days, weeks, hours, and minutes</strong>.
-            </li>
-            <li>
-              See{" "}
-              <strong>how many days are left until your next birthday</strong>{" "}
-              along with your zodiac sign.
-            </li>
-            <li>
-              Click <strong>“Copy Result”</strong> to save or share your exact
-              age calculation.
-            </li>
+          <ol className="space-y-5">
+            {[
+              {
+                step: "1",
+                title: "Pick your birth date",
+                desc: "Click the date field and select your birthday from the calendar. The input won't let you pick a future date — that'd be cheating.",
+              },
+              {
+                step: "2",
+                title: "Hit 'Calculate Age'",
+                desc: "One click and the math happens instantly in your browser. No loading, no server calls, no waiting.",
+              },
+              {
+                step: "3",
+                title: "Read your age breakdown",
+                desc: "You'll see your age in years, months, and days right at the top. Below that, there's a grid with total days, weeks, hours, minutes, your zodiac sign, and how many days until your next birthday.",
+              },
+              {
+                step: "4",
+                title: "Copy or share if you want",
+                desc: "Hit the copy button to grab all the numbers in plain text. Paste it in a message, a document, or wherever you need it.",
+              },
+            ].map((item) => (
+              <li key={item.step} className="flex items-start gap-4">
+                <span className="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
+                  {item.step}
+                </span>
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm mb-1">
+                    {item.title}
+                  </p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </li>
+            ))}
           </ol>
         </section>
 
-        {/* ── Features Section ── */}
+        {/* ─── Formulas ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          {/* H2 targeting: "age in days hours minutes calculator" */}
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Age in Days, Hours, Minutes & Birthday Countdown
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            How Age Calculation Actually Works
           </h2>
-          <div className="grid md:grid-cols-2 gap-5">
+          <p className="text-gray-500 text-sm mb-6">
+            It seems simple — subtract birth year from current year. But
+            months and days make it tricky. Here&apos;s the logic this
+            calculator uses.
+          </p>
+
+          <div className="space-y-5">
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Step 1: Calculate Raw Year Difference
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                rawYears = currentYear - birthYear
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Example: If today is 2025 and you were born in 1990, rawYears =
+                35. But this isn't your final answer — we still need to check
+                months and days.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Step 2: Adjust for Months
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                monthDiff = currentMonth - birthMonth
+                <br />
+                if (monthDiff &lt; 0) then years-- and monthDiff += 12
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                If your birth month hasn't happened yet this year, subtract 1
+                from years and add 12 to months. Born in August, it's currently
+                May? That means you haven't hit your birthday yet this year.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Step 3: Adjust for Days
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                dayDiff = currentDay - birthDay
+                <br />
+                if (dayDiff &lt; 0) then months-- and dayDiff +=
+                daysInPreviousMonth
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Same logic. If today is the 10th and you were born on the 25th,
+                your birthday hasn't happened this month. So we borrow days
+                from the previous month (28, 29, 30, or 31 depending on which
+                month it is).
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Step 4: Total Days, Hours, Minutes
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                totalDays = (today - birthDate) / (1000 × 60 × 60 × 24)
+                <br />
+                totalHours = totalDays × 24
+                <br />
+                totalMinutes = totalHours × 60
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                This part is straightforward — just convert the millisecond
+                difference between the two dates into whatever unit you want.
+                JavaScript handles leap years automatically in this calculation.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Real Examples ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Age Calculation Examples
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            Walk through these to see exactly how the calculator handles
+            different scenarios — including edge cases like leap years and
+            month boundaries.
+          </p>
+
+          <div className="space-y-5">
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
+                  Example 1
+                </span>
+                <h3 className="font-bold text-gray-900 text-sm">
+                  Standard Case — Born January 15, 1990
+                </h3>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Birth Date
+                  </p>
+                  <p className="text-sm font-bold text-gray-900">
+                    Jan 15, 1990
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Today
+                  </p>
+                  <p className="text-sm font-bold text-gray-900">
+                    Jul 10, 2025
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Result
+                  </p>
+                  <p className="text-sm font-bold text-green-700">
+                    35 years, 5 months, 25 days
+                  </p>
+                </div>
+              </div>
+              <div className="bg-green-50 border border-green-100 rounded-lg p-3">
+                <p className="text-xs text-gray-500">
+                  Total days: <span className="font-bold text-green-700">12,973</span>
+                  &nbsp;|&nbsp; Weeks:{" "}
+                  <span className="font-bold text-green-700">1,853</span>
+                  &nbsp;|&nbsp; Hours:{" "}
+                  <span className="font-bold text-green-700">311,352</span>
+                  &nbsp;|&nbsp; Born on a{" "}
+                  <span className="font-bold text-green-700">Monday</span>
+                  &nbsp;|&nbsp;{" "}
+                  <span className="font-bold text-green-700">Capricorn ♑</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
+                  Example 2
+                </span>
+                <h3 className="font-bold text-gray-900 text-sm">
+                  Leap Year Baby — Born February 29, 2000
+                </h3>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Birth Date
+                  </p>
+                  <p className="text-sm font-bold text-gray-900">
+                    Feb 29, 2000
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Today
+                  </p>
+                  <p className="text-sm font-bold text-gray-900">
+                    Jul 10, 2025
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Result
+                  </p>
+                  <p className="text-sm font-bold text-green-700">
+                    25 years, 4 months, 11 days
+                  </p>
+                </div>
+              </div>
+              <div className="bg-green-50 border border-green-100 rounded-lg p-3">
+                <p className="text-xs text-gray-500">
+                  Total days: <span className="font-bold text-green-700">9,270</span>
+                  &nbsp;|&nbsp; Leap years lived through:{" "}
+                  <span className="font-bold text-green-700">6</span>{" "}
+                  (2000, 2004, 2008, 2012, 2016, 2020, 2024)
+                  &nbsp;|&nbsp; Born on a{" "}
+                  <span className="font-bold text-green-700">Tuesday</span>
+                  &nbsp;|&nbsp;{" "}
+                  <span className="font-bold text-green-700">Pisces ♓</span>
+                </p>
+              </div>
+            </div>
+
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
+                  Example 3
+                </span>
+                <h3 className="font-bold text-gray-900 text-sm">
+                  Month Boundary Edge Case — Born December 28, 2010
+                </h3>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Birth Date
+                  </p>
+                  <p className="text-sm font-bold text-gray-900">
+                    Dec 28, 2010
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Today
+                  </p>
+                  <p className="text-sm font-bold text-gray-900">
+                    Jan 5, 2025
+                  </p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-3">
+                  <p className="text-[11px] text-gray-400 uppercase font-bold">
+                    Result
+                  </p>
+                  <p className="text-sm font-bold text-green-700">
+                    14 years, 0 months, 8 days
+                  </p>
+                </div>
+              </div>
+              <div className="bg-green-50 border border-green-100 rounded-lg p-3">
+                <p className="text-xs text-gray-500">
+                  Notice: Even though we crossed into a new year, the birthday
+                  (Dec 28) already passed, so it counts as 14 full years. Days
+                  = 5 (Jan) + 3 (borrowed from Dec's 31 days) ={" "}
+                  <span className="font-bold text-green-700">8 days</span>
+                  &nbsp;|&nbsp; Total days:{" "}
+                  <span className="font-bold text-green-700">5,120</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Use Cases ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Who Actually Needs an Age Calculator
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            It&apos;s not just for curiosity. Here&apos;s when knowing your
+            exact age actually matters.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
-                title: "Exact Age Breakdown",
-                desc: "Get your precise age down to the months and days, accurately handling leap years and varying month lengths.",
+                icon: <FileText size={20} className="text-sky-600" />,
+                title: "Government Forms & Applications",
+                desc: "Visa applications, passport renewals, retirement forms — many require your exact age in years and months, not just your birth year. Getting it wrong can delay processing.",
               },
               {
-                title: "Total Days Lived",
-                desc: "Find out exactly how many days, weeks, hours, and minutes you have lived since your birth date.",
+                icon: <Heart size={20} className="text-red-500" />,
+                title: "Health & Medical Records",
+                desc: "Pediatric growth charts, vaccine schedules, and some medical assessments need precise age. 'About 2 years old' doesn't cut it when the doctor needs to know if it's 23 months or 27 months.",
               },
               {
-                title: "Birthday Countdown",
-                desc: "Automatically calculates the days remaining until your next birthday so you never miss it.",
+                icon: <Briefcase size={20} className="text-amber-600" />,
+                title: "Employment & Retirement Planning",
+                desc: "Some jobs have age requirements (18+, 21+, 65+ retirement). Knowing exactly where you stand helps with pension calculations and eligibility for age-based benefits.",
               },
               {
-                title: "100% Private & Free",
-                desc: "Your date of birth is never sent to a server. The calculation happens entirely in your browser, ensuring total privacy.",
+                icon: <Clock size={20} className="text-violet-600" />,
+                title: "Legal Age Verification",
+                desc: "Driving permits, alcohol purchases, marriage consent laws — these all have specific age cutoffs. If you're close to the line, you need to know exactly how many days you have.",
               },
-            ].map((feature, i) => (
+            ].map((item, i) => (
               <div
                 key={i}
-                className="bg-gray-50 rounded-xl p-5 border border-gray-100"
+                className="border border-gray-100 rounded-2xl p-5 hover:border-sky-200 transition-colors"
               >
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  {feature.title}
+                <div className="mb-3">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 text-sm mb-1.5">
+                  {item.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {feature.desc}
+                <p className="text-gray-500 text-xs leading-relaxed">
+                  {item.desc}
                 </p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* ── FAQ Section (Accordion) ── */}
+        {/* ─── SEO Content ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Why Simple Subtraction Doesn&apos;t Work for Age
+          </h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            You might think calculating age is just &quot;current year minus
+            birth year.&quot; That works if it&apos;s already past your
+            birthday this year. But if your birthday is in November and
+            it&apos;s only March, subtracting the years gives you an age
+            that&apos;s one year too high.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            The same problem happens with days. If you were born on the 25th
+            and today is the 10th, you can&apos;t just subtract 10 - 25 =
+            -15 days. The calculator has to &quot;borrow&quot; days from the
+            previous month — and that previous month might have 28, 29, 30, or
+            31 days depending on which month it is and whether it&apos;s a
+            leap year.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            This is why most people get their age wrong by a few days or even
+            a month when they try to calculate it manually. The tool handles
+            all these edge cases automatically using JavaScript&apos;s Date
+            object, which knows exactly how many days are in each month and
+            which years are leap years.
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
+            Leap Years and February 29 Birthdays
+          </h3>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            If you were born on February 29, you technically only have a real
+            birthday every 4 years. But legally and for age calculation
+            purposes, most systems treat March 1 as your birthday in non-leap
+            years. This calculator handles that correctly — it&apos;ll show
+            your age as of today regardless of whether it&apos;s a leap year
+            or not.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Fun fact: someone born on February 29, 2000 has only had 7 actual
+            birthdays as of 2025 (2000, 2004, 2008, 2012, 2016, 2020, 2024).
+            But their age is still calculated normally — 25 years old, not 7.
+          </p>
+          <p className="text-gray-600 leading-relaxed">
+            If you need to convert between time zones after calculating your
+            age (maybe you were born at 11 PM in one timezone but it was
+            already the next day in another), check out our{" "}
+            <Link
+              href="/tools/time-zone-converter"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              Time Zone Converter
+            </Link>
+            . And if you&apos;re calculating ages for a group or event and
+            need to figure out percentages (like &quot;what percentage of
+            attendees are under 18?&quot;), our{" "}
+            <Link
+              href="/tools/percentage-calculator"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              Percentage Calculator
+            </Link>{" "}
+            can help with that math.
+          </p>
+        </section>
+
+        {/* ─── FAQ ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Age Calculator – Frequently Asked Questions
+            Frequently Asked Questions
           </h2>
-
-          <div className="space-y-4 max-w-4xl mx-auto">
+          <div className="space-y-3 max-w-4xl mx-auto">
             {[
               {
-                q: "How to calculate my exact age in years, months, and days?",
-                a: "Enter your date of birth in the age calculator above and click 'Calculate Age'. The tool uses precise calendar logic to compute your exact age in years, months, and days, properly accounting for leap years and different month lengths.",
+                q: "How do I calculate my exact age in years, months, and days?",
+                a: "Enter your date of birth in the calculator above and click 'Calculate Age'. The tool handles all the edge cases — month boundaries, leap years, varying month lengths — so you get a precise result without doing any math yourself. The calculation happens instantly in your browser.",
               },
               {
                 q: "How many days old am I?",
-                a: "To find out how many days old you are, simply enter your date of birth into our calculator. It will instantly show your total days lived, along with your total weeks, hours, and minutes since birth.",
+                a: "Just enter your birth date and the calculator will show your total days lived right in the results grid. For example, if you're 30 years old, you've lived roughly 10,950 to 10,958 days depending on how many leap years fell in that period.",
               },
               {
-                q: "How to find days until my next birthday?",
-                a: "Just enter your date of birth and calculate your age. Our tool automatically calculates and displays the exact number of days remaining until your next birthday based on today's date.",
+                q: "How do I find out how many days until my next birthday?",
+                a: "The calculator does this automatically. After you enter your birth date and hit calculate, look for the 'Next Birthday In' card in the results — it shows the exact number of days until your next birthday based on today's date.",
               },
               {
-                q: "Does this age calculator account for leap years?",
-                a: "Yes, our calculator uses JavaScript's native Date object which correctly handles leap years (e.g., years like 2000, 2004, 2024), ensuring your age in days and hours is 100% accurate.",
+                q: "Does this calculator handle leap years correctly?",
+                a: "Yes. It uses JavaScript's native Date object, which correctly accounts for leap years (years divisible by 4, except century years not divisible by 400). So February 29 birthdays and age calculations spanning leap years are all accurate.",
               },
               {
-                q: "Is my date of birth saved or stored anywhere?",
-                a: "No. The calculation happens entirely in your web browser. Your date of birth is never sent to any external server, stored in a database, or tracked. Your privacy is fully protected.",
+                q: "What if I was born on February 29?",
+                a: "Your age is calculated normally — you don't stay the same age for 4 years. In non-leap years, the calculator treats your birthday as having passed on March 1 for age calculation purposes. Your total days lived will still be correct.",
+              },
+              {
+                q: "Is my date of birth stored or sent anywhere?",
+                a: "No. The entire calculation runs in your browser using JavaScript. Your birth date never leaves your device — it's not sent to a server, not stored in a database, not logged anywhere. Check your browser's network tab if you want to verify; there are zero outbound requests.",
+              },
+              {
+                q: "Why does my age show different days than I expected?",
+                a: "This usually happens when your birthday is near a month boundary. For example, if you were born on the 30th and the current month only has 28 or 29 days, the calculator has to 'borrow' days from the previous month. The result is mathematically correct even if it looks surprising at first.",
+              },
+              {
+                q: "Can I use this to calculate someone else's age?",
+                a: "Absolutely. There's no verification or login — just enter any date of birth and you'll get the age as of today. It works for anyone: your kids, your parents, historical figures, fictional characters, whatever you need.",
               },
             ].map((item, i) => (
               <div
@@ -432,18 +758,24 @@ const AgeCalculator = () => {
                   className="w-full flex items-center justify-between p-5 text-left"
                   aria-expanded={openFaq === i}
                 >
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">
+                  <h3 className="text-sm md:text-base font-bold text-gray-900 pr-4">
                     {item.q}
                   </h3>
                   <ChevronDown
                     size={22}
-                    className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
+                    className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${
+                      openFaq === i ? "rotate-180" : ""
+                    }`}
                   />
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
+                  className={`overflow-hidden transition-all duration-300 ${
+                    openFaq === i
+                      ? "max-h-[600px] opacity-100"
+                      : "max-h-0 opacity-0"
+                  }`}
                 >
-                  <p className="px-5 pb-5 text-gray-600 leading-relaxed">
+                  <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
                     {item.a}
                   </p>
                 </div>
@@ -452,10 +784,10 @@ const AgeCalculator = () => {
           </div>
         </section>
 
-        {/* ── Related Tools ── */}
+        {/* ─── Related Tools ─── */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Related Free Online Calculators
+            Related Calculators You Might Need
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
@@ -470,9 +802,24 @@ const AgeCalculator = () => {
                 desc: "Convert time between cities and global time zones accurately.",
               },
               {
-                href: "/tools/password-generator",
-                title: "Password Generator",
-                desc: "Generate strong, secure random passwords with custom settings.",
+                href: "/tools/unix-timestamp",
+                title: "Unix Timestamp Converter",
+                desc: "Convert Unix timestamps to human-readable dates and vice versa.",
+              },
+              {
+                href: "/tools/currency-converter",
+                title: "Currency Converter",
+                desc: "Convert between 170+ currencies with real-time exchange rates.",
+              },
+              {
+                href: "/tools/cpm-calculator",
+                title: "CPM Calculator",
+                desc: "Calculate cost per 1,000 impressions for ad campaigns.",
+              },
+              {
+                href: "/tools/ebay-charges-calculator",
+                title: "eBay Charges Calculator",
+                desc: "Calculate eBay fees, final value fee, and net profit on sales.",
               },
             ].map((tool) => (
               <Link

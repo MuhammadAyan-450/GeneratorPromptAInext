@@ -2,14 +2,14 @@ import SitemapGenerator from './SitemapGenerator'
 
 export const metadata = {
   title: 'Generate XML Sitemap from URL Free – Create sitemap.xml Instantly',
-  description: 'Generate XML sitemap from URLs instantly. Create sitemap.xml with changefreq and priority settings. Supports bulk URLs, auto-duplicates removal. Download ready-to-submit sitemap for Google Search Console – free, no signup.',
+  description: 'Generate XML sitemaps instantly with our free XML Sitemap Generator. Create sitemap.xml files from any website URL to improve SEO and search engine indexing.',
   keywords: "xml sitemap generator, generate sitemap xml, xml sitemaps generator, xml-sitemaps generator, sitemap generator from url, generate xml sitemap, sitemap xml creation, generate sitemap from url, generate a sitemap xml, sitemap xml generation, xml sitemap generation, sitemap generator xml, sitemap.xml generator, generate xml sitemaps, create xml sitemap, create sitemap xml, sitemap xml file generator, free sitemap generator online",
   alternates: {
     canonical: 'https://www.generatorpromptai.com/tools/sitemap-generator',
   },
   openGraph: {
     title: 'Generate XML Sitemap from URL Free – Create sitemap.xml Instantly',
-    description: 'Generate XML sitemap from multiple URLs instantly. Set changefreq, priority, and download ready-to-submit sitemap.xml for Google – free online tool.',
+    description: 'Generate XML sitemaps instantly with our free XML Sitemap Generator. Create sitemap.xml files from any website URL to improve SEO and search engine indexing.',
     url: 'https://www.generatorpromptai.com/tools/sitemap-generator',
     siteName: 'GeneratorPromptAI',
     type: 'website',
@@ -17,7 +17,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Generate XML Sitemap from URL Free',
-    description: 'Create sitemap.xml from URLs with changefreq and priority. Download instantly – no signup needed.',
+    description: 'Generate XML sitemaps instantly with our free XML Sitemap Generator. Create sitemap.xml files from any website URL to improve SEO and search engine indexing.',
   },
   robots: {
     index: true,
@@ -33,7 +33,7 @@ const schemaWebApp = {
   "@type": "WebApplication",
   "name": "XML Sitemap Generator from URL",
   "url": "https://www.generatorpromptai.com/tools/sitemap-generator",
-  "description": "Generate XML sitemaps from URLs instantly. Create sitemap.xml with changefreq and priority options. Free online tool – no signup.",
+  "description": "Generate XML sitemaps instantly with our free XML Sitemap Generator. Create sitemap.xml files from any website URL to improve SEO and search engine indexing.",
   "applicationCategory": "SEOApplication",
   "operatingSystem": "All",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },

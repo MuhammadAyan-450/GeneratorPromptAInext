@@ -7,6 +7,20 @@ export const tools = [
     category: "Image Tools",
   },
   {
+    name: "AI Text Humanizer",
+    path: "/tools/ai-text-humanizer",
+    description:
+      "Convert AI-generated text to human-like writing. Bypass AI detectors like GPTZero & Turnitin. Free, no signup, 4 tones, 3 strengths.",
+    category: "AI Tools",
+  },
+  {
+    name: "AI Content Detector",
+    path: "/tools/ai-content-detector",
+    description:
+      "Detect if text is AI-generated or human-written. Free AI detector for ChatGPT, Claude, Gemini content. Real-time analysis, no signup.",
+    category: "AI Tools",
+  },
+  {
     name: "Image Resizer",
     path: "/tools/image-resizer",
     description:
@@ -45,6 +59,13 @@ export const tools = [
     description:
       "Beautify, minify, validate and format JSON instantly with error highlighting.",
     category: "Text & Code Tools",
+  },
+  {
+    name: "Racine Carree Calculator",
+    path: "/tools/racine-carree-calculator",
+    description:
+      "Calculate square roots instantly — real & imaginary numbers. Free racine carrée calculator with steps, simplified form & polar form.",
+    category: "Calculators",
   },
   {
     name: "Word Counter",
@@ -100,14 +121,14 @@ export const tools = [
     path: "/tools/fake-data-generator",
     description:
       "Generate realistic dummy data: names, emails, phones, addresses, ages – perfect for testing & mockups.",
-    category: "Developers & Testing",
+    category: "Developer Tools",
   },
   {
     name: "Sitemap Generator",
     path: "/tools/sitemap-generator",
     description:
       "Generate XML sitemap from list of URLs – with changefreq and priority options.",
-    category: "SEO & Web Tools",
+    category: "SEO Tools",
   },
   {
     name: "Emoji Picker",
@@ -177,7 +198,7 @@ export const tools = [
     path: "/tools/email-validator",
     description:
       "Check if an email address is valid and formatted correctly using syntax verification.",
-    category: "Validator Tools",
+    category: "Text & Code Tools",
   },
   {
     name: "Uppercase to Lowercase Converter",
@@ -191,35 +212,42 @@ export const tools = [
     path: "/tools/unix-timestamp",
     description:
       "Convert Unix Epoch timestamps to human-readable dates and vice versa. Includes a live clock.",
-    category: "Developers & Testing",
+    category: "Developer Tools",
+  },
+  {
+    name: "Meta Description Checker",
+    path: "/tools/meta-description-checker",
+    description:
+      "Check meta description length, SEO score, pixel width, power words and keyword placement instantly.",
+    category: "SEO Tools",
   },
   {
     name: "Base64 Encoder",
     path: "/tools/base64-encode",
     description:
       "Encode text to Base64 and decode Base64 strings back to text. Supports UTF-8 and emojis.",
-    category: "Developers & Testing",
+    category: "Developer Tools",
   },
   {
     name: "URL Encoder",
     path: "/tools/url-encoder",
     description:
       "Encode and Decode URLs into percent-encoded format for safe web transmission.",
-    category: "Developers & Testing",
+    category: "Developer Tools",
   },
   {
     name: "UUID Generator",
     path: "/tools/uuid-generator",
     description:
       "Generate Version 4 UUIDs instantly. Supports bulk generation, uppercase, and no-hyphen formats.",
-    category: "Developers & Testing",
+    category: "Developer Tools",
   },
   {
     name: "Excel Formula Beautifier",
     path: "/tools/excel-formula-beautifier",
     description:
       "Format messy Excel and Google Sheets formulas with clean indents, line breaks, and syntax highlighting.",
-    category: "Formatters",
+    category: "Text & Code Tools",
   },
   {
     name: "eBay Charges Calculator",
@@ -256,6 +284,13 @@ export const tools = [
     category: "Calculators",
   },
   {
+    name: "SEO Meta Tags Generator",
+    path: "/tools/seo-meta-tags-generator",
+    description:
+      "Generate SEO-optimized meta titles, descriptions & Open Graph tags with live SERP preview. Free, no signup.",
+    category: "SEO Tools",
+  },
+  {
     name: "CPC Calculator",
     path: "/tools/cpc-calculator",
     description:
@@ -281,67 +316,59 @@ export const tools = [
     path: "/tools/profit-margin-calculator",
     description:
       "Calculate profit margin %, markup %, and profit amount from cost & selling price. Free business calculator.",
-    category: "Business & Finance",
+    category: "Calculators",
   },
   {
-    name: "Meta Description Checker",
-    path: "/tools/meta-description-checker",
+    name: "APUSH Score Calculator",
+    path: "/tools/apush-score-calculator",
     description:
-      "Check meta description length, SEO score, pixel width, power words and keyword placement instantly.",
-    category: "SEO Tools",
+      "Calculate your estimated APUSH exam score (1-5). Enter MCQ, SAQ, DBQ & LEQ scores to get instant composite score & AP grade prediction.",
+    category: "Calculators",
   },
 ];
 
-// ─── CATEGORIES (Auto-synced with tools) ─────────────────────────────────────
+// ─── CATEGORIES (8 clean clusters) ──────────────────────────────────────────
 export const toolCategories = [
   {
     category: "Calculators",
+    icon: "calculator",
     tools: tools.filter((t) => t.category === "Calculators"),
   },
   {
+    category: "AI Tools",
+    icon: "brain",
+    tools: tools.filter((t) => t.category === "AI Tools"),
+  },
+  {
     category: "Text & Code Tools",
+    icon: "code",
     tools: tools.filter((t) => t.category === "Text & Code Tools"),
   },
   {
     category: "Image Tools",
+    icon: "image",
     tools: tools.filter((t) => t.category === "Image Tools"),
   },
   {
-    category: "AI Tools",
-    tools: tools.filter((t) => t.category === "AI Tools"),
+    category: "Developer Tools",
+    icon: "terminal",
+    tools: tools.filter((t) => t.category === "Developer Tools"),
   },
   {
-    category: "Developers & Testing",
-    tools: tools.filter((t) => t.category === "Developers & Testing"),
+    category: "SEO Tools",
+    icon: "search",
+    tools: tools.filter((t) => t.category === "SEO Tools"),
   },
   {
     category: "Generators",
+    icon: "wand",
     tools: tools.filter((t) => t.category === "Generators"),
   },
   {
     category: "Social Media Tools",
+    icon: "share",
     tools: tools.filter((t) => t.category === "Social Media Tools"),
   },
-  {
-    category: "SEO & Web Tools",
-    tools: tools.filter((t) => t.category === "SEO & Web Tools"),
-  },
-  {
-    category: "SEO Tools",
-    tools: tools.filter((t) => t.category === "SEO Tools"),
-  },
-  {
-    category: "Developer Tools",
-    tools: tools.filter((t) => t.category === "Developer Tools"),
-  },
-  {
-    category: "Formatters",
-    tools: tools.filter((t) => t.category === "Formatters"),
-  },
-  {
-    category: "Validator Tools",
-    tools: tools.filter((t) => t.category === "Validator Tools"),
-  },
-].filter((cat) => cat.tools.length > 0); // ← Yeh line empty categories ko自动remove kar degi
+].filter((cat) => cat.tools.length > 0);
 
 export default tools;

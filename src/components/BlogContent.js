@@ -110,8 +110,16 @@ export default function BlogContent() {
     })
   }, [search, category])
 
-  const featured = filtered.filter((p) => p.featured)
-  const regular = filtered.filter((p) => !p.featured)
+  // ─── NEW LOGIC: Single Featured Post (newest) + Regular Posts ─────────────
+  const featuredPosts = filtered.filter((p) => p.featured)
+  
+  // Pick only the NEWEST featured post (by dateISO or date)
+  const featuredPost = featuredPosts.length > 0
+    ? featuredPosts.sort((a, b) => new Date(b.dateISO || b.date) - new Date(a.dateISO || a.date))[0]
+    : null
+
+  // Regular posts = all filtered posts EXCEPT the featured one
+  const regularPosts = filtered.filter((p) => p.id !== featuredPost?.id)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -225,23 +233,19 @@ export default function BlogContent() {
           </div>
         )}
 
-        {/* ── Featured Posts ── */}
-        {featured.length > 0 && (
+        {/* ── Featured Post (SINGLE) ── */}
+        {featuredPost && (
           <section className="mb-12">
             <div className="flex items-center gap-2 mb-5">
               <TrendingUp size={17} className="text-amber-500" />
-              <h2 className="text-lg font-bold text-gray-900">Featured Tool Guides &amp; AI Tutorials</h2>
+              <h2 className="text-lg font-bold text-gray-900">Featured Tool Guide &amp; AI Tutorial</h2>
             </div>
-            <div className="flex flex-col gap-5">
-              {featured.map((post) => (
-                <BlogCard key={post.id} post={post} featured />
-              ))}
-            </div>
+            <BlogCard post={featuredPost} featured />
           </section>
         )}
 
         {/* ── Regular Posts Grid ── */}
-        {regular.length > 0 && (
+        {regularPosts.length > 0 && (
           <section>
             <div className="flex items-center gap-2 mb-5">
               <Rss size={17} className="text-indigo-500" />
@@ -250,7 +254,7 @@ export default function BlogContent() {
               </h2>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {regular.map((post) => (
+              {regularPosts.map((post) => (
                 <BlogCard key={post.id} post={post} />
               ))}
             </div>

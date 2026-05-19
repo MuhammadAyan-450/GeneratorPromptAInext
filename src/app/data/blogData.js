@@ -1,3 +1,4 @@
+// ─── BLOG POSTS DATA ─────────────────────────────────────────────────────────
 export const BLOG_POSTS = [
   {
     id: 1,
@@ -112,9 +113,49 @@ export const BLOG_POSTS = [
     color: "from-emerald-500 to-teal-600",
     emoji: "💰",
   },
+  {
+    id: 12,
+    slug: "cpm-vs-cpc-explained",
+    title:
+      "CPM vs CPC Explained: Which Ad Pricing Model Actually Saves You Money in 2026?",
+    excerpt:
+      "Confused between CPM and CPC? We break down the real differences, when to use each, and how to pick the right model for YOUR campaign goals — with real examples.",
+    category: "Digital Marketing",
+    tag: "Ad Strategy",
+    readTime: 10,
+    date: "May 16, 2026",
+    dateISO: "2026-05-16",
+    featured: true,
+    image: null,
+    color: "from-emerald-500 to-teal-600",
+    emoji: "⚖️",
+  },
+  {
+    id: 13,
+    slug: "cpm-calculator-how-much-can-you-earn-from-ads",
+    title:
+      "CPM Calculator: How Much Can You Earn from Ads? (Free Tool + Guide)",
+    excerpt:
+      "Wondering how much your blog or YouTube channel could earn? Use our free CPM calculator for Google AdSense to estimate your ad revenue — with real examples and tips to increase your CPM.",
+    category: "Monetization",
+    tag: "Ad Revenue",
+    readTime: 9,
+    date: "May 17, 2026",
+    dateISO: "2026-05-17",
+    featured: true,
+    image: null,
+    color: "from-emerald-500 to-teal-600",
+    emoji: "💰",
+  },
 ];
 
+// ─── CATEGORIES (auto-generated from posts) ──────────────────────────────────
 export const CATEGORIES = [
   "All",
   ...new Set(BLOG_POSTS.map((p) => p.category)),
 ];
+
+// ─── HELPER: Get single post by slug (FIXES IMPORT ERROR) ────────────────────
+export function getPostBySlug(slug) {
+  return BLOG_POSTS.find((post) => post.slug === slug);
+}

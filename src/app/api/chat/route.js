@@ -8,6 +8,15 @@ export async function POST(req) {
     });
   }
 
+  // Add system message if not present
+  const fullMessages = messages[0]?.role === "system" ? messages : [
+    {
+      role: "system",
+      content: "You are a helpful AI assistant. Give clear, concise, and helpful responses. You can help with generating prompts for ChatGPT, Claude, Midjourney, writing content, coding, and answering questions."
+    },
+    ...messages
+  ];
+
   try {
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
@@ -17,11 +26,22 @@ export async function POST(req) {
       },
       body: JSON.stringify({
         model: "llama-3.3-70b-versatile",
-        messages,
+        messages: fullMessages,
         temperature: 0.7,
         max_tokens: 2048
       })
     });
+
+    if (!response.ok) {
+      const errData = await response.json().catch(() => ({}));
+      console.error("Groq API error:", errData);
+      return new Response(JSON.stringify({ 
+        error: errData?.error?.message || "Groq API error" 
+      }), {
+        status: response.status,
+        headers: { "Content-Type": "application/json" }
+      });
+    }
 
     const data = await response.json();
 
@@ -36,8 +56,10 @@ export async function POST(req) {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });
+
   } catch (error) {
-    return new Response(JSON.stringify({ error: "Server error" }), {
+    console.error("Server error:", error);
+    return new Response(JSON.stringify({ error: "Server error: " + error.message }), {
       status: 500,
       headers: { "Content-Type": "application/json" }
     });
