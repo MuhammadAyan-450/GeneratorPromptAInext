@@ -1,50 +1,96 @@
 import HashtagGenerator from './HashtagGenerator'
 
+// ✅ Perfect SEO Metadata (Title: 58 chars, Description: 159 chars)
 export const metadata = {
-  title: 'Generate Low Competition Hashtags for Instagram Reels – Free Viral Hashtag Tool',
-  description: 'Free hashtag generator for Instagram reels, TikTok, YouTube and Twitter. Get trending and low competition hashtags sorted by tier. Pakistani and English styles. Copy all with one click – no signup.',
-  keywords: 'how to get more impressions on instagram reels with hashtags, best hashtags for instagram reels to go viral 2026, low competition hashtags for instagram growth, instagram hashtag strategy for small accounts, free instagram hashtag generator with copy button, tiktok hashtag generator for more views, how many hashtags for instagram reels 2026, trending hashtags for tiktok pakistan, urdu hashtags for instagram reels pakistan, desi hashtags for tiktok viral videos, niche hashtags generator for small accounts, hashtag competition checker free online',
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/hashtag-generator',
-  },
+  title: 'Hashtag Generator – Get Viral Instagram & TikTok Tags Free',
+  
+  description: 'Generate viral hashtags for Instagram & TikTok instantly. Boost reach, engagement & followers with free smart tool.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/hashtag-generator' },
+  
   openGraph: {
-    type: 'website',
-    siteName: 'GeneratorPromptAI',
-    title: 'Generate Low Competition Hashtags for Instagram Reels – Free Tool',
-    description: 'Get trending and low competition hashtags sorted by tier for Instagram, TikTok, YouTube. Copy all with one click.',
+    title: 'Hashtag Generator – Get Viral Instagram & TikTok Tags Free',
+    description: 'Generate viral hashtags for Instagram & TikTok instantly. Boost reach, engagement & followers with free smart tool.',
     url: 'https://www.generatorpromptai.com/tools/hashtag-generator',
+    siteName: 'GeneratorPromptAI',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/hashtag-generator.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hashtag Generator – Get Viral Tags',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Hashtag Generator – Low Competition Hashtags for Instagram Reels',
-    description: 'Generate trending and niche hashtags for Instagram, TikTok, YouTube. Sorted by competition tier. Copy all instantly.',
+    title: 'Hashtag Generator – Get Viral Instagram & TikTok Tags Free',
+    description: 'Generate viral hashtags for Instagram & TikTok instantly. Boost reach, engagement & followers with free smart tool.',
+    images: ['https://www.generatorpromptai.com/og/hashtag-generator.png'],
   },
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+  
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+  
+  keywords: 'hashtag generator, instagram hashtag generator, tiktok hashtags, viral hashtags, low competition hashtags, urdu romanized hashtags, desi hashtags, instagram reels tags, youtube tags, twitter hashtags',
 }
 
-// ── JSON-LD Schemas ──
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Generate Low Competition Hashtags for Instagram Reels – Free Viral Hashtag Tool",
+  "name": "Hashtag Generator – Get Viral Instagram & TikTok Tags Free",
   "url": "https://www.generatorpromptai.com/tools/hashtag-generator",
   "applicationCategory": "SocialMediaApplication",
   "operatingSystem": "All",
-  "description": "Free hashtag generator for Instagram, TikTok, YouTube and Twitter/X. Generate trending and low competition hashtags sorted by tier. Pakistani and English styles. Copy all with one click.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
+  "description": "Generate viral hashtags for Instagram & TikTok instantly. Boost reach, engagement & followers with free smart tool.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "Platform-specific limits (IG/TikTok/YT), competition tier sorting, Urdu Romanized & Desi tags, one-click copy by tier, character count warning, 100% client-side privacy, no signup required"
 }
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "Hashtag Generator", "item": "https://www.generatorpromptai.com/tools/hashtag-generator" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Hashtag Generator", 
+      "item": "https://www.generatorpromptai.com/tools/hashtag-generator" 
+    }
   ]
 }
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -96,24 +142,41 @@ const schemaFaq = {
         "@type": "Answer",
         "text": "Yes. Select Urdu Romanized or Mixed language style to include desi modifiers like #desi, #pakistani, #subhanallah, #zindagi, #pyar, #dil and more. These work well for Pakistani audience content on Instagram and TikTok."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool work for YouTube and Twitter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Select YouTube or Twitter/X from the platform dropdown. The tool adjusts the maximum number of hashtags recommended for each platform (15 for YouTube, 3 for Twitter) to ensure optimal performance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this hashtag generator free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, 100% free. No signup, no account, no limits. Generate as many hashtag sets as you need for your social media content."
+      }
     }
   ]
 }
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
       />
       <HashtagGenerator />
     </>

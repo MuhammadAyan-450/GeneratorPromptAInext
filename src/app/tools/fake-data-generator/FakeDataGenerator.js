@@ -15,6 +15,10 @@ import {
   ShieldCheck,
   Zap,
   Globe,
+  CheckCircle2,
+  HelpCircle,
+  BarChart3,
+  FileText,
 } from "lucide-react";
 
 // ─── Data pools ──────────────────────────────────────────────────────────────
@@ -345,18 +349,6 @@ const FakeDataGenerator = () => {
   const [copiedRow, setCopiedRow] = useState(-1);
   const [openFaq, setOpenFaq] = useState(null);
 
-  const generateData = () => {
-    const activeFields = Object.fromEntries(
-      Object.entries(fields).filter(([, v]) => v),
-    );
-    if (Object.keys(activeFields).length === 0) return;
-    const newData = Array.from({ length: numRecords }, () =>
-      generateRecord(activeFields, locale),
-    );
-    setData(newData);
-    setViewMode("table");
-  };
-
   const toCsv = () => {
     if (!data.length) return "";
     const headers = Object.keys(data[0]).join(",");
@@ -371,6 +363,18 @@ const FakeDataGenerator = () => {
   };
 
   const toJson = () => JSON.stringify(data, null, 2);
+
+  const generateData = () => {
+    const activeFields = Object.fromEntries(
+      Object.entries(fields).filter(([, v]) => v),
+    );
+    if (Object.keys(activeFields).length === 0) return;
+    const newData = Array.from({ length: numRecords }, () =>
+      generateRecord(activeFields, locale),
+    );
+    setData(newData);
+    setViewMode("table");
+  };
 
   const copyAsCsv = () => {
     navigator.clipboard.writeText(toCsv());
@@ -425,7 +429,7 @@ const FakeDataGenerator = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* ── Breadcrumb ── */}
+      {/* Breadcrumb */}
       <div className="max-w-4xl mx-auto w-full px-4 pt-6">
         <nav aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm text-gray-500">
@@ -461,26 +465,25 @@ const FakeDataGenerator = () => {
       </div>
 
       <div className="flex-grow max-w-4xl mx-auto w-full px-4 pb-20">
-        {/* ── Hero ── */}
+        {/* Hero */}
         <div className="text-center mb-10 mt-4">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-100 mb-4">
             <Database className="text-sky-600" size={28} />
           </div>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
-            Generate Fake Pakistani Names & Emails for Testing –{" "}
-            <span className="text-sky-600">Free CSV JSON Download</span>
+            Fake Data Generator
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
-            Create realistic dummy data with Pakistani names, addresses, and
-            phone numbers. Perfect for database seeding, API testing, and demo
-            accounts.
+            Generate realistic dummy data with Pakistani or International names,
+            addresses, and phone numbers. Perfect for database seeding, API
+            testing, and demo accounts. Export to CSV or JSON instantly.
           </p>
         </div>
 
-        {/* ── Tool Card ── */}
+        {/* Tool Card */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
-          {/* Row 1: Records + Locale */}
-          <div className="flex flex-wrap gap-5 mb-6 items-end">
+          {/* Controls Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Number of Records
@@ -495,24 +498,25 @@ const FakeDataGenerator = () => {
                 }
                 min="1"
                 max="200"
-                className="w-36 px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-lg font-medium"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-lg font-medium"
               />
-              <p className="text-xs text-gray-400 mt-1">Max 200</p>
+              <p className="text-xs text-gray-400 mt-1">
+                Max 200 records per batch
+              </p>
             </div>
-
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Data Locale
               </label>
               <div className="flex gap-2">
                 {[
-                  { value: "pk", label: "Pakistani" },
-                  { value: "intl", label: "International" },
+                  { value: "pk", label: "🇵🇰 Pakistani" },
+                  { value: "intl", label: "🌍 International" },
                 ].map((l) => (
                   <button
                     key={l.value}
                     onClick={() => setLocale(l.value)}
-                    className={`px-4 py-3 rounded-xl border text-sm font-medium transition-all ${
+                    className={`flex-1 px-4 py-3 rounded-xl border text-sm font-medium transition-all ${
                       locale === l.value
                         ? "bg-sky-600 text-white border-sky-600"
                         : "bg-white text-gray-600 border-gray-200 hover:border-sky-400"
@@ -525,7 +529,7 @@ const FakeDataGenerator = () => {
             </div>
           </div>
 
-          {/* Fields */}
+          {/* Fields Selection */}
           <div className="mb-6">
             <div className="flex items-center justify-between mb-3">
               <label className="text-sm font-semibold text-gray-700">
@@ -573,23 +577,23 @@ const FakeDataGenerator = () => {
             </div>
           </div>
 
-          {/* Generate Button */}
-          <div className="flex flex-col sm:flex-row gap-3 mb-2">
+          {/* Action Buttons */}
+          <div className="grid grid-cols-2 gap-4 mb-6">
             <button
               onClick={generateData}
-              className="bg-sky-600 hover:bg-sky-700 active:scale-95 transition-all text-white font-semibold px-8 py-3 rounded-xl flex items-center justify-center gap-2"
+              className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2"
             >
-              <Table size={18} /> Generate {numRecords} Records
+              <Zap size={18} /> Generate {numRecords} Records
             </button>
             <button
               onClick={reset}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors"
+              className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
             >
-              <RefreshCw size={15} /> Reset
+              Clear All
             </button>
           </div>
 
-          {/* ── Results ── */}
+          {/* Results Section */}
           {data.length > 0 && (
             <div className="mt-8">
               {/* Stats Grid */}
@@ -623,7 +627,7 @@ const FakeDataGenerator = () => {
                 </div>
                 <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center">
                   <div className="flex justify-center text-sky-500 mb-1">
-                    <Zap size={20} />
+                    <BarChart3 size={20} />
                   </div>
                   <p className="text-lg font-bold text-gray-800">
                     {toCsv().split("\n").length - 1}
@@ -632,7 +636,7 @@ const FakeDataGenerator = () => {
                 </div>
               </div>
 
-              {/* Result Header */}
+              {/* View Toggle & Actions */}
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <div className="flex items-center gap-3">
                   <span className="text-sm font-semibold text-gray-700">
@@ -653,7 +657,6 @@ const FakeDataGenerator = () => {
                     </button>
                   </div>
                 </div>
-
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={copyAsCsv}
@@ -790,12 +793,198 @@ const FakeDataGenerator = () => {
           )}
         </div>
 
-        {/* ── SEO Content 1 ── */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Free Dummy Data Generator with Pakistani Names, Emails & Addresses
+        {/* ─── How to Use ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            How to Generate Dummy Data
           </h2>
+          <ol className="space-y-5">
+            {[
+              {
+                step: "1",
+                title: "Select Locale & Count",
+                desc: "Choose Pakistani or International locale. Set the number of records (up to 200).",
+              },
+              {
+                step: "2",
+                title: "Pick Fields",
+                desc: "Select which data points you need: Name, Email, Phone, Address, Company, etc.",
+              },
+              {
+                step: "3",
+                title: "Generate & Export",
+                desc: "Click Generate. View in Table or JSON mode. Download as CSV/JSON or copy to clipboard.",
+              },
+            ].map((item) => (
+              <li key={item.step} className="flex items-start gap-4">
+                <span className="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
+                  {item.step}
+                </span>
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm mb-1">
+                    {item.title}
+                  </p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
 
+        {/* ─── Formulas / How It Works ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            How Fake Data Generation Works
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            It combines random pools of realistic data. Here's the logic.
+          </p>
+
+          <div className="space-y-5">
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Random Pool Selection
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                const name = rand(firstNames) + " " + rand(lastNames);
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Selects random first and last names from curated lists specific
+                to the chosen locale (PK or Intl).
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Pattern-Based Construction
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                {"email = `${first}.${last}${randInt}@${domain}`;"}
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Constructs emails, phones, and addresses using realistic
+                patterns (e.g., +92 for Pakistan, DHA for Karachi).
+              </p>
+            </div>
+
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-4">
+              <h3 className="font-bold text-sky-900 text-sm mb-2">
+                Privacy Note
+              </h3>
+              <p className="text-sky-800 text-xs leading-relaxed">
+                All data is randomly generated. No real personal information is
+                used. Everything happens locally in your browser.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Real Examples ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Sample Generated Data
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            See what realistic Pakistani vs International data looks like.
+          </p>
+
+          <div className="space-y-5">
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-sm bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-lg">
+                  Pakistani Locale
+                </span>
+              </div>
+              <div className="bg-green-50 border border-green-100 rounded-lg p-4">
+                <pre className="font-mono text-sm text-gray-800">
+                  {`{
+  "name": "Ayan Khan",
+  "email": "ayan.khan42@gmail.com",
+  "phone": "+92300-1234567",
+  "address": "123 Shahrah-e-Faisal, Karachi",
+  "company": "Systems Ltd",
+  "jobTitle": "Software Engineer"
+}`}
+                </pre>
+              </div>
+            </div>
+
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-sm bg-blue-100 text-blue-700 font-bold px-2.5 py-1 rounded-lg">
+                  International Locale
+                </span>
+              </div>
+              <div className="bg-blue-50 border border-blue-100 rounded-lg p-4">
+                <pre className="font-mono text-sm text-gray-800">
+                  {`{
+  "name": "James Smith",
+  "email": "james.smith88@yahoo.com",
+  "phone": "+1300-9876543",
+  "address": "456 Oak Street, New York",
+  "company": "Acme Corp",
+  "jobTitle": "Product Manager"
+}`}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Use Cases ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Who Uses Fake Data Generators?
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            Not just developers. Here's where dummy data matters.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                icon: <Code size={20} className="text-sky-600" />,
+                title: "Developers",
+                desc: "Seed databases for local development and testing without using real customer data.",
+              },
+              {
+                icon: <BarChart3 size={20} className="text-green-600" />,
+                title: "QA Testers",
+                desc: "Create diverse test cases with different locales, ages, and formats to find edge cases.",
+              },
+              {
+                icon: <Zap size={20} className="text-violet-600" />,
+                title: "Designers",
+                desc: "Fill UI mockups with realistic names and addresses instead of 'Lorem Ipsum'.",
+              },
+              {
+                icon: <HelpCircle size={20} className="text-amber-600" />,
+                title: "Students",
+                desc: "Practice SQL queries and data analysis on safe, dummy datasets.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="border border-gray-100 rounded-2xl p-5 hover:border-sky-200 transition-colors"
+              >
+                <div className="mb-3">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 text-sm mb-1.5">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-xs leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ─── SEO Content ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Why Realistic Dummy Data Matters
+          </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
             Most fake data generators only provide Western-style names and
             addresses. If you are building apps for the Pakistani market, using
@@ -805,7 +994,6 @@ const FakeDataGenerator = () => {
             Khan, Fatima Siddiqui, and cities like Karachi, Lahore, and
             Islamabad.
           </p>
-
           <p className="text-gray-600 mb-4 leading-relaxed">
             Each record includes properly formatted Pakistani phone numbers with
             the{" "}
@@ -816,86 +1004,46 @@ const FakeDataGenerator = () => {
             familiar company names. You can also switch to the international
             locale for US, UK, and global datasets.
           </p>
-        </div>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Whether you're seeding a MongoDB database, testing an API endpoint,
+            or filling a design prototype, having realistic data helps you catch
+            bugs that generic Lorem Ipsum text would miss.
+          </p>
 
-        {/* ── How to Use ── */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            How to Generate Dummy Data for Database Seeding
-          </h2>
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
+            Privacy Note
+          </h3>
+          <p className="text-gray-600 leading-relaxed">
+            This tool runs 100% in your browser. No data is sent to any server.
+            All generated data is random and does not belong to any real person.
+            Close the tab and it's gone. That's how it should be.
+          </p>
 
-          <ol className="list-decimal list-inside text-gray-600 space-y-3 text-base">
-            <li>
-              Select either <strong>Pakistani</strong> or{" "}
-              <strong>International</strong> locale based on your target
-              audience.
-            </li>
+          <p className="text-gray-600 leading-relaxed mt-4">
+            Need to format JSON output? Try the{" "}
+            <Link
+              href="/tools/json-formatter"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              JSON Formatter
+            </Link>
+            . Generating placeholder text? The{" "}
+            <Link
+              href="/tools/lorem-ipsum-generator"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              Lorem Ipsum Generator
+            </Link>{" "}
+            has your back.
+          </p>
+        </section>
 
-            <li>
-              Choose the required fields such as name, email, phone, address,
-              company, job title, and more.
-            </li>
-
-            <li>Set the number of records you want (up to 200 per batch).</li>
-
-            <li>
-              Click <strong>“Generate Records”</strong> to preview the output in
-              table or JSON format.
-            </li>
-
-            <li>
-              Download your data as <strong>.CSV</strong> for spreadsheets or{" "}
-              <strong>.JSON</strong> for database seeding.
-            </li>
-          </ol>
-        </div>
-
-        {/* ── Features Grid ── */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Random Pakistani Name & Address Generator – Key Features
-          </h2>
-          <div className="grid md:grid-cols-2 gap-5">
-            {[
-              {
-                title: "Pakistani Locale",
-                desc: "Realistic Pakistani first names, last names, cities (Karachi, Lahore, Islamabad), streets (DHA, Clifton, Gulberg), and +92 phone numbers.",
-              },
-              {
-                title: "CSV & JSON Download",
-                desc: "Export generated data as a .csv file for Excel or a .json file for database seeding scripts. Copy to clipboard also supported.",
-              },
-              {
-                title: "14 Customizable Fields",
-                desc: "Mix and match Full Name, Username, Email, Phone, Address, City, ZIP, Country, Age, Company, Job Title, Website, Password, and Bio.",
-              },
-              {
-                title: "100% Private & Offline-Capable",
-                desc: "All data generation runs locally in your browser. No data is sent to any server. Works even if your internet drops after page load.",
-              },
-            ].map((feature, i) => (
-              <div
-                key={i}
-                className="bg-gray-50 rounded-xl p-5 border border-gray-100"
-              >
-                <h3 className="font-semibold text-gray-900 mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {feature.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── FAQ Accordion ── */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+        {/* ─── FAQ ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Fake Data Generator – Frequently Asked Questions
+            Frequently Asked Questions
           </h2>
-
-          <div className="space-y-4 max-w-4xl mx-auto">
+          <div className="space-y-3 max-w-4xl mx-auto">
             {[
               {
                 q: "How to generate fake Pakistani names and addresses for testing?",
@@ -921,6 +1069,14 @@ const FakeDataGenerator = () => {
                 q: "Does this tool work offline or need an internet connection?",
                 a: "The data generation runs entirely in your browser using JavaScript. Once the page is loaded, you can generate data even if your internet connection drops. No data is sent to any server.",
               },
+              {
+                q: "Can I customize the phone number format?",
+                a: "Currently, the tool uses standard formats: +92 for Pakistan and +1 for International. Custom format support is planned for future updates.",
+              },
+              {
+                q: "Are the passwords generated secure?",
+                a: "The generated passwords are for testing purposes only. They follow a simple pattern (Word+Number+Symbol) and should NOT be used for real accounts. Always use strong, random passwords for production systems.",
+              },
             ].map((item, i) => (
               <div
                 key={i}
@@ -931,7 +1087,7 @@ const FakeDataGenerator = () => {
                   className="w-full flex items-center justify-between p-5 text-left"
                   aria-expanded={openFaq === i}
                 >
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">
+                  <h3 className="text-sm md:text-base font-bold text-gray-900 pr-4">
                     {item.q}
                   </h3>
                   <ChevronDown
@@ -940,38 +1096,53 @@ const FakeDataGenerator = () => {
                   />
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
+                  className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
                 >
-                  <p className="px-5 pb-5 text-gray-600 leading-relaxed">
+                  <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
                     {item.a}
                   </p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* ── Related Tools ── */}
+        {/* ─── Related Tools (Short Descriptions) ─── */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Related Developer Tools
+            Related Developer & Data Tools
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
                 href: "/tools/json-formatter",
-                title: "JSON Formatter & Validator",
-                desc: "Beautify, minify, and validate JSON data with syntax error highlighting.",
+                title: "JSON Formatter",
+                desc: "Beautify JSON code.",
               },
               {
                 href: "/tools/lorem-ipsum-generator",
                 title: "Lorem Ipsum Generator",
-                desc: "Generate placeholder text for design and development projects.",
+                desc: "Generate placeholder text.",
               },
               {
-                href: "/tools/age-calculator",
-                title: "Age Calculator",
-                desc: "Calculate exact age in years, months, days, and total days lived.",
+                href: "/tools/csv-to-json",
+                title: "CSV to JSON",
+                desc: "Convert spreadsheet data.",
+              },
+              {
+                href: "/tools/word-counter",
+                title: "Word Counter",
+                desc: "Count words & chars.",
+              },
+              {
+                href: "/tools/case-converter",
+                title: "Case Converter",
+                desc: "Change text case.",
+              },
+              {
+                href: "/tools/base64-encode",
+                title: "Base64 Encoder",
+                desc: "Encode text safely.",
               },
             ].map((tool) => (
               <Link

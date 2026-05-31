@@ -3,14 +3,14 @@ import AdRevenueCalculator from "./AdRevenueCalculator";
 export const metadata = {
   title: "Ad Revenue Calculator – Estimate Website Earnings by Ad Format",
   description:
-    "Free ad revenue calculator to estimate website earnings across display, video, native, popup, interstitial, and rich media ads. Compare CPM & CPC revenue side by side.",
+    "Free ad revenue calculator to estimate website earnings across display, video, native, popup, interstitial, and rich media ads.",
   alternates: {
     canonical: "https://www.generatorpromptai.com/tools/ad-revenue-calculator",
   },
   openGraph: {
     title: "Ad Revenue Calculator – Estimate Website Earnings by Ad Format",
     description:
-      "Free ad revenue calculator to estimate website earnings across display, video, native, popup, interstitial, and rich media ads. Compare CPM & CPC revenue side by side.",
+      "Free ad revenue calculator to estimate website earnings across display, video, native, popup, interstitial, and rich media ads.",
     url: "https://www.generatorpromptai.com/tools/ad-revenue-calculator",
     siteName: "GeneratorPromptAI",
     type: "website",
@@ -49,7 +49,7 @@ const schemaWebApp = {
   applicationCategory: "FinanceApplication",
   operatingSystem: "All",
   description:
-    "Free online calculator to estimate website advertising revenue across 6 ad formats. Input impressions, CPM, CPC, and CTR to compare earnings from display, native, video, popup, interstitial, and rich media ads.",
+    "Free ad revenue calculator to estimate website earnings across display, video, native, popup, interstitial, and rich media ads.",
   offers: {
     "@type": "Offer",
     price: "0",

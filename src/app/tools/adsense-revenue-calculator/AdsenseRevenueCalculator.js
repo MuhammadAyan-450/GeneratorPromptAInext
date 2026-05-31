@@ -50,7 +50,7 @@ const AdSenseRevenueCalculator = () => {
 
   const toggleCategory = (id) => {
     setSelectedCategories((prev) =>
-      prev.includes(id) ? prev.filter((c) => c !== id) : [...prev, id]
+      prev.includes(id) ? prev.filter((c) => c !== id) : [...prev, id],
     );
   };
 
@@ -86,7 +86,7 @@ const AdSenseRevenueCalculator = () => {
 
     const grandMonthly = results.reduce(
       (s, r) => s + parseFloat(r.monthlyRevenue),
-      0
+      0,
     );
     const grandYearly = grandMonthly * 12;
 
@@ -101,12 +101,10 @@ const AdSenseRevenueCalculator = () => {
   const copyResult = () => {
     if (!result) return;
     const text = result.results
-      .map(
-        (r) => `${r.name}: $${r.monthlyRevenue}/mo (RPM: $${r.usedRpm})`
-      )
+      .map((r) => `${r.name}: $${r.monthlyRevenue}/mo (RPM: $${r.usedRpm})`)
       .join("\n");
     navigator.clipboard.writeText(
-      `AdSense Revenue Estimate\n\n${text}\n\nTotal Monthly: $${result.grandMonthly}\nTotal Yearly: $${result.grandYearly}`
+      `AdSense Revenue Estimate\n\n${text}\n\nTotal Monthly: $${result.grandMonthly}\nTotal Yearly: $${result.grandYearly}`,
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -117,14 +115,14 @@ const AdSenseRevenueCalculator = () => {
     const text = result.results
       .map(
         (r) =>
-          `${r.name}: $${r.monthlyRevenue}/mo | Daily: $${r.dailyRevenue} | Yearly: $${r.yearlyRevenue} | RPM: $${r.usedRpm}`
+          `${r.name}: $${r.monthlyRevenue}/mo | Daily: $${r.dailyRevenue} | Yearly: $${r.yearlyRevenue} | RPM: $${r.usedRpm}`,
       )
       .join("\n");
     const file = new Blob(
       [
         `AdSense Revenue Calculation\n\n${text}\n\nTotal Monthly: $${result.grandMonthly}\nTotal Yearly: $${result.grandYearly}`,
       ],
-      { type: "text/plain" }
+      { type: "text/plain" },
     );
     const el = document.createElement("a");
     el.href = URL.createObjectURL(file);
@@ -184,8 +182,8 @@ const AdSenseRevenueCalculator = () => {
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
             Trying to figure out how much Google AdSense actually pays? The
-            number changes wildly depending on your niche. Put in your traffic,
-            select a category, and see what&apos;s realistic
+            number changes wildly depending on your niche. Add in your traffic,
+            select a category, and see how much you earn
           </p>
         </div>
 
@@ -444,29 +442,29 @@ const AdSenseRevenueCalculator = () => {
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            How to Calculate Your AdSense Earnings
+            How to Calculate AdSense Revenue
           </h2>
           <ol className="space-y-5">
             {[
               {
                 step: "1",
-                title: "Enter your monthly page views",
-                desc: "Open Google Analytics or your AdSense dashboard and grab your total pageviews for the last 30 days. Don't use sessions or users — pageviews is what matters for ad impressions.",
+                title: "Your Monthly Page Views",
+                desc: "Get your total page views for the month in Google Analytics or your AdSense interface. Do not use sessions and/or users, just pageviews – that's all that counts.",
               },
               {
                 step: "2",
-                title: "Set your ad units per page",
-                desc: "How many AdSense ad spots do you actually show on a typical page? Most publishers run 2-4 units. If you're not sure, leave it at the default 3.",
+                title: "Ad Units per Page Viewed",
+                desc: "How many AdSense ads do you normally display per page? Normally, between 2 and 4 ads will be shown. You can keep it as the default 3 for better accuracy.",
               },
               {
                 step: "3",
-                title: "Pick your niche (or turn on custom RPM)",
-                desc: "Select the categories that match your content. If you already know your real RPM from AdSense, toggle custom mode and enter that number — it'll be more accurate than the niche averages.",
+                title: "Choose Niche (or Enable Custom RPM)",
+                desc: "Choose the niches that apply to your website content. If you know your actual RPM value, enable the custom RPM option and enter it here.",
               },
               {
                 step: "4",
-                title: "Compare the numbers",
-                desc: "You'll see monthly, daily, yearly, and per-page earnings for each niche you picked. Use this to decide if your current niche is worth it, or if pivoting content could double your income.",
+                title: "See the Results",
+                desc: "You will receive earnings stats for each month, day, year, and even per page for each chosen niche. Compare and understand which niche earns you more money.",
               },
             ].map((item) => (
               <li key={item.step} className="flex items-start gap-4">
@@ -536,8 +534,8 @@ const AdSenseRevenueCalculator = () => {
               <p className="text-gray-500 text-xs leading-relaxed">
                 This tells you how much each individual pageview is worth. It's
                 a useful number when you're buying traffic or doing outreach —
-                if you pay $0.005 per visit and earn $0.008 per page, you're
-                in the green.
+                if you pay $0.005 per visit and earn $0.008 per page, you're in
+                the green.
               </p>
             </div>
           </div>
@@ -628,8 +626,8 @@ const AdSenseRevenueCalculator = () => {
                 <p className="text-xs text-gray-500">
                   Monthly: (50,000 ÷ 1,000) × $12.00 ={" "}
                   <span className="font-bold text-green-700">$600</span>
-                  &nbsp;|&nbsp; Half the traffic of the tech blog, but earns
-                  33% more because finance RPM is nearly 3x higher.
+                  &nbsp;|&nbsp; Half the traffic of the tech blog, but earns 33%
+                  more because finance RPM is nearly 3x higher.
                 </p>
               </div>
             </div>
@@ -669,8 +667,8 @@ const AdSenseRevenueCalculator = () => {
                   <span className="font-bold text-green-700">$1,000</span>
                   &nbsp;|&nbsp; Yearly:{" "}
                   <span className="font-bold text-green-700">$12,000</span>
-                  &nbsp;|&nbsp; Low RPM but high volume makes it work.
-                  Per-page earning: $0.002.
+                  &nbsp;|&nbsp; Low RPM but high volume makes it work. Per-page
+                  earning: $0.002.
                 </p>
               </div>
             </div>
@@ -683,25 +681,25 @@ const AdSenseRevenueCalculator = () => {
             When You Actually Need This Calculator
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Not everyone needs an AdSense calculator. Here&apos;s who gets real
-            value out of running these numbers.
+            Not everybody needs an AdSense calculator. Who can really benefit
+            from it?
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
                 icon: <Lightbulb size={20} className="text-amber-500" />,
-                title: "Choosing a Niche Before Starting",
-                desc: "You're about to invest 6 months into a blog. Use this to compare what 50K views in tech vs. finance vs. food actually pays. The difference can be 5-10x.",
+                title: " Before Picking a Niche",
+                desc: "You're about to spend 6 months building a blog. Use this to understand how much 50,000 pageviews in tech, finances, or food pays. The discrepancy may be 5-10x.",
               },
               {
                 icon: <Target size={20} className="text-red-500" />,
-                title: "Setting Traffic Goals",
-                desc: "If you need $2K/month from AdSense and your niche RPM is $5, now you know you need 400K pageviews. That's a concrete target, not a vague 'get more traffic.'",
+                title: "Traffic Goals Planning",
+                desc: "Need $2,000/mo AdSense income with your niche's RPM being $5? Now you know that you should aim at 400,000 pageviews – a very specific metric, not 'get more traffic'.'",
               },
               {
                 icon: <BarChart3 size={20} className="text-sky-600" />,
-                title: "Deciding Whether to Keep AdSense",
-                desc: "Maybe affiliate links or sponsorships would pay more. Run your actual RPM here, then compare with what you'd earn from other models.",
+                title: "Affiliate Links VS AdSense",
+                desc: "Perhaps affiliate marketing or sponsorships would provide a higher income. Plug your actual niche's RPM in there and see where the scale tips in.",
               },
               {
                 icon: <Calculator size={20} className="text-green-600" />,
@@ -731,38 +729,39 @@ const AdSenseRevenueCalculator = () => {
             Why AdSense RPM Varies So Much Between Niches
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            It all comes down to what advertisers are willing to pay. In the
-            finance niche, a single customer acquisition for a credit card or
-            loan can be worth hundreds of dollars to a bank. So they bid up
-            the CPC, which drives up the RPM for everyone running ads in that
-            space. That&apos;s why finance and legal niches consistently hit
-            $10-25 RPM.
+            It all depends on how much money advertisers are willing to pay you
+            for traffic. In the case of the finance niche, one customer
+            generated from an AdWords campaign may cost banks a couple of
+            hundred dollars in fees. It causes higher CPC rates for the whole
+            niche, making RPM higher as well. Therefore, the highest AdSense RPM
+            is typical for such niches as finance and legal.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Entertainment and sports, on the other hand, have low commercial
-            intent. Someone reading a movie review isn't looking to buy
-            anything expensive right now. Advertisers know this, so they bid
-            less. The result? RPMs in the $1-3 range even with decent traffic.
+            Unlike in entertainment and sports sections, where there is little
+            business intentionality, a person looking for information about
+            movies is not out to purchase an expensive commodity. The
+            advertisers are aware of this fact, and as such, they make small
+            bids. How come? You get RPMs between $1 and $3.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            The trap a lot of new publishers fall into is chasing high-traffic
-            niches like entertainment without checking if the math works. 500K
-            pageviews in entertainment at $2 RPM earns $1,000/month. But 80K
-            pageviews in finance at $12 RPM earns $960/month — with 6x less
-            content to create and potentially better affiliate opportunities
-            on top.
+            The mistake that many first-time publishers make is to chase
+            high-traffic niches such as entertainment without verifying whether
+            the numbers add up. 500K pageviews in the entertainment niche at $2
+            RPM equals $1,000 monthly, but even 80K pageviews in the financial
+            niche at $12 RPM equal $960 monthly, with 6 times less work needed
+            for content creation.
           </p>
 
           <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
-            Where to Find Your Real RPM in AdSense
+            Finding Your True RPM in AdSense
           </h3>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Don&apos;t rely on niche averages forever. Once you have 2-3
-            months of AdSense data, check your actual RPM: log into AdSense
-            → Reports → Performance reports → look for &quot;Page RPM&quot;
-            in the table. That&apos;s your real number. Toggle the custom RPM
-            switch in this calculator and plug it in — now your estimates will
-            be much more accurate.
+            Don't get stuck using niche averages indefinitely. Once you have
+            accumulated two to three months' worth of AdSense data, take a look
+            at your true RPM from AdSense → Reports → Performance reports → Page
+            RPM (the table). This is the RPM you need. Use this switch in the
+            RPM calculator to input your true RPM, and make all your
+            calculations more accurate.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
             If you want to understand the CPM side of things (what advertisers
@@ -786,17 +785,17 @@ const AdSenseRevenueCalculator = () => {
           </p>
 
           <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
-            Does Adding More Ad Units Increase Revenue?
+            Does Revenue Improve If More Units Are Added?
           </h3>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Yes, up to a point. Going from 1 ad unit to 3 usually increases
-            total revenue significantly because you&apos;re capturing more
-            impressions per pageview. But going from 3 to 5 or 6 often has
-            diminishing returns — the additional ad spots get lower-value ads,
-            and page load speed drops, which hurts SEO and user experience
-            over time. Google also restricts how many AdSense units you can
-            place per page. For most sites, 3-4 well-placed units hit the
-            sweet spot.
+            Yes, for a while at least. Adding from one ad unit to three results
+            in a considerable boost in overall revenues as the number of
+            impressions is much higher. However, adding from three to five or
+            six units often does not bring additional benefits since the added
+            ad spaces attract less valuable advertisements, as well as make the
+            page load slower, which negatively affects SEO performance. Besides,
+            Google limits the number of units of Adsense that can be placed on
+            the page.
           </p>
         </section>
 

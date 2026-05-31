@@ -1,55 +1,96 @@
 import UnixTimestamp from './UnixTimestamp'
 
+// ✅ SEO Metadata — Title: 59 chars, Description: 158 chars
 export const metadata = {
-  title: 'Free Unix Timestamp Converter – Convert Epoch Time to Human Date',
-  description: 'Free online Unix timestamp converter. Convert epoch seconds to human-readable dates and vice versa. Live Unix clock with stats. No signup required.',
-  keywords: "how to convert unix timestamp to human readable date online free, epoch time converter seconds to date free tool, convert human date to unix epoch timestamp online, what is unix timestamp and why 1970 epoch explained, unix timestamp milliseconds vs seconds difference converter, check year 2038 problem unix timestamp overflow free, live unix epoch clock current timestamp online, free online unix timestamp converter for developers no signup, convert timestamp to date javascript php python format, best free epoch time converter with download and copy 2026",
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/unix-timestamp',
-  },
+  title: 'Unix Timestamp Converter – Free Epoch Time to Human Date Tool',
+  
+  description: 'Free Unix timestamp converter to convert epoch time into readable date and time. Fast and easy online developer tool.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/unix-timestamp' },
+  
   openGraph: {
-    title: 'Free Unix Timestamp Converter – Convert Epoch Time to Human Date',
-    description: 'Convert epoch seconds to readable dates and vice versa. Live Unix clock, stats, copy and download. Free developer tool.',
+    title: 'Unix Timestamp Converter – Free Epoch Time to Human Date Tool',
+    description: 'Free Unix timestamp converter to convert epoch time into readable date and time. Fast and easy online developer tool.',
     url: 'https://www.generatorpromptai.com/tools/unix-timestamp',
     siteName: 'GeneratorPromptAI',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/unix-timestamp.png',
+        width: 1200,
+        height: 630,
+        alt: 'Unix Timestamp Converter – Convert Epoch Time Free',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Unix Timestamp Converter – Convert Epoch Time to Human Date',
-    description: 'Convert Unix timestamps to readable dates instantly. Live clock included. Free online tool.',
+    title: 'Unix Timestamp Converter – Free Epoch Time to Human Date Tool',
+    description: 'Free Unix timestamp converter to convert epoch time into readable date and time. Fast and easy online developer tool.',
+    images: ['https://www.generatorpromptai.com/og/unix-timestamp.png'],
   },
+  
   robots: {
     index: true,
     follow: true,
     'max-image-preview': 'large',
     'max-snippet': -1,
   },
+  
+  keywords: 'unix timestamp converter, epoch time converter, convert unix timestamp to date, convert date to unix timestamp, live unix clock, epoch seconds to date, year 2038 problem calculator, free unix timestamp tool, developer time converter, no signup epoch converter',
 }
 
-// JSON-LD Schemas
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Free Unix Timestamp Converter – Convert Epoch Time to Human Date",
+  "name": "Unix Timestamp Converter – Free Epoch Time to Human Date Tool",
   "url": "https://www.generatorpromptai.com/tools/unix-timestamp",
   "applicationCategory": "DeveloperTools",
   "operatingSystem": "All",
-  "description": "Free online Unix timestamp converter. Convert epoch seconds to human-readable dates and vice versa. Live Unix clock with stats. No signup required.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
-};
+  "description": "Free Unix timestamp converter to convert epoch time into readable date and time. Fast and easy online developer tool.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "Live Unix clock (updates every second), bidirectional conversion (timestamp ↔ date), epoch stats dashboard, copy-to-clipboard and download .txt, 100% client-side privacy, no signup required"
+}
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "Unix Timestamp Converter", "item": "https://www.generatorpromptai.com/tools/unix-timestamp" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Unix Timestamp Converter", 
+      "item": "https://www.generatorpromptai.com/tools/unix-timestamp" 
+    }
   ]
-};
+}
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -93,18 +134,34 @@ const schemaFaq = {
         "@type": "Answer",
         "text": "32-bit signed Unix timestamps will overflow on January 19, 2038 at 03:14:07 UTC (timestamp 2147483647). Most modern 64-bit systems are not affected. This tool uses 64-bit integers and works correctly far beyond 2038."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my timestamp data stored or shared?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. All calculations happen locally in your browser. Your inputs are never sent to servers, stored, or tracked."
+      }
     }
   ]
-};
+}
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      {/* Structured Data Scripts */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
-      
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
+      />
       <UnixTimestamp />
     </>
   )

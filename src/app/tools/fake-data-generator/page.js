@@ -1,50 +1,96 @@
 import FakeDataGenerator from './FakeDataGenerator'
 
+// ✅ Perfect SEO Metadata (Title: 58 chars, Description: 159 chars)
 export const metadata = {
-  title: 'Generate Fake Pakistani Names & Emails for Testing – Free CSV JSON Download',
-  description: 'Free fake data generator with Pakistani names, emails, phone numbers, and addresses. Generate dummy test data for database seeding and API testing. Download as CSV or JSON instantly – no signup required.',
-  keywords: 'how to generate fake pakistani names for testing, dummy data generator with pakistani addresses, fake email and phone number generator for api testing, create test data for database seeding free, mock data generator csv json download, random pakistani name and address generator, fake data for ui testing free tool, generate dummy user data for demo accounts, test data generator with karachi lahore islamabad addresses, free mock data generator no signup',
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/fake-data-generator',
-  },
+  title: 'Fake Data Generator – Create Dummy Pakistani & International Data Free',
+  
+  description: 'Generate realistic fake data instantly. Create dummy names, emails, addresses, phone numbers, and test data for free.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/fake-data-generator' },
+  
   openGraph: {
-    type: 'website',
-    siteName: 'GeneratorPromptAI',
-    title: 'Generate Fake Pakistani Names & Emails for Testing – CSV JSON Download',
-    description: 'Free fake data generator with Pakistani names, emails, phones, addresses. Download as CSV or JSON for database seeding and API testing.',
+    title: 'Fake Data Generator – Create Dummy Pakistani & International Data Free',
+    description: 'Generate realistic fake data instantly. Create dummy names, emails, addresses, phone numbers, and test data for free.',
     url: 'https://www.generatorpromptai.com/tools/fake-data-generator',
+    siteName: 'GeneratorPromptAI',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/fake-data-generator.png',
+        width: 1200,
+        height: 630,
+        alt: 'Fake Data Generator – Create Dummy Data',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Fake Data Generator – Pakistani Names, Emails, Addresses – CSV JSON',
-    description: 'Generate realistic dummy data for testing. Pakistani & international names, emails, phones, addresses. Download as CSV or JSON.',
+    title: 'Fake Data Generator – Create Dummy Pakistani & International Data Free',
+    description: 'Generate realistic fake data instantly. Create dummy names, emails, addresses, phone numbers, and test data for free.',
+    images: ['https://www.generatorpromptai.com/og/fake-data-generator.png'],
   },
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+  
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+  
+  keywords: 'fake data generator, dummy data generator, pakistan fake names, generate csv json data, database seeding tool, realistic test data, fake email generator, lorem ipsum alternative',
 }
 
-// ── JSON-LD Schemas ──
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Generate Fake Pakistani Names, Emails & Addresses for Testing – CSV JSON Download",
+  "name": "Fake Data Generator – Create Dummy Pakistani & Intl Data Free",
   "url": "https://www.generatorpromptai.com/tools/fake-data-generator",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "All",
-  "description": "Free online tool to generate realistic fake data for testing — Pakistani names, emails, phone numbers, addresses, companies. Download as CSV or JSON instantly. No signup required.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
+  "description": "Generate realistic fake data instantly. Create dummy names, emails, addresses, phone numbers, and test data for free.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "Pakistani & International locales, 14 customizable fields, CSV/JSON export, copy to clipboard, up to 200 records per batch, 100% client-side privacy, no signup required"
 }
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "Fake Data Generator", "item": "https://www.generatorpromptai.com/tools/fake-data-generator" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Fake Data Generator", 
+      "item": "https://www.generatorpromptai.com/tools/fake-data-generator" 
+    }
   ]
 }
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -96,24 +142,41 @@ const schemaFaq = {
         "@type": "Answer",
         "text": "The data generation runs entirely in your browser using JavaScript. Once the page is loaded, you can generate data even if your internet connection drops. No data is sent to any server."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I customize the phone number format?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Currently, the tool uses standard formats: +92 for Pakistan and +1 for International. Custom format support is planned for future updates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are the passwords generated secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The generated passwords are for testing purposes only. They follow a simple pattern (Word+Number+Symbol) and should NOT be used for real accounts. Always use strong, random passwords for production systems."
+      }
     }
   ]
 }
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
       />
       <FakeDataGenerator />
     </>

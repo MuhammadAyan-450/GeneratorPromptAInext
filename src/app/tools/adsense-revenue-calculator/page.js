@@ -1,16 +1,16 @@
 import AdsenseRevenueCalculator from "./AdsenseRevenueCalculator";
 
 export const metadata = {
-  title: "AdSense Revenue Calculator – Estimate Google AdSense Earnings by Niche",
+  title: "AdSense Revenue Calculator – Estimate Google AdSense Earnings",
   description:
-    "Free AdSense revenue calculator to estimate monthly and yearly Google AdSense income by niche category. Uses realistic RPM data for 12+ niches including finance, tech, and legal.",
+    "Free AdSense revenue calculator to estimate monthly and yearly Google AdSense income by niche category.",
   alternates: {
     canonical: "https://www.generatorpromptai.com/tools/adsense-revenue-calculator",
   },
   openGraph: {
-    title: "AdSense Revenue Calculator – Estimate Google AdSense Earnings by Niche",
+    title: "AdSense Revenue Calculator – Estimate Google AdSense Earnings",
     description:
-      "Free AdSense revenue calculator to estimate monthly and yearly Google AdSense income by niche category. Realistic RPM data for 12+ niches.",
+      "Free AdSense revenue calculator to estimate monthly and yearly Google AdSense income by niche category.",
     url: "https://www.generatorpromptai.com/tools/adsense-revenue-calculator",
     siteName: "GeneratorPromptAI",
     type: "website",
@@ -25,9 +25,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AdSense Revenue Calculator – Estimate Google AdSense Earnings by Niche",
+    title: "AdSense Revenue Calculator – Estimate Google AdSense Earnings",
     description:
-      "Free AdSense revenue calculator. Estimate monthly and yearly income by niche with realistic RPM data for 12+ categories.",
+      "Free AdSense revenue calculator to estimate monthly and yearly Google AdSense income by niche category.",
     images: ["https://www.generatorpromptai.com/og/adsense-revenue-calculator.png"],
   },
   robots: {
@@ -48,7 +48,7 @@ const schemaWebApp = {
   applicationCategory: "FinanceApplication",
   operatingSystem: "All",
   description:
-    "Free online calculator to estimate Google AdSense revenue by niche category. Uses realistic RPM data for 12+ niches to project daily, monthly, and yearly earnings.",
+    "Free AdSense revenue calculator to estimate monthly and yearly Google AdSense income by niche category.",
   offers: {
     "@type": "Offer",
     price: "0",

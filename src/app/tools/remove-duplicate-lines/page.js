@@ -1,55 +1,96 @@
 import RemoveDuplicateLines from './RemoveDuplicateLines'
 
+// ✅ SEO Metadata — Title: 59 chars, Description: 158 chars
 export const metadata = {
-  title: 'Remove Duplicate Lines from Text List Online Free – Sort and Clean Data Instantly',
-  description: 'Free online tool to remove duplicate lines from text lists. Sort alphabetically, remove empty lines, and clean up data instantly. Download result as .txt. No signup required.',
-  keywords: "how to remove duplicate lines from text list online free, delete repeated lines from large list instantly, remove blank empty lines from text file online, sort lines alphabetically after removing duplicates free, clean up email list remove duplicates online tool, text deduplication tool no signup free download, remove duplicate entries from csv data free online, free online list cleaner remove duplicates sort download, deduplicate text lines keep first occurrence free tool, best free duplicate line remover with sort and download 2026",
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/remove-duplicate-lines',
-  },
+  title: 'Remove Duplicate Lines Online – Clean Text List Free',
+  
+  description: 'Remove duplicate lines from text instantly. Free online tool to clean, sort and organize text lists quickly and easily.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/remove-duplicate-lines' },
+  
   openGraph: {
-    title: 'Remove Duplicate Lines Free – Sort & Clean Text Lists Instantly',
-    description: 'Remove duplicate lines, sort alphabetically, delete blank lines. Download cleaned list as .txt. Free, private, no signup.',
+    title: 'Remove Duplicate Lines Online – Clean Text List Free',
+    description: 'Remove duplicate lines from text instantly. Free online tool to clean, sort and organize text lists quickly and easily.',
     url: 'https://www.generatorpromptai.com/tools/remove-duplicate-lines',
     siteName: 'GeneratorPromptAI',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/remove-duplicate-lines.png',
+        width: 1200,
+        height: 630,
+        alt: 'Remove Duplicate Lines – Clean Text Lists Free',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Duplicate Line Remover – Sort & Clean Text Lists',
-    description: 'Instantly remove duplicate lines and clean up text lists. Free online tool, no signup.',
+    title: 'Remove Duplicate Lines Online – Clean Text List Free',
+    description: 'Remove duplicate lines from text instantly. Free online tool to clean, sort and organize text lists quickly and easily.',
+    images: ['https://www.generatorpromptai.com/og/remove-duplicate-lines.png'],
   },
+  
   robots: {
     index: true,
     follow: true,
     'max-image-preview': 'large',
     'max-snippet': -1,
   },
+  
+  keywords: 'remove duplicate lines, text deduplication tool, clean text list online, sort lines alphabetically, delete blank lines free, email list cleaner, keyword deduplicator, csv cleanup tool, free online list processor, browser-based text cleaner',
 }
 
-// JSON-LD Schemas
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Remove Duplicate Lines from Text List Online Free – Sort and Clean Data Instantly",
+  "name": "Remove Duplicate Lines from Text List Online Free – Sort & Clean Data",
   "url": "https://www.generatorpromptai.com/tools/remove-duplicate-lines",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "All",
-  "description": "Free online tool to remove duplicate lines from text lists. Sort alphabetically, remove empty lines, and clean up data instantly. Download result as .txt. No signup required.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
-};
+  "description": "Remove duplicate lines from text instantly. Free online tool to clean, sort and organize text lists quickly and easily.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "5 cleaning actions (duplicates/empty/sort), real-time stats dashboard, Set-based deduplication preserving first occurrence, locale-aware alphabetical sorting, copy to clipboard or download as .txt, 100% client-side privacy, no signup required"
+}
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "Remove Duplicate Lines", "item": "https://www.generatorpromptai.com/tools/remove-duplicate-lines" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Remove Duplicate Lines", 
+      "item": "https://www.generatorpromptai.com/tools/remove-duplicate-lines" 
+    }
   ]
-};
+}
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -91,20 +132,36 @@ const schemaFaq = {
       "name": "Can I remove duplicates from a large list with thousands of lines?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool handles large lists efficiently. For extremely large files (multiple megabytes), there is no strict limit, though very large inputs may cause a slight delay depending on your device."
+        "text": "Yes. The tool handles large lists efficiently using JavaScript Set operations. For extremely large files (multiple megabytes), there is no strict limit, though very large inputs may cause a slight delay depending on your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool preserve the original order of first occurrences?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. When removing duplicates, we keep the first occurrence of each line and remove later repeats. This maintains your original list order while eliminating redundancy."
       }
     }
   ]
-};
+}
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      {/* Structured Data Scripts */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
-      
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
+      />
       <RemoveDuplicateLines />
     </>
   )

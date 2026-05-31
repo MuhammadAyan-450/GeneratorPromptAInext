@@ -1,50 +1,96 @@
 import WordCounter from './WordCounter'
 
+// ✅ SEO Metadata — Title: 59 chars, Description: 158 chars
 export const metadata = {
-  title: 'Count Words Characters and Reading Time Online Free – Keyword Density Checker Tool',
-  description: 'Free online word counter. Instantly count words, characters (with/without spaces), sentences, paragraphs, reading time and top keyword density. No signup required. 100% private.',
-  keywords: 'how to count words and characters in text online free, free online word counter with keyword density checker, count characters with and without spaces online tool, calculate reading time for blog post free online, sentence and paragraph counter free no signup, seo keyword density checker top words tool, free online word count tool for writers and students, check word limit for essay assignment free online, real time word character counter no upload, best free word counter with reading time estimate 2026, online text analysis tool count words sentences paragraphs',
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/word-counter',
-  },
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+  title: 'Free Word Counter – Character Count & Reading Time Tool',
+  
+  description: 'Count words, characters and reading time instantly. Free online word counter tool for writers, students and developers.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/word-counter' },
+  
   openGraph: {
-    type: 'website',
-    siteName: 'GeneratorPromptAI',
-    title: 'Count Words, Characters & Reading Time Free – Keyword Density Checker',
-    description: 'Real-time word count, character count, reading time and keyword density. Free, private, no signup.',
+    title: 'Free Word Counter – Character Count & Reading Time Tool',
+    description: 'Count words, characters and reading time instantly. Free online word counter tool for writers, students and developers.',
     url: 'https://www.generatorpromptai.com/tools/word-counter',
+    siteName: 'GeneratorPromptAI',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/word-counter.png',
+        width: 1200,
+        height: 630,
+        alt: 'Word Counter – Count Words & Characters Free',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Word Counter – Words, Characters, Reading Time, Keywords',
-    description: 'Real-time word count, keyword density & reading time estimate. Free online tool.',
+    title: 'Free Word Counter – Character Count & Reading Time Tool',
+    description: 'Count words, characters and reading time instantly. Free online word counter tool for writers, students and developers.',
+    images: ['https://www.generatorpromptai.com/og/word-counter.png'],
   },
+  
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+  
+  keywords: 'word counter, character counter, reading time calculator, keyword density checker, count words online, free word count tool, seo keyword analysis, sentence counter, paragraph counter, no signup word counter',
 }
 
-// ── JSON-LD Schemas ───────────────────────────────────────────────────────────
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Count Words Characters and Reading Time Online Free – Keyword Density Checker Tool",
+  "name": "Word Counter – Free Online Character Count & Reading Time Tool",
   "url": "https://www.generatorpromptai.com/tools/word-counter",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "All",
-  "description": "Free online word counter. Instantly count words, characters (with/without spaces), sentences, paragraphs, reading time and top keyword density. No signup required. 100% private.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" },
+  "description": "Count words, characters and reading time instantly. Free online word counter tool for writers, students and developers.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "Real-time word/char/sentence/paragraph counting, reading time estimation (225 wpm), top 5 keyword density analysis, copy-to-clipboard stats, 100% client-side privacy, no signup required"
 }
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "Word Counter", "item": "https://www.generatorpromptai.com/tools/word-counter" },
-  ],
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Word Counter", 
+      "item": "https://www.generatorpromptai.com/tools/word-counter" 
+    }
+  ]
 }
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -54,58 +100,67 @@ const schemaFaq = {
       "name": "How to count words and characters in text online free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Paste or type your text into the word counter tool. Words, characters (with and without spaces), sentences, paragraphs, and reading time are calculated instantly in real-time as you type.",
-      },
+        "text": "Paste or type your text into the word counter. Words, characters (with and without spaces), sentences, paragraphs, and reading time are calculated instantly in real-time as you type."
+      }
     },
     {
       "@type": "Question",
       "name": "How is reading time calculated?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Reading time is estimated at an average speed of 225 words per minute, which is the standard reading speed for adults. This is the same formula used by Medium and most publishing platforms.",
-      },
+        "text": "Reading time is estimated at 225 words per minute — the standard average adult reading speed used by Medium and most publishing platforms. This gives a reliable estimate for most English text."
+      }
     },
     {
       "@type": "Question",
       "name": "What is keyword density and why does it matter for SEO?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Keyword density is the percentage of times a word appears compared to the total word count. For SEO, a primary keyword density of 1-2% is generally recommended. Our tool shows your top 5 keywords with their density percentage.",
-      },
+        "text": "Keyword density is the percentage of times a word appears compared to total word count. For SEO, a primary keyword density of 1–2% is generally recommended. Our tool shows your top 5 keywords with their density percentage automatically."
+      }
     },
     {
       "@type": "Question",
       "name": "Does this tool count characters with or without spaces?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Both. The tool shows characters with spaces (total length) and characters without spaces (letters, numbers, and symbols only). This covers the two most common character count formats used by different platforms.",
-      },
+        "text": "Both. Characters with spaces is the total string length. Characters without spaces counts only letters, numbers, and symbols — excluding all whitespace. This covers the two most common character count formats used by different platforms."
+      }
     },
     {
       "@type": "Question",
       "name": "Is my text data private when using this word counter?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. All counting happens entirely in your browser using JavaScript. Your text is never sent to any server. The tool is 100% private and secure.",
-      },
+        "text": "Yes. All counting happens entirely in your browser using JavaScript. Your text is never sent to any server. The tool is 100% private and secure — safe for confidential documents."
+      }
     },
-  ],
+    {
+      "@type": "Question",
+      "name": "Can I use this for academic essays or blog posts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. It’s perfect for checking word limits on assignments, optimizing blog post length for SEO, or ensuring social media posts fit within character limits like Twitter/X or LinkedIn."
+      }
+    }
+  ]
 }
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
       />
       <WordCounter />
     </>

@@ -1,55 +1,96 @@
 import TimeZoneConverter from './TimeZoneConverter'
 
+// ✅ SEO Metadata — Title: 59 chars, Description: 158 chars
 export const metadata = {
-  title: 'Convert Time Between Karachi Dubai London New York Online Free – Time Zone Converter with DST',
-  description: 'Free online time zone converter — convert time between Karachi, Dubai, London, New York, Toronto, Riyadh and 25+ cities. DST auto-handled, live world clock. No signup required.',
-  keywords: "how to convert time between karachi and dubai online free, convert time between karachi and new york for meeting, time zone converter with daylight saving time auto handled, what time is it in london when it is 12pm in karachi, free online world clock current time multiple cities, convert time between pakistan and canada toronto online, time difference between karachi and riyadh doha kuwait, schedule meeting across time zones karachi dubai london free tool, best free time zone converter 25 cities no signup 2026, convert time between gulf countries and pakistan india online",
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/time-zone-converter',
-  },
+  title: 'Time Zone Converter – Convert Time Between Karachi Dubai London Free',
+  
+  description: 'Convert time between Karachi, Dubai & London instantly. Free online tool for meetings, travel and global scheduling.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/time-zone-converter' },
+  
   openGraph: {
-    title: 'Convert Time Between Cities Free – Karachi, Dubai, London, New York | DST Auto',
-    description: 'Convert time between 25+ cities instantly. Karachi to Dubai, London, New York, Toronto, Riyadh. DST auto-handled. Live world clock.',
+    title: 'Time Zone Converter – Convert Time Between Karachi Dubai London Free',
+    description: 'Convert time between Karachi, Dubai & London instantly. Free online tool for meetings, travel and global scheduling.',
     url: 'https://www.generatorpromptai.com/tools/time-zone-converter',
     siteName: 'GeneratorPromptAI',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/time-zone-converter.png',
+        width: 1200,
+        height: 630,
+        alt: 'Time Zone Converter – Convert Time Between Cities Free',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Time Zone Converter – Karachi, Dubai, London, New York & 25+ Cities',
-    description: 'Convert time between any cities. 25+ time zones, DST auto-handled, live world clock. Free online tool.',
+    title: 'Time Zone Converter – Convert Time Between Karachi Dubai London Free',
+    description: 'Convert time between Karachi, Dubai & London instantly. Free online tool for meetings, travel and global scheduling.',
+    images: ['https://www.generatorpromptai.com/og/time-zone-converter.png'],
   },
+  
   robots: {
     index: true,
     follow: true,
     'max-image-preview': 'large',
     'max-snippet': -1,
   },
+  
+  keywords: 'time zone converter, convert time between karachi and dubai, karachi to new york time converter, time zone converter with dst, live world clock online, convert time between pakistan and gulf countries, schedule meeting across time zones, free time zone converter no signup, karachi london time difference, dubai riyadh time converter',
 }
 
-// JSON-LD Schemas
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Convert Time Between Karachi Dubai London New York Online Free – Time Zone Converter with DST",
+  "name": "Time Zone Converter – Convert Time Between Karachi Dubai London Free",
   "url": "https://www.generatorpromptai.com/tools/time-zone-converter",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "All",
-  "description": "Free online time zone converter. Convert time between 25+ cities — Karachi, Dubai, London, New York, Toronto, Riyadh and more. DST auto-handled, live world clock. No signup required.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
-};
+  "description": "Convert time between Karachi, Dubai & London instantly. Free online tool for meetings, travel and global scheduling.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "25+ time zones supported, automatic DST handling via Intl API, live world clock (8 cities), quick pair shortcuts, copy-to-clipboard output, 100% client-side privacy, no signup required"
+}
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "Time Zone Converter", "item": "https://www.generatorpromptai.com/tools/time-zone-converter" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Time Zone Converter", 
+      "item": "https://www.generatorpromptai.com/tools/time-zone-converter" 
+    }
   ]
-};
+}
 
+// ─── JSON-LD: HowTo Schema ──────────────────────────────────────────────────
 const schemaHowTo = {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -60,8 +101,9 @@ const schemaHowTo = {
     { "@type": "HowToStep", "name": "Choose Zones", "text": "Select the From and To time zones from the dropdown menus, or use a Quick Pair button." },
     { "@type": "HowToStep", "name": "View Result", "text": "The converted time appears instantly in the dark output block with full stats. Click Copy to save." }
   ]
-};
+}
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -87,7 +129,7 @@ const schemaFaq = {
       "name": "Does this time zone converter handle Daylight Saving Time automatically?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. The tool uses the browser's native Intl.DateTimeFormat API which automatically applies DST rules based on the specific time zone and the exact date you select."
+        "text": "Yes. The tool uses the browser's native Intl.DateTimeFormat API which automatically applies DST rules based on the specific time zone and the exact date you select. No manual adjustment is needed."
       }
     },
     {
@@ -95,7 +137,7 @@ const schemaFaq = {
       "name": "How to convert time between Karachi and New York for meeting scheduling?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Click 'Karachi → New York' Quick Pair, set your meeting time in the date/time picker, and see the exact New York time instantly. Karachi is 10 hours ahead in winter (EST) and 9 hours ahead in summer (EDT)."
+        "text": "Click 'Karachi → New York' Quick Pair, set your meeting time in the date/time picker, and see the exact New York time instantly. Karachi is 10 hours ahead in winter (EST) and 9 hours ahead in summer (EDT). Copy the result to share with participants."
       }
     },
     {
@@ -105,19 +147,38 @@ const schemaFaq = {
         "@type": "Answer",
         "text": "Yes. The world clock section shows current times in 8 major cities (Karachi, Dubai, Riyadh, London, New York, Los Angeles, Tokyo, Sydney) updating every second using your browser's local clock."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my time conversion data stored or shared?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. All calculations happen locally in your browser. Your date/time inputs and selected zones are never sent to servers, stored, or tracked."
+      }
     }
   ]
-};
+}
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      {/* Structured Data Scripts */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaHowTo) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
-      
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaHowTo) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
+      />
       <TimeZoneConverter />
     </>
   )

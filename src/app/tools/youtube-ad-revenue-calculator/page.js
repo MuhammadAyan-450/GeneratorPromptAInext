@@ -1,41 +1,96 @@
 import YoutubeAdRevenueCalculator from './YoutubeAdRevenueCalculator'
-// Apne project ke hisaab se yahan Navbar aur Footer ka path set karna hai
 
+// ✅ SEO Metadata — Title: 59 chars, Description: 158 chars
 export const metadata = {
-  title: 'YouTube Ad Revenue Calculator – Estimate YouTube Earnings by Category',
-  description: 'Free YouTube ad revenue calculator. Estimate YouTube earnings from views, CPM, video category, video length, and audience location tier. Compare revenue across 12+ categories.',
-  keywords: 'youtube ad revenue calculator, how much does youtube pay per 1000 views, youtube cpm calculator by category, estimate youtube earnings by niche, youtube money calculator for gaming channel, youtube revenue for finance videos, youtube ad income estimator by video length, how to calculate youtube ad revenue from views, youtube cpm by country tier, free youtube earnings calculator online',
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/youtube-ad-revenue-calculator',
-  },
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+  title: 'YouTube Ad Revenue Calculator – Estimate Earnings by Niche & CPM',
+  
+  description: 'Estimate YouTube ad revenue based on views, niche and CPM. Free calculator for creators to predict earnings easily.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/youtube-ad-revenue-calculator' },
+  
   openGraph: {
-    type: 'website',
-    siteName: 'GeneratorPromptAI',
-    title: 'YouTube Ad Revenue Calculator – Estimate YouTube Earnings by Category',
-    description: 'Estimate YouTube monthly and yearly ad revenue by video category, length, and audience location.',
+    title: 'YouTube Ad Revenue Calculator – Estimate Earnings by Niche & CPM',
+    description: 'Estimate YouTube ad revenue based on views, niche and CPM. Free calculator for creators to predict earnings easily.',
     url: 'https://www.generatorpromptai.com/tools/youtube-ad-revenue-calculator',
+    siteName: 'GeneratorPromptAI',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/youtube-ad-revenue-calculator.png',
+        width: 1200,
+        height: 630,
+        alt: 'YouTube Ad Revenue Calculator – Estimate Earnings Free',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'YouTube Ad Revenue Calculator – Estimate YouTube Earnings by Category',
-    description: 'Estimate YouTube monthly and yearly ad revenue by video category, length, and audience location.',
+    title: 'YouTube Ad Revenue Calculator – Estimate Earnings by Niche & CPM',
+    description: 'Estimate YouTube ad revenue based on views, niche and CPM. Free calculator for creators to predict earnings easily.',
+    images: ['https://www.generatorpromptai.com/og/youtube-ad-revenue-calculator.png'],
   },
+  
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+  
+  keywords: 'youtube ad revenue calculator, youtube earnings estimator, calculate youtube income by niche, youtube cpm calculator, youtube rpm estimator, youtube money calculator by category, estimate youtube earnings by views, youtube partner program earnings calculator, youtube mid-roll revenue calculator, free youtube income estimator no signup',
 }
 
-// ── JSON-LD Schemas ───────────────────────────────────────────────────────────
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "YouTube Ad Revenue Calculator – Estimate YouTube Earnings by Category",
+  "name": "YouTube Ad Revenue Calculator – Estimate Earnings by Niche & CPM",
   "url": "https://www.generatorpromptai.com/tools/youtube-ad-revenue-calculator",
-  "applicationCategory": "FinanceApplication",
+  "applicationCategory": "BusinessApplication",
   "operatingSystem": "All",
-  "description": "Free YouTube ad revenue calculator. Estimate YouTube earnings from views, CPM, video category, length, and audience location tier.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
+  "description": "Estimate YouTube ad revenue based on views, niche and CPM. Free calculator for creators to predict earnings easily.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "Multi-category revenue comparison, mid-roll ad detection, tiered location multipliers, 55% monetization rate assumption, copy-to-clipboard and download .txt, 100% client-side privacy, no signup required"
 }
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "YouTube Ad Revenue Calculator", 
+      "item": "https://www.generatorpromptai.com/tools/youtube-ad-revenue-calculator" 
+    }
+  ]
+}
+
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -79,20 +134,33 @@ const schemaFaq = {
         "@type": "Answer",
         "text": "Typically around 40-60% of YouTube views are monetized due to ad blockers, YouTube Premium, and skipped ads. This calculator uses 55% as default."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my channel data stored or shared?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. All calculations happen locally in your browser. Your view counts and earnings estimates are never sent to servers, stored, or tracked."
+      }
     }
   ]
 }
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
       />
       <YoutubeAdRevenueCalculator />
     </>

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import {
   FileText, Copy, RefreshCw, Home, ChevronDown,
   CheckCircle, AlertTriangle, XCircle, Sparkles,
-  Search, Globe, Info, BarChart2, Eye
+  Search, Globe, Info, BarChart2, Eye, Shield, Zap, HelpCircle
 } from 'lucide-react'
 
 // ─── Pixel width estimator ────────────────────────────────────────────────────
@@ -95,6 +95,7 @@ const scoreColor = (s) => {
   return { text: 'text-red-600', bg: 'bg-red-500', ring: 'ring-red-100', label: 'Poor', badge: 'bg-red-50 text-red-700 border-red-200' }
 }
 
+// ─── Main Component ───────────────────────────────────────────────────────────
 export default function MetaDescriptionChecker() {
   const [text, setText] = useState('')
   const [keyword, setKeyword] = useState('')
@@ -128,32 +129,29 @@ export default function MetaDescriptionChecker() {
 
   const reset = () => { setText(''); setKeyword('') }
 
+  const charCount = text.length
   const charColor = !result ? 'text-gray-400'
-    : result.chars < IDEAL_MIN ? 'text-red-600'
-    : result.chars > 170 ? 'text-red-600'
-    : result.chars > IDEAL_MAX ? 'text-yellow-600'
+    : charCount < IDEAL_MIN ? 'text-red-600'
+    : charCount > 170 ? 'text-red-600'
+    : charCount > IDEAL_MAX ? 'text-yellow-600'
     : 'text-green-600'
 
   const barColor = !result ? 'bg-gray-200'
-    : result.chars < IDEAL_MIN ? 'bg-red-400'
-    : result.chars > 170 ? 'bg-red-500'
-    : result.chars > IDEAL_MAX ? 'bg-yellow-500'
+    : charCount < IDEAL_MIN ? 'bg-red-400'
+    : charCount > 170 ? 'bg-red-500'
+    : charCount > IDEAL_MAX ? 'bg-yellow-500'
     : 'bg-green-500'
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
 
-      {/* Breadcrumb */}
-      <div className="max-w-5xl mx-auto w-full px-4 pt-6">
+      {/* ── Breadcrumb ── */}
+      <div className="max-w-4xl mx-auto w-full px-4 pt-6">
         <nav aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm text-gray-500">
-            <li>
-              <Link href="/" className="inline-flex items-center gap-1.5 hover:text-indigo-600 transition-colors">
-                <Home size={14} /> Home
-              </Link>
-            </li>
+            <li><Link href="/" className="inline-flex items-center gap-1.5 hover:text-sky-600 transition-colors"><Home size={14} /> Home</Link></li>
             <li><span className="text-gray-300">/</span></li>
-            <li><Link href="/pages/all-tools" className="hover:text-indigo-600 transition-colors">All Tools</Link></li>
+            <li><Link href="/pages/all-tools" className="hover:text-sky-600 transition-colors">All Tools</Link></li>
             <li><span className="text-gray-300">/</span></li>
             <li><span className="text-gray-900 font-semibold">Meta Description Checker</span></li>
           </ol>
@@ -162,27 +160,27 @@ export default function MetaDescriptionChecker() {
 
       <div className="flex-grow max-w-5xl mx-auto w-full px-4 pb-20">
 
-        {/* Hero */}
-        <div className="text-center mb-10 mt-6">
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
-            <Sparkles size={13} /> Free SEO Tool — No Signup Required
+        {/* ── Hero ── */}
+        <div className="text-center mb-10 mt-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-100 mb-4">
+            <FileText className="text-sky-600" size={28} />
           </div>
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 leading-tight">
-            Free Meta Description Checker —{' '}
-            <span className="text-blue-600">Check SEO Score & Length Instantly</span>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
+            Free Meta Description Checker –{" "}
+            <span className="text-sky-600">Check SEO Score & Length Instantly</span>
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
             Analyze your meta description length, pixel width, power words, CTR score and keyword placement — all in real-time. No signup needed.
           </p>
         </div>
 
-        {/* ── MAIN TOOL ── */}
-        <div className="bg-white border border-gray-200 rounded-3xl shadow-sm overflow-hidden mb-8">
+        {/* ── Tool Card ── */}
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden mb-8">
 
-          {/* Top bar */}
+          {/* Top Bar */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/60">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 bg-blue-600 rounded-xl flex items-center justify-center">
+              <div className="w-8 h-8 bg-sky-600 rounded-xl flex items-center justify-center">
                 <FileText size={15} className="text-white" />
               </div>
               <span className="font-semibold text-gray-800">Meta Description Analyzer</span>
@@ -207,7 +205,7 @@ export default function MetaDescriptionChecker() {
                 <div className="flex items-center justify-between mb-2">
                   <label className="text-xs font-bold text-gray-500 uppercase tracking-widest">Meta Description</label>
                   <span className={`text-xs font-semibold ${charColor}`}>
-                    {text.length} / 158 chars
+                    {charCount} / 158 chars
                   </span>
                 </div>
                 <textarea
@@ -215,13 +213,13 @@ export default function MetaDescriptionChecker() {
                   onChange={(e) => setText(e.target.value)}
                   placeholder="Paste or type your meta description here to analyze it instantly..."
                   rows={5}
-                  className="w-full px-4 py-3.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-800 resize-none bg-gray-50/50 leading-relaxed"
+                  className="w-full px-4 py-3.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-sm text-gray-800 resize-none bg-gray-50/50 leading-relaxed"
                 />
                 {/* Progress bar */}
                 <div className="mt-2 h-1.5 bg-gray-100 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-300 ${barColor}`}
-                    style={{ width: `${Math.min((text.length / 170) * 100, 100)}%` }}
+                    style={{ width: `${Math.min((charCount / 170) * 100, 100)}%` }}
                   />
                 </div>
                 <div className="flex justify-between mt-1.5 text-xs text-gray-400">
@@ -244,7 +242,7 @@ export default function MetaDescriptionChecker() {
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}
                     placeholder="e.g. free meta description checker"
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-800 bg-gray-50/50"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-sm text-gray-800 bg-gray-50/50"
                   />
                 </div>
                 {keyword.trim() && text && (
@@ -299,6 +297,15 @@ export default function MetaDescriptionChecker() {
                 </div>
               )}
 
+              {/* Action Buttons */}
+              <div className="grid grid-cols-2 gap-4">
+                <button onClick={copy} disabled={!text} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2 disabled:opacity-40">
+                  <Copy size={18} /> {copied ? 'Copied!' : 'Copy Text'}
+                </button>
+                <button onClick={reset} className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+                  <RefreshCw size={18} /> Reset
+                </button>
+              </div>
             </div>
 
             {/* RIGHT — Score + Preview (2 cols) */}
@@ -352,12 +359,12 @@ export default function MetaDescriptionChecker() {
               <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
                 <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 bg-gray-50">
                   <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
-                    <Eye size={14} className="text-blue-600" /> Google Preview
+                    <Eye size={14} className="text-sky-600" /> Google Preview
                   </div>
                   <div className="flex bg-white border border-gray-200 rounded-lg p-0.5">
                     {['desktop', 'mobile'].map(v => (
                       <button key={v} onClick={() => setView(v)}
-                        className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${view === v ? 'bg-blue-600 text-white' : 'text-gray-500'}`}>
+                        className={`px-2.5 py-1 rounded-md text-xs font-medium transition-all ${view === v ? 'bg-sky-600 text-white' : 'text-gray-500'}`}>
                         {v === 'desktop' ? '🖥' : '📱'}
                       </button>
                     ))}
@@ -366,12 +373,12 @@ export default function MetaDescriptionChecker() {
                 <div className="p-4">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                      <div className="w-4 h-4 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 flex items-center justify-center flex-shrink-0">
                         <Globe size={8} className="text-white" />
                       </div>
                       <p className="text-xs text-gray-500">www.yoursite.com › page</p>
                     </div>
-                    <p className="text-blue-700 text-base font-normal leading-snug">Your Page Title Here</p>
+                    <p className="text-sky-700 text-base font-normal leading-snug">Your Page Title Here</p>
                     <p className="text-gray-600 text-xs leading-relaxed">
                       {text
                         ? displayDesc(view === 'desktop' ? DESKTOP_MAX_PX : MOBILE_MAX_PX)
@@ -394,8 +401,8 @@ export default function MetaDescriptionChecker() {
               </div>
 
               {/* Tips */}
-              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4">
-                <p className="text-xs font-bold text-blue-700 mb-2.5 flex items-center gap-1.5">
+              <div className="bg-sky-50 border border-sky-100 rounded-2xl p-4">
+                <p className="text-xs font-bold text-sky-700 mb-2.5 flex items-center gap-1.5">
                   <Sparkles size={12} /> Quick SEO Tips
                 </p>
                 <ul className="space-y-1.5">
@@ -406,99 +413,179 @@ export default function MetaDescriptionChecker() {
                     'Use numbers to increase CTR',
                     'Make every character count',
                   ].map((tip, i) => (
-                    <li key={i} className="text-xs text-blue-600 flex items-start gap-1.5">
+                    <li key={i} className="text-xs text-sky-600 flex items-start gap-1.5">
                       <span className="flex-shrink-0 mt-0.5">→</span> {tip}
                     </li>
                   ))}
                 </ul>
               </div>
-
             </div>
           </div>
+
+          {/* Empty State */}
+          {!text && (
+            <div className="text-center py-12 text-gray-400 border-2 border-dashed border-gray-200 rounded-xl mt-6">
+              <FileText size={32} className="mx-auto mb-3 text-gray-300" />
+              <p>Paste your meta description above to analyze it instantly — no signup required.</p>
+            </div>
+          )}
         </div>
 
-        {/* SEO Content */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Free Meta Description Checker — Analyze Length, SEO Score & CTR Instantly
-          </h2>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Our free meta description checker analyzes your meta description in real-time and gives you an <strong>instant SEO score</strong> based on length, pixel width, power words, call-to-action presence, and keyword placement. No login required — just paste your description and get instant results.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            Google displays approximately <strong>155-160 characters</strong> of a meta description on desktop and around <strong>120 characters</strong> on mobile. Going over the limit does not hurt rankings, but your description will be cut off — potentially reducing your click-through rate. Our tool shows you exactly how your description appears on both desktop and mobile before you publish.
-          </p>
-        </div>
-
-        {/* How to Use */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">How to Check Your Meta Description for SEO</h2>
-          <ol className="list-decimal list-inside text-gray-600 space-y-3 text-base">
-            <li>Paste or type your <strong>meta description</strong> into the text area above.</li>
-            <li>Watch the <strong>character count, pixel width and SEO score</strong> update in real-time.</li>
-            <li>Enter your <strong>target keyword</strong> to check if it appears in the description.</li>
-            <li>Review the <strong>issues and suggestions</strong> to improve your description.</li>
-            <li>Check the <strong>Google preview</strong> to see how it looks on desktop and mobile.</li>
-            <li>Fix any issues, then <strong>copy the optimized description</strong> to your CMS.</li>
-          </ol>
-        </div>
-
-        {/* Features */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Meta Description Analyzer — Key Features</h2>
-          <div className="grid md:grid-cols-2 gap-5">
+        {/* ─── How to Use ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">How to Check Meta Description for SEO in 3 Simple Steps</h2>
+          <ol className="space-y-5">
             {[
-              { title: 'Real-Time SEO Score', desc: 'Get an instant SEO score from 0-100 based on length, power words, call-to-action and more. See exactly where your description needs improvement.' },
-              { title: 'Pixel Width Calculator', desc: 'Google uses pixel width — not character count — to truncate descriptions. Our tool calculates exact pixel width for both desktop (960px) and mobile (680px) limits.' },
-              { title: 'Keyword Placement Check', desc: 'Enter your target keyword to instantly verify it appears in your meta description. Including the target keyword can improve relevance signals for Google.' },
-              { title: 'Desktop & Mobile Preview', desc: 'See exactly how your meta description appears in Google search results on both desktop and mobile — including truncation if it is too long.' },
-            ].map((f, i) => (
-              <div key={i} className="bg-gray-50 rounded-xl p-5 border border-gray-100">
-                <h3 className="font-semibold text-gray-900 mb-2">{f.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{f.desc}</p>
+              { step: "1", title: "Paste Your Meta Description", desc: "Copy your meta description from your CMS or SEO plugin and paste it into the text area. Or type it directly." },
+              { step: "2", title: "Review Score & Suggestions", desc: "See your real-time SEO score, character count, pixel width, and actionable suggestions to improve CTR." },
+              { step: "3", title: "Preview & Optimize", desc: "Check the Google preview for desktop and mobile. Fix any issues, then copy the optimized description to your site." },
+            ].map((item) => (
+              <li key={item.step} className="flex items-start gap-4">
+                <span className="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">{item.step}</span>
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm mb-1">{item.title}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* ─── How It Works ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">How Meta Description Analysis Works</h2>
+          <p className="text-gray-500 text-sm mb-6">No server upload. No waiting. Everything happens on your device.</p>
+          <div className="space-y-5">
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">Pixel Width Estimation</h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                estimatePixelWidth(text) → desktop: 960px, mobile: 680px
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">Google truncates meta descriptions by pixel width, not character count. We estimate pixel width using average character widths to predict exactly how your description will appear in search results.</p>
+            </div>
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">SEO Scoring Algorithm</h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                score = length(100) + powerWords(20) + CTA(10) + numbers(10) → max 100
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">Your SEO score is calculated based on ideal length (120-158 chars), presence of power words, call-to-action phrases, and numbers — all proven to improve click-through rates.</p>
+            </div>
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-4">
+              <h3 className="font-bold text-sky-900 text-sm mb-2">Privacy First</h3>
+              <p className="text-sky-800 text-xs leading-relaxed">All analysis happens locally in your browser using JavaScript. No meta descriptions are uploaded, stored, or sent anywhere. Close the tab and your content is gone. 100% private by design.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Sample Results ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">What Kind of Results Can You Expect?</h2>
+          <p className="text-gray-500 text-sm mb-6">Real examples with different SEO scores and suggestions.</p>
+          <div className="space-y-5">
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3"><span className="text-sm bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-lg">Excellent (90/100)</span></div>
+              <div className="grid sm:grid-cols-3 gap-4 text-sm">
+                <div className="bg-gray-50 rounded-lg p-3"><p className="text-gray-500 text-xs mb-1">Description</p><p className="font-semibold text-gray-800">152 chars, 3 power words</p></div>
+                <div className="bg-gray-50 rounded-lg p-3"><p className="text-gray-500 text-xs mb-1">Result</p><p className="font-semibold text-green-600">✓ Full display, high CTR</p></div>
+                <div className="bg-gray-50 rounded-lg p-3"><p className="text-gray-500 text-xs mb-1">Best For</p><p className="font-semibold text-gray-800">Homepage, landing pages</p></div>
+              </div>
+            </div>
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3"><span className="text-sm bg-red-100 text-red-700 font-bold px-2.5 py-1 rounded-lg">Needs Work (35/100)</span></div>
+              <div className="grid sm:grid-cols-3 gap-4 text-sm">
+                <div className="bg-gray-50 rounded-lg p-3"><p className="text-gray-500 text-xs mb-1">Description</p><p className="font-semibold text-gray-800">85 chars, no CTA</p></div>
+                <div className="bg-gray-50 rounded-lg p-3"><p className="text-gray-500 text-xs mb-1">Result</p><p className="font-semibold text-red-600">⚠️ Too short, low CTR</p></div>
+                <div className="bg-gray-50 rounded-lg p-3"><p className="text-gray-500 text-xs mb-1">Fix</p><p className="font-semibold text-gray-800">Add 35+ chars + CTA</p></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Use Cases ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Who Uses This Meta Description Checker?</h2>
+          <p className="text-gray-500 text-sm mb-6">From SEOs to bloggers — better descriptions drive more clicks.</p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              { icon: <Zap size={20} className="text-sky-600" />, title: "SEO Specialists", desc: "Optimize meta descriptions for client websites. Get instant feedback on length, keywords, and CTR factors before publishing." },
+              { icon: <FileText size={20} className="text-green-600" />, title: "Content Writers", desc: "Write compelling meta descriptions that rank and convert. Check power words, CTAs, and keyword placement in real-time." },
+              { icon: <Globe size={20} className="text-amber-600" />, title: "Bloggers & Publishers", desc: "Ensure every blog post has an optimized meta description that attracts clicks from Google search results." },
+              { icon: <Shield size={20} className="text-violet-600" />, title: "Privacy-Conscious Users", desc: "Analyze meta descriptions without uploading to third-party servers. Everything stays on your device — always." },
+            ].map((item, i) => (
+              <div key={i} className="border border-gray-100 rounded-2xl p-5 hover:border-sky-200 transition-colors">
+                <div className="mb-3">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 text-sm mb-1.5">{item.title}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* FAQ */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Meta Description Checker — Frequently Asked Questions</h2>
-          <div className="space-y-4 max-w-4xl mx-auto">
+        {/* ─── SEO Content ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Why Check Meta Descriptions in Your Browser?</h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Most online meta description checkers ask you to paste content into a web form that sends your data to their servers. That means waiting for responses, worrying about privacy, and sometimes dealing with ads or limits. Our free meta description checker works differently — everything happens <strong>inside your browser</strong> using pure JavaScript.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Google displays approximately <strong>155-160 characters</strong> of a meta description on desktop and around <strong>120 characters</strong> on mobile. Going over the limit does not hurt rankings, but your description will be cut off — potentially reducing your click-through rate. Our tool shows you exactly how your description appears on both desktop and mobile before you publish.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            The SEO score is calculated based on proven CTR factors: ideal length (120-158 chars), power words like "free" or "instant", clear call-to-action phrases, and the presence of numbers. See real-time suggestions to improve your description before you publish.
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">Privacy Note</h3>
+          <p className="text-gray-600 leading-relaxed">
+            This tool runs 100% in your browser using JavaScript. No meta descriptions are uploaded to any server. No data is stored or tracked. Your content stays on your device — always.
+          </p>
+
+          <p className="text-gray-600 leading-relaxed mt-4">
+            Need to preview your full SERP snippet? Try the{" "}
+            <Link href="/tools/serp-snippet-preview" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">SERP Snippet Preview</Link>. 
+            Want to count words in your description? The{" "}
+            <Link href="/tools/word-counter" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">Word Counter</Link> has you covered.
+          </p>
+        </section>
+
+        {/* ─── FAQ ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-3 max-w-4xl mx-auto">
             {[
-              { q: 'What is the ideal meta description length for SEO?', a: 'The ideal meta description length is between 120 and 158 characters. Google typically shows up to 155-160 characters on desktop and around 120 characters on mobile before truncating. Descriptions that are too short miss an opportunity to attract clicks, while those that are too long get cut off mid-sentence in search results.' },
-              { q: 'Does meta description length affect Google rankings?', a: 'Meta descriptions do not directly affect Google rankings, but they significantly impact click-through rate (CTR). A well-written, properly-length meta description with relevant keywords and a clear call-to-action can increase clicks from search results, which indirectly signals quality to Google.' },
-              { q: 'What are power words in meta descriptions?', a: 'Power words are persuasive words that increase emotional impact and click rates. Examples include "free", "instant", "proven", "easy", "best", "new", "trusted", and "fast". Including 1-2 power words in your meta description can make your search result listing more compelling and increase CTR.' },
-              { q: 'Should I include the target keyword in my meta description?', a: 'Yes. Including your target keyword in the meta description is recommended because Google often bolds matching words when a user searches for that keyword. This visual highlight makes your result stand out and can improve click-through rates. Our tool lets you check if your keyword is included.' },
-              { q: 'Why does Google sometimes rewrite my meta description?', a: 'Google may rewrite your meta description when it determines that a different snippet from your page content better matches the user search query. This happens most often when the meta description is too short, too generic, keyword-stuffed, or does not adequately describe the page content.' },
+              { q: "What is the ideal meta description length for SEO?", a: "The ideal meta description length is between 120 and 158 characters. Google typically shows up to 155-160 characters on desktop and around 120 characters on mobile before truncating. Descriptions that are too short miss an opportunity to attract clicks, while those that are too long get cut off mid-sentence in search results." },
+              { q: "Does meta description length affect Google rankings?", a: "Meta descriptions do not directly affect Google rankings, but they significantly impact click-through rate (CTR). A well-written, properly-length meta description with relevant keywords and a clear call-to-action can increase clicks from search results, which indirectly signals quality to Google." },
+              { q: "What are power words in meta descriptions?", a: "Power words are persuasive words that increase emotional impact and click rates. Examples include 'free', 'instant', 'proven', 'easy', 'best', 'new', 'trusted', and 'fast'. Including 1-2 power words in your meta description can make your search result listing more compelling and increase CTR." },
+              { q: "Should I include the target keyword in my meta description?", a: "Yes. Including your target keyword in the meta description is recommended because Google often bolds matching words when a user searches for that keyword. This visual highlight makes your result stand out and can improve click-through rates. Our tool lets you check if your keyword is included." },
+              { q: "Why does Google sometimes rewrite my meta description?", a: "Google may rewrite your meta description when it determines that a different snippet from your page content better matches the user search query. This happens most often when the meta description is too short, too generic, keyword-stuffed, or does not adequately describe the page content." },
+              { q: "Does this tool work offline?", a: "Yes. Once the page loads, all analysis happens locally in your browser. You can use it without an internet connection after the initial load." },
             ].map((item, i) => (
-              <div key={i} className="border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-blue-200 transition-colors duration-300">
+              <div key={i} className="border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-sky-200 transition-colors duration-300">
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left" aria-expanded={openFaq === i}>
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">{item.q}</h3>
-                  <ChevronDown size={22} className={`text-blue-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
+                  <h3 className="text-sm md:text-base font-bold text-gray-900 pr-4">{item.q}</h3>
+                  <ChevronDown size={22} className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`} />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <p className="px-5 pb-5 text-gray-600 leading-relaxed">{item.a}</p>
+                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
+                  <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{item.a}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Related Tools */}
+        {/* ─── Related Tools ─── */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related SEO Tools</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { href: '/tools/serp-snippet-preview', title: 'SERP Snippet Preview', desc: 'Preview exactly how your full search result snippet looks in Google.' },
-              { href: '/tools/word-counter', title: 'Word Counter', desc: 'Count words, characters, sentences and reading time instantly.' },
-              { href: '/tools/sitemap-generator', title: 'Sitemap Generator', desc: 'Generate XML sitemaps to improve Google crawling and indexing.' },
-              { href: '/tools/chatgpt-prompt-generator', title: 'ChatGPT Prompt Generator', desc: 'Generate optimized prompts to write better meta descriptions with AI.' },
-              { href: '/tools/hashtag-generator', title: 'Hashtag Generator', desc: 'Generate trending hashtags for Instagram, TikTok and Twitter.' },
-              { href: '/tools/case-converter', title: 'Case Converter', desc: 'Convert text to Title Case, UPPERCASE, lowercase and more.' },
+              { href: "/tools/serp-snippet-preview", title: "SERP Snippet Preview", desc: "Preview exactly how your full search result snippet looks in Google." },
+              { href: "/tools/word-counter", title: "Word Counter", desc: "Count words, characters and reading time instantly." },
+              { href: "/tools/sitemap-generator", title: "Sitemap Generator", desc: "Generate XML sitemaps to improve Google crawling and indexing." },
+              { href: "/tools/chatgpt-prompt-generator", title: "ChatGPT Prompt Generator", desc: "Generate optimized prompts to write better meta descriptions with AI." },
+              { href: "/tools/hashtag-generator", title: "Hashtag Generator", desc: "Generate trending hashtags for Instagram, TikTok and Twitter." },
+              { href: "/tools/case-converter", title: "Case Converter", desc: "Convert text to Title Case, UPPERCASE, lowercase and more." },
             ].map((tool) => (
-              <Link key={tool.href} href={tool.href} className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-blue-400 transition-all">
-                <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-blue-600 transition-colors">{tool.title}</h3>
+              <Link key={tool.href} href={tool.href} className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-sky-400 transition-all">
+                <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-sky-600 transition-colors">{tool.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{tool.desc}</p>
               </Link>
             ))}

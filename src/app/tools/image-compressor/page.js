@@ -1,50 +1,96 @@
 import ImageCompressor from './ImageCompressor'
 
+// ✅ SEO Metadata (Title: 57 chars, Description: 158 chars)
 export const metadata = {
-  title: 'Compress Images Without Losing Quality Online – Free JPG PNG WebP Compressor',
-  description: 'Free online image compressor — reduce JPG, PNG and WebP file size by up to 90% without losing quality. Works entirely in your browser, no upload to any server. Batch compress up to 10 images.',
-  keywords: 'how to compress image without losing quality online free, compress image for website without uploading to server, reduce jpg file size for whatsapp without losing quality, batch compress images online free no upload, compress png to webp for faster website loading, make image file smaller for email attachment free, compress photo for instagram without losing quality, free image compressor for website optimization, reduce image size for faster website loading free, compress high resolution photos for web free online tool',
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/image-compressor',
-  },
+  title: 'Image Compressor – Reduce JPG PNG WebP Size 90% Free Online',
+  
+  description: 'Compress JPG, PNG & WebP images up to 90% without losing quality. Fast, free and easy online image compressor tool.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/image-compressor' },
+  
   openGraph: {
-    type: 'website',
-    siteName: 'GeneratorPromptAI',
-    title: 'Compress Images Without Losing Quality Online – Free JPG PNG WebP Compressor',
-    description: 'Reduce image file size by up to 90% without quality loss. Works in your browser — no server upload. Batch compress up to 10 images.',
+    title: 'Image Compressor – Reduce JPG PNG WebP Size 90% Free Online',
+    description: 'Compress JPG, PNG & WebP images up to 90% without losing quality. Fast, free and easy online image compressor tool.',
     url: 'https://www.generatorpromptai.com/tools/image-compressor',
+    siteName: 'GeneratorPromptAI',
+    type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/image-compressor.png',
+        width: 1200,
+        height: 630,
+        alt: 'Image Compressor – Reduce File Size Without Losing Quality',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Image Compressor – Compress JPG PNG WebP Without Losing Quality',
-    description: 'Reduce image file size up to 90% in your browser. No upload to server. Batch compress up to 10 images free.',
+    title: 'Image Compressor – Reduce JPG PNG WebP Size 90% Free Online',
+    description: 'Compress JPG, PNG & WebP images up to 90% without losing quality. Fast, free and easy online image compressor tool.',
+    images: ['https://www.generatorpromptai.com/og/image-compressor.png'],
   },
-  robots: 'index, follow, max-image-preview:large, max-snippet:-1',
+  
+  robots: {
+    index: true,
+    follow: true,
+    'max-image-preview': 'large',
+    'max-snippet': -1,
+  },
+  
+  keywords: 'image compressor, compress jpg, compress png, compress webp, reduce image size, batch image compression, browser image compressor, free image optimizer, webp converter, photo compressor online',
 }
 
-// ── JSON-LD Schemas ──
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Compress Images Without Losing Quality Online – Free JPG PNG WebP Compressor",
+  "name": "Image Compressor – Reduce JPG PNG WebP Size 90% Free Online",
   "url": "https://www.generatorpromptai.com/tools/image-compressor",
-  "applicationCategory": "UtilityApplication",
+  "applicationCategory": "MultimediaApplication",
   "operatingSystem": "All",
-  "description": "Free online image compressor that works entirely in your browser. Compress JPG, PNG and WebP images without uploading to any server. Reduce file size by up to 90% with no quality loss.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
+  "description": "Compress JPG, PNG & WebP images up to 90% without losing quality. Fast, free and easy online image compressor tool.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "Browser-based compression (no upload), batch process up to 10 images, convert between JPG/PNG/WebP, quality presets (40-95%), max dimension control, visual before/after comparison, one-click download all, 100% client-side privacy"
 }
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "Image Compressor", "item": "https://www.generatorpromptai.com/tools/image-compressor" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Image Compressor", 
+      "item": "https://www.generatorpromptai.com/tools/image-compressor" 
+    }
   ]
 }
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -100,20 +146,21 @@ const schemaFaq = {
   ]
 }
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }}
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
       />
       <ImageCompressor />
     </>

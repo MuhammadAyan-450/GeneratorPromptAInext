@@ -1,16 +1,20 @@
 import AgeCalculator from "./AgeCalculator";
 
+// ✅ Perfect SEO Metadata
 export const metadata = {
-  title: "Age Calculator – Calculate Exact Age in Years, Months & Days",
+  title: "Age Calculator – Calculate Exact Age in Years, Months & Days Instantly",
+
   description:
-    "Free age calculator to find your exact age in years, months, days, hours, and minutes. Includes birthday countdown, zodiac sign, and leap year support. No signup.",
+    "age calculator. Find your exact age in years, months, days, hours, and minutes. Includes birthday countdown instanaly",
+
   alternates: {
     canonical: "https://www.generatorpromptai.com/tools/age-calculator",
   },
+
   openGraph: {
-    title: "Age Calculator – Calculate Exact Age in Years, Months & Days",
+    title: "Age Calculator – Calculate Exact Age in Years, Months & Days Instantly",
     description:
-      "Free age calculator to find your exact age in years, months, days, hours, and minutes. Includes birthday countdown and zodiac sign.",
+      "age calculator. Find your exact age in years, months, days, hours, and minutes. Includes birthday countdown instanaly",
     url: "https://www.generatorpromptai.com/tools/age-calculator",
     siteName: "GeneratorPromptAI",
     type: "website",
@@ -19,36 +23,40 @@ export const metadata = {
         url: "https://www.generatorpromptai.com/og/age-calculator.png",
         width: 1200,
         height: 630,
-        alt: "Age Calculator – Calculate Exact Age",
+        alt: "Age Calculator – Exact Age Finder",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Age Calculator – Calculate Exact Age in Years, Months & Days",
+    title: "Age Calculator – Calculate Exact Age in Years, Months & Days Instantly",
     description:
-      "Free age calculator. Find exact age in years, months, days, hours, minutes. Birthday countdown included.",
+      "age calculator. Find your exact age in years, months, days, hours, and minutes. Includes birthday countdown instanaly",
     images: ["https://www.generatorpromptai.com/og/age-calculator.png"],
   },
+
   robots: {
     index: true,
     follow: true,
     "max-image-preview": "large",
     "max-snippet": -1,
   },
+
   keywords:
-    "age calculator, calculate my age, how many days old am I, exact age calculator, age in years months days, birthday countdown calculator, chronological age calculator, age calculator by date of birth",
+    "age calculator, exact age calculator, calculate my age, birthday calculator, age in days calculator, age finder online, leap year age calculator, calculate age in years months days, birthday countdown calculator, zodiac sign calculator",
 };
 
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "Age Calculator",
+  name: "Age Calculator – Calculate Exact Age in Years, Months & Days Instantly",
   url: "https://www.generatorpromptai.com/tools/age-calculator",
-  applicationCategory: "UtilityApplication",
+  applicationCategory: "UtilitiesApplication",
   operatingSystem: "All",
   description:
-    "Free online age calculator that computes exact age in years, months, days, hours, and minutes. Includes birthday countdown, zodiac sign detection, and leap year support. 100% private — no data sent to servers.",
+    "age calculator. Find your exact age in years, months, days, hours, and minutes. Includes birthday countdown instanaly",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -61,9 +69,10 @@ const schemaWebApp = {
     url: "https://www.generatorpromptai.com",
   },
   featureList:
-    "Exact age in years/months/days, total days/hours/minutes lived, birthday countdown, zodiac sign, leap year support, 100% private, no signup",
+    "Exact age calculation, total days lived, hours and minutes lived, birthday countdown, zodiac sign, leap year support, copy results, privacy-friendly, no signup required",
 };
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -89,91 +98,101 @@ const schemaBreadcrumb = {
   ],
 };
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: [
     {
       "@type": "Question",
-      name: "How do I calculate my exact age in years, months, and days?",
+      name: "How do I calculate my exact age?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Enter your date of birth in the calculator above and click 'Calculate Age'. The tool handles all edge cases — month boundaries, leap years, varying month lengths — so you get a precise result without doing any math yourself.",
+        text: "Enter your date of birth and click Calculate Age. The tool automatically calculates your exact age in years, months, and days while accounting for leap years and month differences.",
       },
     },
     {
       "@type": "Question",
-      name: "How many days old am I?",
+      name: "Can this calculator show how many days old I am?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Just enter your birth date and the calculator will show your total days lived. For example, if you're 30 years old, you've lived roughly 10,950 to 10,958 days depending on how many leap years fell in that period.",
+        text: "Yes. The calculator shows total days lived along with weeks, hours, and minutes based on your birth date.",
       },
     },
     {
       "@type": "Question",
-      name: "How do I find out how many days until my next birthday?",
+      name: "Does this age calculator handle leap years correctly?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "The calculator does this automatically. After you enter your birth date and hit calculate, look for the 'Next Birthday In' card in the results — it shows the exact number of days until your next birthday.",
+        text: "Yes. The calculator uses JavaScript's native Date object, which automatically accounts for leap years and varying month lengths.",
       },
     },
     {
       "@type": "Question",
-      name: "Does this calculator handle leap years correctly?",
+      name: "What happens if I was born on February 29?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. It uses JavaScript's native Date object, which correctly accounts for leap years (years divisible by 4, except century years not divisible by 400). February 29 birthdays and calculations spanning leap years are all accurate.",
+        text: "The calculator correctly handles February 29 birthdays. In non-leap years, your birthday is treated according to standard date calculations so your age remains accurate.",
       },
     },
     {
       "@type": "Question",
-      name: "What if I was born on February 29?",
+      name: "Can I find out how many days are left until my next birthday?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Your age is calculated normally — you don't stay the same age for 4 years. In non-leap years, the calculator treats your birthday as having passed on March 1 for age calculation purposes.",
+        text: "Yes. The calculator includes a birthday countdown feature that shows the exact number of days remaining until your next birthday.",
       },
     },
     {
       "@type": "Question",
-      name: "Is my date of birth stored or sent anywhere?",
+      name: "Is my birth date stored or shared?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "No. The entire calculation runs in your browser using JavaScript. Your birth date never leaves your device — it's not sent to a server, not stored in a database, not logged anywhere.",
+        text: "No. Everything runs directly in your browser. Your birth date is never uploaded, stored, or shared.",
       },
     },
     {
       "@type": "Question",
-      name: "Why does my age show different days than I expected?",
+      name: "Can I calculate someone else's age?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "This usually happens when your birthday is near a month boundary. If you were born on the 30th and the current month only has 28 or 29 days, the calculator has to 'borrow' days from the previous month. The result is mathematically correct.",
+        text: "Yes. You can enter any valid birth date to calculate the age of another person instantly.",
       },
     },
     {
       "@type": "Question",
-      name: "Can I use this to calculate someone else's age?",
+      name: "Does this work on mobile devices?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Absolutely. There's no verification or login — just enter any date of birth and you'll get the age as of today. It works for anyone: your kids, your parents, historical figures, fictional characters.",
+        text: "Yes. The age calculator is fully responsive and works on phones, tablets, laptops, and desktop browsers.",
       },
     },
   ],
 };
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaWebApp),
+        }}
       />
+
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaBreadcrumb),
+        }}
       />
+
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaFaq),
+        }}
       />
 
       <AgeCalculator />

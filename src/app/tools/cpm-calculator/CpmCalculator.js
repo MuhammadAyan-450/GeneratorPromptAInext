@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -16,6 +16,10 @@ import {
   BarChart3,
   CheckCircle2,
   Target,
+  Code,
+  HelpCircle,
+  ArrowRight,
+  FileText,
 } from "lucide-react";
 
 const CpmCalculator = () => {
@@ -178,128 +182,122 @@ const CpmCalculator = () => {
     (mode === "impressions" && (!cpm || !cost));
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      <div className="max-w-7xl mx-auto w-full px-4 pt-6">
-        <nav
-          aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-sm text-gray-500"
-        >
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 hover:text-sky-600 transition-colors"
-          >
-            <Home size={14} /> Home
-          </Link>
-          <span className="text-gray-300">/</span>
-          <Link
-            href="/pages/all-tools"
-            className="hover:text-sky-600 transition-colors"
-          >
-            All Tools
-          </Link>
-          <span className="text-gray-300">/</span>
-          <span className="text-gray-900 font-semibold">CPM Calculator</span>
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Breadcrumb */}
+      <div className="max-w-4xl mx-auto w-full px-4 pt-6">
+        <nav aria-label="Breadcrumb">
+          <ol className="flex items-center gap-2 text-sm text-gray-500">
+            <li>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1.5 hover:text-sky-600 transition-colors"
+              >
+                <Home size={14} /> Home
+              </Link>
+            </li>
+            <li>
+              <span className="text-gray-300">/</span>
+            </li>
+            <li>
+              <Link
+                href="/pages/all-tools"
+                className="hover:text-sky-600 transition-colors"
+              >
+                All Tools
+              </Link>
+            </li>
+            <li>
+              <span className="text-gray-300">/</span>
+            </li>
+            <li>
+              <span className="text-gray-900 font-semibold">
+                CPM Calculator
+              </span>
+            </li>
+          </ol>
         </nav>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="flex-grow max-w-4xl mx-auto w-full px-4 pb-20">
         {/* Hero */}
         <div className="text-center mb-10 mt-4">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-sky-100 rounded-2xl mb-4">
-            <BarChart3 className="text-sky-600" size={32} />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-100 mb-4">
+            <BarChart3 className="text-sky-600" size={28} />
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3">
-            Calculate the CPM Online Free –{" "}
-            <span className="text-sky-600">Cost Per 1000 Impressions</span>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
+            CPM Calculator
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
-            Calculate CPM, campaign cost, or total impressions instantly. Free
-            online tool — no signup, no limits.
+            Calculate cost per 1,000 impressions, campaign cost, or total
+            impressions instantly. Just enter two values, hit calculate, and get
+            your CPM metrics plus bonus cost-per-impression data.
           </p>
         </div>
 
-        {/* ── TOOL CARD ── */}
-        <div className="bg-white border border-gray-200 rounded-3xl shadow-sm p-6 md:p-10 mb-8">
-          {/* Mode Selector */}
-          <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-2.5">
-              What do you want to calculate?
-            </label>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              {modes.map((m) => (
-                <button
-                  key={m.id}
-                  onClick={() => {
-                    setMode(m.id);
-                    setResult(null);
-                    setError("");
-                  }}
-                  className={`flex items-center gap-3 p-4 rounded-xl border-2 text-left transition-all ${
-                    mode === m.id
-                      ? "border-sky-500 bg-sky-50 text-sky-700"
-                      : "border-gray-200 bg-white text-gray-600 hover:border-sky-300 hover:bg-sky-50/50"
-                  }`}
+        {/* Tool Card */}
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            What do you want to calculate?
+          </label>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+            {modes.map((m) => (
+              <button
+                key={m.id}
+                onClick={() => {
+                  setMode(m.id);
+                  setResult(null);
+                  setError("");
+                }}
+                className={`flex items-center gap-3 p-4 rounded-xl border-2 text-left transition-all ${
+                  mode === m.id
+                    ? "border-sky-500 bg-sky-50 text-sky-700"
+                    : "border-gray-200 bg-white text-gray-600 hover:border-sky-300 hover:bg-sky-50/50"
+                }`}
+              >
+                <span
+                  className={mode === m.id ? "text-sky-600" : "text-gray-400"}
                 >
-                  <span
-                    className={
-                      mode === m.id ? "text-sky-600" : "text-gray-400"
-                    }
-                  >
-                    {m.icon}
+                  {m.icon}
+                </span>
+                <div>
+                  <span className="font-semibold text-sm block">{m.label}</span>
+                  <span className="text-[11px] text-gray-400 block">
+                    {m.desc}
                   </span>
-                  <div>
-                    <span className="font-semibold text-sm block">
-                      {m.label}
-                    </span>
-                    <span className="text-[11px] text-gray-400 block">
-                      {m.desc}
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
+                </div>
+              </button>
+            ))}
           </div>
 
-          {/* Inputs */}
-          <div className="space-y-4 mb-6">
+          {/* Inputs Grid */}
+          <div className="grid grid-cols-2 gap-4 mb-6">
             {mode === "cpm" && (
               <>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Campaign Cost ($)
                   </label>
-                  <div className="relative">
-                    <DollarSign
-                      size={16}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                      type="number"
-                      step="0.01"
-                      placeholder="e.g. 500"
-                      value={cost}
-                      onChange={(e) => setCost(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input
+                    type="number"
+                    step="0.01"
+                    placeholder="e.g. 500"
+                    value={cost}
+                    onChange={(e) => setCost(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800"
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Total Impressions
                   </label>
-                  <div className="relative">
-                    <Eye
-                      size={16}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                      type="number"
-                      placeholder="e.g. 100000"
-                      value={impressions}
-                      onChange={(e) => setImpressions(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input
+                    type="number"
+                    placeholder="e.g. 100000"
+                    value={impressions}
+                    onChange={(e) => setImpressions(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800"
+                  />
                 </div>
               </>
             )}
@@ -307,41 +305,29 @@ const CpmCalculator = () => {
             {mode === "cost" && (
               <>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     CPM Rate ($)
                   </label>
-                  <div className="relative">
-                    <DollarSign
-                      size={16}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                      type="number"
-                      step="0.01"
-                      placeholder="e.g. 5.00"
-                      value={cpm}
-                      onChange={(e) => setCpm(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input
+                    type="number"
+                    step="0.01"
+                    placeholder="e.g. 5.00"
+                    value={cpm}
+                    onChange={(e) => setCpm(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800"
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Total Impressions
                   </label>
-                  <div className="relative">
-                    <Eye
-                      size={16}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                      type="number"
-                      placeholder="e.g. 100000"
-                      value={impressions}
-                      onChange={(e) => setImpressions(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input
+                    type="number"
+                    placeholder="e.g. 100000"
+                    value={impressions}
+                    onChange={(e) => setImpressions(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800"
+                  />
                 </div>
               </>
             )}
@@ -349,193 +335,139 @@ const CpmCalculator = () => {
             {mode === "impressions" && (
               <>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     CPM Rate ($)
                   </label>
-                  <div className="relative">
-                    <DollarSign
-                      size={16}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                      type="number"
-                      step="0.01"
-                      placeholder="e.g. 5.00"
-                      value={cpm}
-                      onChange={(e) => setCpm(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input
+                    type="number"
+                    step="0.01"
+                    placeholder="e.g. 5.00"
+                    value={cpm}
+                    onChange={(e) => setCpm(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800"
+                  />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
                     Campaign Cost ($)
                   </label>
-                  <div className="relative">
-                    <DollarSign
-                      size={16}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                      type="number"
-                      step="0.01"
-                      placeholder="e.g. 500"
-                      value={cost}
-                      onChange={(e) => setCost(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
-                    />
-                  </div>
+                  <input
+                    type="number"
+                    step="0.01"
+                    placeholder="e.g. 500"
+                    value={cost}
+                    onChange={(e) => setCost(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800"
+                  />
                 </div>
               </>
             )}
           </div>
 
-          {/* Formula Banner */}
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 mb-6">
-            <p className="text-xs text-gray-500 uppercase font-bold tracking-wider mb-1.5">
-              Formula Used
-            </p>
-            <p className="text-gray-800 text-sm font-mono font-semibold">
-              {mode === "cpm" && "CPM = (Cost ÷ Impressions) × 1,000"}
-              {mode === "cost" && "Cost = (CPM × Impressions) ÷ 1,000"}
-              {mode === "impressions" && "Impressions = (Cost ÷ CPM) × 1,000"}
-            </p>
-          </div>
-
-          {/* Error */}
-          {error && (
-            <div className="mb-5 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-              <p className="text-red-600 text-sm font-medium">{error}</p>
-            </div>
-          )}
-
-          {/* Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+          {/* Action Buttons */}
+          <div className="grid grid-cols-2 gap-4 mb-6">
             <button
               onClick={calculate}
               disabled={isDisabled}
-              className="bg-sky-600 hover:bg-sky-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3.5 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2.5"
+              className="bg-sky-600 hover:bg-sky-700 disabled:opacity-40 text-white font-semibold py-3 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2"
             >
               <Calculator size={18} /> Calculate
             </button>
             <button
               onClick={handleReset}
-              className="bg-white border-2 border-sky-200 text-sky-700 hover:bg-sky-50 font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2.5"
+              className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
             >
-              <RefreshCw size={18} /> Reset
+              Clear All
             </button>
           </div>
-        </div>
 
-        {/* ── RESULT ── */}
-        {result && (
-          <div className="bg-white border border-gray-200 rounded-3xl shadow-sm overflow-hidden mb-8">
-            <div className="bg-green-50 border-b border-green-100 px-5 py-3 flex items-center gap-2">
-              <CheckCircle2 size={16} className="text-green-600" />
-              <span className="text-sm font-bold text-green-700">
-                Calculation Result
-              </span>
+          {error && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
+              <p className="text-red-600 text-sm">{error}</p>
             </div>
-            <div className="p-6 md:p-8 text-center">
-              <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-2">
+          )}
+
+          {/* Result */}
+          {result && (
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-5 mb-6">
+              <p className="text-xs font-semibold text-sky-500 uppercase tracking-wider mb-3">
                 {result.label}
               </p>
-              <p className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
+              <p className="text-3xl font-bold text-gray-900 mb-4">
                 {result.value}
               </p>
-              <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-2 gap-3">
                 {result.extras.map((e, i) => (
                   <div
                     key={i}
-                    className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-left"
+                    className="bg-white rounded-lg p-3 border border-sky-100"
                   >
-                    <p className="text-[10px] text-gray-400 uppercase font-bold tracking-wider mb-1">
-                      {e.label}
-                    </p>
-                    <p className="text-lg font-bold text-gray-800">
-                      {e.value}
-                    </p>
+                    <p className="text-xs text-gray-500 mb-1">{e.label}</p>
+                    <p className="font-semibold text-gray-800">{e.value}</p>
                   </div>
                 ))}
               </div>
-              <div className="flex flex-wrap justify-center gap-3 border-t border-gray-100 pt-5">
+              <div className="flex flex-wrap gap-3 mt-4">
                 <button
                   onClick={handleCopy}
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-sm font-semibold transition-all shadow-sm hover:shadow-md"
                 >
-                  <Copy size={15} /> {copied ? "Copied!" : "Copy Result"}
+                  <Copy size={15} /> {copied ? "Copied!" : "Copy"}
                 </button>
                 <button
                   onClick={handleDownload}
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-xl text-sm font-semibold transition-all"
                 >
-                  <Download size={15} /> Download .txt
+                  <Download size={15} /> Download
                 </button>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Features */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          {[
-            {
-              icon: <Zap size={20} className="text-amber-500" />,
-              title: "Instant",
-              desc: "Get CPM, cost, or impressions calculated in milliseconds.",
-            },
-            {
-              icon: <Target size={20} className="text-green-600" />,
-              title: "3 Calculation Modes",
-              desc: "Calculate CPM, cost, or impressions — switch with one click.",
-            },
-            {
-              icon: <Shield size={20} className="text-sky-600" />,
-              title: "100% Free",
-              desc: "No signup, no limits, no hidden fees. Completely free.",
-            },
-            {
-              icon: <BarChart3 size={20} className="text-violet-600" />,
-              title: "Extra Metrics",
-              desc: "See cost per impression and estimated CPC alongside CPM.",
-            },
-          ].map((f, i) => (
-            <div
-              key={i}
-              className="bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-md hover:border-sky-300 transition-all"
+          {/* Utility Actions */}
+          <div className="flex flex-wrap justify-center gap-3 border-t border-gray-100 pt-6">
+            <button
+              onClick={handleCopy}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-sm font-semibold transition-all shadow-sm hover:shadow-md"
             >
-              <div className="mb-3">{f.icon}</div>
-              <h3 className="font-bold text-gray-900 text-sm mb-1">
-                {f.title}
-              </h3>
-              <p className="text-gray-500 text-xs leading-relaxed">
-                {f.desc}
-              </p>
-            </div>
-          ))}
+              <Copy size={16} /> {copied ? "Copied!" : "Copy Result"}
+            </button>
+            <button
+              onClick={handleDownload}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-xl text-sm font-semibold transition-all"
+            >
+              <Download size={16} /> Download .txt
+            </button>
+            <button
+              onClick={handleReset}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-red-600 rounded-xl text-sm font-semibold transition-all"
+            >
+              <RefreshCw size={16} /> Clear
+            </button>
+          </div>
         </div>
 
-        {/* How to Use */}
-        <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
+        {/* ─── How to Use ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            How to Calculate CPM Online in 3 Steps
+            How to Calculate CPM Online
           </h2>
-          <ol className="space-y-4">
+          <ol className="space-y-5">
             {[
               {
                 step: "1",
                 title: "Select what to calculate",
-                desc: "Choose CPM, Cost, or Impressions based on what you want to find.",
+                desc: "Choose CPM, Cost, or Impressions based on what metric you need. The tool adapts the input fields automatically.",
               },
               {
                 step: "2",
                 title: "Enter the known values",
-                desc: "Fill in the two required fields (e.g., cost and impressions to find CPM).",
+                desc: "Fill in the two required fields. For example, enter cost and impressions to find CPM. The tool handles the math instantly.",
               },
               {
                 step: "3",
                 title: "Click Calculate",
-                desc: "Get your result instantly with extra metrics like cost per impression.",
+                desc: "Get your result instantly. The tool also shows cost per impression and estimated CPC for a complete view of your ad spend.",
               },
             ].map((item) => (
               <li key={item.step} className="flex items-start gap-4">
@@ -543,66 +475,251 @@ const CpmCalculator = () => {
                   {item.step}
                 </span>
                 <div>
-                  <p className="font-semibold text-gray-900 text-sm">
+                  <p className="font-semibold text-gray-900 text-sm mb-1">
                     {item.title}
                   </p>
-                  <p className="text-gray-500 text-sm">{item.desc}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
               </li>
             ))}
           </ol>
         </section>
 
-        {/* SEO 1 */}
-        <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
+        {/* ─── Formulas / How It Works ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            CPM Formula Explained
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            It's simple math. Here's exactly what happens when you click
+            Calculate.
+          </p>
+
+          <div className="space-y-5">
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Calculate CPM
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                CPM = (Total Cost ÷ Total Impressions) × 1,000
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Divides your total spend by impressions, then multiplies by
+                1,000. Example: $500 / 100,000 × 1,000 = $5.00 CPM.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Calculate Total Cost
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                Total Cost = (CPM × Impressions) ÷ 1,000
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Multiplies CPM by impressions, then divides by 1,000 to find
+                budget. Example: $5 × 100,000 / 1,000 = $500 budget.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Calculate Total Impressions
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                Impressions = (Total Cost ÷ CPM) × 1,000
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Divides budget by CPM, then multiplies by 1,000 to estimate
+                reach. Example: $500 / $5 × 1,000 = 100,000 impressions.
+              </p>
+            </div>
+
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-4">
+              <h3 className="font-bold text-sky-900 text-sm mb-2">
+                Bonus Metrics
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl overflow-x-auto">
+                Cost Per Impression = Cost ÷ Impressions
+                <br />
+                Est. CPC = Cost ÷ (Impressions × 0.015 CTR)
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Real Examples ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            CPM Calculation Examples
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            Real-world scenarios to help you understand the metrics.
+          </p>
+
+          <div className="space-y-5">
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
+                  Scenario 1
+                </span>
+              </div>
+              <div className="bg-green-50 border border-green-100 rounded-lg p-4">
+                <p className="text-xs text-green-700 font-medium mb-1">
+                  Input:
+                </p>
+                <p className="font-mono text-sm text-gray-800">
+                  Cost: $500, Impressions: 100,000
+                </p>
+                <p className="text-xs text-green-600 font-mono break-all mt-2">
+                  Output:
+                </p>
+                <p className="font-mono text-sm text-gray-800 break-all">
+                  CPM: $5.00
+                </p>
+              </div>
+            </div>
+
+            <div className="border border-gray-100 rounded-2xl p-5">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
+                  Scenario 2
+                </span>
+              </div>
+              <div className="bg-green-50 border border-green-100 rounded-lg p-4">
+                <p className="text-xs text-green-700 font-medium mb-1">
+                  Input:
+                </p>
+                <p className="font-mono text-sm text-gray-800">
+                  CPM: $5.00, Impressions: 1,000,000
+                </p>
+                <p className="text-xs text-green-600 font-mono break-all mt-2">
+                  Output:
+                </p>
+                <p className="font-mono text-sm text-gray-800 break-all">
+                  Total Cost: $5,000.00, Cost Per Impression: $0.005
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Use Cases ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Who Uses CPM Calculators?
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            It’s not just marketing. Here are the places where CPM calculations
+            get used in practice.{" "}
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                icon: <Zap size={20} className="text-sky-600" />,
+                title: "Display Advertising Professionals",
+                desc: "Use CPM comparisons between various networks to get the best deal for your brand campaigns.",
+              },
+              {
+                icon: <BarChart3 size={20} className="text-green-600" />,
+                title: "Social Media Marketing Specialists",
+                desc: "Calculate Facebook and Instagram ad costs using the CPM metric.",
+              },
+              {
+                icon: <Code size={20} className="text-violet-600" />,
+                title: "Real-Time Bidding Specialists",
+                desc: "Predict the number of impressions in RTB campaigns using CPM bids.",
+              },
+              {
+                icon: <HelpCircle size={20} className="text-amber-600" />,
+                title: "Educational Institutions and Students",
+                desc: "Learn about online advertising metrics for studying purposes.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="border border-gray-100 rounded-2xl p-5 hover:border-sky-200 transition-colors"
+              >
+                <div className="mb-3">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 text-sm mb-1.5">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-xs leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ─── SEO Content ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Free CPM Calculator – Calculate Cost Per 1000 Impressions Online
+            The Importance of CPM for Your Advertising Efforts
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            <strong>CPM (Cost Per Mille)</strong> is the most common pricing
-            model in digital advertising. It tells you how much you pay for
-            every 1,000 times your ad is shown, regardless of whether anyone
-            clicks on it. This free CPM calculator lets you calculate your CPM
-            in seconds — just enter your campaign cost and impressions.
+            The CPM (cost per mille) is the most widely used form of pricing for
+            digital advertising. This pricing method will inform you of the cost
+            of placing your advertisement for every thousand impressions,
+            irrespective of clicks.
           </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            With a basic understanding of the CPM formula, you can evaluate the
+            various ad platforms available to make informed decisions on which
+            platform would suit your budget. If your campaign on Facebook has a
+            cost of $3 per CPM while that on LinkedIn is $12 CPM, the second may
+            well be worth the extra amount if it produces better quality
+            leads.{" "}
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Apart from the CPM formula, the tool provides the cost per
+            impression of the ad and estimates of CPC (cost per click) based on
+            a click-through rate of 1.5%.
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
+            Is Lower CPM Always Good?
+          </h3>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Not always. A lower CPM from a low-quality website may lead to bad
+            results. The key is cost per conversion, not just CPM. A $20 CPM
+            with 5% conversion is better than a $2 CPM with 0.1% conversion.
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
+            Privacy Notice
+          </h3>
           <p className="text-gray-600 leading-relaxed">
-            Beyond basic CPM, this tool also shows{" "}
-            <strong>cost per individual impression</strong> and an{" "}
-            <strong>estimated cost per click</strong> (assuming a 1.5% CTR).
-            This gives you a fuller picture of your ad spend efficiency. You
-            can also reverse-calculate: find out how much a campaign will cost
-            given a CPM rate, or how many impressions you can buy with a fixed
-            budget.
+            It works entirely in your browser and doesn't transfer your data
+            anywhere. Not to any servers, databases, or anything else. Just
+            close the tab, and it's all done. That's the way it ought to be.
+          </p>
+
+          <p className="text-gray-600 leading-relaxed mt-4">
+            Need to calculate CPC instead? Try the{" "}
+            <Link
+              href="/tools/cpc-calculator"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              CPC Calculator
+            </Link>
+            . Estimating overall revenue? The{" "}
+            <Link
+              href="/tools/ad-revenue-calculator"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              Ad Revenue Calculator
+            </Link>{" "}
+            has your back.
           </p>
         </section>
 
-        {/* SEO 2 */}
-        <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            CPM Formula Explained – How to Calculate Cost Per Thousand
-            Impressions
-          </h2>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            The CPM formula is straightforward:{" "}
-            <strong>CPM = (Total Cost ÷ Total Impressions) × 1,000</strong>.
-            For example, if you spent $500 on an ad campaign that received
-            100,000 impressions, your CPM is ($500 ÷ 100,000) × 1,000 = $5.00.
-            This means you paid $5 for every 1,000 times your ad was
-            displayed.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            Understanding CPM helps you compare ad platforms, optimize
-            budgets, and negotiate better rates. A $3 CPM on Facebook vs a $12
-            CPM on LinkedIn might seem like Facebook is cheaper — but if
-            LinkedIn drives higher-quality leads, the higher CPM could be
-            worth it. Always evaluate CPM alongside conversion metrics.
-          </p>
-        </section>
-
-        {/* FAQ */}
-        <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
+        {/* ─── FAQ ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            CPM Calculator – FAQs
+            Frequently Asked Questions
           </h2>
           <div className="space-y-3 max-w-4xl mx-auto">
             {[
@@ -634,10 +751,14 @@ const CpmCalculator = () => {
                 q: "How many impressions is 1 CPM?",
                 a: "1 CPM equals exactly 1,000 impressions. If your CPM is $5, you pay $5 for every 1,000 times your ad is shown to users.",
               },
+              {
+                q: "Is this calculator free?",
+                a: "Yes, 100% free. No signup, no account, no limits. Calculate CPM, cost, or impressions as many times as you need.",
+              },
             ].map((item, i) => (
               <div
                 key={i}
-                className="border border-gray-100 rounded-2xl overflow-hidden hover:border-sky-200 transition-colors duration-300"
+                className="border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-sky-200 transition-colors duration-300"
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
@@ -648,12 +769,12 @@ const CpmCalculator = () => {
                     {item.q}
                   </h3>
                   <ChevronDown
-                    size={20}
+                    size={22}
                     className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
                   />
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
+                  className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
                 >
                   <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
                     {item.a}
@@ -664,38 +785,53 @@ const CpmCalculator = () => {
           </div>
         </section>
 
-        {/* Related */}
-        <section className="mb-4">
+        {/* ─── Related Tools (Short Descriptions) ─── */}
+        <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Related Free Tools
+            Related Ad Marketing Tools
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
                 href: "/tools/cpc-calculator",
                 title: "CPC Calculator",
-                desc: "Calculate cost per click for your ad campaigns. Compare CPC across platforms.",
+                desc: "Calculate cost per click for ad campaigns.",
               },
               {
                 href: "/tools/ad-revenue-calculator",
                 title: "Ad Revenue Calculator",
-                desc: "Estimate ad income from display, native, video, and other ad formats by category.",
+                desc: "Estimate income from display ads.",
               },
               {
                 href: "/tools/percentage-calculator",
                 title: "Percentage Calculator",
-                desc: "Calculate percentage increase, decrease, and difference instantly.",
+                desc: "Calculate increases and decreases.",
+              },
+              {
+                href: "/tools/adsense-revenue-calculator",
+                title: "AdSense Revenue Calculator",
+                desc: "Estimate Google AdSense earnings.",
+              },
+              {
+                href: "/tools/youtube-ad-revenue-calculator",
+                title: "YouTube Revenue Calculator",
+                desc: "Estimate YouTube ad income.",
+              },
+              {
+                href: "/tools/profit-margin-calculator",
+                title: "Profit Margin Calculator",
+                desc: "Calculate profit % and markup.",
               },
             ].map((tool) => (
               <Link
                 key={tool.href}
                 href={tool.href}
-                className="group bg-white border border-gray-200 rounded-2xl p-5 hover:shadow-md hover:border-sky-400 transition-all"
+                className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-sky-400 transition-all"
               >
-                <h3 className="font-bold text-gray-800 text-sm mb-1.5 group-hover:text-sky-600 transition-colors">
+                <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-sky-600 transition-colors">
                   {tool.title}
                 </h3>
-                <p className="text-gray-500 text-xs leading-relaxed">
+                <p className="text-gray-500 text-sm leading-relaxed">
                   {tool.desc}
                 </p>
               </Link>

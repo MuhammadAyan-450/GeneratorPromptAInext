@@ -200,7 +200,7 @@ const AdRevenueCalculator = () => {
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
             Figuring out how much your website can actually make from ads? Stop
-            guessing. Put in your impressions, CPM, and CPC — this calculator
+            guessing. Add in your impressions, CPM, and CPC — in our calculator
             breaks down estimated earnings across 6 ad formats so you can see
             exactly where the money is.
           </p>
@@ -319,7 +319,7 @@ const AdRevenueCalculator = () => {
 Please tell me:
 1. How to increase website ad revenue?
 2. How to get a better CPM rate?
-3. What are the best website monetization strategies?
+3. What is the best website monetization strategy?
 Give practical earning tips and tricks.`}
             />
 
@@ -413,7 +413,7 @@ Give practical earning tips and tricks.`}
               {
                 icon: <Zap size={20} className="text-amber-500" />,
                 title: "Instant Estimate",
-                desc: "Get ad revenue estimates in milliseconds for all categories.",
+                desc: "Get ad revenue estimates in some seconds for all categories.",
               },
               {
                 icon: <BarChart3 size={20} className="text-green-600" />,
@@ -449,29 +449,29 @@ Give practical earning tips and tricks.`}
           {/* ─── How to Use ─── */}
           <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              How to Use This Ad Revenue Calculator
+              How to Use Our Ad Revenue Calculator
             </h2>
             <ol className="space-y-5">
               {[
                 {
                   step: "1",
-                  title: "Enter your total impressions",
-                  desc: 'Open your Google Analytics or AdSense dashboard and pick your monthly ad impressions. Type that number in — for example, "500000" for half a million impressions. If you only know pageviews, use that as a rough starting point.',
+                  title: "You have to should enter your impressions",
+                  desc: 'Get started you need to open your Google Analytics or AdSense dashboard. Now you have to find out how much ad impressions you get every month. Take that number. Type it in. For instance if you get half a million impressions you should type "500000". If you do not know your ad impressions you can use your pageviews as an idea of where to start with Google Analytics or AdSense.',
                 },
                 {
                   step: "2",
-                  title: "Fill in your CPM, CPC, and CTR",
-                  desc: 'Your base CPM is what your ad network pays per 1,000 impressions — check your AdSense or Mediavine report. CPC is optional but handy if you run click-based ads. CTR goes with CPC — if your CTR is 1.5% and you have 500K impressions, that means 7,500 clicks.',
+                  title: "Now you have to enter in your CPM, CPC and CTR",
+                  desc: "Your base CPM is what your ad network pays per 1,000 impressions. Check your AdSense or Mediavine report. CPC is optional but handy if you run click-based ads. CTR goes with CPC. If your ad revenue calculator CTR is 1.5% and you have 500K impressions that means 7,500 clicks for your ad revenue calculator.",
                 },
                 {
                   step: "3",
-                  title: "Pick the ad formats you run 'or want to test'",
-                  desc: "Select one or more categories — display, native, video, popup, interstitial, or rich media. The calculator applies realistic multipliers to each format so you can compare earnings side by side. Pick all six if you want the full picture.",
+                  title: "Now you have to pick your website ad formats",
+                  desc: "Select one or more categories. Display, native, video, popup, interstitial or rich media for your ad revenue calculator. The ad revenue calculator applies multipliers to each format so you can compare earnings side by side for your ad revenue calculator. Pick all six if you want the picture for your ad revenue calculator.",
                 },
                 {
                   step: "4",
-                  title: "Hit calculate and check the breakdown",
-                  desc: "You'll see estimated revenue for every selected format plus a grand total. Copy the results or download them as a text file. Run the numbers again with different CPMs to compare scenarios.",
+                  title: "Hit calculate and check the final result",
+                  desc: "You will see estimated revenue for every selected format plus a grand total for your ad revenue calculator. Copy the results. Download them as a text file for your ad revenue calculator. Run the numbers again with CPMs to compare scenarios, for your ad revenue calculator.",
                 },
               ].map((item) => (
                 <li key={item.step} className="flex items-start gap-4">
@@ -494,7 +494,7 @@ Give practical earning tips and tricks.`}
           {/* ─── Formulas ─── */}
           <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Ad Revenue Formulas — The Math Behind It
+              Ad Revenue Calculator Formulas — The Math Behind It
             </h2>
             <p className="text-gray-500 text-sm mb-6">
               No hidden calculations. Here's exactly what this tool does with
@@ -592,9 +592,7 @@ Give practical earning tips and tricks.`}
                     <p className="text-[11px] text-gray-400 uppercase font-bold">
                       Impressions
                     </p>
-                    <p className="text-sm font-bold text-gray-900">
-                      200,000
-                    </p>
+                    <p className="text-sm font-bold text-gray-900">200,000</p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3">
                     <p className="text-[11px] text-gray-400 uppercase font-bold">
@@ -643,9 +641,7 @@ Give practical earning tips and tricks.`}
                     <p className="text-[11px] text-gray-400 uppercase font-bold">
                       Impressions
                     </p>
-                    <p className="text-sm font-bold text-gray-900">
-                      1,000,000
-                    </p>
+                    <p className="text-sm font-bold text-gray-900">1,000,000</p>
                   </div>
                   <div className="bg-gray-50 rounded-lg p-3">
                     <p className="text-[11px] text-gray-400 uppercase font-bold">
@@ -738,33 +734,34 @@ Give practical earning tips and tricks.`}
           {/* ─── Use Cases ─── */}
           <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              Who Should Use This Calculator
+              Who Should You Use This Calculator
             </h2>
             <p className="text-gray-500 text-sm mb-6">
-              This isn't just for AdSense publishers. Here's who actually gets
-              value from running these numbers.
+              This is not just for people who use AdSense. There are people who
+              can get a lot of value from using this calculator to look at the
+              numbers for their website ads.
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               {[
                 {
                   icon: <Monitor size={20} className="text-sky-600" />,
                   title: "Bloggers & Content Sites",
-                  desc: "You're writing posts, getting traffic, but not sure if ads are worth it. Run your numbers — you might be surprised what 50K monthly impressions can earn with the right format mix.",
+                  desc: "You write posts. Get people to visit your site but you are not sure if ads are a good idea. Try putting your numbers into the calculator. You might be surprised at how money you can make with 50,000 people looking at your site every month, depending on the types of ads you use.",
                 },
                 {
                   icon: <TrendingUp size={20} className="text-green-600" />,
-                  title: "AdOps & Monetization Teams",
-                  desc: "Comparing ad networks or testing new placements? Use this to model revenue scenarios before making changes. Quick way to build a business case for switching formats.",
+                  title: "Monetization Teams",
+                  desc: "If you are trying to decide between different ad networks or want to try new ad placements use this calculator to see how much money you might be able to make. It is a way to make a plan for your business before you make any changes like switching to a different type of ad.",
                 },
                 {
                   icon: <Users size={20} className="text-violet-600" />,
                   title: "Agencies & Freelancers",
-                  desc: "Client asks 'how much can we make from ads?' — don't guess. Pull their analytics, plug in the numbers, and show them a real breakdown by ad type.",
+                  desc: "When a client asks you how money they can make from ads do not just give them a guess. Look at their numbers put them into the calculator and show them how money they can really make from each type of ad.",
                 },
                 {
                   icon: <Calculator size={20} className="text-amber-600" />,
                   title: "People Planning to Start a Site",
-                  desc: "Before you build anything, check if the math works. If your niche gets $2 CPM and you need $2K/month, now you know you need roughly 1 million impressions — that's your traffic target.",
+                  desc: "Before you start building your site use the calculator to see if your idea will work. If the people in your niche only pay $2 for every 1,000 people who look at an ad and you need to make $2,000 every month you have to know you need to get about 1 million people to look at your site. That is your goal, for how many people you need to visit your site's.",
                 },
               ].map((item, i) => (
                 <div
@@ -786,89 +783,99 @@ Give practical earning tips and tricks.`}
           {/* ─── SEO Content ─── */}
           <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Why Most Ad Revenue Calculators Are Wrong in Calculations
+              Why Most Ad Revenue Calculators Get It Wrong
             </h2>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              Most free tools online give you one number — "your site makes
-              $X/month." That's useless because it treats all ad formats the
-              same. A $5 CPM display banner and a $5 CPM video pre-roll don't
-              earn the same in practice. Video ads consistently pay 2x-3x more
-              than standard banners. Rich media ads with interactive elements
-              pull even higher rates.
+              Have you ever noticed that most free ad revenue calculators out
+              there just spit out a single figure—like, “Your site makes $X per
+              month”? Honestly, that doesn’t give you the full result picture. They
+              treat every ad the same, as if a $5 CPM display banner is making
+              in the same cash as a $5 CPM video pre-roll. But that’s just not
+              how it works. Video ads typically earn two to three times more
+              than standard banners. And if you’re running rich media ads with
+              interactive features, those rates can sure even higher. Our
+              calculator tool is different; it actually uses various multipliers
+              based on the ad type, relying on real industry data. So, if you
+              select “Video Ads” with a $5 base CPM, it jumps to $11 (thanks to
+              a 2.2x multiplier) because that’s much closer to what video
+              inventory actually brings in. The same approach applies to native,
+              interstitial, and rich media ads as well. CPC ads are treated
+              similarly. If your revenue comes from clicks, the calculator takes
+              your click-through rate into account to estimate total clicks.
+              Then it applies the appropriate CPC for each format. For instance,
+              native ads usually enjoy higher CTRs and pay you more per click than
+              standard display ads, so the calculator boosts those estimates
+              with a 1.5x multiplier.
             </p>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              This calculator fixes that by applying category-specific
-              multipliers based on real industry benchmarks. When you select
-              "Video Ads" with a $5 base CPM, it calculates at $11 (2.2x)
-              because that's closer to what ad networks actually pay for video
-              inventory. Same logic for native, interstitial, and rich media.
+              This calculator resolves the problem by introducing multipliers
+              depending on the category chosen, which are industry benchmarks.
+              For instance, in case of choosing "Video Ads" with CPM cost of $5,
+              the result would be multiplied by 2.2 to get to $11 since it is
+              closer to the actual cost that ad networks pay for video content.
             </p>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              The CPC calculation works the same way. If you're running ads
-              that pay per click, the tool uses your CTR to estimate click
-              volume, then multiplies by the effective CPC for each format.
-              Native ads, for instance, tend to get higher CTRs and higher
-              CPCs than standard display — the 1.5x multiplier reflects that.
+              In the case of calculating the CPC, the method is similar. In case
+              of per-click ads, the calculator will use your CTR to determine
+              the amount of clicks, and multiply it by the CPC per each ad type.
+              Thus, native ads tend to have higher CTR and CPC than regular
+              display ads, therefore, 1.5x multiplier is used here.
             </p>
             <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
               CPM vs CPC vs RPM — What's Actually Different
             </h3>
             <p className="text-gray-600 mb-3 leading-relaxed">
-              People mix these up all the time.{" "}
-              <strong>CPM</strong> is what the advertiser pays (or what the ad
-              network reports) per 1,000 impressions.{" "}
-              <strong>CPC</strong> is what you earn each time someone clicks
-              an ad.{" "}
-              <strong>RPM</strong> is your actual revenue per 1,000 pageviews
-              — it's the number that matters to you as a publisher because it
-              accounts for fill rate, ad blockers, and other real-world
-              factors.
+              People mix these up all the time. <strong>CPM</strong> is what the
+              advertiser pays (or what the ad network reports) per 1,000
+              impressions. <strong>CPC</strong> is what you earn each time
+              someone clicks an ad. <strong>RPM</strong> is your actual revenue
+              per 1,000 pageviews — it's the number that matters to you as a
+              publisher because it accounts for fill rate, ad blockers, and
+              other real-world factors.
             </p>
             <p className="text-gray-600 mb-3 leading-relaxed">
-              If your ad network shows a $10 CPM but you only have 70% fill
-              rate and 30% of your visitors use ad blockers, your actual RPM
-              might be closer to $4.90. That's why CPM alone is misleading.
-              Use our{" "}
+              If your ad network shows a $10 CPM but you only have 70% fill rate
+              and 30% of your visitors use ad blockers, your actual RPM might be
+              closer to $4.90. That's why CPM alone is misleading. Use our{" "}
               <Link
                 href="/tools/cpm-calculator"
                 className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
               >
                 CPM Calculator
               </Link>{" "}
-              to crunch those base numbers, then come here to compare
-              formats.
+              to crunch those base numbers, then come here to compare formats.
             </p>
             <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
-              How to Actually Increase Your Ad Revenue
+              Ways to Actually Boost Your Ad Revenue
             </h3>
             <p className="text-gray-600 mb-2 leading-relaxed">
-              After running numbers for hundreds of sites, the patterns are
-              pretty clear:
+              Based on my analysis of hundreds of websites, the following
+              methods work wonders when it comes to maximizing your revenue:
             </p>
             <ul className="list-disc list-inside text-gray-600 text-sm space-y-1.5 mb-4 ml-2">
               <li>
-                <strong>Switch from display-only to a format mix.</strong>{" "}
-                Adding even one video ad unit or native placement can bump
-                total revenue 30-50%.
+                <strong>Move from display-only to mixed ad formats</strong> Just
+                adding a single video or native ad unit will increase revenue by
+                30-50%.
               </li>
               <li>
-                <strong>Fix ad placement.</strong> Above-the-fold, in-content
-                ads consistently outperform sidebar and footer placements by
-                2-3x.
+                <strong>Optimize ad placement.</strong> Ads that are above the
+                fold and within the content perform twice as well as those
+                placed in sidebars or footers.
               </li>
               <li>
-                <strong>Improve CTR through better ad-text alignment.</strong>{" "}
-                When the ad matches what the user is reading, clicks go up
-                without being spammy.
+                <strong>Boost CTR via improved ad-text match.</strong> Matching
+                the ad to the content increases CTR without coming across as
+                spammy.
               </li>
               <li>
-                <strong>Target higher-CPM geographies.</strong> US, UK, and
-                Australian traffic pays 3-5x more than Tier-3 countries.
+                <strong>Target high-CPM geographies.</strong> Visitors from the
+                US, UK, and Australia pay 3-5x more than Tier-3 geographies
               </li>
               <li>
-                <strong>Don't ignore page speed.</strong> Slow-loading ads
-                kill user experience and increase bounce rate, which means
-                fewer impressions over time.
+                <strong>Page speed matters.</strong> Slowing down the loading of
+                your ads affects the user experience negatively and increases
+                bounce rate
               </li>
             </ul>
             <p className="text-gray-600 leading-relaxed">
@@ -879,9 +886,8 @@ Give practical earning tips and tricks.`}
               >
                 AdSense Revenue Calculator
               </Link>{" "}
-              — it uses niche-specific RPM data for 12+ categories so you
-              don't have to guess your CPM. And if you're earning from
-              YouTube, the{" "}
+              — it uses niche-specific RPM data for 12+ categories so you don't
+              have to guess your CPM. And if you're earning from YouTube, the{" "}
               <Link
                 href="/tools/youtube-ad-revenue-calculator"
                 className="text-sky-600 underline underline-offset-2 hover:text-sky-700"

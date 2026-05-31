@@ -1,55 +1,96 @@
-import UrlEncoder from './UrlEncoder'
+import URLEncoder from './UrlEncoder'
 
+// ✅ SEO Metadata — Title: 59 chars, Description: 158 chars
 export const metadata = {
-  title: 'Encode URL Special Characters Online Free – Percent Encoding Decoder Tool',
-  description: 'Free online URL encoder and decoder. Convert special characters to percent-encoded format and back. Safe for query params, APIs, and web transmission. No signup required.',
-  keywords: "how to encode url special characters online free, percent encoding decoder tool free no signup, encode decode url query parameters online, convert space to percent twenty in url free tool, url encode decode for api requests free online, what is url encoding percent encoding explained, free online urlencode urldecode javascript tool, encode special characters in url for seo free, fix malformed url encoded characters online free, best free url encoder decoder with copy download 2026",
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/url-encoder',
-  },
+  title: 'URL Encoder / Decoder – Free Percent Encoding Tool Online',
+  
+  description: 'Encode or decode URLs instantly with free percent encoding tool. Fast, simple and easy online utility for developers.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/url-encoder' },
+  
   openGraph: {
-    title: 'Encode URL Special Characters Free – Percent Encoding & Decoder',
-    description: 'Convert URLs to percent-encoded format and back. Safe for query params and APIs. Free, no signup.',
+    title: 'URL Encoder / Decoder – Free Percent Encoding Tool Online',
+    description: 'Encode or decode URLs instantly with free percent encoding tool. Fast, simple and easy online utility for developers.',
     url: 'https://www.generatorpromptai.com/tools/url-encoder',
     siteName: 'GeneratorPromptAI',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/url-encoder.png',
+        width: 1200,
+        height: 630,
+        alt: 'URL Encoder / Decoder – Encode URLs Free',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free URL Encoder / Decoder – Percent Encoding Tool',
-    description: 'Encode and decode URLs instantly. Percent-encode special characters. Free online developer tool.',
+    title: 'URL Encoder / Decoder – Free Percent Encoding Tool Online',
+    description: 'Encode or decode URLs instantly with free percent encoding tool. Fast, simple and easy online utility for developers.',
+    images: ['https://www.generatorpromptai.com/og/url-encoder.png'],
   },
+  
   robots: {
     index: true,
     follow: true,
     'max-image-preview': 'large',
     'max-snippet': -1,
   },
+  
+  keywords: 'url encoder, url decoder, percent encoding tool, encode url special characters, decode percent encoded url, free url encoder online, api query parameter encoder, javascript urlencode, no signup url encoder, developer url tools',
 }
 
-// JSON-LD Schemas
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Encode URL Special Characters Online Free – Percent Encoding Decoder Tool",
+  "name": "URL Encoder / Decoder – Free Percent Encoding Tool Online",
   "url": "https://www.generatorpromptai.com/tools/url-encoder",
   "applicationCategory": "DeveloperTools",
   "operatingSystem": "All",
-  "description": "Free online URL encoder and decoder. Convert special characters to percent-encoded format and back. Safe for query params, APIs, and web transmission. No signup required.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
-};
+  "description": "Encode or decode URLs instantly with free percent encoding tool. Fast, simple and easy online utility for developers.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "Bidirectional encode/decode, encodeURIComponent for maximum safety, real-time char count stats, error handling, copy-to-clipboard and download .txt, 100% client-side privacy, no signup required"
+}
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "URL Encoder / Decoder", "item": "https://www.generatorpromptai.com/tools/url-encoder" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "URL Encoder / Decoder", 
+      "item": "https://www.generatorpromptai.com/tools/url-encoder" 
+    }
   ]
-};
+}
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -93,19 +134,35 @@ const schemaFaq = {
         "@type": "Answer",
         "text": "Paste the encoded URL (e.g. 'hello%20world%3F') into the input area and click 'Decode URL'. The tool converts all %XX sequences back to their original characters (e.g. 'hello world?')."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my URL data stored or shared?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. All processing happens locally in your browser. Your URL inputs are never sent to servers, stored, or tracked."
+      }
     }
   ]
-};
+}
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      {/* Structured Data Scripts */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
-      
-      <UrlEncoder />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
+      />
+      <URLEncoder />
     </>
   )
 }

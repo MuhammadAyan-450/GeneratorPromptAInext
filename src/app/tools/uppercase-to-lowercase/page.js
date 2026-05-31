@@ -1,55 +1,96 @@
 import UppercaseToLowercase from './UppercaseToLowercase'
 
+// ✅ SEO Metadata — Title: 59 chars, Description: 158 chars
 export const metadata = {
-  title: 'Convert Uppercase to Lowercase Text Online Free – Fix Caps Lock Instantly',
-  description: 'Free online uppercase to lowercase converter. Change text to lowercase, uppercase, or swap case of every letter instantly. Fix caps lock errors, download result as .txt. No signup required.',
-  keywords: "how to convert uppercase text to lowercase online free, fix caps lock text instantly online tool, convert lowercase to uppercase letters free no signup, swap case toggle case text converter online free, change text case without losing formatting online, free online uppercase lowercase converter download txt, convert entire paragraph from caps to normal text, text case changer for headers and code constants free, best free online tool to fix accidental caps lock 2026, uppercase to lowercase converter with word character count",
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/uppercase-to-lowercase',
-  },
+  title: 'Uppercase to Lowercase Converter – Free Text Case Fixer Online',
+  
+  description: 'Free uppercase to lowercase converter tool. Change text case online instantly with simple one-click tool.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/uppercase-to-lowercase' },
+  
   openGraph: {
-    title: 'Convert Uppercase to Lowercase Free – Fix Caps Lock Instantly',
-    description: 'Change text to lowercase, uppercase, or swap case instantly. Fix caps lock errors. Download .txt. Free, no signup.',
+    title: 'Uppercase to Lowercase Converter – Free Text Case Fixer Online',
+    description: 'Free uppercase to lowercase converter tool. Change text case online instantly with simple one-click tool.',
     url: 'https://www.generatorpromptai.com/tools/uppercase-to-lowercase',
     siteName: 'GeneratorPromptAI',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/uppercase-to-lowercase.png',
+        width: 1200,
+        height: 630,
+        alt: 'Uppercase to Lowercase Converter – Fix Text Case Free',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Uppercase to Lowercase Converter – Fix Caps Lock',
-    description: 'Convert text case instantly. Lowercase, uppercase, or swap case. Free online tool.',
+    title: 'Uppercase to Lowercase Converter – Free Text Case Fixer Online',
+    description: 'Free uppercase to lowercase converter tool. Change text case online instantly with simple one-click tool.',
+    images: ['https://www.generatorpromptai.com/og/uppercase-to-lowercase.png'],
   },
+  
   robots: {
     index: true,
     follow: true,
     'max-image-preview': 'large',
     'max-snippet': -1,
   },
+  
+  keywords: 'uppercase to lowercase converter, fix caps lock text, convert text case online, swap case toggle case, lowercase to uppercase converter, free text case changer, no signup case converter, developer text tools, writer productivity tools, online text formatter',
 }
 
-// JSON-LD Schemas
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Convert Uppercase to Lowercase Text Online Free – Fix Caps Lock Instantly",
+  "name": "Uppercase to Lowercase Converter – Free Text Case Fixer Online",
   "url": "https://www.generatorpromptai.com/tools/uppercase-to-lowercase",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "All",
-  "description": "Free online uppercase to lowercase converter. Change text to lowercase, uppercase, or swap case of every letter instantly. Fix caps lock errors, download result as .txt. No signup required.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
-};
+  "description": "Free uppercase to lowercase converter tool. Change text case online instantly with simple one-click tool.",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "3 case conversion modes (lowercase/uppercase/toggle), real-time word/char counting, copy-to-clipboard and download .txt, 100% client-side privacy, no signup required"
+}
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "Uppercase to Lowercase Converter", "item": "https://www.generatorpromptai.com/tools/uppercase-to-lowercase" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "Uppercase to Lowercase", 
+      "item": "https://www.generatorpromptai.com/tools/uppercase-to-lowercase" 
+    }
   ]
-};
+}
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -59,7 +100,7 @@ const schemaFaq = {
       "name": "How to convert uppercase text to lowercase online free?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Paste your uppercase text into the input area and click 'Lowercase'. The converted text appears instantly in the output block. Copy or download the result."
+        "text": "Paste your uppercase text into the input area and click 'Lowercase'. The converted text appears instantly in the output block below. Copy or download the result."
       }
     },
     {
@@ -67,7 +108,7 @@ const schemaFaq = {
       "name": "How to fix text typed with caps lock on?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Paste the accidentally caps-locked text into the tool and click 'Lowercase'. The entire text will be converted to normal lowercase instantly. This is the fastest way to fix caps lock mistakes."
+        "text": "Paste the accidentally caps-locked text into the tool and click 'Lowercase'. The entire text will be converted to normal lowercase instantly. This is the fastest way to fix caps lock mistakes without retyping."
       }
     },
     {
@@ -93,18 +134,34 @@ const schemaFaq = {
         "@type": "Answer",
         "text": "No. The tool only changes the letter case (uppercase/lowercase). It does not remove bold, italics, links, or any other formatting. Only alphabetical characters are affected — numbers and symbols stay unchanged."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my text data stored or shared?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. All processing happens locally in your browser. Your text inputs are never sent to servers, stored, or tracked."
+      }
     }
   ]
-};
+}
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      {/* Structured Data Scripts */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
-      
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
+      />
       <UppercaseToLowercase />
     </>
   )

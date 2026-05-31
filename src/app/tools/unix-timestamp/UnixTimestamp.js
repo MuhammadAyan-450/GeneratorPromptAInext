@@ -1,19 +1,72 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
   Copy, RefreshCw, Clock, Calendar, Home, ChevronDown,
-  Hash, Type, Layers, Download, ArrowRightLeft
-} from "lucide-react";
+  Hash, Layers, Download, ArrowRightLeft, Zap, Shield, HelpCircle, FileText, Globe
+} from 'lucide-react';
 
-// ─── Component ────────────────────────────────────────────────────────────────
+// ─── Helper Functions (Outside Component) ─────────────────────────────────────
+const convertUnixToDate = (unixInput) => {
+  if (!unixInput) return null;
+  const date = new Date(unixInput * 1000);
+  if (isNaN(date.getTime())) return 'Invalid Timestamp';
+  return date.toString();
+};
+
+const convertDateToUnix = (dateInput) => {
+  if (!dateInput) return null;
+  const date = new Date(dateInput);
+  if (isNaN(date.getTime())) return 'Invalid Date';
+  return Math.floor(date.getTime() / 1000).toString();
+};
+
+// ─── FAQ Data (Sync with page.js JSON-LD) ─────────────────────────────────────
+const FAQS = [
+  {
+    q: 'How to convert Unix timestamp to human readable date online free?',
+    a: "Paste the Unix timestamp (epoch seconds) into the 'Unix Timestamp to Date' input and click Convert. The tool shows the full human-readable date and time in your browser's local timezone.",
+  },
+  {
+    q: 'What is a Unix timestamp and why does it start from 1970?',
+    a: 'A Unix timestamp (epoch time) is the number of seconds elapsed since January 1, 1970 at 00:00:00 UTC. This date is called the Unix Epoch and was chosen as the standard reference point for Unix operating systems.',
+  },
+  {
+    q: 'Is Unix timestamp affected by timezone?',
+    a: "No. Unix timestamps are always in UTC and are timezone-agnostic. However, when converting to a readable date, the result is displayed in your browser's local timezone for convenience.",
+  },
+  {
+    q: 'What is the difference between seconds and milliseconds timestamp?',
+    a: "Standard Unix timestamps are in seconds. Some systems like JavaScript's Date.now() use milliseconds. To convert milliseconds to seconds, divide by 1000. To convert seconds to milliseconds, multiply by 1000.",
+  },
+  {
+    q: 'What is the Year 2038 problem in Unix timestamps?',
+    a: '32-bit signed Unix timestamps will overflow on January 19, 2038 at 03:14:07 UTC (timestamp 2147483647). Most modern 64-bit systems are not affected. This tool uses 64-bit integers and works correctly far beyond 2038.',
+  },
+  {
+    q: 'Is my timestamp data stored or shared?',
+    a: 'Never. All calculations happen locally in your browser. Your inputs are never sent to servers, stored, or tracked.',
+  },
+];
+
+// ─── Related Tools (6 Items from your tools array) ────────────────────────────
+const RELATED_TOOLS = [
+  { href: '/tools/base64-encode', title: 'Base64 Encoder / Decoder', desc: 'Encode and decode text to Base64 format for data transmission.' },
+  { href: '/tools/url-encoder', title: 'URL Encoder / Decoder', desc: 'Encode and decode URLs with special characters for APIs.' },
+  { href: '/tools/uuid-generator', title: 'UUID Generator', desc: 'Generate unique UUID v4 identifiers for database keys and tokens.' },
+  { href: '/tools/json-formatter', title: 'JSON Formatter', desc: 'Beautify, minify and validate JSON code instantly for developers.' },
+  { href: '/tools/time-zone-converter', title: 'Time Zone Converter', desc: 'Convert time between 25+ cities worldwide with DST auto-handling.' },
+  { href: '/tools/date-calculator', title: 'Date Calculator', desc: 'Add or subtract days, weeks, months from any date.' },
+];
+
+// ─── Main Component ───────────────────────────────────────────────────────────
 const UnixTimestamp = () => {
   const [currentTime, setCurrentTime] = useState(Math.floor(Date.now() / 1000));
-  const [unixInput, setUnixInput] = useState("");
-  const [dateInput, setDateInput] = useState("");
-  const [dateResult, setDateResult] = useState("");
-  const [unixResult, setUnixResult] = useState("");
+  const [unixInput, setUnixInput] = useState('');
+  const [dateInput, setDateInput] = useState('');
+  const [dateResult, setDateResult] = useState('');
+  const [unixResult, setUnixResult] = useState('');
   const [copied, setCopied] = useState(false);
   const [copiedUnix, setCopiedUnix] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
@@ -26,25 +79,14 @@ const UnixTimestamp = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // ── Conversions ─────────────────────────────────────────────────────────────
-  const convertUnixToDate = () => {
-    if (!unixInput) return;
-    const date = new Date(unixInput * 1000);
-    if (isNaN(date.getTime())) {
-      setDateResult("Invalid Timestamp");
-      return;
-    }
-    setDateResult(date.toString());
+  const handleConvertUnix = () => {
+    const res = convertUnixToDate(unixInput);
+    if (res) setDateResult(res);
   };
 
-  const convertDateToUnix = () => {
-    if (!dateInput) return;
-    const date = new Date(dateInput);
-    if (isNaN(date.getTime())) {
-      setUnixResult("Invalid Date");
-      return;
-    }
-    setUnixResult(Math.floor(date.getTime() / 1000).toString());
+  const handleConvertDate = () => {
+    const res = convertDateToUnix(dateInput);
+    if (res) setUnixResult(res);
   };
 
   const copyCurrentTime = () => {
@@ -61,51 +103,57 @@ const UnixTimestamp = () => {
 
   const downloadResult = () => {
     const parts = [];
-    if (dateResult && dateResult !== "Invalid Timestamp") {
+    if (dateResult && dateResult !== 'Invalid Timestamp') {
       parts.push(`Unix: ${unixInput}\nDate: ${dateResult}`);
     }
-    if (unixResult && unixResult !== "Invalid Date") {
+    if (unixResult && unixResult !== 'Invalid Date') {
       parts.push(`Date: ${dateInput}\nUnix: ${unixResult}`);
     }
     if (parts.length === 0) return;
-    const blob = new Blob([parts.join("\n\n")], { type: "text/plain" });
+    const blob = new Blob([parts.join('\n\n')], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.href = url;
     link.download = `unix-timestamp-${Date.now()}.txt`;
     link.click();
     URL.revokeObjectURL(url);
   };
 
-  const reset = () => {
-    setUnixInput("");
-    setDateInput("");
-    setDateResult("");
-    setUnixResult("");
+  const resetAll = () => {
+    setUnixInput('');
+    setDateInput('');
+    setDateResult('');
+    setUnixResult('');
     setCopied(false);
     setCopiedUnix(false);
   };
 
-  // ── Derived Stats ───────────────────────────────────────────────────────────
+  // Derived Stats
   const now = new Date();
-  const epochStart = new Date("1970-01-01T00:00:00Z");
+  const epochStart = new Date('1970-01-01T00:00:00Z');
   const daysSinceEpoch = Math.floor((now - epochStart) / (1000 * 60 * 60 * 24));
-  const secondsToday = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
-  const year2038 = new Date("2038-01-19T03:14:07Z");
+  const year2038 = new Date('2038-01-19T03:14:07Z');
   const daysTo2038 = Math.max(0, Math.ceil((year2038 - now) / (1000 * 60 * 60 * 24)));
-  const currentDateString = now.toLocaleString("en-US", {
-    weekday: "short", year: "numeric", month: "short", day: "numeric",
-    hour: "2-digit", minute: "2-digit", second: "2-digit",
+  const currentDateString = now.toLocaleString('en-US', {
+    weekday: 'short', year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit', second: '2-digit',
   });
 
   const hasResult = dateResult || unixResult;
 
-  const inputCls = "w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800";
-  const labelCls = "block text-sm font-semibold text-gray-700 mb-2";
+  const stats = [
+    { icon: Hash, label: 'Current Epoch', value: currentTime, color: 'text-gray-800' },
+    { icon: Calendar, label: 'Current Date', value: currentDateString, color: 'text-gray-800' },
+    { icon: Layers, label: 'Days Since Epoch', value: daysSinceEpoch.toLocaleString(), color: 'text-gray-800' },
+    { icon: Clock, label: 'Days to 2038', value: daysTo2038.toLocaleString(), color: 'text-gray-800' },
+  ];
+
+  const inputCls = 'w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800';
+  const labelCls = 'block text-sm font-semibold text-gray-700 mb-2';
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-
+      
       {/* ── Breadcrumb ── */}
       <div className="max-w-4xl mx-auto w-full px-4 pt-6">
         <nav aria-label="Breadcrumb">
@@ -126,14 +174,14 @@ const UnixTimestamp = () => {
       </div>
 
       <div className="flex-grow max-w-4xl mx-auto w-full px-4 pb-20">
-
+        
         {/* ── Hero ── */}
         <div className="text-center mb-10 mt-4">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-100 mb-4">
             <Clock className="text-sky-600" size={28} />
           </div>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
-            Convert Unix Timestamp to Human Readable Date Online Free –{" "}
+            Convert Unix Timestamp to Human Readable Date Online Free –{' '}
             <span className="text-sky-600">Epoch Time Converter</span>
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
@@ -143,7 +191,7 @@ const UnixTimestamp = () => {
 
         {/* ── Tool Card ── */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
-
+          
           {/* Live Clock Banner */}
           <div className="bg-sky-50 border border-sky-100 rounded-2xl p-5 mb-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
@@ -157,13 +205,13 @@ const UnixTimestamp = () => {
               onClick={copyCurrentTime}
               className="bg-white hover:bg-gray-50 text-sky-700 font-bold py-2.5 px-5 rounded-xl border border-sky-200 transition-colors text-sm flex-shrink-0"
             >
-              {copied ? "Copied!" : "Copy"}
+              {copied ? 'Copied!' : 'Copy'}
             </button>
           </div>
 
           {/* Two Column Inputs */}
           <div className="grid md:grid-cols-2 gap-6 mb-6">
-
+            
             {/* Unix to Date */}
             <div>
               <div className="flex items-center gap-2 mb-3">
@@ -174,12 +222,12 @@ const UnixTimestamp = () => {
                 type="number"
                 value={unixInput}
                 onChange={(e) => setUnixInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && convertUnixToDate()}
+                onKeyDown={(e) => e.key === 'Enter' && handleConvertUnix()}
                 className={`${inputCls} font-mono mb-3`}
                 placeholder="e.g. 1672531200"
               />
               <button
-                onClick={convertUnixToDate}
+                onClick={handleConvertUnix}
                 className="w-full bg-sky-600 hover:bg-sky-700 active:scale-95 text-white font-semibold py-3 rounded-xl transition-all text-sm"
               >
                 Convert to Date
@@ -196,11 +244,11 @@ const UnixTimestamp = () => {
                 type="datetime-local"
                 value={dateInput}
                 onChange={(e) => setDateInput(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && convertDateToUnix()}
+                onKeyDown={(e) => e.key === 'Enter' && handleConvertDate()}
                 className={`${inputCls} mb-3`}
               />
               <button
-                onClick={convertDateToUnix}
+                onClick={handleConvertDate}
                 className="w-full bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all text-sm"
               >
                 Convert to Timestamp
@@ -218,39 +266,26 @@ const UnixTimestamp = () => {
           {/* Reset */}
           <div className="flex justify-center mb-2">
             <button
-              onClick={reset}
+              onClick={resetAll}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors"
             >
               <RefreshCw size={15} /> Reset
             </button>
           </div>
 
-          {/* ── Result Section ── */}
+          {/* ── Results Section ── */}
           {hasResult && (
             <div className="mt-8">
-
+              
               {/* Stats Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center">
-                  <div className="flex justify-center text-sky-500 mb-1"><Hash size={20} /></div>
-                  <p className="text-lg font-bold text-gray-800">{currentTime}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">Current Epoch</p>
-                </div>
-                <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center">
-                  <div className="flex justify-center text-sky-500 mb-1"><Calendar size={20} /></div>
-                  <p className="text-sm font-bold text-gray-800">{currentDateString}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">Current Date</p>
-                </div>
-                <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center">
-                  <div className="flex justify-center text-sky-500 mb-1"><Layers size={20} /></div>
-                  <p className="text-lg font-bold text-gray-800">{daysSinceEpoch.toLocaleString()}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">Days Since Epoch</p>
-                </div>
-                <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center">
-                  <div className="flex justify-center text-sky-500 mb-1"><Clock size={20} /></div>
-                  <p className="text-lg font-bold text-gray-800">{daysTo2038.toLocaleString()}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">Days to 2038</p>
-                </div>
+                {stats.map((stat, i) => (
+                  <div key={i} className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center">
+                    <div className="flex justify-center text-sky-500 mb-1"><stat.icon size={20} /></div>
+                    <p className={`text-lg font-bold ${stat.color}`}>{stat.value}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
+                  </div>
+                ))}
               </div>
 
               {/* Dark Output Block */}
@@ -260,7 +295,7 @@ const UnixTimestamp = () => {
                 {dateResult && (
                   <div className="mb-4">
                     <p className="text-xs text-gray-500 mb-1">Unix {unixInput} → Human Date</p>
-                    <pre className={`text-sm font-mono leading-relaxed ${dateResult === "Invalid Timestamp" ? "text-red-400" : "text-sky-400"}`}>
+                    <pre className={`text-sm font-mono leading-relaxed ${dateResult === 'Invalid Timestamp' ? 'text-red-400' : 'text-sky-400'}`}>
                       {dateResult}
                     </pre>
                   </div>
@@ -269,7 +304,7 @@ const UnixTimestamp = () => {
                 {unixResult && (
                   <div>
                     <p className="text-xs text-gray-500 mb-1">Date {dateInput} → Unix Timestamp</p>
-                    <pre className={`text-sm font-mono leading-relaxed ${unixResult === "Invalid Date" ? "text-red-400" : "text-green-400"}`}>
+                    <pre className={`text-sm font-mono leading-relaxed ${unixResult === 'Invalid Date' ? 'text-red-400' : 'text-green-400'}`}>
                       {unixResult}
                     </pre>
                   </div>
@@ -282,22 +317,22 @@ const UnixTimestamp = () => {
 
               {/* Actions */}
               <div className="flex justify-center gap-3">
-                {(dateResult && dateResult !== "Invalid Timestamp") && (
+                {(dateResult && dateResult !== 'Invalid Timestamp') && (
                   <button
                     onClick={() => copyResult(dateResult, setCopied)}
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors"
                   >
                     <Copy size={15} />
-                    {copied ? "Copied!" : "Copy Date"}
+                    {copied ? 'Copied!' : 'Copy Date'}
                   </button>
                 )}
-                {(unixResult && unixResult !== "Invalid Date") && (
+                {(unixResult && unixResult !== 'Invalid Date') && (
                   <button
                     onClick={() => copyResult(unixResult, setCopiedUnix)}
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors"
                   >
                     <Copy size={15} />
-                    {copiedUnix ? "Copied!" : "Copy Timestamp"}
+                    {copiedUnix ? 'Copied!' : 'Copy Timestamp'}
                   </button>
                 )}
                 <button
@@ -319,10 +354,129 @@ const UnixTimestamp = () => {
           )}
         </div>
 
-        {/* ── SEO Content 1 ── */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+        {/* ── How to Use ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            How to Convert Unix Timestamp to Human Readable Date Online Free
+          </h2>
+          <ol className="space-y-5">
+            {[
+              { step: '1', title: 'Choose Conversion Direction', desc: 'Use the left panel to convert Unix timestamp to date, or the right panel to convert date to timestamp.' },
+              { step: '2', title: 'Enter Value', desc: 'Paste epoch seconds or pick a date/time from the picker. Press Enter or click Convert.' },
+              { step: '3', title: 'View Results', desc: 'See the converted value in the dark output block along with live epoch stats.' },
+              { step: '4', title: 'Copy or Download', desc: 'Copy individual results to clipboard or download both conversions as a .txt file.' },
+            ].map((item) => (
+              <li key={item.step} className="flex items-start gap-4">
+                <span className="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">{item.step}</span>
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm mb-1">{item.title}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* ── How It Works ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            How Unix Timestamp Conversion Works
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">Simple math, universal standard. Here's the logic.</p>
+
+          <div className="space-y-5">
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2 flex items-center gap-2">
+                <Zap size={16} className="text-sky-600" />
+                Epoch Calculation
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                Date.now() / 1000 → seconds since 1970-01-01
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                We use JavaScript's native Date object which handles all timezone and DST complexities internally. Multiplying/dividing by 1000 converts between milliseconds (JS standard) and seconds (Unix standard).
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2 flex items-center gap-2">
+                <Globe size={16} className="text-sky-600" />
+                Timezone Handling
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                new Date(timestamp * 1000).toString()
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                While Unix timestamps are always UTC, the display string is automatically formatted to your browser's local timezone for readability. The underlying timestamp remains timezone-agnostic.
+              </p>
+            </div>
+
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-4">
+              <h3 className="font-bold text-sky-900 text-sm mb-2 flex items-center gap-2">
+                <Shield size={16} className="text-sky-600" />
+                Privacy Note
+              </h3>
+              <p className="text-sky-800 text-xs leading-relaxed">
+                All calculations happen locally in your browser. No timestamp or date inputs are ever sent to any server. 100% private.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Sample Results ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Real Example: API Debugging with Timestamps
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">See how conversions help in real-world dev scenarios.</p>
+
+          <div className="border border-gray-100 rounded-2xl p-5 bg-gray-50">
+            <div className="grid sm:grid-cols-2 gap-4 mb-4">
+              <div className="bg-white border border-gray-200 rounded-xl p-4">
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Input (API Response)</p>
+                <p className="font-mono text-xs text-gray-800">
+                  created_at: 1672531200
+                </p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-xl p-4">
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Output (Human Readable)</p>
+                <p className="font-mono text-xs text-gray-800">
+                  Sun Jan 01 2023 05:00:00 GMT+0500 (PKT)
+                </p>
+              </div>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Result: Quickly verify if an API timestamp matches your expected date without manual calculation or external tools.
+            </p>
+          </div>
+        </section>
+
+        {/* ── Use Cases ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Who Uses Unix Timestamp Converters?
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">From backend devs to data analysts — timestamps are everywhere.</p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              { icon: <Zap size={20} className="text-sky-600" />, title: 'Backend Developers', desc: 'Debug API responses, database logs, and cron job schedules by converting epoch seconds to readable dates instantly.' },
+              { icon: <FileText size={20} className="text-sky-600" />, title: 'Data Analysts', desc: 'Normalize timestamp formats across different data sources (SQL, CSV, JSON) for consistent analysis and reporting.' },
+              { icon: <Globe size={20} className="text-sky-600" />, title: 'Frontend Developers', desc: 'Display user-friendly dates from backend timestamps while handling timezone differences correctly in React/Vue apps.' },
+              { icon: <HelpCircle size={20} className="text-sky-600" />, title: 'DevOps Engineers', desc: 'Interpret log file timestamps, certificate expiration dates, and system uptime metrics stored as Unix epochs.' },
+            ].map((item, i) => (
+              <div key={i} className="border border-gray-100 rounded-2xl p-5 hover:border-sky-200 transition-colors">
+                <div className="mb-3">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 text-sm mb-1.5">{item.title}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── SEO Content ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Free Unix Timestamp Converter — Epoch Seconds to Date &amp; Back
+            Why Unix Timestamps Matter for Developers
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
             A <strong>Unix Timestamp</strong> (also known as Epoch time) is a way to track time as a running total of seconds since January 1st, 1970 at 00:00:00 UTC — the <strong>Unix Epoch</strong>. This format is universal and timezone-agnostic, making it the standard way to store dates in databases, set cookie expiration times, schedule cron jobs, and debug API responses.
@@ -330,95 +484,61 @@ const UnixTimestamp = () => {
           <p className="text-gray-600 mb-4 leading-relaxed">
             Our free converter lets you instantly switch between epoch seconds and human-readable dates in both directions. The <strong>live Unix clock</strong> shows the current epoch timestamp updating every second, while the stats grid displays useful context like days since epoch and the countdown to the <strong>Year 2038 problem</strong> when 32-bit timestamps overflow.
           </p>
-        </div>
+          <p className="text-gray-600 leading-relaxed">
+            Built for speed and privacy — all processing happens in your browser using JavaScript. Your inputs never leave your device. Just accurate conversions, instantly.
+          </p>
 
-        {/* ── How to Use ── */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            How to Convert Unix Timestamp to Human Readable Date Online Free
-          </h2>
-          <ol className="list-decimal list-inside text-gray-600 space-y-3 text-base">
-            <li>To convert <strong>timestamp to date</strong>, paste the epoch seconds in the left input and click &quot;Convert to Date&quot;.</li>
-            <li>To convert <strong>date to timestamp</strong>, pick a date/time in the right input and click &quot;Convert to Timestamp&quot;.</li>
-            <li>View the <strong>stats grid</strong> showing current epoch, current date, days since epoch, and days to 2038.</li>
-            <li>Results appear in the <strong>dark output block</strong> — copy individual results or download both as .txt.</li>
-            <li>Use the <strong>live clock banner</strong> at the top to copy the current Unix timestamp at any moment.</li>
-          </ol>
-        </div>
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">Privacy Note</h3>
+          <p className="text-gray-600 leading-relaxed">
+            This tool runs 100% in your browser using JavaScript. No timestamp or date inputs are uploaded to any server. No data is stored or tracked. Your info stays on your device — always.
+          </p>
 
-        {/* ── Features Grid ── */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            Epoch Time Converter with Live Clock – Key Features
-          </h2>
-          <div className="grid md:grid-cols-2 gap-5">
-            {[
-              { title: "Live Unix Clock (Updates Every Second)", desc: "A real-time epoch counter shows the current Unix timestamp at the top of the tool. One-click copy to clipboard for instant use in code, APIs, or database queries." },
-              { title: "Bidirectional Conversion", desc: "Convert Unix timestamps to human-readable dates AND convert dates back to epoch seconds. Both conversions work instantly with Enter key support for power users." },
-              { title: "Epoch Stats Dashboard", desc: "See the current epoch value, current date/time, total days since January 1 1970, and a countdown to the Year 2038 problem — all updating live." },
-              { title: "Copy & Download Results", desc: "Copy individual conversion results to clipboard or download both conversions as a single .txt file. Perfect for documentation, debugging notes, or sharing with team members." }
-            ].map((feature, i) => (
-              <div key={i} className="bg-gray-50 rounded-xl p-5 border border-gray-100">
-                <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+          <p className="text-gray-600 leading-relaxed mt-4">
+            Need more developer tools? Try the{' '}
+            <Link href="/tools/base64-encode" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">Base64 Encoder</Link> for data encoding, or the{' '}
+            <Link href="/tools/json-formatter" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">JSON Formatter</Link> for API debugging.
+          </p>
+        </section>
 
-        {/* ── FAQ Accordion ── */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+        {/* ── FAQ ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Unix Timestamp Converter – Frequently Asked Questions
+            Frequently Asked Questions
           </h2>
-
-          <div className="space-y-4 max-w-4xl mx-auto">
-            {[
-              {
-                q: "How to convert Unix timestamp to human readable date online free?",
-                a: "Paste the Unix timestamp (epoch seconds) into the 'Unix Timestamp to Date' input and click Convert. The tool shows the full human-readable date and time in your browser's local timezone."
-              },
-              {
-                q: "What is a Unix timestamp and why does it start from 1970?",
-                a: "A Unix timestamp (epoch time) is the number of seconds elapsed since January 1, 1970 at 00:00:00 UTC. This date is called the Unix Epoch and was chosen as the standard reference point for Unix operating systems."
-              },
-              {
-                q: "Is Unix timestamp affected by timezone?",
-                a: "No. Unix timestamps are always in UTC and are timezone-agnostic. However, when converting to a readable date, the result is displayed in your browser's local timezone for convenience."
-              },
-              {
-                q: "What is the difference between seconds and milliseconds timestamp?",
-                a: "Standard Unix timestamps are in seconds. Some systems like JavaScript's Date.now() use milliseconds. To convert milliseconds to seconds, divide by 1000. To convert seconds to milliseconds, multiply by 1000."
-              },
-              {
-                q: "What is the Year 2038 problem in Unix timestamps?",
-                a: "32-bit signed Unix timestamps will overflow on January 19, 2038 at 03:14:07 UTC (timestamp 2147483647). Most modern 64-bit systems are not affected. This tool uses 64-bit integers and works correctly far beyond 2038."
-              }
-            ].map((item, i) => (
+          <div className="space-y-3 max-w-4xl mx-auto">
+            {FAQS.map((item, i) => (
               <div key={i} className="border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-sky-200 transition-colors duration-300">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left" aria-expanded={openFaq === i}>
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 pr-4">{item.q}</h3>
-                  <ChevronDown size={22} className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`} />
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left"
+                  aria-expanded={openFaq === i}
+                >
+                  <h3 className="text-sm md:text-base font-bold text-gray-900 pr-4">{item.q}</h3>
+                  <ChevronDown size={22} className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? 'rotate-180' : ''}`} />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
-                  <p className="px-5 pb-5 text-gray-600 leading-relaxed">{item.a}</p>
+                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{item.a}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
         {/* ── Related Tools ── */}
         <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Related Developer &amp; Encoding Tools</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            Related Developer &amp; Encoding Tools
+          </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              { href: "/tools/base64-encode", title: "Base64 Encoder / Decoder", desc: "Encode and decode text to Base64 format for data transmission." },
-              { href: "/tools/url-encoder", title: "URL Encoder / Decoder", desc: "Encode and decode URLs with special characters for APIs." },
-              { href: "/tools/uuid-generator", title: "UUID Generator", desc: "Generate unique UUID v4 identifiers for database keys and tokens." }
-            ].map((tool) => (
-              <Link key={tool.href} href={tool.href} className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-sky-400 transition-all">
-                <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-sky-600 transition-colors">{tool.title}</h3>
+            {RELATED_TOOLS.map((tool) => (
+              <Link
+                key={tool.href}
+                href={tool.href}
+                className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-sky-400 transition-all"
+              >
+                <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-sky-600 transition-colors">
+                  {tool.title}
+                </h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{tool.desc}</p>
               </Link>
             ))}

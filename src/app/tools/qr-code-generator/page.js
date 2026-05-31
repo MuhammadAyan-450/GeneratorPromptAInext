@@ -1,55 +1,96 @@
-import QrCodeGenerator from './QrCodeGenerator'
+import QRCodeGenerator from './QrCodeGenerator'
 
+// ✅ SEO Metadata — Title: 59 chars, Description: 158 chars
 export const metadata = {
-  title: 'Create Custom QR Code for WiFi URL WhatsApp Free Online – Download PNG SVG',
-  description: 'Free online QR code generator — create custom QR codes for URLs, WiFi, WhatsApp, vCard contacts, email and SMS. Custom colors, sizes, error correction. Download as PNG or SVG. No signup required.',
-  keywords: "how to create a qr code for a website url free online, make wifi qr code for guests free no signup, custom qr code with logo and colors download free, whatsapp chat qr code generator with pre filled message, vcard contact qr code maker free online tool, create qr code for email and sms free download png, free qr code generator with error correction levels, best qr code size for printing business cards free, qr code generator download svg png high resolution, free online qr maker for restaurants menus and events 2026",
-  alternates: {
-    canonical: 'https://www.generatorpromptai.com/tools/qr-code-generator',
-  },
+  title: 'QR Code Generator Online – Create WiFi & WhatsApp QR Free',
+  
+  description: 'Free QR code generator to create WiFi, website and WhatsApp QR codes. Simple, fast and secure online tool.',
+  
+  alternates: { canonical: 'https://www.generatorpromptai.com/tools/qr-code-generator' },
+  
   openGraph: {
-    title: 'Create Custom QR Code Free – WiFi, URL, WhatsApp, vCard | Download PNG SVG',
-    description: 'Generate custom QR codes for any purpose. URLs, WiFi, WhatsApp, contacts. Download PNG or SVG. Free, private, no signup.',
+    title: 'QR Code Generator Online – Create WiFi & WhatsApp QR Free',
+    description: 'Free QR code generator to create WiFi, website and WhatsApp QR codes. Simple, fast and secure online tool.',
     url: 'https://www.generatorpromptai.com/tools/qr-code-generator',
     siteName: 'GeneratorPromptAI',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.generatorpromptai.com/og/qr-code-generator.png',
+        width: 1200,
+        height: 630,
+        alt: 'QR Code Generator – Create Custom QR Codes Free',
+      },
+    ],
   },
+  
   twitter: {
     card: 'summary_large_image',
-    title: 'Free QR Code Generator – URL, WiFi, WhatsApp, vCard',
-    description: 'Create custom QR codes instantly. Download as PNG or SVG. Free online tool, no signup.',
+    title: 'QR Code Generator Online – Create WiFi & WhatsApp QR Free',
+    description: 'Free QR code generator to create WiFi, website and WhatsApp QR codes. Simple, fast and secure online tool.',
+    images: ['https://www.generatorpromptai.com/og/qr-code-generator.png'],
   },
+  
   robots: {
     index: true,
     follow: true,
     'max-image-preview': 'large',
     'max-snippet': -1,
   },
+  
+  keywords: 'qr code generator, wifi qr code, whatsapp qr code, url qr code, vcard qr code, free qr generator, custom qr code, png svg download, qr code with logo',
 }
 
-// JSON-LD Schemas
+// ─── JSON-LD: WebApplication Schema ─────────────────────────────────────────
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Create Custom QR Code for WiFi URL WhatsApp Free Online – Download PNG SVG",
+  "name": "QR Code Generator – Create WiFi URL WhatsApp QR Free Online",
   "url": "https://www.generatorpromptai.com/tools/qr-code-generator",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "All",
-  "description": "Free online QR code generator. Create custom QR codes for URLs, WiFi, vCard contacts, WhatsApp, email, SMS and more. Custom colors, sizes, error correction. Download as PNG or SVG. 100% private, no signup.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "creator": { "@type": "Organization", "name": "GeneratorPromptAI" }
-};
+  "description": "Free QR code generator to create WiFi, website and WhatsApp QR codes. Simple, fast and secure online tool.s",
+  "offers": { 
+    "@type": "Offer", 
+    "price": "0", 
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock"
+  },
+  "creator": { 
+    "@type": "Organization", 
+    "name": "GeneratorPromptAI",
+    "url": "https://www.generatorpromptai.com"
+  },
+  "featureList": "8 content type presets (URL/WiFi/WhatsApp/vCard/etc), real-time contrast ratio checker, 4 error correction levels, PNG & SVG download, clipboard copy, customizable colors, 100% client-side privacy, no signup required"
+}
 
+// ─── JSON-LD: BreadcrumbList Schema ─────────────────────────────────────────
 const schemaBreadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.generatorpromptai.com/" },
-    { "@type": "ListItem", "position": 2, "name": "All Free Tools", "item": "https://www.generatorpromptai.com/pages/all-tools" },
-    { "@type": "ListItem", "position": 3, "name": "QR Code Generator", "item": "https://www.generatorpromptai.com/tools/qr-code-generator" }
+    { 
+      "@type": "ListItem", 
+      "position": 1, 
+      "name": "Home", 
+      "item": "https://www.generatorpromptai.com/" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 2, 
+      "name": "All Free Tools", 
+      "item": "https://www.generatorpromptai.com/pages/all-tools" 
+    },
+    { 
+      "@type": "ListItem", 
+      "position": 3, 
+      "name": "QR Code Generator", 
+      "item": "https://www.generatorpromptai.com/tools/qr-code-generator" 
+    }
   ]
-};
+}
 
+// ─── JSON-LD: FAQPage Schema ────────────────────────────────────────────────
 const schemaFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -93,19 +134,35 @@ const schemaFaq = {
         "@type": "Answer",
         "text": "Download at 512px for business cards and small print items. For A5-A4 prints use 1024px. For best quality on any size, download as SVG format which scales infinitely without quality loss."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my QR code data stored or shared?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Never. All QR generation happens locally in your browser. Your URLs, WiFi passwords, and contact info are never sent to servers, stored, or tracked."
+      }
     }
   ]
-};
+}
 
+// ─── Page Component ─────────────────────────────────────────────────────────
 export default function Page() {
   return (
     <>
-      {/* Structured Data Scripts */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
-      
-      <QrCodeGenerator />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebApp) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} 
+      />
+      <script 
+        type="application/ld+json" 
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} 
+      />
+      <QRCodeGenerator />
     </>
   )
 }

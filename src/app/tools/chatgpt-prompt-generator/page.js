@@ -1,9 +1,9 @@
 import ChatgptPromptGenerator from "./ChatgptPromptGenerator";
 
 export const metadata = {
-  title: "Free ChatGPT Prompts Generator For Coding & Writing",
+  title: "Free ChatGPT Prompt Generator for Coding & Writing Tasks",
   description:
-    "Build strong ChatGPT prompts for coding, blog writing, And marketing. Access our free online tool to refine your GPT-4 experience with expert depth.",
+    "Generate powerful ChatGPT prompts for coding, writing, SEO, and more with our free ChatGPT Prompt Generator tool.",
   keywords:
     "how to write better prompts for chatgpt for coding, generate chatgpt prompts for blog writing with tone, custom chatgpt prompt builder with depth and tone settings, prompt engineering template generator for gpt-4, create structured prompts for chatgpt free, chatgpt prompt ideas for content writing and marketing, best prompt format for chatgpt coding",
   alternates: {
@@ -11,18 +11,18 @@ export const metadata = {
       "https://www.generatorpromptai.com/tools/chatgpt-prompt-generator",
   },
   openGraph: {
-    title: "Free ChatGPT Prompts Generator For Coding & Writing",
+    title: "Free ChatGPT Prompt Generator for Coding & Writing Tasks",
     description:
-      "Build strong ChatGPT prompts for coding, blog writing, And marketing. Access our free online tool to refine your GPT-4 experience with expert depth.",
+      "Generate powerful ChatGPT prompts for coding, writing, SEO, and more with our free ChatGPT Prompt Generator tool.",
     url: "https://www.generatorpromptai.com/tools/chatgpt-prompt-generator",
     siteName: "GeneratorPromptAI",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Free ChatGPT Prompts Generator For Coding & Writing",
+    title: "Free ChatGPT Prompt Generator for Coding & Writing Tasks",
     description:
-      "Build strong ChatGPT prompts for coding, blog writing, And marketing. Access our free online tool to refine your GPT-4 experience with expert depth.",
+      "Generate powerful ChatGPT prompts for coding, writing, SEO, and more with our free ChatGPT Prompt Generator tool.",
   },
   robots: {
     index: true,
@@ -40,7 +40,7 @@ const schemaWebApp = {
   applicationCategory: "AIApplication",
   operatingSystem: "All",
   description:
-    "Build strong ChatGPT prompts for coding, blog writing, And marketing. Access our free online tool to refine your GPT-4 experience with expert depth.",
+    "Generate powerful ChatGPT prompts for coding, writing, SEO, and more with our free ChatGPT Prompt Generator tool.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   creator: { "@type": "Organization", name: "GeneratorPromptAI" },
 };
