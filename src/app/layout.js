@@ -1,6 +1,7 @@
 import './globals.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import CookieConsent from '../components/CookieConsent'
 import Script from 'next/script'
 import { Inter } from 'next/font/google'
 
@@ -49,6 +50,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   )

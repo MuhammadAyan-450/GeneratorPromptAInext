@@ -152,7 +152,7 @@ export default function AboutPage() {
 
             {/* Para 1 — Personal hook */}
             <p className="text-gray-700 mb-5 leading-relaxed text-base">
-              My name is Ayan. I'm a developer from Karachi, Pakistan — and I built this site
+             Hi My name is Muhammad Ayan. I'm a Web developer from Karachi, Pakistan — and I built this site
               because I kept running into the same annoying problem. Every time I needed a simple
               free tool online, the site either wanted my email, showed me five popups, or put
               the actual feature behind a "Pro" plan. For a basic age calculator. Or a JSON
@@ -161,7 +161,7 @@ export default function AboutPage() {
 
             {/* Para 2 — The decision */}
             <p className="text-gray-700 mb-5 leading-relaxed text-base">
-              So I built my own. One tool turned into five. Five turned into twenty. Now
+              So I decided to built my own website. One tool turned into five. Five turned into twenty. Now
               GeneratorPromptAI has 40+ tools — and not a single one asks you to sign up or
               pay anything. That was the whole point from day one, and it's not changing.
             </p>

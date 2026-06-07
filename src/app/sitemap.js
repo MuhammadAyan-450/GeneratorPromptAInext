@@ -56,12 +56,16 @@ export default function sitemap() {
     "claude-vs-chatgpt-which-is-better",
     "compress-image-to-100kb-online-free",
     "how-to-calculate-cpm",
-    "how-to-convert-pdf-to-word-without-formatting-loss",
     "how-to-generate-lorem-ipsum-text-custom-length",
     "jpeg-vs-png-complete-comparison-guide",
     "how-to-increase-adsense-earnings",
     "cpm-vs-cpc-explained",
-    "cpm-calculator-how-much-can-you-earn-from-ads"
+    "cpm-calculator-how-much-can-you-earn-from-ads",
+    "how-to-calculate-cpc-online",
+    "chatgpt-prompt-generator-guide",
+    "excel-formula-beautifier-guide",
+    "cpm-formula-how-to-calculate",
+    "how-to-generate-xml-sitemap-free"
   ];
 
   return [
@@ -120,7 +124,7 @@ export default function sitemap() {
     })),
 
     // ═══════════════════════════════════════
-    // ALL 6 BLOG POSTS
+    // ALL 14 BLOG POSTS
     // ═══════════════════════════════════════
     ...blogPosts.map((post) => ({
       url: `https://www.generatorpromptai.com/blog/${post}`,
