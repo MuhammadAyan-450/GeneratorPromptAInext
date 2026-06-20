@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo , useEffect} from "react";
 import Link from "next/link";
 import {
   Sparkles,
@@ -27,6 +27,7 @@ import {
   Briefcase,
   BookOpen,
 } from "lucide-react";
+import {ResponsiveAd} from "../../../components/ads/ResponsiveAd";
 
 // ─── ADVANCED AI DETECTION SCORING ────────────────────────────────────────
 function advancedAiScore(text) {
@@ -1089,6 +1090,8 @@ export default function AiTextHumanizer() {
           </p>
         </div>
 
+       <ResponsiveAd />
+
         {/* MAIN TOOL CARD */}
         <div className="bg-white border border-gray-200 rounded-3xl shadow-sm overflow-hidden mb-8">
           {/* Top bar */}
@@ -1551,6 +1554,15 @@ Tips for best results:
           </div>
         </div>
 
+          {/* Native ad here */}
+
+          <script
+            async="async"
+            data-cfasync="false"
+            src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+          ></script>
+          <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
@@ -1825,6 +1837,8 @@ Tips for best results:
             can help with that.
           </p>
         </section>
+
+       
 
         {/* ─── FAQ ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

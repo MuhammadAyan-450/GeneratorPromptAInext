@@ -1,32 +1,33 @@
-import './globals.css'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import CookieConsent from '../components/CookieConsent'
-import Script from 'next/script'
-import { Inter } from 'next/font/google'
+import "./globals.css";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import CookieConsent from "../components/CookieConsent";
+import Script from "next/script";
+import { Inter } from "next/font/google";
 
 // ─── FONT SETUP ───────────────────────────────────────────────────────────────
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata = {
   title: {
-    default: 'GeneratorPromptAI - Free AI Tools & Prompt Generators Online',
-    template: '%s | GeneratorPromptAI',
+    default: "GeneratorPromptAI - Free AI Tools & Prompt Generators Online",
+    template: "%s | GeneratorPromptAI",
   },
-  description: 'Free AI prompt generators and 30+ online tools for ChatGPT, Claude & Midjourney. No signup needed!',
-  metadataBase: new URL('https://www.generatorpromptai.com'),
+  description:
+    "Free AI prompt generators and 30+ online tools for ChatGPT, Claude & Midjourney. No signup needed!",
+  metadataBase: new URL("https://www.generatorpromptai.com"),
   icons: {
-    icon: '/icon.png',
+    icon: "/icon.png",
   },
   // ✅ AdSense Meta Tag
   other: {
-    'google-adsense-account': 'ca-pub-1355040226257068',
+    "google-adsense-account": "ca-pub-1355040226257068",
   },
-}
+};
 
 export default function RootLayout({ children }) {
   return (
@@ -45,13 +46,21 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-MKQLLNTX67');
           `}
         </Script>
+
+        {/* ✅ Adsterra Social Bar Ad Unit — Global */}
+        <Script
+          src="https://pl29796843.effectivecpmnetwork.com/f6/64/f7/f664f77c096247f67cc367716bce6ccf.js"
+          strategy="afterInteractive"
+        />
       </head>
-      <body className={`${inter.className} min-h-screen flex flex-col antialiased`}>
+      <body
+        className={`${inter.className} min-h-screen flex flex-col antialiased`}
+      >
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
         <CookieConsent />
       </body>
     </html>
-  )
+  );
 }

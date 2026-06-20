@@ -9,6 +9,9 @@ import {
   Zap, Shield, HelpCircle, FileText
 } from 'lucide-react';
 
+import ResponsiveAd from "../../../components/ResponsiveAd";
+
+
 // ─── Helper Functions (Outside Component) ─────────────────────────────────────
 function estimatePixelWidth(text) {
   let width = 0;
@@ -178,6 +181,8 @@ const SerpSnippetPreview = () => {
             See exactly how your page looks in Google search results. Check meta title pixel width, description length, URL breadcrumb and bold keywords — live.
           </p>
         </div>
+
+        <ResponsiveAd />
 
         {/* ── Tool Card ── */}
         <div className="bg-white border border-gray-200 rounded-3xl shadow-sm overflow-hidden mb-6">
@@ -445,6 +450,16 @@ const SerpSnippetPreview = () => {
             </div>
           </div>
         </div>
+
+          {/* Native ad here */}
+
+          <script
+            async="async"
+            data-cfasync="false"
+            src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+          ></script>
+          <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
 
         {/* ── How to Use ── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

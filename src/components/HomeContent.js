@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, memo } from "react";
+import { useState, memo, useEffect } from "react";
+
 import Link from "next/link";
 import {
   Search,
@@ -50,6 +51,8 @@ import {
   MessageSquare,
   Share2,
 } from "lucide-react";
+import Script from "next/script";
+import ResponsiveAd from "./ResponsiveAd";
 
 // ─── TOOLS DATA ───────────────────────────────────────────────────────────────
 const toolsData = [
@@ -620,6 +623,8 @@ export default function HomeContent() {
         </div>
       </section>
 
+      <ResponsiveAd />
+
       {/* ════════════════ SEARCH ════════════════ */}
       <section className="py-16 md:py-20 px-5 bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto text-center">
@@ -1129,6 +1134,17 @@ export default function HomeContent() {
           </div>
         </div>
       </section>
+
+      {/* Native ad here */}
+
+      <Script
+        id="effectivecpm-invoke"
+        strategy="afterInteractive"
+        async
+        data-cfasync="false"
+        src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+      />
+      <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
 
       {/* ════════════════ TRUST & SECURITY ════════════════ */}
       <section className="py-16 md:py-20 px-5 bg-white border-y border-gray-100">

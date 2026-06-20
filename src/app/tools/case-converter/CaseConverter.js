@@ -1,11 +1,24 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  Copy, RefreshCw, Type, FileText, Hash, AlignLeft, Home, ChevronDown,
-  Code, HelpCircle, ArrowRight, Zap, Shield, UserCheck
+  Copy,
+  RefreshCw,
+  Type,
+  FileText,
+  Hash,
+  AlignLeft,
+  Home,
+  ChevronDown,
+  Code,
+  HelpCircle,
+  ArrowRight,
+  Zap,
+  Shield,
+  UserCheck,
 } from "lucide-react";
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 const CaseConverter = () => {
   const [text, setText] = useState("");
@@ -33,25 +46,31 @@ const CaseConverter = () => {
 
   const toSentenceCase = () => {
     // Fixed: Proper regex with safe arrow function
-    const sentenceCase = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, function(c) {
-      return c.toUpperCase();
-    });
+    const sentenceCase = text
+      .toLowerCase()
+      .replace(/(^\s*\w|[.!?]\s*\w)/g, function (c) {
+        return c.toUpperCase();
+      });
     setText(sentenceCase);
   };
 
   const toInverseCase = () => {
     const inverse = text
       .split("")
-      .map((char) => (char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase()))
+      .map((char) =>
+        char === char.toUpperCase() ? char.toLowerCase() : char.toUpperCase(),
+      )
       .join("");
     setText(inverse);
   };
 
   const toCamelCase = () => {
     // Fixed: Safe regex group handling
-    const camel = text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, function(match, chr) {
-      return chr.toUpperCase();
-    });
+    const camel = text
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9]+(.)/g, function (match, chr) {
+        return chr.toUpperCase();
+      });
     setText(camel);
   };
 
@@ -85,16 +104,32 @@ const CaseConverter = () => {
         <nav aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm text-gray-500">
             <li>
-              <Link href="/" className="inline-flex items-center gap-1.5 hover:text-sky-600 transition-colors">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1.5 hover:text-sky-600 transition-colors"
+              >
                 <Home size={14} /> Home
               </Link>
             </li>
-            <li><span className="text-gray-300">/</span></li>
             <li>
-              <Link href="/pages/all-tools" className="hover:text-sky-600 transition-colors">All Tools</Link>
+              <span className="text-gray-300">/</span>
             </li>
-            <li><span className="text-gray-300">/</span></li>
-            <li><span className="text-gray-900 font-semibold">Case Converter</span></li>
+            <li>
+              <Link
+                href="/pages/all-tools"
+                className="hover:text-sky-600 transition-colors"
+              >
+                All Tools
+              </Link>
+            </li>
+            <li>
+              <span className="text-gray-300">/</span>
+            </li>
+            <li>
+              <span className="text-gray-900 font-semibold">
+                Case Converter
+              </span>
+            </li>
           </ol>
         </nav>
       </div>
@@ -109,9 +144,13 @@ const CaseConverter = () => {
             Case Converter
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
-            Caps lock on karke poora paragraph type kar diya? Ya variable name camelCase mein chahiye? Bas paste karo, button dabao, ho gaya. Koi signup nahi, koi limit nahi.
+            Caps lock on karke poora paragraph type kar diya? Ya variable name
+            camelCase mein chahiye? Bas paste karo, button dabao, ho gaya. Koi
+            signup nahi, koi limit nahi.
           </p>
         </div>
+
+        <ResponsiveAd />
 
         {/* Tool Card */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
@@ -132,29 +171,49 @@ const CaseConverter = () => {
           <div className="bg-sky-50 border border-sky-100 rounded-xl p-4 mb-6 flex items-center gap-3">
             <Hash className="text-sky-600" size={20} />
             <div>
-              <p className="text-xs text-sky-500 uppercase font-bold tracking-wider">Total Characters</p>
+              <p className="text-xs text-sky-500 uppercase font-bold tracking-wider">
+                Total Characters
+              </p>
               <p className="text-2xl font-bold text-sky-700">{charCount}</p>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-            <button onClick={toUpperCase} className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2">
+            <button
+              onClick={toUpperCase}
+              className="bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2"
+            >
               UPPERCASE
             </button>
-            <button onClick={toLowerCase} className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+            <button
+              onClick={toLowerCase}
+              className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
+            >
               lowercase
             </button>
-            <button onClick={toTitleCase} className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+            <button
+              onClick={toTitleCase}
+              className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
+            >
               Title Case
             </button>
-            <button onClick={toSentenceCase} className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+            <button
+              onClick={toSentenceCase}
+              className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
+            >
               Sentence
             </button>
-            <button onClick={toInverseCase} className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+            <button
+              onClick={toInverseCase}
+              className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
+            >
               iNVERSE
             </button>
-            <button onClick={toCamelCase} className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+            <button
+              onClick={toCamelCase}
+              className="bg-white border-2 border-sky-100 text-sky-700 hover:bg-sky-50 font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2"
+            >
               camelCase
             </button>
           </div>
@@ -184,6 +243,15 @@ const CaseConverter = () => {
             </button>
           </div>
         </div>
+
+        {/* Native ad here */}
+
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+        ></script>
+        <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
 
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
@@ -236,7 +304,8 @@ const CaseConverter = () => {
             How Case Conversion Actually Works
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            It's not magic — just simple string manipulation. Here's exactly what happens when you click each button.
+            It's not magic — just simple string manipulation. Here's exactly
+            what happens when you click each button.
           </p>
 
           <div className="space-y-5">
@@ -248,7 +317,9 @@ const CaseConverter = () => {
                 text.toUpperCase() // or .toLowerCase()
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                Every character gets converted using JavaScript's built-in methods. Numbers and symbols stay unchanged — only letters are affected.
+                Every character gets converted using JavaScript's built-in
+                methods. Numbers and symbols stay unchanged — only letters are
+                affected.
               </p>
             </div>
 
@@ -260,7 +331,9 @@ const CaseConverter = () => {
                 word[0].toUpperCase() + word.slice(1).toLowerCase()
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                Splits text by spaces, capitalizes first letter of each word, lowercases the rest. Articles like "the" or "a" also get capitalized here.
+                Splits text by spaces, capitalizes first letter of each word,
+                lowercases the rest. Articles like "the" or "a" also get
+                capitalized here.
               </p>
             </div>
 
@@ -269,10 +342,12 @@ const CaseConverter = () => {
                 Sentence Case
               </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
-                text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, function(c) {'{'} return c.toUpperCase(); {'}'})
+                text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, function(c){" "}
+                {"{"} return c.toUpperCase(); {"}"})
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                Uses regex to find sentence starters (beginning of text or after . ! ?) and capitalizes only those letters. Rest stays lowercase.
+                Uses regex to find sentence starters (beginning of text or after
+                . ! ?) and capitalizes only those letters. Rest stays lowercase.
               </p>
             </div>
 
@@ -281,10 +356,13 @@ const CaseConverter = () => {
                 camelCase
               </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
-                text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, function(m, c) {'{'} return c.toUpperCase(); {'}'})
+                text.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, function(m, c){" "}
+                {"{"} return c.toUpperCase(); {"}"})
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                Removes all non-alphanumeric separators (spaces, underscores, dashes), then capitalizes the first letter of each subsequent word. First word stays lowercase.
+                Removes all non-alphanumeric separators (spaces, underscores,
+                dashes), then capitalizes the first letter of each subsequent
+                word. First word stays lowercase.
               </p>
             </div>
 
@@ -293,11 +371,16 @@ const CaseConverter = () => {
                 Full Formula Reference
               </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl overflow-x-auto">
-                UPPERCASE: text.toUpperCase()<br/>
-                lowercase: text.toLowerCase()<br/>
-                Title Case: split + map + join logic<br/>
-                Sentence: regex replace on sentence boundaries<br/>
-                iNVERSE: char-by-char toggle<br/>
+                UPPERCASE: text.toUpperCase()
+                <br />
+                lowercase: text.toLowerCase()
+                <br />
+                Title Case: split + map + join logic
+                <br />
+                Sentence: regex replace on sentence boundaries
+                <br />
+                iNVERSE: char-by-char toggle
+                <br />
                 camelCase: regex + capitalize logic
               </div>
             </div>
@@ -321,7 +404,9 @@ const CaseConverter = () => {
                 </span>
               </div>
               <div className="bg-green-50 border border-green-100 rounded-lg p-4">
-                <p className="text-xs text-green-700 font-medium mb-1">Original Text:</p>
+                <p className="text-xs text-green-700 font-medium mb-1">
+                  Original Text:
+                </p>
                 <p className="font-mono text-sm text-gray-800 break-all">
                   the quick brown fox jumps over the lazy dog
                 </p>
@@ -374,10 +459,18 @@ const CaseConverter = () => {
                 </span>
               </div>
               <div className="bg-green-50 border border-green-100 rounded-lg p-4">
-                <p className="text-xs text-green-700 font-medium mb-1">Input:</p>
-                <p className="font-mono text-sm text-gray-800 break-all">Hello World</p>
-                <p className="text-xs text-green-600 font-mono break-all mt-2">Output:</p>
-                <p className="font-mono text-sm text-gray-800 break-all">hELLO wORLD</p>
+                <p className="text-xs text-green-700 font-medium mb-1">
+                  Input:
+                </p>
+                <p className="font-mono text-sm text-gray-800 break-all">
+                  Hello World
+                </p>
+                <p className="text-xs text-green-600 font-mono break-all mt-2">
+                  Output:
+                </p>
+                <p className="font-mono text-sm text-gray-800 break-all">
+                  hELLO wORLD
+                </p>
               </div>
             </div>
           </div>
@@ -389,7 +482,8 @@ const CaseConverter = () => {
             When Do You Actually Need Case Conversion?
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Not as often as you might think. Here's where case conversion actually shows up in real work.
+            Not as often as you might think. Here's where case conversion
+            actually shows up in real work.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
@@ -436,30 +530,43 @@ const CaseConverter = () => {
             What Case Conversion Is (And What It Isn't)
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            There's a lot of confusion around text case because people think "Title Case" and "Sentence case" are the same thing. They're not.
+            There's a lot of confusion around text case because people think
+            "Title Case" and "Sentence case" are the same thing. They're not.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Title Case capitalizes the first letter of every word — great for headings, titles, and formal documents. Sentence case only capitalizes the first letter of each sentence — that's how normal paragraphs look in books and articles.
+            Title Case capitalizes the first letter of every word — great for
+            headings, titles, and formal documents. Sentence case only
+            capitalizes the first letter of each sentence — that's how normal
+            paragraphs look in books and articles.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            camelCase is different altogether — it's for programming. Spaces get removed, first word stays lowercase, and every new word starts with a capital letter. That's why 'my variable name' becomes 'myVariableName'.
+            camelCase is different altogether — it's for programming. Spaces get
+            removed, first word stays lowercase, and every new word starts with
+            a capital letter. That's why 'my variable name' becomes
+            'myVariableName'.
           </p>
 
           <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
             Why Case Matters for SEO
           </h3>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Search engines don't care about case in your content — but humans do. A heading in Title Case looks more professional and is easier to scan. A paragraph in Sentence case reads more naturally.
+            Search engines don't care about case in your content — but humans
+            do. A heading in Title Case looks more professional and is easier to
+            scan. A paragraph in Sentence case reads more naturally.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            For code, case is critical. JavaScript is case-sensitive — 'UserName' and 'username' are two different variables. Getting case wrong can break your entire app.
+            For code, case is critical. JavaScript is case-sensitive —
+            'UserName' and 'username' are two different variables. Getting case
+            wrong can break your entire app.
           </p>
 
           <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
             Privacy Note
           </h3>
           <p className="text-gray-600 leading-relaxed">
-            This tool runs 100% in your browser. Your text never leaves your device — no server upload, no logging, no tracking. Close the tab and it's gone. That's how it should be.
+            This tool runs 100% in your browser. Your text never leaves your
+            device — no server upload, no logging, no tracking. Close the tab
+            and it's gone. That's how it should be.
           </p>
 
           <p className="text-gray-600 leading-relaxed mt-4">
@@ -563,12 +670,36 @@ const CaseConverter = () => {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { href: "/tools/word-counter", title: "Word Counter", desc: "Count words, characters, and reading time instantly." },
-              { href: "/tools/uppercase-to-lowercase", title: "Uppercase to Lowercase", desc: "Simple two-way case converter for quick fixes." },
-              { href: "/tools/remove-duplicate-lines", title: "Remove Duplicate Lines", desc: "Clean lists by removing duplicate entries instantly." },
-              { href: "/tools/lorem-ipsum-generator", title: "Lorem Ipsum Generator", desc: "Generate placeholder text for design mockups." },
-              { href: "/tools/json-formatter", title: "JSON Formatter", desc: "Format and validate JSON code with syntax highlighting." },
-              { href: "/tools/base64-encode", title: "Base64 Encoder", desc: "Encode text to Base64 or decode Base64 strings." },
+              {
+                href: "/tools/word-counter",
+                title: "Word Counter",
+                desc: "Count words, characters, and reading time instantly.",
+              },
+              {
+                href: "/tools/uppercase-to-lowercase",
+                title: "Uppercase to Lowercase",
+                desc: "Simple two-way case converter for quick fixes.",
+              },
+              {
+                href: "/tools/remove-duplicate-lines",
+                title: "Remove Duplicate Lines",
+                desc: "Clean lists by removing duplicate entries instantly.",
+              },
+              {
+                href: "/tools/lorem-ipsum-generator",
+                title: "Lorem Ipsum Generator",
+                desc: "Generate placeholder text for design mockups.",
+              },
+              {
+                href: "/tools/json-formatter",
+                title: "JSON Formatter",
+                desc: "Format and validate JSON code with syntax highlighting.",
+              },
+              {
+                href: "/tools/base64-encode",
+                title: "Base64 Encoder",
+                desc: "Encode text to Base64 or decode Base64 strings.",
+              },
             ].map((tool) => (
               <Link
                 key={tool.href}

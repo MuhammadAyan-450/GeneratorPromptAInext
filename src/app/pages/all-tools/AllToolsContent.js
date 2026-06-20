@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // useEffect import kiya hai
 import Link from "next/link";
 import tools, { toolCategories } from "../../data/tools";
+
 import {
   ArrowLeft,
   Search,
@@ -9,6 +10,7 @@ import {
   ArrowRight,
   Layout,
 } from "lucide-react";
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 // ─── EMOJI MAPPER ─────────────────────────────────────────────────────────────
 const getToolEmoji = (path) => {
@@ -147,6 +149,7 @@ export default function AllToolsContent() {
             generator, word counter, Base64 encoder, and AI prompt generators.
             Absolutely free, no registration, ready to use right away!
           </p>
+
           {/* Quick Stats */}
           <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3 mt-8 text-[13px] text-gray-500 tracking-wide">
             <div className="flex items-center gap-2">
@@ -171,6 +174,10 @@ export default function AllToolsContent() {
             </div>
           </div>
         </div>
+
+        {/* Banner ad here */}
+
+        <ResponsiveAd />
 
         {/* SEARCH + CATEGORY FILTERS */}
         <div className="mb-12 space-y-6">
@@ -359,6 +366,15 @@ export default function AllToolsContent() {
           </section>
         )}
       </div>
+
+      {/* Native ad here */}
+
+      <script
+        async="async"
+        data-cfasync="false"
+        src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+      ></script>
+      <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
     </div>
   );
 }

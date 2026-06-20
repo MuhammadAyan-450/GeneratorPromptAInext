@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ArrowLeft, Sparkles, ShieldCheck, Users, Globe2, Heart, Zap, Code, Lock } from 'lucide-react'
+import ResponsiveAd from '../../components/ResponsiveAd'
 
 export const metadata = {
   title: 'About Us – Free AI Tools Platform | GeneratorPromptAI',
@@ -109,7 +110,7 @@ export default function AboutPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFaq) }} />
 
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white relative">
 
         {/* Decorative background */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -118,14 +119,14 @@ export default function AboutPage() {
         </div>
 
         {/* Back link */}
-        <div className="relative max-w-7xl mx-auto w-full px-4 py-6">
+        <div className="relative max-w-7xl mx-auto w-full px-4 py-6 z-10">
           <Link href="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-indigo-600 transition-colors text-sm font-medium group">
             <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
             Back to Home
           </Link>
         </div>
 
-        <div className="relative max-w-4xl mx-auto px-4 pb-20">
+        <div className="relative max-w-4xl mx-auto px-4 pb-20 z-10">
 
           {/* Hero */}
           <div className="text-center mb-12">
@@ -142,6 +143,10 @@ export default function AboutPage() {
               40+ free tools. No signup. No nonsense. Just open and use.
             </p>
           </div>
+
+          {/* Ad */}
+
+          <ResponsiveAd />
 
           {/* ── STORY SECTION ── */}
           <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-10 mb-10 shadow-sm">

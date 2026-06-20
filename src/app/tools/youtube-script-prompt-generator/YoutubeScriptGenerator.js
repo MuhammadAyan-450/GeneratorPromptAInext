@@ -7,6 +7,9 @@ import {
   Zap, Shield, HelpCircle, FileText, Play, BarChart3, Globe, CheckCircle2
 } from 'lucide-react';
 
+import ResponsiveAd from "../../../components/ResponsiveAd";
+
+
 // ─── High-quality, structured YouTube prompt templates (2025–2026 viral style) ──
 const YOUTUBE_TEMPLATES = [
   "Write a high-retention YouTube video script about {topic}. Start with a shocking/curiosity hook in first 5–8 seconds, use storytelling + pattern interrupts every 30–60s, include 5–8 clear value sections, b-roll & visual suggestions, end with very strong benefit-driven CTA (subscribe, like, comment, bell, share). Optimize for 10–18 min watch time.",
@@ -216,6 +219,8 @@ const YoutubeScriptGenerator = () => {
             Generate high-retention YouTube video scripts, titles, hooks, thumbnail ideas, and full outlines instantly. Perfect for Pakistani & global creators.
           </p>
         </div>
+
+        <ResponsiveAd />
 
         {/* ── Tool Card ── */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden mb-12">
@@ -436,6 +441,16 @@ const YoutubeScriptGenerator = () => {
             </div>
           </div>
         </div>
+
+          {/* Native ad here */}
+
+          <script
+            async="async"
+            data-cfasync="false"
+            src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+          ></script>
+          <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
 
         {/* ── How to Use ── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

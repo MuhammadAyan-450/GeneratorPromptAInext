@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import Link from "next/link";
 import {
   Sparkles,
@@ -23,6 +23,7 @@ import {
   Sliders,
   RefreshCcw,
 } from "lucide-react";
+import {ResponsiveAd} from "../../../components/ResponsiveAd";
 
 // ─── ADVANCED AI DETECTION SCORING (15+ Signals) ─────────────────────────────
 function advancedAiScore(text) {
@@ -1053,6 +1054,7 @@ export default function AiTextHumanizer() {
     ? getScoreLabel(outputAnalysis.score, outputAnalysis.confidence)
     : null;
 
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Breadcrumb */}
@@ -1109,6 +1111,8 @@ export default function AiTextHumanizer() {
             no signup.
           </p>
         </div>
+
+       <ResponsiveAd />
 
         {/* MAIN TOOL CARD */}
         <div className="bg-white border border-gray-200 rounded-3xl shadow-sm overflow-hidden mb-8">
@@ -1563,6 +1567,15 @@ Example AI text:
           </div>
         </div>
 
+        {/* Native ad here */}
+
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+        ></script>
+        <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
         {/* SEO Content Sections */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -1659,6 +1672,8 @@ Example AI text:
             ))}
           </div>
         </section>
+
+       
 
         {/* FAQ */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

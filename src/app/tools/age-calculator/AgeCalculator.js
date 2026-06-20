@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Copy,
@@ -14,6 +14,7 @@ import {
   Briefcase,
   Clock,
 } from "lucide-react";
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 const AgeCalculator = () => {
   const [birthDate, setBirthDate] = useState("");
@@ -138,6 +139,8 @@ const AgeCalculator = () => {
     setCopied(false);
   };
 
+  
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Breadcrumb */}
@@ -191,6 +194,8 @@ const AgeCalculator = () => {
             days, and a countdown to your next one.
           </p>
         </div>
+
+        <ResponsiveAd />
 
         {/* Calculator Card */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
@@ -308,6 +313,15 @@ const AgeCalculator = () => {
             </div>
           )}
         </div>
+
+        {/* Native ad here */}
+
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+        ></script>
+        <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
 
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
@@ -706,6 +720,7 @@ const AgeCalculator = () => {
             can help with that math.
           </p>
         </section>
+
 
         {/* ─── FAQ ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

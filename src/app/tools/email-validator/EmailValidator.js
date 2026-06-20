@@ -1,11 +1,26 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  RefreshCw, MailCheck, MailX, Globe, AtSign, Home, ChevronDown,
-  Code, HelpCircle, Zap, Shield, BarChart3, FileText, Copy, Download
+  RefreshCw,
+  MailCheck,
+  MailX,
+  Globe,
+  AtSign,
+  Home,
+  ChevronDown,
+  Code,
+  HelpCircle,
+  Zap,
+  Shield,
+  BarChart3,
+  FileText,
+  Copy,
+  Download,
 } from "lucide-react";
+
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 const EmailValidator = () => {
   const [email, setEmail] = useState("");
@@ -55,7 +70,7 @@ const EmailValidator = () => {
 
   const copyResult = () => {
     if (!result) return;
-    const text = result.isValid 
+    const text = result.isValid
       ? `Valid Email: ${email}\nUsername: ${result.details.username}\nDomain: ${result.details.provider}`
       : `Invalid Email: ${email}\nReason: Invalid format`;
     navigator.clipboard.writeText(text);
@@ -70,16 +85,32 @@ const EmailValidator = () => {
         <nav aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-sm text-gray-500">
             <li>
-              <Link href="/" className="inline-flex items-center gap-1.5 hover:text-sky-600 transition-colors">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1.5 hover:text-sky-600 transition-colors"
+              >
                 <Home size={14} /> Home
               </Link>
             </li>
-            <li><span className="text-gray-300">/</span></li>
             <li>
-              <Link href="/pages/all-tools" className="hover:text-sky-600 transition-colors">All Tools</Link>
+              <span className="text-gray-300">/</span>
             </li>
-            <li><span className="text-gray-300">/</span></li>
-            <li><span className="text-gray-900 font-semibold">Email Validator</span></li>
+            <li>
+              <Link
+                href="/pages/all-tools"
+                className="hover:text-sky-600 transition-colors"
+              >
+                All Tools
+              </Link>
+            </li>
+            <li>
+              <span className="text-gray-300">/</span>
+            </li>
+            <li>
+              <span className="text-gray-900 font-semibold">
+                Email Validator
+              </span>
+            </li>
           </ol>
         </nav>
       </div>
@@ -94,16 +125,21 @@ const EmailValidator = () => {
             Email Validator
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
-            Check if an email address format is valid instantly. Detect missing @ symbols, invalid domains, and bad characters without sending any emails. 100% private & browser-based.
+            Check if an email address format is valid instantly. Detect missing
+            @ symbols, invalid domains, and bad characters without sending any
+            emails. 100% private & browser-based.
           </p>
         </div>
 
+        <ResponsiveAd />
+
         {/* Tool Card */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
-          
           {/* Input */}
           <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Enter Email Address</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Enter Email Address
+            </label>
             <div className="flex flex-col md:flex-row gap-3">
               <input
                 type="text"
@@ -124,25 +160,38 @@ const EmailValidator = () => {
 
           {/* Stats Bar */}
           <div className="bg-gray-50 border border-gray-100 rounded-xl p-3 mb-6 flex items-center justify-between">
-            <span className="text-xs text-gray-500 uppercase font-bold tracking-wider">Length</span>
-            <span className="text-sm font-bold text-gray-700">{charCount} characters</span>
+            <span className="text-xs text-gray-500 uppercase font-bold tracking-wider">
+              Length
+            </span>
+            <span className="text-sm font-bold text-gray-700">
+              {charCount} characters
+            </span>
           </div>
 
           {/* Result Display */}
           {result && (
-            <div className={`rounded-2xl p-6 md:p-8 mb-6 flex flex-col md:flex-row items-center gap-6 ${result.isValid ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"}`}>
-              <div className={`p-4 rounded-full ${result.isValid ? "bg-green-200 text-green-700" : "bg-red-200 text-red-700"}`}>
+            <div
+              className={`rounded-2xl p-6 md:p-8 mb-6 flex flex-col md:flex-row items-center gap-6 ${result.isValid ? "bg-green-50 border border-green-200" : "bg-red-50 border border-red-200"}`}
+            >
+              <div
+                className={`p-4 rounded-full ${result.isValid ? "bg-green-200 text-green-700" : "bg-red-200 text-red-700"}`}
+              >
                 {result.isValid ? <MailCheck size={40} /> : <MailX size={40} />}
               </div>
               <div className="text-center md:text-left flex-1">
-                <h2 className={`text-2xl font-bold mb-1 ${result.isValid ? "text-green-800" : "text-red-800"}`}>
+                <h2
+                  className={`text-2xl font-bold mb-1 ${result.isValid ? "text-green-800" : "text-red-800"}`}
+                >
                   {result.message}
                 </h2>
                 {result.isValid && result.details && (
                   <div className="text-sm text-green-700 space-y-1 mt-2">
-                    <p><strong>Username:</strong> {result.details.username}</p>
+                    <p>
+                      <strong>Username:</strong> {result.details.username}
+                    </p>
                     <p className="flex items-center justify-center md:justify-start gap-1">
-                      <strong>Provider:</strong> <Globe size={14} /> {result.details.provider}
+                      <strong>Provider:</strong> <Globe size={14} />{" "}
+                      {result.details.provider}
                     </p>
                   </div>
                 )}
@@ -157,14 +206,30 @@ const EmailValidator = () => {
 
           {/* Utility Actions */}
           <div className="flex flex-wrap justify-center gap-3 border-t border-gray-100 pt-6">
-            <button onClick={copyResult} disabled={!result} className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 hover:bg-sky-700 disabled:opacity-50 text-white rounded-xl text-sm font-semibold transition-all shadow-sm hover:shadow-md">
+            <button
+              onClick={copyResult}
+              disabled={!result}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 hover:bg-sky-700 disabled:opacity-50 text-white rounded-xl text-sm font-semibold transition-all shadow-sm hover:shadow-md"
+            >
               <Copy size={16} /> {copied ? "Copied!" : "Copy Result"}
             </button>
-            <button onClick={handleClear} className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-red-600 rounded-xl text-sm font-semibold transition-all">
+            <button
+              onClick={handleClear}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-red-600 rounded-xl text-sm font-semibold transition-all"
+            >
               <RefreshCw size={16} /> Clear
             </button>
           </div>
         </div>
+
+        {/* Native ad here */}
+
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+        ></script>
+        <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
 
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
@@ -194,8 +259,12 @@ const EmailValidator = () => {
                   {item.step}
                 </span>
                 <div>
-                  <p className="font-semibold text-gray-900 text-sm mb-1">{item.title}</p>
-                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="font-semibold text-gray-900 text-sm mb-1">
+                    {item.title}
+                  </p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
               </li>
             ))}
@@ -207,29 +276,45 @@ const EmailValidator = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             How Email Validation Works
           </h2>
-          <p className="text-gray-500 text-sm mb-6">It uses standard Regex patterns to check structure. Here's what it looks for.</p>
+          <p className="text-gray-500 text-sm mb-6">
+            It uses standard Regex patterns to check structure. Here's what it
+            looks for.
+          </p>
 
           <div className="space-y-5">
             <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
-              <h3 className="font-bold text-gray-900 text-sm mb-2">Regex Pattern</h3>
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Regex Pattern
+              </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
                 /^[^\s@]+@[^\s@]+\.[^\s@]+$/
               </div>
-              <p className="text-gray-500 text-xs leading-relaxed">Checks for: No spaces, one @ symbol, valid characters before/after @, and a dot in the domain.</p>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Checks for: No spaces, one @ symbol, valid characters
+                before/after @, and a dot in the domain.
+              </p>
             </div>
 
             <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
-              <h3 className="font-bold text-gray-900 text-sm mb-2">Structure Check</h3>
+              <h3 className="font-bold text-gray-900 text-sm mb-2">
+                Structure Check
+              </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
                 username @ domain . com
               </div>
-              <p className="text-gray-500 text-xs leading-relaxed">Splits the email into parts. Ensures 'username' has no illegal chars and 'domain' has a valid extension.</p>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                Splits the email into parts. Ensures 'username' has no illegal
+                chars and 'domain' has a valid extension.
+              </p>
             </div>
 
             <div className="bg-sky-50 border border-sky-100 rounded-xl p-4">
-              <h3 className="font-bold text-sky-900 text-sm mb-2">Privacy Note</h3>
+              <h3 className="font-bold text-sky-900 text-sm mb-2">
+                Privacy Note
+              </h3>
               <p className="text-sky-800 text-xs leading-relaxed">
-                All validation happens locally in your browser. Your email is never sent to any server. 100% private.
+                All validation happens locally in your browser. Your email is
+                never sent to any server. 100% private.
               </p>
             </div>
           </div>
@@ -240,36 +325,56 @@ const EmailValidator = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Validation Examples
           </h2>
-          <p className="text-gray-500 text-sm mb-6">See what valid and invalid emails look like.</p>
+          <p className="text-gray-500 text-sm mb-6">
+            See what valid and invalid emails look like.
+          </p>
 
           <div className="space-y-5">
             <div className="border border-gray-100 rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-lg">Valid</span>
+                <span className="text-sm bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-lg">
+                  Valid
+                </span>
               </div>
               <div className="bg-green-50 border border-green-100 rounded-lg p-4">
-                <p className="font-mono text-sm text-gray-800">john.doe@gmail.com</p>
-                <p className="text-xs text-green-600 mt-2">✅ Has @, valid domain, no spaces.</p>
+                <p className="font-mono text-sm text-gray-800">
+                  john.doe@gmail.com
+                </p>
+                <p className="text-xs text-green-600 mt-2">
+                  ✅ Has @, valid domain, no spaces.
+                </p>
               </div>
             </div>
 
             <div className="border border-gray-100 rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm bg-red-100 text-red-700 font-bold px-2.5 py-1 rounded-lg">Invalid</span>
+                <span className="text-sm bg-red-100 text-red-700 font-bold px-2.5 py-1 rounded-lg">
+                  Invalid
+                </span>
               </div>
               <div className="bg-red-50 border border-red-100 rounded-lg p-4">
-                <p className="font-mono text-sm text-gray-800">john.doe@gmail</p>
-                <p className="text-xs text-red-600 mt-2">❌ Missing top-level domain (.com).</p>
+                <p className="font-mono text-sm text-gray-800">
+                  john.doe@gmail
+                </p>
+                <p className="text-xs text-red-600 mt-2">
+                  ❌ Missing top-level domain (.com).
+                </p>
               </div>
             </div>
-            
+
             <div className="border border-gray-100 rounded-2xl p-5">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm bg-red-100 text-red-700 font-bold px-2.5 py-1 rounded-lg">Invalid</span>
+                <span className="text-sm bg-red-100 text-red-700 font-bold px-2.5 py-1 rounded-lg">
+                  Invalid
+                </span>
               </div>
               <div className="bg-red-50 border border-red-100 rounded-lg p-4">
-                <p className="font-mono text-sm text-gray-800">john doe@gmail.com</p>
-                <p className="text-xs text-red-600 mt-2">❌ Contains a space in the username.</p>
+                <p className="font-mono text-sm text-gray-800">
+                  john doe@gmail.com
+                </p>
+                <p className="text-xs text-red-600 mt-2">
+                  ❌ Contains a space in the username.
+                </p>
               </div>
             </div>
           </div>
@@ -280,7 +385,9 @@ const EmailValidator = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Who Uses Email Validators?
           </h2>
-          <p className="text-gray-500 text-sm mb-6">Not just developers. Here's where accurate validation matters.</p>
+          <p className="text-gray-500 text-sm mb-6">
+            Not just developers. Here's where accurate validation matters.
+          </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
@@ -304,10 +411,17 @@ const EmailValidator = () => {
                 desc: "Double-check your own email address before signing up for important services.",
               },
             ].map((item, i) => (
-              <div key={i} className="border border-gray-100 rounded-2xl p-5 hover:border-sky-200 transition-colors">
+              <div
+                key={i}
+                className="border border-gray-100 rounded-2xl p-5 hover:border-sky-200 transition-colors"
+              >
                 <div className="mb-3">{item.icon}</div>
-                <h3 className="font-bold text-gray-900 text-sm mb-1.5">{item.title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                <h3 className="font-bold text-gray-900 text-sm mb-1.5">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-xs leading-relaxed">
+                  {item.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -319,26 +433,50 @@ const EmailValidator = () => {
             Why Email Syntax Validation Matters
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Sending an email to an invalid address bounces back, hurting your sender reputation. Our <strong>Email Syntax Checker</strong> allows you to test if an email address is formatted correctly without actually sending a message.
+            Sending an email to an invalid address bounces back, hurting your
+            sender reputation. Our <strong>Email Syntax Checker</strong> allows
+            you to test if an email address is formatted correctly without
+            actually sending a message.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            It uses standard regex pattern matching to instantly verify the structure of the email, ensuring it has a valid username, <code>@</code> symbol, and proper domain extension. This is particularly useful for developers building <strong>HTML forms</strong> who need to validate user inputs on the client side.
+            It uses standard regex pattern matching to instantly verify the
+            structure of the email, ensuring it has a valid username,{" "}
+            <code>@</code> symbol, and proper domain extension. This is
+            particularly useful for developers building{" "}
+            <strong>HTML forms</strong> who need to validate user inputs on the
+            client side.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            For marketers, cleaning up mailing lists to remove typos and fake emails before sending out campaigns can significantly improve open rates and reduce bounce rates.
+            For marketers, cleaning up mailing lists to remove typos and fake
+            emails before sending out campaigns can significantly improve open
+            rates and reduce bounce rates.
           </p>
 
           <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
             Privacy Note
           </h3>
           <p className="text-gray-600 leading-relaxed">
-            This tool runs 100% in your browser. Your email addresses are never sent to any server — no logging, no tracking, no storage. Close the tab and it's gone. That's how it should be.
+            This tool runs 100% in your browser. Your email addresses are never
+            sent to any server — no logging, no tracking, no storage. Close the
+            tab and it's gone. That's how it should be.
           </p>
 
           <p className="text-gray-600 leading-relaxed mt-4">
             Need to encode URLs for web requests? Try the{" "}
-            <Link href="/tools/url-encoder" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">URL Encoder</Link>. Cleaning up text lists? The{" "}
-            <Link href="/tools/remove-duplicate-lines" className="text-sky-600 underline underline-offset-2 hover:text-sky-700">Remove Duplicate Lines</Link> tool has your back.
+            <Link
+              href="/tools/url-encoder"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              URL Encoder
+            </Link>
+            . Cleaning up text lists? The{" "}
+            <Link
+              href="/tools/remove-duplicate-lines"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              Remove Duplicate Lines
+            </Link>{" "}
+            tool has your back.
           </p>
         </section>
 
@@ -382,13 +520,29 @@ const EmailValidator = () => {
                 a: "Currently, this tool validates one email at a time. For bulk validation, you would need to paste them one by one or use a dedicated bulk verification tool.",
               },
             ].map((item, i) => (
-              <div key={i} className="border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-sky-200 transition-colors duration-300">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between p-5 text-left" aria-expanded={openFaq === i}>
-                  <h3 className="text-sm md:text-base font-bold text-gray-900 pr-4">{item.q}</h3>
-                  <ChevronDown size={22} className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`} />
+              <div
+                key={i}
+                className="border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-sky-200 transition-colors duration-300"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left"
+                  aria-expanded={openFaq === i}
+                >
+                  <h3 className="text-sm md:text-base font-bold text-gray-900 pr-4">
+                    {item.q}
+                  </h3>
+                  <ChevronDown
+                    size={22}
+                    className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
+                  />
                 </button>
-                <div className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
-                  <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">{item.a}</p>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
+                >
+                  <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+                    {item.a}
+                  </p>
                 </div>
               </div>
             ))}
@@ -402,16 +556,48 @@ const EmailValidator = () => {
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { href: "/tools/url-encoder", title: "URL Encoder", desc: "Encode/decode URLs safely." },
-              { href: "/tools/remove-duplicate-lines", title: "Remove Duplicates", desc: "Clean up text lists." },
-              { href: "/tools/case-converter", title: "Case Converter", desc: "Change text case formats." },
-              { href: "/tools/json-formatter", title: "JSON Formatter", desc: "Beautify JSON code." },
-              { href: "/tools/base64-encode", title: "Base64 Encoder", desc: "Encode text to Base64." },
-              { href: "/tools/word-counter", title: "Word Counter", desc: "Count words & characters." },
+              {
+                href: "/tools/url-encoder",
+                title: "URL Encoder",
+                desc: "Encode/decode URLs safely.",
+              },
+              {
+                href: "/tools/remove-duplicate-lines",
+                title: "Remove Duplicates",
+                desc: "Clean up text lists.",
+              },
+              {
+                href: "/tools/case-converter",
+                title: "Case Converter",
+                desc: "Change text case formats.",
+              },
+              {
+                href: "/tools/json-formatter",
+                title: "JSON Formatter",
+                desc: "Beautify JSON code.",
+              },
+              {
+                href: "/tools/base64-encode",
+                title: "Base64 Encoder",
+                desc: "Encode text to Base64.",
+              },
+              {
+                href: "/tools/word-counter",
+                title: "Word Counter",
+                desc: "Count words & characters.",
+              },
             ].map((tool) => (
-              <Link key={tool.href} href={tool.href} className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-sky-400 transition-all">
-                <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-sky-600 transition-colors">{tool.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{tool.desc}</p>
+              <Link
+                key={tool.href}
+                href={tool.href}
+                className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-sky-400 transition-all"
+              >
+                <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-sky-600 transition-colors">
+                  {tool.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {tool.desc}
+                </p>
               </Link>
             ))}
           </div>

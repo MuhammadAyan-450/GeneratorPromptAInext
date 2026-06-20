@@ -7,6 +7,9 @@ import {
   Hash, Type, Code, Layers, Settings, Shield, Zap, Globe, HelpCircle, CheckCircle
 } from "lucide-react";
 
+import ResponsiveAd from "../../../components/ResponsiveAd";
+
+
 // ─── Configuration Constants ──────────────────────────────────────────────────────
 const OPTIONS = {
   realism: [
@@ -176,6 +179,8 @@ export default function MidjourneyPromptGenerator() {
           </p>
         </div>
 
+        <ResponsiveAd />
+
         {/* ── Tool Card ── */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
 
@@ -312,6 +317,16 @@ export default function MidjourneyPromptGenerator() {
             </div>
           )}
         </div>
+
+          {/* Native ad here */}
+
+          <script
+            async="async"
+            data-cfasync="false"
+            src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+          ></script>
+          <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
 
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

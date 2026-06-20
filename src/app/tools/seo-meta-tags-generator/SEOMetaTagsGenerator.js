@@ -7,6 +7,9 @@ import {
   Zap, Shield, HelpCircle, CheckCircle2, FileText, Globe, ArrowRight
 } from 'lucide-react';
 
+import ResponsiveAd from "../../../components/ResponsiveAd";
+
+
 // ─── Helper Functions (Outside Component) ─────────────────────────────────────
 const validateForm = (formData) => {
   const errors = {};
@@ -231,6 +234,8 @@ const SEOMetaTagsGenerator = () => {
           </p>
         </div>
 
+        <ResponsiveAd />
+
         {/* ── Tool Card ── */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
           
@@ -449,6 +454,16 @@ const SEOMetaTagsGenerator = () => {
             </div>
           )}
         </div>
+
+          {/* Native ad here */}
+
+          <script
+            async="async"
+            data-cfasync="false"
+            src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+          ></script>
+          <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
 
         {/* ── How to Use ── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

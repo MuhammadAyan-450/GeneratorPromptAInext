@@ -20,6 +20,9 @@ import {
   RefreshCw,
 } from "lucide-react";
 
+import ResponsiveAd from "../../../components/ResponsiveAd";
+
+
 // ─── Helper Functions (Outside Component) ─────────────────────────────────────
 const escapeXml = (unsafe) => {
   return unsafe.replace(/[<>&'"]/g, (c) => {
@@ -308,6 +311,8 @@ const SitemapGenerator = () => {
           </p>
         </div>
 
+        <ResponsiveAd />
+
         {/* ── Tool Card ── */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden mb-12">
           <div className="p-6 md:p-8">
@@ -472,6 +477,16 @@ const SitemapGenerator = () => {
             </div>
           </div>
         </div>
+
+          {/* Native ad here */}
+
+          <script
+            async="async"
+            data-cfasync="false"
+            src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+          ></script>
+          <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
 
         {/* ── How to Use ── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

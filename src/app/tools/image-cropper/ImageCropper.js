@@ -10,6 +10,9 @@ import {
   Globe, HelpCircle, CheckCircle, Image as ImageIcon
 } from "lucide-react";
 
+import ResponsiveAd from "../../../components/ResponsiveAd";
+
+
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
   return centerCrop(makeAspectCrop({ unit: "%", width: 90 }, aspect, mediaWidth, mediaHeight), mediaWidth, mediaHeight);
@@ -196,6 +199,8 @@ export default function ImageCropper() {
           </p>
         </div>
 
+        <ResponsiveAd />
+
         {/* ── Tool Card ── */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
 
@@ -323,6 +328,16 @@ export default function ImageCropper() {
             </div>
           )}
         </div>
+
+          {/* Native ad here */}
+
+          <script
+            async="async"
+            data-cfasync="false"
+            src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+          ></script>
+          <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
 
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">

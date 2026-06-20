@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Copy,
@@ -21,6 +21,7 @@ import {
   Target,
   BarChart3,
 } from "lucide-react";
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 const AdSenseRevenueCalculator = () => {
   const [pageViews, setPageViews] = useState("");
@@ -63,7 +64,6 @@ const AdSenseRevenueCalculator = () => {
       setError("Please select at least one niche category");
       return;
     }
-
     const views = parseFloat(pageViews);
     const units = parseInt(adUnits) || 3;
     const results = selectedCategories.map((catId) => {
@@ -83,13 +83,11 @@ const AdSenseRevenueCalculator = () => {
         adUnits: units,
       };
     });
-
     const grandMonthly = results.reduce(
       (s, r) => s + parseFloat(r.monthlyRevenue),
       0,
     );
     const grandYearly = grandMonthly * 12;
-
     setError("");
     setResult({
       results,
@@ -143,6 +141,7 @@ const AdSenseRevenueCalculator = () => {
     setCopied(false);
   };
 
+  
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
       {/* Breadcrumb */}
@@ -172,27 +171,35 @@ const AdSenseRevenueCalculator = () => {
       </div>
 
       <div className="max-w-4xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-10 mt-4">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-sky-100 rounded-2xl mb-4">
-            <LayoutGrid className="text-sky-600" size={32} />
+        {/* ── HEADER ── */}
+        <div className="text-center mb-10 mt-6">
+          <div className="inline-flex items-center gap-2 bg-sky-50 border border-sky-100 text-sky-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
+            <Zap size={13} /> Free Tool — No Signup Required
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3">
-            AdSense Revenue Calculator
+          <h1 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-3 leading-tight">
+            Free Google AdSense Revenue Calculator —{" "}
+            <span className="text-sky-600">
+              Estimate Your AdSense Earnings Instantly
+            </span>
           </h1>
-          <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
-            Trying to figure out how much Google AdSense actually pays? The
-            number changes wildly depending on your niche. Add in your traffic,
-            select a category, and see how much you earn
+          <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+            Curious what your blog or website could earn from AdSense? Punch in
+            your monthly page views, choose your niche, and get a breakdown of
+            your estimated daily, monthly, and yearly earnings — no account
+            needed, completely free.
           </p>
         </div>
 
-        {/* Tool Card */}
+        <ResponsiveAd />
+
+
+        {/* ── TOOL CARD ── */}
         <div className="bg-white border border-gray-200 rounded-3xl shadow-sm p-6 md:p-10 mb-8">
-          <div className="space-y-4 mb-6">
+          <div className="space-y-5 mb-6">
+            {/* Page Views */}
             <div>
               <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                Monthly Page Views
+                Monthly Page Views <span className="text-red-400">*</span>
               </label>
               <div className="relative">
                 <Eye
@@ -207,7 +214,13 @@ const AdSenseRevenueCalculator = () => {
                   className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
                 />
               </div>
+              <p className="text-xs text-gray-400 mt-1.5">
+                Check Google Analytics → Audience → Overview → Pageviews for
+                this number
+              </p>
             </div>
+
+            {/* Ad Units + Custom RPM toggle */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
@@ -228,6 +241,9 @@ const AdSenseRevenueCalculator = () => {
                     className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
                   />
                 </div>
+                <p className="text-xs text-gray-400 mt-1.5">
+                  3 ads per page is the sweet spot for most sites
+                </p>
               </div>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
@@ -236,28 +252,25 @@ const AdSenseRevenueCalculator = () => {
                 <div className="flex items-center gap-3 h-[50px]">
                   <button
                     onClick={() => setUseCustom(!useCustom)}
-                    className={`relative w-12 h-7 rounded-full transition-colors ${
-                      useCustom ? "bg-sky-600" : "bg-gray-300"
-                    }`}
+                    className={`relative w-12 h-7 rounded-full transition-colors ${useCustom ? "bg-sky-600" : "bg-gray-300"}`}
                   >
                     <span
-                      className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform ${
-                        useCustom ? "translate-x-5" : ""
-                      }`}
+                      className={`absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform ${useCustom ? "translate-x-5" : ""}`}
                     />
                   </button>
                   <span className="text-sm text-gray-600">
                     {useCustom
-                      ? "Yes – using custom RPM"
-                      : "No – using niche default RPM"}
+                      ? "Yes — using your actual RPM"
+                      : "No — using niche averages"}
                   </span>
                 </div>
               </div>
             </div>
+
             {useCustom && (
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                  Custom RPM ($)
+                  Your Actual RPM ($)
                 </label>
                 <div className="relative">
                   <DollarSign
@@ -273,157 +286,166 @@ const AdSenseRevenueCalculator = () => {
                     className="w-full pl-10 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-gray-50 placeholder:text-gray-400"
                   />
                 </div>
+                <p className="text-xs text-gray-400 mt-1.5">
+                  Find this in AdSense → Reports → Page RPM column
+                </p>
+              </div>
+            )}
+
+            {/* Category Selection */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-3">
+                Select Your Niche <span className="text-red-400">*</span>
+              </label>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                {categories.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => toggleCategory(cat.id)}
+                    className={`p-3 rounded-xl border-2 text-left transition-all text-sm ${selectedCategories.includes(cat.id) ? "border-sky-500 bg-sky-50 text-sky-700" : "border-gray-200 bg-white text-gray-600 hover:border-sky-300 hover:bg-sky-50/50"}`}
+                  >
+                    <span className="text-base block mb-0.5">{cat.icon}</span>
+                    <span className="font-medium text-xs leading-tight block">
+                      {cat.name}
+                    </span>
+                    {!useCustom && (
+                      <span className="text-[10px] text-gray-400 block mt-0.5">
+                        ~${cat.rpm} RPM
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                <p className="text-red-600 text-sm font-medium">{error}</p>
+              </div>
+            )}
+
+            {/* Buttons */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <button
+                onClick={calculate}
+                disabled={!pageViews || selectedCategories.length === 0}
+                className="bg-sky-600 hover:bg-sky-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3.5 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2.5"
+              >
+                <TrendingUp size={18} /> Calculate AdSense Earnings
+              </button>
+              <button
+                onClick={reset}
+                className="bg-white border-2 border-sky-200 text-sky-700 hover:bg-sky-50 font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2.5"
+              >
+                <RefreshCw size={18} /> Reset
+              </button>
+            </div>
+
+            {/* Results */}
+            {result && (
+              <div className="border border-gray-100 rounded-2xl overflow-hidden">
+                <div className="bg-sky-50 border-b border-sky-100 px-5 py-3 flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sky-600" />
+                  <span className="text-sm font-bold text-sky-700">
+                    AdSense Earnings Estimate by Niche
+                  </span>
+                </div>
+                <div className="p-5">
+                  <div className="space-y-3 mb-5">
+                    {result.results.map((r) => (
+                      <div
+                        key={r.id}
+                        className="bg-gray-50 border border-gray-100 rounded-xl p-4"
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-lg">{r.icon}</span>
+                            <span className="font-bold text-gray-900 text-sm">
+                              {r.name}
+                            </span>
+                          </div>
+                          <span className="text-lg font-bold text-green-600">
+                            ${r.monthlyRevenue}/mo
+                          </span>
+                        </div>
+                        <div className="flex flex-wrap gap-3 text-xs text-gray-500">
+                          <span>RPM: ${r.usedRpm}</span>
+                          <span>Daily: ${r.dailyRevenue}</span>
+                          <span>Yearly: ${r.yearlyRevenue}</span>
+                          <span>Per Page: ${r.perPageRevenue}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 mb-5">
+                    <div className="bg-green-50 border border-green-200 rounded-xl p-5 text-center">
+                      <p className="text-xs text-green-500 uppercase font-bold tracking-wider mb-1">
+                        Total Monthly
+                      </p>
+                      <p className="text-2xl md:text-3xl font-extrabold text-green-700">
+                        ${result.grandMonthly}
+                      </p>
+                    </div>
+                    <div className="bg-sky-50 border border-sky-200 rounded-xl p-5 text-center">
+                      <p className="text-xs text-sky-500 uppercase font-bold tracking-wider mb-1">
+                        Total Yearly
+                      </p>
+                      <p className="text-2xl md:text-3xl font-extrabold text-sky-700">
+                        ${result.grandYearly}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap gap-3 border-t border-gray-100 pt-5">
+                    <button
+                      onClick={copyResult}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-sm font-semibold transition-all"
+                    >
+                      <Copy size={15} /> {copied ? "Copied!" : "Copy Result"}
+                    </button>
+                    <button
+                      onClick={handleDownload}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-xl text-sm font-semibold transition-all"
+                    >
+                      <Download size={15} /> Download .txt
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>
-
-          {/* Category Selection */}
-          <div className="mb-6">
-            <label className="block text-sm font-semibold text-gray-700 mb-3">
-              Select Niche Categories
-            </label>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => toggleCategory(cat.id)}
-                  className={`p-3 rounded-xl border-2 text-left transition-all text-sm ${
-                    selectedCategories.includes(cat.id)
-                      ? "border-sky-500 bg-sky-50 text-sky-700"
-                      : "border-gray-200 bg-white text-gray-600 hover:border-sky-300 hover:bg-sky-50/50"
-                  }`}
-                >
-                  <span className="text-base block mb-0.5">{cat.icon}</span>
-                  <span className="font-medium text-xs leading-tight block">
-                    {cat.name}
-                  </span>
-                  {!useCustom && (
-                    <span className="text-[10px] text-gray-400 block mt-0.5">
-                      ~${cat.rpm} RPM
-                    </span>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {error && (
-            <div className="mb-5 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
-              <p className="text-red-600 text-sm font-medium">{error}</p>
-            </div>
-          )}
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <button
-              onClick={calculate}
-              disabled={!pageViews || selectedCategories.length === 0}
-              className="bg-sky-600 hover:bg-sky-700 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold py-3.5 rounded-xl transition-all shadow-sm hover:shadow-md flex items-center justify-center gap-2.5"
-            >
-              <TrendingUp size={18} /> Calculate AdSense Revenue
-            </button>
-            <button
-              onClick={reset}
-              className="bg-white border-2 border-sky-200 text-sky-700 hover:bg-sky-50 font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2.5"
-            >
-              <RefreshCw size={18} /> Reset
-            </button>
-          </div>
-
-          {/* Results */}
-          {result && (
-            <div className="border border-gray-100 rounded-2xl overflow-hidden">
-              <div className="bg-sky-50 border-b border-sky-100 px-5 py-3 flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-sky-600" />
-                <span className="text-sm font-bold text-sky-700">
-                  AdSense Earnings by Niche
-                </span>
-              </div>
-              <div className="p-5">
-                <div className="space-y-3 mb-5">
-                  {result.results.map((r) => (
-                    <div
-                      key={r.id}
-                      className="bg-gray-50 border border-gray-100 rounded-xl p-4"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-lg">{r.icon}</span>
-                          <span className="font-bold text-gray-900 text-sm">
-                            {r.name}
-                          </span>
-                        </div>
-                        <span className="text-lg font-bold text-green-600">
-                          ${r.monthlyRevenue}/mo
-                        </span>
-                      </div>
-                      <div className="flex flex-wrap gap-3 text-xs text-gray-500">
-                        <span>RPM: ${r.usedRpm}</span>
-                        <span>Daily: ${r.dailyRevenue}</span>
-                        <span>Yearly: ${r.yearlyRevenue}</span>
-                        <span>Per Page: ${r.perPageRevenue}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-2 gap-4 mb-5">
-                  <div className="bg-green-50 border border-green-200 rounded-xl p-5 text-center">
-                    <p className="text-xs text-green-500 uppercase font-bold tracking-wider mb-1">
-                      Total Monthly
-                    </p>
-                    <p className="text-2xl md:text-3xl font-extrabold text-green-700">
-                      ${result.grandMonthly}
-                    </p>
-                  </div>
-                  <div className="bg-sky-50 border border-sky-200 rounded-xl p-5 text-center">
-                    <p className="text-xs text-sky-500 uppercase font-bold tracking-wider mb-1">
-                      Total Yearly
-                    </p>
-                    <p className="text-2xl md:text-3xl font-extrabold text-sky-700">
-                      ${result.grandYearly}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-3 border-t border-gray-100 pt-5">
-                  <button
-                    onClick={copyResult}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-sm font-semibold transition-all shadow-sm hover:shadow-md"
-                  >
-                    <Copy size={15} /> {copied ? "Copied!" : "Copy Result"}
-                  </button>
-                  <button
-                    onClick={handleDownload}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-xl text-sm font-semibold transition-all"
-                  >
-                    <Download size={15} /> Download .txt
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
 
+        {/* Native ad here */}
+
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+        ></script>
+        <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
         {/* Features */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {[
             {
               icon: <Zap size={20} className="text-amber-500" />,
-              title: "12+ Niches",
-              desc: "Pre-loaded RPM data for technology, finance, health, legal, and more.",
+              title: "12 Niche Categories",
+              desc: "RPM benchmarks for tech, finance, health, legal, real estate, and 7 more niches — all in one place.",
             },
             {
               icon: <TrendingUp size={20} className="text-green-600" />,
-              title: "Daily/Monthly/Yearly",
-              desc: "See earnings breakdown across daily, monthly, and yearly timeframes.",
+              title: "Daily + Monthly + Yearly",
+              desc: "See your full earnings picture at once — not just monthly, but what that adds up to over a year.",
             },
             {
               icon: <Shield size={20} className="text-sky-600" />,
               title: "100% Free",
-              desc: "No signup, no limits, completely free to use forever.",
+              desc: "No account, no email, no limits. Run as many estimates as you need without ever signing up.",
             },
             {
               icon: <Layers size={20} className="text-violet-600" />,
-              title: "Custom RPM",
-              desc: "Toggle custom RPM mode to use your own actual AdSense data.",
+              title: "Custom RPM Mode",
+              desc: "Already running AdSense? Enter your real Page RPM and the estimates become far more accurate.",
             },
           ].map((f, i) => (
             <div
@@ -439,32 +461,36 @@ const AdSenseRevenueCalculator = () => {
           ))}
         </div>
 
-        {/* ─── How to Use ─── */}
+        {/* How to Use */}
         <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            How to Calculate AdSense Revenue
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            How to Use This AdSense Revenue Calculator
           </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            Four quick steps and you will have a realistic income estimate in
+            under a minute.
+          </p>
           <ol className="space-y-5">
             {[
               {
                 step: "1",
-                title: "Your Monthly Page Views",
-                desc: "Get your total page views for the month in Google Analytics or your AdSense interface. Do not use sessions and/or users, just pageviews – that's all that counts.",
+                title: "Enter your monthly page views",
+                desc: "Head over to Google Analytics and look up your total page views for the past month — not sessions, not users, but page views specifically. That number drives your AdSense impressions. If you haven't launched yet, use your traffic goal and see what the earnings could look like at that level.",
               },
               {
                 step: "2",
-                title: "Ad Units per Page Viewed",
-                desc: "How many AdSense ads do you normally display per page? Normally, between 2 and 4 ads will be shown. You can keep it as the default 3 for better accuracy.",
+                title: "Choose how many ad units you show per page",
+                desc: "Three is what most publishers run, and it's a solid default. More units means more impressions per visit, but pile on too many and your site starts feeling like a billboard. If you're not sure, stick with three — you can always test more later.",
               },
               {
                 step: "3",
-                title: "Choose Niche (or Enable Custom RPM)",
-                desc: "Choose the niches that apply to your website content. If you know your actual RPM value, enable the custom RPM option and enter it here.",
+                title: "Pick your niche (or enter your actual RPM)",
+                desc: "Select the category that best describes your content. Each niche carries a different RPM — finance sites earn far more per thousand views than entertainment blogs, and this calculator reflects those real-world differences. If you've been running AdSense for a while, flip on the Custom RPM toggle and type in your actual Page RPM from your AdSense reports. Your estimates will be much closer to what you actually see in your account.",
               },
               {
                 step: "4",
-                title: "See the Results",
-                desc: "You will receive earnings stats for each month, day, year, and even per page for each chosen niche. Compare and understand which niche earns you more money.",
+                title: "Hit calculate and review your numbers",
+                desc: "You'll get daily, monthly, and yearly estimates for every niche you selected, plus a combined total at the bottom. The per-page figure is worth paying attention to — it tells you the exact dollar value of each additional page view, which is useful if you're ever thinking about running paid traffic or evaluating SEO content ROI.",
               },
             ].map((item) => (
               <li key={item.step} className="flex items-start gap-4">
@@ -484,227 +510,242 @@ const AdSenseRevenueCalculator = () => {
           </ol>
         </section>
 
-        {/* ─── Formulas ─── */}
+        {/* Formulas */}
         <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            AdSense Revenue Formulas
+            The AdSense Revenue Formula — What's Happening Under the Hood
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Google doesn&apos;t explicitly tell you these formulas, but this is
-            exactly how RPM translates to actual dollars.
+            Google AdSense pays you based on RPM, which stands for Revenue Per
+            Mille — or revenue earned for every 1,000 page views. The math is
+            straightforward once you know what the variables mean.
           </p>
           <div className="space-y-5">
             <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
               <h3 className="font-bold text-gray-900 text-sm mb-2">
-                Monthly Revenue
+                Monthly AdSense Earnings
               </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
-                Monthly Revenue = (Page Views ÷ 1000) × RPM
+                Monthly Revenue = (Page Views ÷ 1,000) × RPM
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                RPM stands for Revenue Per Mille — how much you earn per 1,000
-                page views. This is the core formula. Everything else is derived
-                from it.
+                Say you're pulling 100,000 page views a month and your niche RPM
+                is $5. The calculation looks like this: (100,000 ÷ 1,000) × 5 ={" "}
+                <strong className="text-gray-700">$500 per month</strong>. Your
+                RPM is the single biggest lever — double your RPM and you double
+                your income without gaining a single extra visitor.
               </p>
             </div>
-
             <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
               <h3 className="font-bold text-gray-900 text-sm mb-2">
-                Daily & Yearly Revenue
+                Daily and Yearly AdSense Earnings
               </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
-                Daily Revenue = Monthly Revenue ÷ 30
-                <br />
-                Yearly Revenue = Monthly Revenue × 12
+                Daily = Monthly ÷ 30{"\n"}
+                Yearly = Monthly × 12
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                Simple time conversions. Keep in mind that real daily earnings
-                fluctuate — weekdays usually earn more than weekends, and
-                holidays can spike or drop depending on your niche.
+                Your daily number will vary in practice — weekdays outperform
+                weekends, and Q4 is almost always your best quarter because
+                advertisers flood the market with holiday budgets. The daily
+                figure here is just an average to give you a ballpark.
               </p>
             </div>
-
             <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
               <h3 className="font-bold text-gray-900 text-sm mb-2">
-                Per-Page Revenue
+                Per-Page AdSense Earnings
               </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
-                Per-Page Revenue = Monthly Revenue ÷ Total Page Views
+                Per-Page = Monthly Revenue ÷ Total Page Views
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                This tells you how much each individual pageview is worth. It's
-                a useful number when you're buying traffic or doing outreach —
-                if you pay $0.005 per visit and earn $0.008 per page, you're in
-                the green.
+                This one is underrated. It tells you what each individual page
+                view puts in your pocket. If you're earning $0.008 per view and
+                you can buy traffic at $0.005 a click, you've got a working
+                arbitrage. It's also the number to track as you optimize your ad
+                layout and placements over time.
               </p>
             </div>
           </div>
         </section>
 
-        {/* ─── Real Examples ─── */}
+        {/* Real Examples */}
         <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            AdSense Earnings Examples by Niche
+            AdSense Earnings by Niche — Same Traffic, Very Different Paychecks
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            These aren't made-up numbers. They're based on actual RPM averages
-            that publishers report.
+            These three examples use real niche RPM averages. Look at how much
+            the income gap widens even when traffic numbers are close — it makes
+            the case for niche selection better than any argument I could write.
           </p>
-
           <div className="space-y-5">
-            <div className="border border-gray-100 rounded-2xl p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
-                  Example 1
-                </span>
-                <h3 className="font-bold text-gray-900 text-sm">
-                  Tech Blog with 100K Monthly Views
-                </h3>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Page Views
-                  </p>
-                  <p className="text-sm font-bold text-gray-900">100,000</p>
+            {[
+              {
+                label: "Example 1",
+                title: "Tech Blog — 100K Monthly Views",
+                views: "100,000",
+                rpm: "$4.50",
+                units: "3",
+                result:
+                  "Monthly: (100,000 ÷ 1,000) × $4.50 = $450 | Daily: $15 | Yearly: $5,400",
+                highlight: "$450/month",
+              },
+              {
+                label: "Example 2",
+                title: "Finance Site — 50K Views (High RPM Niche)",
+                views: "50,000",
+                rpm: "$12.00",
+                units: "4",
+                result:
+                  "Monthly: (50,000 ÷ 1,000) × $12.00 = $600 | Half the traffic, but $150 more per month — that's the RPM difference doing the work.",
+                highlight: "$600/month",
+              },
+              {
+                label: "Example 3",
+                title: "Entertainment Site — 500K Views (Volume Play)",
+                views: "500,000",
+                rpm: "$2.00",
+                units: "3",
+                result:
+                  "Monthly: $1,000 | Yearly: $12,000 | Low RPM but it's made up with sheer scale. Per-page earning sits at $0.002 — you need a lot of content to sustain this.",
+                highlight: "$1,000/month",
+              },
+            ].map((item, i) => (
+              <div key={i} className="border border-gray-100 rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
+                    {item.label}
+                  </span>
+                  <h3 className="font-bold text-gray-900 text-sm">
+                    {item.title}
+                  </h3>
                 </div>
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Niche RPM
-                  </p>
-                  <p className="text-sm font-bold text-gray-900">$4.50</p>
+                <div className="grid grid-cols-3 gap-3 mb-3">
+                  {[
+                    ["Page Views", item.views],
+                    ["Niche RPM", item.rpm],
+                    ["Ad Units", item.units],
+                  ].map(([label, val], j) => (
+                    <div key={j} className="bg-gray-50 rounded-lg p-3">
+                      <p className="text-[11px] text-gray-400 uppercase font-bold">
+                        {label}
+                      </p>
+                      <p className="text-sm font-bold text-gray-900">{val}</p>
+                    </div>
+                  ))}
                 </div>
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Ad Units
+                <div className="bg-green-50 border border-green-100 rounded-lg p-3">
+                  <p className="text-xs text-gray-500">
+                    {item.result} →{" "}
+                    <span className="font-bold text-green-700">
+                      {item.highlight}
+                    </span>
                   </p>
-                  <p className="text-sm font-bold text-gray-900">3</p>
-                </div>
-              </div>
-              <div className="bg-green-50 border border-green-100 rounded-lg p-3">
-                <p className="text-xs text-gray-500">
-                  Monthly: (100,000 ÷ 1,000) × $4.50 ={" "}
-                  <span className="font-bold text-green-700">$450</span>
-                  &nbsp;|&nbsp; Daily:{" "}
-                  <span className="font-bold text-green-700">$15</span>
-                  &nbsp;|&nbsp; Yearly:{" "}
-                  <span className="font-bold text-green-700">$5,400</span>
-                </p>
-              </div>
-            </div>
-
-            <div className="border border-gray-100 rounded-2xl p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
-                  Example 2
-                </span>
-                <h3 className="font-bold text-gray-900 text-sm">
-                  Finance Site with 50K Views (High RPM)
-                </h3>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Page Views
-                  </p>
-                  <p className="text-sm font-bold text-gray-900">50,000</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Niche RPM
-                  </p>
-                  <p className="text-sm font-bold text-gray-900">$12.00</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Ad Units
-                  </p>
-                  <p className="text-sm font-bold text-gray-900">4</p>
                 </div>
               </div>
-              <div className="bg-green-50 border border-green-100 rounded-lg p-3">
-                <p className="text-xs text-gray-500">
-                  Monthly: (50,000 ÷ 1,000) × $12.00 ={" "}
-                  <span className="font-bold text-green-700">$600</span>
-                  &nbsp;|&nbsp; Half the traffic of the tech blog, but earns 33%
-                  more because finance RPM is nearly 3x higher.
-                </p>
-              </div>
-            </div>
-
-            <div className="border border-gray-100 rounded-2xl p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm bg-sky-100 text-sky-700 font-bold px-2.5 py-1 rounded-lg">
-                  Example 3
-                </span>
-                <h3 className="font-bold text-gray-900 text-sm">
-                  Entertainment Site with 500K Views (Volume Play)
-                </h3>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-3">
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Page Views
-                  </p>
-                  <p className="text-sm font-bold text-gray-900">500,000</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Niche RPM
-                  </p>
-                  <p className="text-sm font-bold text-gray-900">$2.00</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-[11px] text-gray-400 uppercase font-bold">
-                    Ad Units
-                  </p>
-                  <p className="text-sm font-bold text-gray-900">3</p>
-                </div>
-              </div>
-              <div className="bg-green-50 border border-green-100 rounded-lg p-3">
-                <p className="text-xs text-gray-500">
-                  Monthly: (500,000 ÷ 1,000) × $2.00 ={" "}
-                  <span className="font-bold text-green-700">$1,000</span>
-                  &nbsp;|&nbsp; Yearly:{" "}
-                  <span className="font-bold text-green-700">$12,000</span>
-                  &nbsp;|&nbsp; Low RPM but high volume makes it work. Per-page
-                  earning: $0.002.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
 
-        {/* ─── Use Cases ─── */}
+        {/* SEO Content */}
+        <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            How Much Can You Actually Make From Google AdSense?
+          </h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Let me give you the honest answer instead of the one designed to
+            make you excited. AdSense income is real, it's passive, and it
+            scales — but the range is enormous, and most of that range comes
+            down to two things: how much traffic you have and what your site is
+            about.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            A site getting 100,000 monthly page views in the legal niche can
+            earn $1,500 a month. The exact same traffic on a gaming or
+            entertainment site earns $200. That's not a small difference —
+            that's seven times more money for the same number of visitors. Niche
+            selection is the most underrated decision in content publishing, and
+            most people don't figure that out until they're already deep into a
+            low-RPM space.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            For a typical content site with broad topics, expect somewhere
+            between $2 and $8 per 1,000 page views from AdSense. Under $2
+            usually points to one of three problems: most of your traffic is
+            coming from countries where advertisers don't bid much, your niche
+            has weak commercial intent, or your ad placement is keeping viewable
+            impressions low. Above $8 and you're in a premium niche with strong
+            advertiser competition — finance, insurance, legal, medical.
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
+            Finding Your Real AdSense RPM
+          </h3>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            If you already have AdSense running, stop guessing with niche
+            averages. Go into your AdSense account, open Reports, and find the
+            Page RPM column. That's your actual earnings per 1,000 views after
+            Google's 32% cut. Paste that number into the Custom RPM field above
+            and your estimates will be far more grounded than anything based on
+            industry benchmarks.
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
+            Why Finance Sites Earn 5–10x More Than Entertainment Sites
+          </h3>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            It comes down to what advertisers are willing to pay for a click. A
+            bank or insurance company that converts one website visitor into a
+            customer could earn thousands of dollars from that relationship over
+            time. So they bid aggressively for ad placements — $10, $20, even
+            $50 per click in some cases. That advertiser competition drives up
+            CPM and RPM for everyone publishing in that space. Entertainment
+            advertisers are mostly pushing consumer products with thin margins
+            and lower conversion values, so they bid less.
+          </p>
+          <p className="text-gray-600 leading-relaxed">
+            Geography is the other factor most people underestimate. A visitor
+            from the US or UK is worth dramatically more per impression than a
+            visitor from South Asia or Southeast Asia — sometimes 5 to 10 times
+            more. Advertisers geo-target their bids, and they pay a premium to
+            reach audiences in high-income markets. If you're building a content
+            site specifically to earn from AdSense, writing for a US or UK
+            audience will move your RPM more than almost any other single
+            decision.
+          </p>
+        </section>
+
+        {/* Use Cases */}
         <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            When You Actually Need This Calculator
+            When Does an AdSense Calculator Actually Help?
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Not everybody needs an AdSense calculator. Who can really benefit
-            from it?
+            Not every situation calls for a calculator — but these four are
+            where it genuinely saves you from guessing.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
                 icon: <Lightbulb size={20} className="text-amber-500" />,
-                title: " Before Picking a Niche",
-                desc: "You're about to spend 6 months building a blog. Use this to understand how much 50,000 pageviews in tech, finances, or food pays. The discrepancy may be 5-10x.",
+                title: "Before You Pick a Niche",
+                desc: "Six months of work feels different after you realize your niche pays $2 RPM instead of $10. Running the numbers upfront doesn't guarantee success, but it at least tells you what you're signing up for before you write a single post.",
               },
               {
                 icon: <Target size={20} className="text-red-500" />,
-                title: "Traffic Goals Planning",
-                desc: "Need $2,000/mo AdSense income with your niche's RPM being $5? Now you know that you should aim at 400,000 pageviews – a very specific metric, not 'get more traffic'.'",
+                title: "Setting a Traffic Goal That Makes Sense",
+                desc: "Want $500 a month from AdSense? In a tech niche at $4.50 RPM, you need roughly 111,000 monthly views. In finance at $12 RPM, you only need 42,000. Knowing the target makes the goal something you can actually plan toward.",
               },
               {
                 icon: <BarChart3 size={20} className="text-sky-600" />,
-                title: "Affiliate Links VS AdSense",
-                desc: "Perhaps affiliate marketing or sponsorships would provide a higher income. Plug your actual niche's RPM in there and see where the scale tips in.",
+                title: "AdSense vs. Other Monetization",
+                desc: "Sometimes display ads are the wrong call. Use this to see what AdSense would realistically earn you, then compare it against what a sponsorship deal or affiliate commission structure might bring at the same traffic level.",
               },
               {
                 icon: <Calculator size={20} className="text-green-600" />,
-                title: "Client Proposals & Reports",
-                desc: "If you run an agency or consult for publishers, showing a niche-specific revenue projection carries way more weight than a generic 'you'll make some money.'",
+                title: "Evaluating a Site Before You Buy",
+                desc: "If someone is selling a site and claiming AdSense income, plug their reported traffic and niche into this tool. It's a quick sanity check — if the numbers don't match what the seller is claiming, that's worth asking about.",
               },
             ].map((item, i) => (
               <div
@@ -723,120 +764,160 @@ const AdSenseRevenueCalculator = () => {
           </div>
         </section>
 
-        {/* ─── SEO Content ─── */}
+        {/* RPM Benchmarks Table */}
         <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Why AdSense RPM Varies So Much Between Niches
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            AdSense RPM by Niche — What Publishers Are Actually Reporting
           </h2>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            It all depends on how much money advertisers are willing to pay you
-            for traffic. In the case of the finance niche, one customer
-            generated from an AdWords campaign may cost banks a couple of
-            hundred dollars in fees. It causes higher CPC rates for the whole
-            niche, making RPM higher as well. Therefore, the highest AdSense RPM
-            is typical for such niches as finance and legal.
+          <p className="text-gray-500 text-sm mb-6">
+            These figures are based on what real publishers share in forums,
+            case studies, and income reports — not marketing material.
           </p>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Unlike in entertainment and sports sections, where there is little
-            business intentionality, a person looking for information about
-            movies is not out to purchase an expensive commodity. The
-            advertisers are aware of this fact, and as such, they make small
-            bids. How come? You get RPMs between $1 and $3.
-          </p>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            The mistake that many first-time publishers make is to chase
-            high-traffic niches such as entertainment without verifying whether
-            the numbers add up. 500K pageviews in the entertainment niche at $2
-            RPM equals $1,000 monthly, but even 80K pageviews in the financial
-            niche at $12 RPM equal $960 monthly, with 6 times less work needed
-            for content creation.
-          </p>
-
-          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
-            Finding Your True RPM in AdSense
-          </h3>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Don't get stuck using niche averages indefinitely. Once you have
-            accumulated two to three months' worth of AdSense data, take a look
-            at your true RPM from AdSense → Reports → Performance reports → Page
-            RPM (the table). This is the RPM you need. Use this switch in the
-            RPM calculator to input your true RPM, and make all your
-            calculations more accurate.
-          </p>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            If you want to understand the CPM side of things (what advertisers
-            pay before Google takes its cut), use our{" "}
-            <Link
-              href="/tools/cpm-calculator"
-              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
-            >
-              CPM Calculator
-            </Link>
-            . And if you&apos;re running ads outside of AdSense — like direct
-            deals, Mediavine, or Raptive — the{" "}
-            <Link
-              href="/tools/ad-revenue-calculator"
-              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
-            >
-              Ad Revenue Calculator
-            </Link>{" "}
-            lets you compare earnings across display, video, native, and other
-            formats.
-          </p>
-
-          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
-            Does Revenue Improve If More Units Are Added?
-          </h3>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Yes, for a while at least. Adding from one ad unit to three results
-            in a considerable boost in overall revenues as the number of
-            impressions is much higher. However, adding from three to five or
-            six units often does not bring additional benefits since the added
-            ad spaces attract less valuable advertisements, as well as make the
-            page load slower, which negatively affects SEO performance. Besides,
-            Google limits the number of units of Adsense that can be placed on
-            the page.
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
+              <thead>
+                <tr className="bg-gray-900 text-white">
+                  <th className="text-left px-4 py-3 font-semibold">Niche</th>
+                  <th className="text-center px-4 py-3 font-semibold">
+                    Avg RPM
+                  </th>
+                  <th className="text-center px-4 py-3 font-semibold">
+                    100K Views/Month
+                  </th>
+                  <th className="text-center px-4 py-3 font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  [
+                    "⚖️ Legal",
+                    "$15",
+                    "$1,500/mo",
+                    "Highest RPM niche across the board",
+                  ],
+                  [
+                    "🏦 Finance & Insurance",
+                    "$12",
+                    "$1,200/mo",
+                    "Strong advertiser competition, high CPC",
+                  ],
+                  [
+                    "🏠 Real Estate",
+                    "$10",
+                    "$1,000/mo",
+                    "Property buyers are high-value leads",
+                  ],
+                  [
+                    "🏥 Health & Medical",
+                    "$8.50",
+                    "$850/mo",
+                    "Wide appeal with solid RPM",
+                  ],
+                  [
+                    "🚗 Automotive",
+                    "$7",
+                    "$700/mo",
+                    "Car shoppers convert well",
+                  ],
+                  ["✈️ Travel", "$6", "$600/mo", "Dips in off-season months"],
+                  [
+                    "🛒 Shopping & Deals",
+                    "$5.50",
+                    "$550/mo",
+                    "High purchase intent traffic",
+                  ],
+                  ["📚 Education", "$5", "$500/mo", "Steady year-round RPM"],
+                  [
+                    "💻 Technology",
+                    "$4.50",
+                    "$450/mo",
+                    "Large but competitive audience",
+                  ],
+                  [
+                    "🍕 Food & Recipes",
+                    "$3.50",
+                    "$350/mo",
+                    "Huge traffic potential, lower CPM",
+                  ],
+                  [
+                    "⚽ Sports & Fitness",
+                    "$3",
+                    "$300/mo",
+                    "Younger demographic, lower bids",
+                  ],
+                  [
+                    "🎬 Entertainment",
+                    "$2",
+                    "$200/mo",
+                    "Needs serious volume to work",
+                  ],
+                ].map((row, i) => (
+                  <tr
+                    key={i}
+                    className={`${i % 2 === 1 ? "bg-gray-50" : "bg-white"} border-b border-gray-100`}
+                  >
+                    <td className="px-4 py-3 font-medium text-gray-800">
+                      {row[0]}
+                    </td>
+                    <td className="px-4 py-3 text-center font-bold text-sky-600">
+                      {row[1]}
+                    </td>
+                    <td className="px-4 py-3 text-center font-semibold text-green-600">
+                      {row[2]}
+                    </td>
+                    <td className="px-4 py-3 text-center text-xs text-gray-500">
+                      {row[3]}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-400 mt-3">
+            Based on US/UK traffic. South Asian and Southeast Asian traffic
+            typically earns 5–10x less per impression due to lower advertiser
+            bids in those markets.
           </p>
         </section>
 
-        {/* ─── FAQ ─── */}
+        {/* FAQ */}
         <section className="bg-white border border-gray-200 rounded-3xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Frequently Asked Questions
+            AdSense Revenue Calculator — Frequently Asked Questions
           </h2>
           <div className="space-y-3 max-w-4xl mx-auto">
             {[
               {
-                q: "How do I calculate my AdSense revenue manually?",
-                a: "Take your monthly page views, divide by 1,000, and multiply by your RPM. Example: 100,000 page views × $5 RPM ÷ 1,000 = $500/month. That's it. If you don't know your RPM, use the niche defaults in this calculator — they're based on what actual publishers report.",
+                q: "How much can you make from Google AdSense?",
+                a: "The honest range is wide. A site with 100,000 monthly page views in a technology niche earns around $450/month. The same traffic on a finance site earns roughly $1,200/month. On an entertainment blog, you're looking at maybe $200/month. Your niche RPM does more to determine your income than almost anything else — use this calculator with your specific niche to get a number that actually means something.",
               },
               {
-                q: "What's a good AdSense RPM in 2024?",
-                a: "It completely depends on the niche. $1-3 is normal for entertainment, sports, and food. $4-8 is solid for tech, education, and travel. $10-25 is achievable in finance, legal, real estate, and insurance. If you're getting below $1 RPM with decent traffic, something's wrong with your ad placement or traffic quality.",
+                q: "How do I calculate my AdSense earnings manually?",
+                a: "The formula is: Monthly Earnings = (Page Views ÷ 1,000) × RPM. You can find your RPM inside your AdSense account under Reports → Page RPM. If you're not running AdSense yet, use the niche averages in this calculator to estimate what you could earn. The math is simple — what changes everything is the RPM value you plug in.",
               },
               {
-                q: "Which niche pays the most for Google AdSense?",
-                a: "Legal and finance consistently top the charts. Legal content (lawyers, lawsuits, divorce) can hit $15-25 RPM. Finance and insurance ($10-18 RPM) and real estate ($8-14 RPM) follow close behind. The pattern is always the same: high advertiser competition + expensive customer acquisition = high publisher RPM.",
+                q: "What is a good AdSense RPM in 2026?",
+                a: "For a general content site, anywhere from $3–6 RPM is normal. Finance and legal sites regularly hit $10–15 RPM. Entertainment and sports blogs often land under $3 RPM. If you're consistently under $1 RPM with meaningful traffic, that usually points to one of three things: most of your visitors are from lower-bid countries, your niche doesn't attract commercial advertisers, or your ad placements are weak on viewable impressions.",
               },
               {
                 q: "How much does AdSense pay per 1,000 page views?",
-                a: "Anywhere from $1 to $25 depending on niche. The average across all niches is roughly $3-5 per 1,000 views. But a finance site at $15 RPM earns 10x more per 1,000 views than an entertainment site at $1.50 RPM. That's why niche selection matters more than traffic volume.",
+                a: "Anywhere from $1 to $25, depending on your niche and where your audience is located. The broad average lands around $3–5 per 1,000 views. Finance and legal niches pay the most. Entertainment and general lifestyle content pay the least. Geography matters a lot too — US and UK traffic earns substantially more than traffic from South or Southeast Asia, because advertisers in those markets bid significantly higher.",
               },
               {
-                q: "Why is my actual AdSense income lower than this calculator shows?",
-                a: "A few reasons. Ad blockers reduce your actual impressions by 20-40%. Fill rate isn't always 100% — sometimes there's no ad to show. Traffic from low-value countries (Tier 3) drags down your RPM. And if your ad placement is poor (below the fold, sidebar only), you'll earn less than someone with in-content ads. The calculator gives you a best-case estimate based on niche RPM.",
+                q: "What's the difference between RPM and CPM in AdSense?",
+                a: "CPM is what advertisers pay per 1,000 ad impressions — it's their cost. RPM is what you actually receive per 1,000 page views after Google takes its share (around 32%). So if the advertiser CPM is $7, your Page RPM works out to roughly $4.76. This calculator uses RPM throughout because that's the number that shows up in your AdSense account and the one that actually reflects your earnings.",
               },
               {
-                q: "Should I pick a niche based on AdSense RPM alone?",
-                a: "No, that's a mistake. High RPM niches are competitive and hard to rank for in Google. A finance blog competing with Forbes and Bankrate is going to struggle for traffic. A niche like food or travel might have lower RPM, but it's easier to get traffic. The best approach: pick a niche you can actually compete in, then maximize RPM through good ad placement and traffic quality.",
+                q: "How many page views do I need to earn $100 per month from AdSense?",
+                a: "It depends on your RPM. At $5 RPM, you need 20,000 monthly views to hit $100. At $3 RPM, that climbs to 33,333 views. In a finance niche at $10 RPM, you only need 10,000 views. Use the calculator above, set your income goal, and work backwards to find out what traffic milestone you're actually building toward.",
               },
               {
-                q: "How is this different from the Ad Revenue Calculator?",
-                a: "The Ad Revenue Calculator compares earnings across ad formats (display, video, native, popup, etc.) using CPM and CPC. This AdSense Revenue Calculator is niche-focused — it uses RPM data for 12+ content categories to show how much the same traffic would earn in different niches. Use both if you're planning your full monetization strategy.",
+                q: "Is Google AdSense still worth using in 2026?",
+                a: "For sites under 100,000 monthly views or sites that are still growing, yes — AdSense is still the most accessible display ad option. It's passive income that scales automatically with traffic. The limitation is that for larger sites in premium niches, ad networks like Raptive or Mediavine pay meaningfully better RPMs. But you typically need 50,000+ monthly sessions to qualify for those. Until then, AdSense is the practical starting point for most publishers.",
               },
               {
-                q: "Does the number of ad units per page actually affect my RPM?",
-                a: "It can, but not directly. More ad units means more total impressions per pageview, which increases total revenue. However, if you stuff too many ads, the lowest-performing units get cheap ads that drag down your average RPM. Plus, Google penalizes pages with excessive ads in their core web updates. Stick to 3-4 well-placed units.",
+                q: "Why is my real AdSense income lower than what the calculator shows?",
+                a: "A few things cut into the theoretical number. Ad blockers can reduce impressions by 15–40% depending on your audience — tech-savvy readers block more ads. Not every ad slot fills at full price; fill rates fluctuate. Traffic from lower-bid countries brings down your blended RPM even if most visitors are from high-value markets. And ads positioned far down the page generate fewer viewable impressions. In practice, most publishers earn around 70–85% of what a clean estimate suggests — so treat the calculator as an optimistic ceiling, not a guaranteed floor.",
               },
             ].map((item, i) => (
               <div
@@ -853,17 +934,11 @@ const AdSenseRevenueCalculator = () => {
                   </h3>
                   <ChevronDown
                     size={20}
-                    className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${
-                      openFaq === i ? "rotate-180" : ""
-                    }`}
+                    className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
                   />
                 </button>
                 <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    openFaq === i
-                      ? "max-h-[600px] opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
+                  className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
                 >
                   <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
                     {item.a}
@@ -874,42 +949,42 @@ const AdSenseRevenueCalculator = () => {
           </div>
         </section>
 
-        {/* ─── Related Tools ─── */}
+        {/* Related Tools */}
         <section className="mb-4">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Related Tools You Might Need
+            Related Calculators
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
               {
                 href: "/tools/ad-revenue-calculator",
                 title: "Ad Revenue Calculator",
-                desc: "Compare earnings across display, video, native, and other ad formats using CPM & CPC.",
+                desc: "Compare earnings across display, video, native, and other ad formats.",
               },
               {
                 href: "/tools/youtube-ad-revenue-calculator",
-                title: "YouTube Ad Revenue Calculator",
-                desc: "Estimate YouTube earnings by video category, CPM, and audience geography tier.",
+                title: "YouTube Revenue Calculator",
+                desc: "Estimate YouTube AdSense earnings by niche, views, and RPM.",
               },
               {
                 href: "/tools/cpm-calculator",
                 title: "CPM Calculator",
-                desc: "Calculate cost per 1,000 impressions, total campaign cost, or impression count.",
+                desc: "Calculate cost per 1,000 impressions from campaign spend and impressions.",
               },
               {
                 href: "/tools/cpc-calculator",
                 title: "CPC Calculator",
-                desc: "Find cost per click, total clicks, or campaign spend with CTR and CPM metrics.",
+                desc: "Find your cost per click from total campaign spend and click data.",
               },
               {
                 href: "/tools/profit-margin-calculator",
                 title: "Profit Margin Calculator",
-                desc: "Calculate profit margin %, markup %, and profit from cost and selling price.",
+                desc: "Calculate gross and net profit margins for your site or business.",
               },
               {
-                href: "/tools/ebay-charges-calculator",
-                title: "eBay Charges Calculator",
-                desc: "Calculate eBay final value fees, listing fees, and net profit on sales.",
+                href: "/tools/percentage-calculator",
+                title: "Percentage Calculator",
+                desc: "Calculate percentages, increases and decreases instantly.",
               },
             ].map((tool) => (
               <Link

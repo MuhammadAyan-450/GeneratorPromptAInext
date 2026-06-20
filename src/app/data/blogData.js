@@ -33,22 +33,6 @@ export const BLOG_POSTS = [
     emoji: "🖼️",
   },
   {
-    id: 3,
-    slug: "how-to-convert-pdf-to-word-without-formatting-loss",
-    title: "How to Convert PDF to Word Without Losing Formatting (2026)",
-    excerpt:
-      "Tired of PDF to Word converters that mess up your formatting? Here's what actually works — free methods tested with real documents, plus the one mistake everyone makes.",
-    category: "Web Tools", // Changed
-    tag: "PDF Tools",
-    readTime: 8,
-    date: "April 16, 2026",
-    dateISO: "2026-04-16",
-    featured: false,
-    image: null,
-    color: "from-red-500 to-rose-600",
-    emoji: "📄",
-  },
-  {
     id: 4,
     slug: "jpeg-vs-png-complete-comparison-guide",
     title:

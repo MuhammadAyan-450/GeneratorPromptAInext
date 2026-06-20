@@ -22,6 +22,7 @@ import {
   UserCheck,
   ArrowLeftRight,
 } from "lucide-react";
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 const Base64Encoder = () => {
   const [text, setText] = useState("");
@@ -48,7 +49,7 @@ const Base64Encoder = () => {
       setText(decoded);
     } catch (e) {
       setText(
-        "Error: Invalid Base64 string. Make sure it's properly formatted with no extra spaces or characters."
+        "Error: Invalid Base64 string. Make sure it's properly formatted with no extra spaces or characters.",
       );
     }
   };
@@ -123,10 +124,14 @@ const Base64Encoder = () => {
             Base64 Encoder & Decoder
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
-            Need to turn some text into a Base64 string? Or got a Base64 string that looks like gibberish and want to read it? Paste it here and hit the button. Works with emojis, special characters, non-English text — basically anything you throw at it.
+            Need to turn some text into a Base64 string? Or got a Base64 string
+            that looks like gibberish and want to read it? Paste it here and hit
+            the button. Works with emojis, special characters, non-English text
+            — basically anything you throw at it.
           </p>
         </div>
 
+        <ResponsiveAd />
         {/* Tool Card */}
         <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
           <label className="block text-sm font-semibold text-gray-700 mb-2">
@@ -194,6 +199,15 @@ const Base64Encoder = () => {
           </div>
         </div>
 
+        {/* Native ad here */}
+
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+        ></script>
+        <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
@@ -245,8 +259,9 @@ const Base64Encoder = () => {
             How Base64 Encoding Actually Works
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Base64 isn&apos;t some mysterious math — it&apos;s a straightforward 3-step process. Here&apos;s
-            exactly what happens when you click &quot;Encode&quot;.
+            Base64 isn&apos;t some mysterious math — it&apos;s a straightforward
+            3-step process. Here&apos;s exactly what happens when you click
+            &quot;Encode&quot;.
           </p>
 
           <div className="space-y-5">
@@ -258,8 +273,9 @@ const Base64Encoder = () => {
                 encodeURIComponent("Hello 🌍")
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                This handles emojis and non-ASCII characters. Without this step, emojis
-                would break the encoding and you&apos;d get corrupted output.
+                This handles emojis and non-ASCII characters. Without this step,
+                emojis would break the encoding and you&apos;d get corrupted
+                output.
               </p>
             </div>
 
@@ -271,8 +287,8 @@ const Base64Encoder = () => {
                 btoa("SGVsbG8gV29yISAwIQ==")
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
-                This is where the actual encoding happens. The output is an ASCII string
-                that represents binary data in text form.
+                This is where the actual encoding happens. The output is an
+                ASCII string that represents binary data in text form.
               </p>
             </div>
 
@@ -285,8 +301,8 @@ const Base64Encoder = () => {
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
                 Decoding is the same steps in reverse: atob → unescape →
-                decodeURIComponent. If the Base64 was encoded properly, you get your
-                original text back — including emojis.
+                decodeURIComponent. If the Base64 was encoded properly, you get
+                your original text back — including emojis.
               </p>
             </div>
 
@@ -309,7 +325,8 @@ const Base64Encoder = () => {
             Base64 Encoding Examples
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            These aren&apos;t made up — run them yourself to see the tool in action.
+            These aren&apos;t made up — run them yourself to see the tool in
+            action.
           </p>
 
           <div className="space-y-5">
@@ -320,7 +337,9 @@ const Base64Encoder = () => {
                 </span>
               </div>
               <div className="bg-green-50 border border-green-100 rounded-lg p-4">
-                <p className="text-xs text-green-700 font-medium mb-1">INPUT:</p>
+                <p className="text-xs text-green-700 font-medium mb-1">
+                  INPUT:
+                </p>
                 <p className="font-mono text-sm text-gray-800 break-all">
                   Hello World! 👋
                 </p>
@@ -340,21 +359,25 @@ const Base64Encoder = () => {
                 </span>
               </div>
               <div className="bg-green-50 border border-green-100 rounded-lg p-4">
-                <p className="text-xs text-green-700 font-medium mb-1">INPUT:</p>
+                <p className="text-xs text-green-700 font-medium mb-1">
+                  INPUT:
+                </p>
                 <p className="font-mono text-sm text-gray-800 break-all">
                   "In today&apos;s interconnected world, leveraging cutting-edge
-                  technologies facilitates seamless user experiences. Furthermore, it is worth noting
-                  that this revolutionary approach represents a paradigm shift in how we
-                  utilize modern solutions."
+                  technologies facilitates seamless user experiences.
+                  Furthermore, it is worth noting that this revolutionary
+                  approach represents a paradigm shift in how we utilize modern
+                  solutions."
                 </p>
                 <p className="text-xs text-green-600 font-mono break-all mt-2">
                   OUTPUT:
                 </p>
                 <p className="font-mono text-sm text-gray-800 break-all">
                   "In today's interconnected world, leveraging cutting-edge
-                  technologies facilitates seamless user experiences. Furthermore, it
-                  is worth noting that this revolutionary approach represents a
-                  paradigm shift in how we utilize modern solutions."
+                  technologies facilitates seamless user experiences.
+                  Furthermore, it is worth noting that this revolutionary
+                  approach represents a paradigm shift in how we utilize modern
+                  solutions."
                 </p>
               </div>
             </div>
@@ -366,7 +389,9 @@ const Base64Encoder = () => {
                 </span>
               </div>
               <div className="bg-green-50 border border-green-100 rounded-lg p-4">
-                <p className="text-xs text-green-700 font-medium mb-1">INPUT:</p>
+                <p className="text-xs text-green-700 font-medium mb-1">
+                  INPUT:
+                </p>
                 <p className="font-mono text-sm text-gray-800 break-all">
                   SGVsbG8gV29yISAwIQ==
                 </p>
@@ -390,7 +415,9 @@ const Base64Encoder = () => {
                 </span>
               </div>
               <div className="bg-green-50 border border-green-100 rounded-lg p-4">
-                <p className="text-xs text-green-700 font-medium mb-1">INPUT:</p>
+                <p className="text-xs text-green-700 font-medium mb-1">
+                  INPUT:
+                </p>
                 <p className="font-mono text-sm text-gray-800 break-all">
                   8J+RiD/YSh7Ql8iBwMT84Y2hwMTIjMjAwIQ==
                 </p>
@@ -411,15 +438,15 @@ const Base64Encoder = () => {
             When Do You Actually Need Base64?
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Not as often as you might think. Here&apos;s where Base64 actually shows up in
-            real work.
+            Not as often as you might think. Here&apos;s where Base64 actually
+            shows up in real work.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
                 icon: <Code size={20} className="text-sky-600" />,
                 title: "Embedding Images in HTML/CSS",
-                desc: "This is the big one. When you convert an image to Base64, you can put it directly in an <img src=\"data:image/png;base64,...\"> tag. No separate file needed.",
+                desc: 'This is the big one. When you convert an image to Base64, you can put it directly in an <img src="data:image/png;base64,..."> tag. No separate file needed.',
               },
               {
                 icon: <Server size={20} className="text-green-600" />,
@@ -460,55 +487,62 @@ const Base64Encoder = () => {
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
             There&apos;s a lot of confusion around Base64 because people call it
-            &quot;Base64 encryption&quot; or &quot;Base64 encoding&quot; like they&apos;re the
-            same thing. They&apos;re not.
+            &quot;Base64 encryption&quot; or &quot;Base64 encoding&quot; like
+            they&apos;re the same thing. They&apos;re not.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Base64 is just an encoding format — it converts binary data (bytes) into a
-            text string using 64 ASCII characters (A-Z, a-z, 0-9, +, /). Anyone with the algorithm can decode it instantly. It&apos;s
-            designed for embedding binary data in text-based formats like HTML, CSS, JSON, and XML. It&apos;s
-            public, standard, and it&apos;s been around since the early days of email.
+            Base64 is just an encoding format — it converts binary data (bytes)
+            into a text string using 64 ASCII characters (A-Z, a-z, 0-9, +, /).
+            Anyone with the algorithm can decode it instantly. It&apos;s
+            designed for embedding binary data in text-based formats like HTML,
+            CSS, JSON, and XML. It&apos;s public, standard, and it&apos;s been
+            around since the early days of email.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Encryption, on the other hand, requires a secret key to decode. Without the key, the data is
-            unreadable. That&apos;s the difference. If you&apos;re using Base64 to hide something
-            literally anyone can decode it, it&apos;s not secure. Don&apos;t put passwords or sensitive
-            data in Base64 and think it&apos;s &quot;encrypted.&quot;
+            Encryption, on the other hand, requires a secret key to decode.
+            Without the key, the data is unreadable. That&apos;s the difference.
+            If you&apos;re using Base64 to hide something literally anyone can
+            decode it, it&apos;s not secure. Don&apos;t put passwords or
+            sensitive data in Base64 and think it&apos;s &quot;encrypted.&quot;
           </p>
 
           <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
             The UTF-8 Problem
           </h3>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Standard Base64 uses ASCII, which only handles basic Latin characters. If you
-            try to encode non-English text like Arabic, Chinese, or Hindi without proper
-            encoding first, the output will be corrupted when decoded. That&apos;s why our tool
-            uses <code>encodeURIComponent()</code> before encoding — it converts special
-            characters into a format that Base64 can handle correctly.
+            Standard Base64 uses ASCII, which only handles basic Latin
+            characters. If you try to encode non-English text like Arabic,
+            Chinese, or Hindi without proper encoding first, the output will be
+            corrupted when decoded. That&apos;s why our tool uses{" "}
+            <code>encodeURIComponent()</code> before encoding — it converts
+            special characters into a format that Base64 can handle correctly.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Most modern browsers handle this automatically now, but if you&apos;re working
-            with older systems or doing it manually, this is why some Base64 strings
-            decode into gibberish. Our tool handles the encoding side so you don&apos;t have to
-            think about it.
+            Most modern browsers handle this automatically now, but if
+            you&apos;re working with older systems or doing it manually, this is
+            why some Base64 strings decode into gibberish. Our tool handles the
+            encoding side so you don&apos;t have to think about it.
           </p>
 
           <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
             Base64 in Data URIs
           </h3>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            This is probably where you&apos;ll use Base64 the most. The standard format is{" "}
+            This is probably where you&apos;ll use Base64 the most. The standard
+            format is{" "}
             <code className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-xs">
               data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...
             </code>
-            The part after the comma is your Base64 string. When the browser reads
-            this, it decodes it back to the original binary data (your image file).
+            The part after the comma is your Base64 string. When the browser
+            reads this, it decodes it back to the original binary data (your
+            image file).
           </p>
           <p className="text-gray-600 leading-relaxed">
-            One thing that catches people off: Base64 strings are about 33% larger than the
-            original binary data. A 100KB image becomes roughly 133KB as Base64. Keep that in
-            mind if file size is a concern. For small stuff like favicons or tiny icons,
-            the size increase doesn&apos;t really matter.
+            One thing that catches people off: Base64 strings are about 33%
+            larger than the original binary data. A 100KB image becomes roughly
+            133KB as Base64. Keep that in mind if file size is a concern. For
+            small stuff like favicons or tiny icons, the size increase
+            doesn&apos;t really matter.
           </p>
 
           <p className="text-gray-600 leading-relaxed">
@@ -526,8 +560,8 @@ const Base64Encoder = () => {
             >
               JSON Formatter
             </Link>{" "}
-            handles the JSON formatting side of things if you need to pretty-print
-            your data.
+            handles the JSON formatting side of things if you need to
+            pretty-print your data.
           </p>
         </section>
 
@@ -658,7 +692,6 @@ const Base64Encoder = () => {
       </div>
     </div>
   );
-  };
-
+};
 
 export default Base64Encoder;

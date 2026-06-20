@@ -19,6 +19,7 @@ import {
   Zap,
   MessageSquare,
 } from "lucide-react";
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 const AIAgent = () => {
   const [messages, setMessages] = useState([
@@ -173,6 +174,8 @@ const AIAgent = () => {
           </p>
         </div>
 
+       <ResponsiveAd />
+
         {/* Chat Window */}
         <div className="bg-white/95 rounded-3xl shadow-2xl border border-gray-200 overflow-hidden h-[72vh] flex flex-col">
           {/* Messages */}
@@ -298,6 +301,15 @@ const AIAgent = () => {
             </div>
           </div>
         )}
+
+        {/* Native ad here */}
+
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+        ></script>
+        <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
 
         {/* ─── How to Use ─── */}
         <section className="mt-10 bg-white border border-gray-200 rounded-2xl p-6 md:p-10">
