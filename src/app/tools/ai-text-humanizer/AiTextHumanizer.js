@@ -23,7 +23,7 @@ import {
   Sliders,
   RefreshCcw,
 } from "lucide-react";
-import {ResponsiveAd} from "../../../components/ResponsiveAd";
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 // ─── ADVANCED AI DETECTION SCORING (15+ Signals) ─────────────────────────────
 function advancedAiScore(text) {

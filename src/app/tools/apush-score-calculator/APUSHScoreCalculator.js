@@ -20,7 +20,7 @@ import {
   Clock,
   HelpCircle,
 } from "lucide-react";
-import { ResponsiveAd } from "../../../components/ResponsiveAd";
+import ResponsiveAd from "../../../components/ResponsiveAd";
 
 // ─── APUSH Scoring Logic (2024-2026 Exam Structure) ─────────────────────────
 function calculateAPUSHScore(inputs) {
