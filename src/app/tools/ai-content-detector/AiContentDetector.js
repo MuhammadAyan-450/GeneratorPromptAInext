@@ -27,7 +27,7 @@ import {
   Briefcase,
   BookOpen,
 } from "lucide-react";
-import {ResponsiveAd} from "../../../components/ads/ResponsiveAd";
+import {ResponsiveAd} from "../../../components/ResponsiveAd";
 
 // ─── ADVANCED AI DETECTION SCORING ────────────────────────────────────────
 function advancedAiScore(text) {
