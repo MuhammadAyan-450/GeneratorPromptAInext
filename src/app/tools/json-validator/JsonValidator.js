@@ -432,8 +432,7 @@ export default function JsonValidator() {
                 Native JSON.parse()
               </h3>
               <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
-                try {"{"} JSON.parse(input) {"}"} catch (err) {"{"} /* handle
-                error */ {"}"}
+                try {"{"} JSON.parse(input) {"}"} catch (err) {"{"} 
               </div>
               <p className="text-gray-500 text-xs leading-relaxed">
                 We use the browser's built-in JSON parser. If your input is
