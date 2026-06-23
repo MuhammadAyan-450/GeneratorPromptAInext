@@ -2,14 +2,22 @@ import EbayChargesCalculator from './EbayChargesCalculator'
 
 // ✅ Perfect SEO Metadata (Title: 56 chars, Description: 159 chars)
 export const metadata = {
+<<<<<<< HEAD
   title: 'eBay Fee Calculator – Calculate eBay Seller Fees & Profit Free',
+=======
+  title: 'eBay Charges Calculator – Calculate Seller Fees & Profit Free',
+>>>>>>> 8da083c1a9a4babb5a845443cd94970488005ec2
   
   description: 'Calculate eBay seller fees, final value fees, and profit instantly with our free eBay Fee Calculator for sellers. 🚀',
   
   alternates: { canonical: 'https://www.generatorpromptai.com/tools/ebay-charges-calculator' },
   
   openGraph: {
+<<<<<<< HEAD
     title: 'eBay Fee Calculator – Calculate eBay Seller Fees & Profit Free',
+=======
+    title: 'eBay Charges Calculator – Calculate Seller Fees & Profit Free',
+>>>>>>> 8da083c1a9a4babb5a845443cd94970488005ec2
     description: 'Free eBay fee calculator. Calculate final value fees, shipping costs, and net profit instantly. Adjust fee % for any category. No signup.',
     url: 'https://www.generatorpromptai.com/tools/ebay-charges-calculator',
     siteName: 'GeneratorPromptAI',
@@ -19,14 +27,22 @@ export const metadata = {
         url: 'https://www.generatorpromptai.com/og/ebay-charges-calculator.png',
         width: 1200,
         height: 630,
+<<<<<<< HEAD
         alt: 'eBay Fee Calculator – Calculate Seller Fees',
+=======
+        alt: 'eBay Charges Calculator – Calculate Seller Fees',
+>>>>>>> 8da083c1a9a4babb5a845443cd94970488005ec2
       },
     ],
   },
   
   twitter: {
     card: 'summary_large_image',
+<<<<<<< HEAD
     title: 'eBay Fee Calculator – Calculate eBay Seller Fees & Profit Free',
+=======
+    title: 'eBay Charges Calculator – Calculate Seller Fees & Profit Free',
+>>>>>>> 8da083c1a9a4babb5a845443cd94970488005ec2
     description: 'Calculate eBay seller fees, final value fees, and profit instantly with our free eBay Fee Calculator for sellers. 🚀',
     images: ['https://www.generatorpromptai.com/og/ebay-charges-calculator.png'],
   },
@@ -45,7 +61,11 @@ export const metadata = {
 const schemaWebApp = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
+<<<<<<< HEAD
   "name": "eBay Fee Calculator – Calculate eBay Seller Fees & Profit Free",
+=======
+  "name": "eBay Charges Calculator – Calculate Seller Fees & Profit Free",
+>>>>>>> 8da083c1a9a4babb5a845443cd94970488005ec2
   "url": "https://www.generatorpromptai.com/tools/ebay-charges-calculator",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
@@ -84,8 +104,13 @@ const schemaBreadcrumb = {
     { 
       "@type": "ListItem", 
       "position": 3, 
+<<<<<<< HEAD
       "name": "eBay Fee Calculator", 
       "item": "https://www.generatorpromptai.com/tools/ebay-fee-calculator" 
+=======
+      "name": "eBay Charges Calculator", 
+      "item": "https://www.generatorpromptai.com/tools/ebay-charges-calculator" 
+>>>>>>> 8da083c1a9a4babb5a845443cd94970488005ec2
     }
   ]
 }

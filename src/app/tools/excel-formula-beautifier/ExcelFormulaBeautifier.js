@@ -942,8 +942,19 @@ const ExcelFormulaBeautifier = () => {
             >
               JSON Formatter
             </Link>{" "}
+<<<<<<< HEAD
             for API data, or the CSV to JSON converter if you need to move
             spreadsheet data into a web application.
+=======
+            for API data, or the{" "}
+            <Link
+              href="/tools/csv-to-json"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              CSV to JSON converter
+            </Link>{" "}
+            if you need to move spreadsheet data into a web application.
+>>>>>>> 8da083c1a9a4babb5a845443cd94970488005ec2
           </p>
         </section>
 
@@ -1033,6 +1044,7 @@ const ExcelFormulaBeautifier = () => {
                 desc: "Beautify JSON code.",
               },
               {
+<<<<<<< HEAD
                 href: "/tools/image-converter",
                 title: "Image Converter",
                 desc: "Convert between JPG, PNG, WebP formats",
@@ -1041,6 +1053,16 @@ const ExcelFormulaBeautifier = () => {
                 href: "/tools/currency-converter",
                 title: "Currency Converter",
                 desc: "Convert between different currencies.",
+=======
+                href: "/tools/sitemap-generator",
+                title: "Sitemap Generator",
+                desc: "Generate XML sitemap from list of URLs",
+              },
+              {
+                href: "/tools/image-to-text",
+                title: "Image to Text",
+                desc: "Extract text from images",
+>>>>>>> 8da083c1a9a4babb5a845443cd94970488005ec2
               },
               {
                 href: "/tools/word-counter",
