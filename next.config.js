@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['www.generatorpromptai.com'],
-  },
+ images: {
+  remotePatterns: [
+    {
+      protocol: 'https',
+      hostname: 'generatorpromptai.com',
+    },
+  ],
+}
 }
 
 module.exports = nextConfig
