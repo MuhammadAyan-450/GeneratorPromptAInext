@@ -1,0 +1,882 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import {
+  Clock,
+  Copy,
+  RefreshCw,
+  ArrowLeftRight,
+  Globe,
+  Home,
+  ChevronDown,
+  Hash,
+  MapPin,
+  Calendar,
+  Zap,
+  Shield,
+  HelpCircle,
+  FileText,
+} from "lucide-react";
+
+import ResponsiveAd from "../../../components/ResponsiveAd";
+
+// ─── All supported time zones ─────────────────────────────────────────────────
+const TIME_ZONES = [
+  { label: "Karachi (PKT)", value: "Asia/Karachi", offset: "UTC+5" },
+  { label: "Dubai (GST)", value: "Asia/Dubai", offset: "UTC+4" },
+  { label: "Riyadh (AST)", value: "Asia/Riyadh", offset: "UTC+3" },
+  { label: "Doha / Qatar (AST)", value: "Asia/Qatar", offset: "UTC+3" },
+  { label: "Kuwait City (AST)", value: "Asia/Kuwait", offset: "UTC+3" },
+  { label: "Bahrain (AST)", value: "Asia/Bahrain", offset: "UTC+3" },
+  { label: "Abu Dhabi (GST)", value: "Asia/Dubai", offset: "UTC+4" },
+  { label: "Mumbai / Delhi (IST)", value: "Asia/Kolkata", offset: "UTC+5:30" },
+  { label: "Dhaka (BST)", value: "Asia/Dhaka", offset: "UTC+6" },
+  { label: "Kabul (AFT)", value: "Asia/Kabul", offset: "UTC+4:30" },
+  { label: "London (GMT/BST)", value: "Europe/London", offset: "UTC+0/+1" },
+  { label: "Paris / Berlin (CET)", value: "Europe/Paris", offset: "UTC+1/+2" },
+  { label: "Moscow (MSK)", value: "Europe/Moscow", offset: "UTC+3" },
+  { label: "Istanbul (TRT)", value: "Europe/Istanbul", offset: "UTC+3" },
+  { label: "UTC / GMT", value: "UTC", offset: "UTC+0" },
+  {
+    label: "New York (EST/EDT)",
+    value: "America/New_York",
+    offset: "UTC-5/-4",
+  },
+  {
+    label: "Los Angeles (PST/PDT)",
+    value: "America/Los_Angeles",
+    offset: "UTC-8/-7",
+  },
+  { label: "Chicago (CST/CDT)", value: "America/Chicago", offset: "UTC-6/-5" },
+  { label: "Toronto (EST/EDT)", value: "America/Toronto", offset: "UTC-5/-4" },
+  {
+    label: "Vancouver (PST/PDT)",
+    value: "America/Vancouver",
+    offset: "UTC-8/-7",
+  },
+  {
+    label: "Beijing / Shanghai (CST)",
+    value: "Asia/Shanghai",
+    offset: "UTC+8",
+  },
+  { label: "Tokyo (JST)", value: "Asia/Tokyo", offset: "UTC+9" },
+  { label: "Singapore (SGT)", value: "Asia/Singapore", offset: "UTC+8" },
+  { label: "Kuala Lumpur (MYT)", value: "Asia/Kuala_Lumpur", offset: "UTC+8" },
+  { label: "Bangkok (ICT)", value: "Asia/Bangkok", offset: "UTC+7" },
+  {
+    label: "Sydney (AEDT/AEST)",
+    value: "Australia/Sydney",
+    offset: "UTC+10/+11",
+  },
+  {
+    label: "Auckland (NZST/NZDT)",
+    value: "Pacific/Auckland",
+    offset: "UTC+12/+13",
+  },
+  { label: "Nairobi (EAT)", value: "Africa/Nairobi", offset: "UTC+3" },
+  { label: "Cairo (EET)", value: "Africa/Cairo", offset: "UTC+2" },
+  {
+    label: "Johannesburg (SAST)",
+    value: "Africa/Johannesburg",
+    offset: "UTC+2",
+  },
+];
+
+// ─── Quick pair presets ───────────────────────────────────────────────────────
+const QUICK_PAIRS = [
+  { label: "Karachi → Dubai", from: "Asia/Karachi", to: "Asia/Dubai" },
+  { label: "Karachi → London", from: "Asia/Karachi", to: "Europe/London" },
+  { label: "Karachi → New York", from: "Asia/Karachi", to: "America/New_York" },
+  { label: "Karachi → Riyadh", from: "Asia/Karachi", to: "Asia/Riyadh" },
+  { label: "Karachi → Toronto", from: "Asia/Karachi", to: "America/Toronto" },
+  { label: "Dubai → London", from: "Asia/Dubai", to: "Europe/London" },
+  { label: "London → New York", from: "Europe/London", to: "America/New_York" },
+  { label: "UTC → Karachi", from: "UTC", to: "Asia/Karachi" },
+];
+
+// ─── Cities to show in multi-compare ─────────────────────────────────────────
+const COMPARE_ZONES = [
+  "Asia/Karachi",
+  "Asia/Dubai",
+  "Asia/Riyadh",
+  "Europe/London",
+  "America/New_York",
+  "America/Los_Angeles",
+  "Asia/Tokyo",
+  "Australia/Sydney",
+];
+
+// ─── Helper Functions (Outside Component) ─────────────────────────────────────
+const formatTime = (date, tz, style = "short") =>
+  date.toLocaleString("en-US", {
+    dateStyle: "medium",
+    timeStyle: style,
+    timeZone: tz,
+  });
+
+const formatTimeOnly = (date, tz) =>
+  date.toLocaleString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZone: tz,
+  });
+
+const formatDateOnly = (date, tz) =>
+  date.toLocaleString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    timeZone: tz,
+  });
+
+const getLabel = (tz) => TIME_ZONES.find((t) => t.value === tz)?.label || tz;
+const getOffset = (tz) => TIME_ZONES.find((t) => t.value === tz)?.offset || "";
+
+// ─── FAQ Data (Sync with page.js JSON-LD) ─────────────────────────────────────
+const FAQS = [
+  {
+    q: "How to convert time between Karachi and Dubai online free?",
+    a: "Select 'Karachi → Dubai' from the Quick Pairs or manually set From to Asia/Karachi and To to Asia/Dubai. Pick your date and time — the converted Dubai time appears instantly. Dubai is always 1 hour behind Karachi.",
+  },
+  {
+    q: "What time is it in London when it is 12pm in Karachi?",
+    a: "In winter (GMT, UTC+0), London is 5 hours behind Karachi so 12pm PKT = 7am GMT. In summer (BST, UTC+1), London is 4 hours behind so 12pm PKT = 8am BST. Our tool adjusts automatically for Daylight Saving Time.",
+  },
+  {
+    q: "Does this time zone converter handle Daylight Saving Time automatically?",
+    a: "Yes. The tool uses the browser's native Intl.DateTimeFormat API which automatically applies DST rules based on the specific time zone and the exact date you select. No manual adjustment is needed.",
+  },
+  {
+    q: "How to convert time between Karachi and New York for meeting scheduling?",
+    a: "Click 'Karachi → New York' Quick Pair, set your meeting time in the date/time picker, and see the exact New York time instantly. Karachi is 10 hours ahead in winter (EST) and 9 hours ahead in summer (EDT). Copy the result to share with participants.",
+  },
+  {
+    q: "Is the world clock showing real-time current times?",
+    a: "Yes. The world clock section shows current times in 8 major cities (Karachi, Dubai, Riyadh, London, New York, Los Angeles, Tokyo, Sydney) updating every second using your browser's local clock.",
+  },
+  {
+    q: "Is my time conversion data stored or shared?",
+    a: "Never. All calculations happen locally in your browser. Your date/time inputs and selected zones are never sent to servers, stored, or tracked.",
+  },
+];
+
+// ─── Related Tools (6 Items from your tools array) ────────────────────────────
+const RELATED_TOOLS = [
+  {
+    href: "/tools/currency-converter",
+    title: "Currency Converter",
+    desc: "Convert currencies with live real-time exchange rates.",
+  },
+  {
+    href: "/tools/age-calculator",
+    title: "Age Calculator",
+    desc: "Calculate exact age in years, months, days and hours.",
+  },
+  {
+    href: "/tools/percentage-calculator",
+    title: "Percentage Calculator",
+    desc: "Calculate percentage, increase, decrease, discount and tax.",
+  },
+  {
+    href: "/tools/unix-timestamp",
+    title: "Unix Timestamp Converter",
+    desc: "Convert between Unix timestamps and human-readable dates.",
+  },
+  {
+    href: "/tools/time-zone-converter",
+    title: "Time Zone Converter",
+    desc: "Convert time between 25+ cities worldwide with DST auto-handling.",
+  },
+  {
+    href: "/tools/date-calculator",
+    title: "Date Calculator",
+    desc: "Add or subtract days, weeks, months from any date.",
+  },
+];
+
+// ─── Main Component ───────────────────────────────────────────────────────────
+const TimeZoneConverter = () => {
+  const [inputTime, setInputTime] = useState(
+    new Date().toISOString().slice(0, 16),
+  );
+  const [fromTz, setFromTz] = useState("Asia/Karachi");
+  const [toTz, setToTz] = useState("America/New_York");
+  const [result, setResult] = useState("");
+  const [liveFrom, setLiveFrom] = useState("");
+  const [liveTo, setLiveTo] = useState("");
+  const [liveAll, setLiveAll] = useState({});
+  const [copied, setCopied] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
+
+  // Live clock — updates every second
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      setLiveFrom(formatTime(now, fromTz));
+      setLiveTo(formatTime(now, toTz));
+      const all = {};
+      COMPARE_ZONES.forEach((tz) => {
+        all[tz] = formatTime(now, tz);
+      });
+      setLiveAll(all);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, [fromTz, toTz]);
+
+  // Convert on input change
+  useEffect(() => {
+    if (!inputTime) {
+      setResult("");
+      return;
+    }
+    try {
+      const d = new Date(inputTime);
+      if (isNaN(d)) throw new Error();
+      setResult(formatTime(d, toTz));
+    } catch {
+      setResult("Invalid date");
+    }
+  }, [inputTime, toTz]);
+
+  const swap = () => {
+    setFromTz(toTz);
+    setToTz(fromTz);
+  };
+  const applyPair = (pair) => {
+    setFromTz(pair.from);
+    setToTz(pair.to);
+  };
+
+  const copyText = () => {
+    if (!result || result === "Invalid date") return;
+    const text = `${inputTime} (${getLabel(fromTz)}) → ${result} (${getLabel(toTz)})`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const resetAll = () => {
+    setInputTime(new Date().toISOString().slice(0, 16));
+    setFromTz("Asia/Karachi");
+    setToTz("America/New_York");
+    setResult("");
+    setCopied(false);
+  };
+
+  const hasResult = result && result !== "Invalid date";
+  const inputDate = inputTime ? new Date(inputTime) : null;
+
+  const stats = hasResult
+    ? [
+        {
+          icon: MapPin,
+          label: "From Zone",
+          value: getLabel(fromTz).split(" ")[0],
+          color: "text-gray-800",
+        },
+        {
+          icon: MapPin,
+          label: "To Zone",
+          value: getLabel(toTz).split(" ")[0],
+          color: "text-sky-600",
+        },
+        {
+          icon: Calendar,
+          label: "Converted Date",
+          value: inputDate ? formatDateOnly(inputDate, toTz) : "—",
+          color: "text-gray-800",
+        },
+        {
+          icon: Globe,
+          label: "UTC Offset",
+          value: getOffset(toTz),
+          color: "text-gray-800",
+        },
+      ]
+    : [];
+
+  const inputCls =
+    "w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent text-gray-800 bg-white text-sm";
+  const labelCls = "block text-sm font-semibold text-gray-700 mb-2";
+
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* ── Breadcrumb ── */}
+      <div className="max-w-4xl mx-auto w-full px-4 pt-6">
+        <nav aria-label="Breadcrumb">
+          <ol className="flex items-center gap-2 text-sm text-gray-500">
+            <li>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1.5 hover:text-sky-600 transition-colors"
+              >
+                <Home size={14} /> Home
+              </Link>
+            </li>
+            <li>
+              <span className="text-gray-300">/</span>
+            </li>
+            <li>
+              <Link
+                href="/pages/all-tools"
+                className="hover:text-sky-600 transition-colors"
+              >
+                All Tools
+              </Link>
+            </li>
+            <li>
+              <span className="text-gray-300">/</span>
+            </li>
+            <li>
+              <span className="text-gray-900 font-semibold">
+                Time Zone Converter
+              </span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
+      <div className="flex-grow max-w-4xl mx-auto w-full px-4 pb-20">
+        {/* ── Hero ── */}
+        <div className="text-center mb-10 mt-4">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-sky-100 mb-4">
+            <Clock className="text-sky-600" size={28} />
+          </div>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
+            Convert Time Between Karachi Dubai London New York Online Free –{" "}
+            <span className="text-sky-600">Time Zone Converter with DST</span>
+          </h1>
+          <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
+            Convert time between 25+ cities worldwide. DST auto-handled, live
+            world clock, quick pair shortcuts.
+          </p>
+        </div>
+
+        <ResponsiveAd />
+
+        {/* ── Tool Card ── */}
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 mb-8">
+          {/* Quick Pairs */}
+          <div className="mb-6">
+            <label className={labelCls}>Quick Pairs</label>
+            <div className="flex flex-wrap gap-2">
+              {QUICK_PAIRS.map((pair) => (
+                <button
+                  key={pair.label}
+                  onClick={() => applyPair(pair)}
+                  className={`px-3 py-2 rounded-xl border text-sm font-medium transition-all ${
+                    fromTz === pair.from && toTz === pair.to
+                      ? "bg-sky-600 text-white border-sky-600"
+                      : "bg-white text-gray-600 border-gray-200 hover:border-sky-400"
+                  }`}
+                >
+                  {pair.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Date/Time picker */}
+          <div className="mb-6">
+            <label className={labelCls}>Date &amp; Time to Convert</label>
+            <input
+              type="datetime-local"
+              value={inputTime}
+              onChange={(e) => setInputTime(e.target.value)}
+              className={inputCls}
+            />
+          </div>
+
+          {/* From / Swap / To */}
+          <div className="flex items-end gap-3 mb-6">
+            <div className="flex-1">
+              <label className={labelCls}>From</label>
+              <select
+                value={fromTz}
+                onChange={(e) => setFromTz(e.target.value)}
+                className={inputCls}
+              >
+                {TIME_ZONES.map((tz) => (
+                  <option key={tz.value + tz.label} value={tz.value}>
+                    {tz.label} ({tz.offset})
+                  </option>
+                ))}
+              </select>
+              <p className="text-xs text-gray-400 mt-1.5">
+                Now: <strong className="text-gray-600">{liveFrom}</strong>
+              </p>
+            </div>
+
+            <button
+              onClick={swap}
+              className="flex-shrink-0 p-3 mb-[22px] bg-gray-100 hover:bg-sky-100 hover:text-sky-600 rounded-xl transition-colors"
+              title="Swap zones"
+              aria-label="Swap time zones"
+            >
+              <ArrowLeftRight size={20} />
+            </button>
+
+            <div className="flex-1">
+              <label className={labelCls}>To</label>
+              <select
+                value={toTz}
+                onChange={(e) => setToTz(e.target.value)}
+                className={inputCls}
+              >
+                {TIME_ZONES.map((tz) => (
+                  <option key={tz.value + tz.label} value={tz.value}>
+                    {tz.label} ({tz.offset})
+                  </option>
+                ))}
+              </select>
+              <p className="text-xs text-gray-400 mt-1.5">
+                Now: <strong className="text-gray-600">{liveTo}</strong>
+              </p>
+            </div>
+          </div>
+
+          {/* Reset Button */}
+          <div className="mb-2">
+            <button
+              onClick={resetAll}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors"
+            >
+              <RefreshCw size={15} /> Reset
+            </button>
+          </div>
+
+          {/* ── Results Section ── */}
+          {hasResult && (
+            <div className="mt-8">
+              {/* Stats Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                {stats.map((stat, i) => (
+                  <div
+                    key={i}
+                    className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center"
+                  >
+                    <div className="flex justify-center text-sky-500 mb-1">
+                      <stat.icon size={20} />
+                    </div>
+                    <p className={`text-lg font-bold ${stat.color}`}>
+                      {stat.value}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Dark Output Block */}
+              <div className="bg-gray-900 rounded-2xl p-6 mb-6">
+                <p className="text-xs text-gray-500 uppercase tracking-widest mb-3 font-semibold">
+                  Converted Time
+                </p>
+                <pre className="text-3xl md:text-4xl font-bold text-sky-400 font-mono tracking-tight mb-3">
+                  {result}
+                </pre>
+                <p className="text-sm text-gray-500">
+                  in <strong className="text-gray-300">{getLabel(toTz)}</strong>
+                </p>
+                <div className="mt-4 pt-4 border-t border-gray-800 text-xs text-gray-500 font-mono">
+                  {inputTime} ({getLabel(fromTz)}) → {result} ({getLabel(toTz)})
+                </div>
+              </div>
+
+              {/* Actions */}
+              <div className="flex justify-center gap-3">
+                <button
+                  onClick={copyText}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors"
+                >
+                  <Copy size={15} />
+                  {copied ? "Copied!" : "Copy Conversion"}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Invalid Date */}
+          {result === "Invalid date" && (
+            <div className="mt-8 text-center py-8 text-red-500 border-2 border-dashed border-red-200 rounded-xl">
+              <p className="font-medium">
+                Invalid date — please check your input.
+              </p>
+            </div>
+          )}
+
+          {/* Empty State */}
+          {!result && (
+            <div className="text-center py-16 text-gray-400 border-2 border-dashed border-gray-200 rounded-xl mt-4">
+              <Clock size={32} className="mx-auto mb-3 text-gray-300" />
+              <p>
+                Select a date/time and zones to{" "}
+                <strong className="text-gray-500">
+                  see the converted time
+                </strong>
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* ── World Clock ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            World Clock — Current Times in 8 Major Cities
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {COMPARE_ZONES.map((tz) => {
+              const info = TIME_ZONES.find((t) => t.value === tz);
+              const shortLabel = info?.label?.split(" ")[0] || tz.split("/")[1];
+              return (
+                <button
+                  key={tz}
+                  onClick={() => setToTz(tz)}
+                  className={`p-3 rounded-xl border text-left transition-all hover:border-sky-300 ${
+                    toTz === tz
+                      ? "border-sky-400 bg-sky-50"
+                      : "border-gray-100 bg-gray-50"
+                  }`}
+                >
+                  <p className="text-xs font-semibold text-gray-500 mb-0.5">
+                    {shortLabel}
+                  </p>
+                  <p className="text-sm font-bold text-gray-800">
+                    {liveAll[tz] || "..."}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
+          <p className="text-xs text-gray-400 mt-3">
+            Click any city to set it as the To zone · Updates every second
+          </p>
+        </section>
+
+        {/* Native ad here */}
+
+        <script
+          async="async"
+          data-cfasync="false"
+          src="https://pl29796844.effectivecpmnetwork.com/4c385cac6f0784aa3165d3a9e7478f20/invoke.js"
+        ></script>
+        <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
+
+        {/* ── How to Use ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            How to Convert Time Between Cities Online Free
+          </h2>
+          <ol className="space-y-5">
+            {[
+              {
+                step: "1",
+                title: "Pick a Quick Pair",
+                desc: 'Click a preset like "Karachi → New York" or manually select From/To zones from the dropdowns.',
+              },
+              {
+                step: "2",
+                title: "Set Date & Time",
+                desc: "Use the datetime picker to choose the exact moment you want to convert.",
+              },
+              {
+                step: "3",
+                title: "View Instant Result",
+                desc: "The converted time appears instantly in the dark output block with zone stats.",
+              },
+              {
+                step: "4",
+                title: "Copy or Reset",
+                desc: "Copy the conversion to share with colleagues, or reset to start fresh.",
+              },
+            ].map((item) => (
+              <li key={item.step} className="flex items-start gap-4">
+                <span className="w-8 h-8 bg-sky-100 text-sky-700 rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0 mt-0.5">
+                  {item.step}
+                </span>
+                <div>
+                  <p className="font-semibold text-gray-900 text-sm mb-1">
+                    {item.title}
+                  </p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {/* ── How It Works ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            How Time Zone Conversion Works
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            Smart DST handling, real-time updates. Here's the logic.
+          </p>
+
+          <div className="space-y-5">
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2 flex items-center gap-2">
+                <Zap size={16} className="text-sky-600" />
+                Native Intl.DateTimeFormat API
+              </h3>
+
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                <code>
+                  {`date.toLocaleString('en-US', { timeZone: 'Asia/Karachi' })`}
+                </code>
+              </div>
+
+              <p className="text-gray-500 text-xs leading-relaxed">
+                We use the browser&apos;s built-in Intl API which automatically
+                applies Daylight Saving Time rules based on the exact date and
+                time zone. No manual offset calculations needed.
+              </p>
+            </div>
+
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
+              <h3 className="font-bold text-gray-900 text-sm mb-2 flex items-center gap-2">
+                <Clock size={16} className="text-sky-600" />
+                Live World Clock Updates
+              </h3>
+              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
+                setInterval(tick, 1000) → real-time display
+              </div>
+              <p className="text-gray-500 text-xs leading-relaxed">
+                The world clock section updates every second using setInterval,
+                showing current times in 8 major cities without page reloads.
+              </p>
+            </div>
+
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-4">
+              <h3 className="font-bold text-sky-900 text-sm mb-2 flex items-center gap-2">
+                <Shield size={16} className="text-sky-600" />
+                Privacy Note
+              </h3>
+              <p className="text-sky-800 text-xs leading-relaxed">
+                All time conversions happen locally in your browser. No
+                date/time inputs or zone selections are ever sent to any server.
+                100% private.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Sample Results ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Real Example: Meeting Scheduling Across Time Zones
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            See how conversions work for real-world use.
+          </p>
+
+          <div className="border border-gray-100 rounded-2xl p-5 bg-gray-50">
+            <div className="grid sm:grid-cols-2 gap-4 mb-4">
+              <div className="bg-white border border-gray-200 rounded-xl p-4">
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+                  Input
+                </p>
+                <p className="font-mono text-xs text-gray-800">
+                  Date: Jan 15, 2026
+                  <br />
+                  Time: 2:00 PM
+                  <br />
+                  From: Karachi (PKT)
+                  <br />
+                  To: New York (EST)
+                </p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-xl p-4">
+                <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">
+                  Output
+                </p>
+                <p className="font-mono text-xs text-gray-800">
+                  Converted: Jan 15, 2026
+                  <br />
+                  Time: 4:00 AM EST
+                  <br />
+                  Offset: UTC-5
+                  <br />
+                  Note: Karachi is 10 hours ahead
+                </p>
+              </div>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Result: Perfect for scheduling a morning meeting in Karachi that
+              works for afternoon participants in New York.
+            </p>
+          </div>
+        </section>
+
+        {/* ── Use Cases ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Who Uses Time Zone Converters?
+          </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            From remote teams to travelers — timing matters everywhere.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                icon: <Zap size={20} className="text-sky-600" />,
+                title: "Remote Workers",
+                desc: "Schedule meetings with colleagues in different time zones without manual DST calculations or confusion.",
+              },
+              {
+                icon: <Globe size={20} className="text-sky-600" />,
+                title: "Pakistani Expats",
+                desc: "Stay connected with family back home by converting times between Gulf, UK, Canada, and US time zones.",
+              },
+              {
+                icon: <MapPin size={20} className="text-sky-600" />,
+                title: "Travelers",
+                desc: "Plan flights, hotel check-ins, and local appointments by converting departure times to destination time zones.",
+              },
+              {
+                icon: <HelpCircle size={20} className="text-sky-600" />,
+                title: "Event Organizers",
+                desc: "Coordinate webinars, conferences, or live streams across multiple time zones with accurate start times.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="border border-gray-100 rounded-2xl p-5 hover:border-sky-200 transition-colors"
+              >
+                <div className="mb-3">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 text-sm mb-1.5">
+                  {item.title}
+                </h3>
+                <p className="text-gray-500 text-xs leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── SEO Content ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Why Time Zone Conversion Matters for Global Teams
+          </h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Our time zone converter lets you instantly convert any date and time
+            between <strong>25+ major cities and time zones</strong> worldwide —
+            including Karachi, Dubai, Riyadh, London, New York, Toronto, Tokyo,
+            Sydney and more. Daylight Saving Time (DST) is handled automatically
+            based on the exact date selected, so you never have to manually
+            adjust for summer/winter time differences.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Perfect for Pakistani expats and remote workers coordinating with
+            teams in the Gulf (UAE, Saudi Arabia, Qatar, Kuwait), UK, Canada,
+            and the US. The <strong>Quick Pair buttons</strong> let you switch
+            between popular routes in one click, and the{" "}
+            <strong>live world clock</strong> shows current times in 8 major
+            cities updating every second.
+          </p>
+          <p className="text-gray-600 leading-relaxed">
+            Built for speed and privacy — all processing happens in your browser
+            using JavaScript. Your date/time inputs never leave your device.
+            Just accurate conversions, instantly.
+          </p>
+
+          <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
+            Privacy Note
+          </h3>
+          <p className="text-gray-600 leading-relaxed">
+            This tool runs 100% in your browser using JavaScript. No date/time
+            inputs or zone selections are uploaded to any server. No data is
+            stored or tracked. Your info stays on your device — always.
+          </p>
+
+          <p className="text-gray-600 leading-relaxed mt-4">
+            Need more calculator tools? Try the{" "}
+            <Link
+              href="/tools/currency-converter"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              Currency Converter
+            </Link>{" "}
+            for exchange rates, or the{" "}
+            <Link
+              href="/tools/age-calculator"
+              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
+            >
+              Age Calculator
+            </Link>{" "}
+            for date math.
+          </p>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            Frequently Asked Questions
+          </h2>
+          <div className="space-y-3 max-w-4xl mx-auto">
+            {FAQS.map((item, i) => (
+              <div
+                key={i}
+                className="border-2 border-gray-100 rounded-2xl overflow-hidden hover:border-sky-200 transition-colors duration-300"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                  className="w-full flex items-center justify-between p-5 text-left"
+                  aria-expanded={openFaq === i}
+                >
+                  <h3 className="text-sm md:text-base font-bold text-gray-900 pr-4">
+                    {item.q}
+                  </h3>
+                  <ChevronDown
+                    size={22}
+                    className={`text-sky-500 flex-shrink-0 transition-transform duration-300 ${openFaq === i ? "rotate-180" : ""}`}
+                  />
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${openFaq === i ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}
+                >
+                  <p className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
+                    {item.a}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Related Tools ── */}
+        <section>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            Related Calculator &amp; Utility Tools
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {RELATED_TOOLS.map((tool) => (
+              <Link
+                key={tool.href}
+                href={tool.href}
+                className="group bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-sky-400 transition-all"
+              >
+                <h3 className="font-semibold text-gray-800 mb-1.5 group-hover:text-sky-600 transition-colors">
+                  {tool.title}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  {tool.desc}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+export default TimeZoneConverter;
