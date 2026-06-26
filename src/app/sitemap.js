@@ -48,7 +48,8 @@ export default function sitemap() {
     "ai-content-detector",
     "ai-text-humanizer",
     "apush-score-calculator",
-    "racine-carree-calculator"
+    "racine-carree-calculator",
+    "proportion-calculator"
   ];
 
  

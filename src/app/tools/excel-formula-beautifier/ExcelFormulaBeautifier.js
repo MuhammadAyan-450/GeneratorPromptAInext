@@ -942,14 +942,8 @@ const ExcelFormulaBeautifier = () => {
             >
               JSON Formatter
             </Link>{" "}
-            for API data, or the{" "}
-            <Link
-              href="/tools/csv-to-json"
-              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
-            >
-              CSV to JSON converter
-            </Link>{" "}
-            if you need to move spreadsheet data into a web application.
+            for API data, or the CSV to JSON converter if you need to move
+            spreadsheet data into a web application.
           </p>
         </section>
 
@@ -1039,14 +1033,14 @@ const ExcelFormulaBeautifier = () => {
                 desc: "Beautify JSON code.",
               },
               {
-                href: "/tools/csv-to-json",
-                title: "CSV to JSON",
-                desc: "Convert spreadsheet data.",
+                href: "/tools/emoji-picker",
+                title: "Emoji Picker",
+                desc: "Select emojis for your text.",
               },
               {
-                href: "/tools/sql-formatter",
-                title: "SQL Formatter",
-                desc: "Format database queries.",
+                href: "/tools/image-to-text",
+                title: "Image to Text",
+                desc: "Extract text from images.",
               },
               {
                 href: "/tools/word-counter",

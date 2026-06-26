@@ -473,12 +473,13 @@ const FakeDataGenerator = () => {
             <Database className="text-sky-600" size={28} />
           </div>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
-            Fake Data Generator
+            Fake Data Generator — Generate Dummy & Mock Data Free Online
           </h1>
           <p className="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">
-            Generate realistic dummy data with Pakistani or International names,
-            addresses, and phone numbers. Perfect for database seeding, API
-            testing, and demo accounts. Export to CSV or JSON instantly.
+            Generate realistic fake data instantly — names, emails, phone
+            numbers, addresses, job titles, and more. Choose Pakistani or
+            International data, pick your fields, set the record count, and
+            export to CSV or JSON. Free, private, no signup needed.
           </p>
         </div>
 
@@ -600,7 +601,6 @@ const FakeDataGenerator = () => {
           {/* Results Section */}
           {data.length > 0 && (
             <div className="mt-8">
-              {/* Stats Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                 <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 text-center">
                   <div className="flex justify-center text-sky-500 mb-1">
@@ -640,7 +640,6 @@ const FakeDataGenerator = () => {
                 </div>
               </div>
 
-              {/* View Toggle & Actions */}
               <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <div className="flex items-center gap-3">
                   <span className="text-sm font-semibold text-gray-700">
@@ -664,83 +663,75 @@ const FakeDataGenerator = () => {
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={copyAsCsv}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700"
                   >
                     <Copy size={13} /> {copiedCsv ? "Copied!" : "Copy CSV"}
                   </button>
                   <button
                     onClick={copyAsJson}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700 transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-xl text-sm font-medium text-gray-700"
                   >
                     <Copy size={13} /> {copiedJson ? "Copied!" : "Copy JSON"}
                   </button>
                   <button
                     onClick={downloadCsv}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-sm font-medium transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-sm font-medium"
                   >
                     <Download size={13} /> CSV
                   </button>
                   <button
                     onClick={downloadJson}
-                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-xl text-sm font-medium transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 bg-gray-800 hover:bg-gray-900 text-white rounded-xl text-sm font-medium"
                   >
                     <Download size={13} /> JSON
                   </button>
                 </div>
               </div>
 
-              {/* Table View */}
-              {viewMode === "table" && (
-                <div className="overflow-x-auto border border-gray-200 rounded-xl">
-                  <table className="min-w-full divide-y divide-gray-200 text-sm">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th className="px-3 py-3 text-left text-xs font-semibold text-gray-400 uppercase w-8">
+              {viewMode === "table" ? (
+                <div className="overflow-x-auto rounded-xl border border-gray-200">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-gray-900 text-white">
+                        <th className="px-3 py-2.5 text-left font-semibold text-xs">
                           #
                         </th>
                         {Object.keys(data[0]).map((key) => (
                           <th
                             key={key}
-                            className="px-4 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider whitespace-nowrap"
+                            className="px-3 py-2.5 text-left font-semibold text-xs capitalize whitespace-nowrap"
                           >
-                            {key.replace(/([A-Z])/g, " $1").trim()}
+                            {key}
                           </th>
                         ))}
-                        <th className="px-3 py-3 text-xs font-semibold text-gray-400 uppercase">
+                        <th className="px-3 py-2.5 text-left font-semibold text-xs">
                           Copy
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="bg-white divide-y divide-gray-100">
-                      {data.map((row, index) => (
+                    <tbody>
+                      {data.map((row, i) => (
                         <tr
-                          key={index}
-                          className="hover:bg-sky-50 transition-colors"
+                          key={i}
+                          className={`${i % 2 === 0 ? "bg-white" : "bg-gray-50"} border-b border-gray-100 hover:bg-sky-50 transition-colors`}
                         >
-                          <td className="px-3 py-3 text-gray-400 text-xs">
-                            {index + 1}
+                          <td className="px-3 py-2.5 text-gray-400 text-xs">
+                            {i + 1}
                           </td>
-                          {Object.values(row).map((val, i) => (
+                          {Object.values(row).map((val, j) => (
                             <td
-                              key={i}
-                              className="px-4 py-3 text-gray-800 whitespace-nowrap"
+                              key={j}
+                              className="px-3 py-2.5 text-gray-700 whitespace-nowrap max-w-[160px] truncate"
                             >
-                              {val}
+                              {String(val)}
                             </td>
                           ))}
-                          <td className="px-3 py-3 text-center">
+                          <td className="px-3 py-2.5">
                             <button
-                              onClick={() => copyRow(row, index)}
-                              className="text-gray-400 hover:text-sky-600 transition-colors"
-                              title="Copy row as JSON"
+                              onClick={() => copyRow(row, i)}
+                              className="text-xs text-sky-600 hover:underline whitespace-nowrap"
                             >
-                              {copiedRow === index ? (
-                                <span className="text-xs text-green-600 font-bold">
-                                  Done
-                                </span>
-                              ) : (
-                                <Copy size={13} />
-                              )}
+                              {copiedRow === i ? "Copied!" : "Copy"}
                             </button>
                           </td>
                         </tr>
@@ -748,57 +739,16 @@ const FakeDataGenerator = () => {
                     </tbody>
                   </table>
                 </div>
+              ) : (
+                <pre className="bg-gray-900 text-green-400 rounded-xl p-5 text-xs overflow-auto max-h-[500px] leading-relaxed">
+                  {toJson()}
+                </pre>
               )}
-
-              {/* JSON View */}
-              {viewMode === "json" && (
-                <div className="bg-gray-900 rounded-2xl p-6 overflow-x-auto max-h-96">
-                  <p className="text-xs text-gray-500 uppercase tracking-widest mb-3 font-semibold">
-                    JSON Output
-                  </p>
-                  <pre className="text-sm font-mono leading-relaxed">
-                    {toJson()
-                      .split(/"([^"]+)":/)
-                      .map((part, i) => {
-                        if (i % 2 === 1)
-                          return (
-                            <span key={i} className="text-sky-400">
-                              {part}
-                            </span>
-                          );
-                        if (part.startsWith('"') && part.endsWith('"'))
-                          return (
-                            <span key={i} className="text-green-400">
-                              {part}
-                            </span>
-                          );
-                        return (
-                          <span key={i} className="text-gray-300">
-                            {part}
-                          </span>
-                        );
-                      })}
-                  </pre>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Empty State */}
-          {!data.length && (
-            <div className="text-center py-16 text-gray-400 border-2 border-dashed border-gray-200 rounded-xl mt-4">
-              <Database size={32} className="mx-auto mb-3 text-gray-300" />
-              <p>
-                Click{" "}
-                <strong className="text-gray-500">Generate Records</strong> to
-                create your fake dataset
-              </p>
             </div>
           )}
         </div>
 
-        {/* Native ad here */}
-
+        {/* Native ad — position unchanged */}
         <script
           async="async"
           data-cfasync="false"
@@ -806,27 +756,67 @@ const FakeDataGenerator = () => {
         ></script>
         <div id="container-4c385cac6f0784aa3165d3a9e7478f20"></div>
 
+        {/* ─── What Is Fake Data ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            What Is a Fake Data Generator and Why Do Developers Need One?
+          </h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            A fake data generator — also called a dummy data generator, mock
+            data generator, or test data generator — is a tool that creates
+            realistic-looking but completely fabricated data records. The output
+            looks like real people with real contact details, but none of it
+            belongs to an actual person. That's the whole point.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Developers need this because real user data is almost always
+            off-limits during development. You can't populate your staging
+            database with actual customer emails and phone numbers — that's a
+            privacy violation and, depending on your jurisdiction, potentially a
+            legal problem. You also can't always wait for real users to sign up
+            before you can test your interface, your API, or your database
+            queries. Fake data solves this by giving you a realistic dataset
+            right now, generated in seconds.
+          </p>
+          <p className="text-gray-600 leading-relaxed">
+            This tool generates random user data across 14 field types — names,
+            usernames, emails, phone numbers, addresses, ages, job titles,
+            companies, websites, passwords, and bios. You choose exactly which
+            fields you need, set how many records to generate, pick Pakistani or
+            International data, and export to CSV or JSON. No libraries to
+            install, no account to create, and it all runs in your browser.
+          </p>
+        </section>
+
         {/* ─── How to Use ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            How to Generate Dummy Data
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            How to Generate Fake Data Online — Step by Step
           </h2>
+          <p className="text-gray-500 text-sm mb-6">
+            Four steps to a ready-to-use dummy dataset.
+          </p>
           <ol className="space-y-5">
             {[
               {
                 step: "1",
-                title: "Select Locale & Count",
-                desc: "Choose Pakistani or International locale. Set the number of records (up to 200).",
+                title: "Set the number of records",
+                desc: "Enter how many fake data records you want — from 1 to 200 per batch. Need to seed a database with thousands of rows? Run multiple batches and combine the CSV files. Most API testing scenarios work well with 10–50 records.",
               },
               {
                 step: "2",
-                title: "Pick Fields",
-                desc: "Select which data points you need: Name, Email, Phone, Address, Company, etc.",
+                title: "Choose Pakistani or International data",
+                desc: "Pakistani locale generates names, addresses, cities, and phone numbers in Pakistani format (Karachi, Lahore, +92 prefix, streets like Gulberg and DHA Phase 2). International locale generates US-style data with names, cities, and +1 phone numbers. Pick whichever matches your application's target audience.",
               },
               {
                 step: "3",
-                title: "Generate & Export",
-                desc: "Click Generate. View in Table or JSON mode. Download as CSV/JSON or copy to clipboard.",
+                title: "Select the fields you need",
+                desc: "Check the fields you want included in your dataset — name, email, phone, address, age, company, job title, username, website, password, bio, city, ZIP code, country. Uncheck anything you don't need. You can also hit Select All to include every field in one go.",
+              },
+              {
+                step: "4",
+                title: "Generate and export",
+                desc: "Click Generate and your records appear instantly in a table view. Switch to JSON view if you prefer. Download the data as CSV for spreadsheets and databases, or JSON for APIs and JavaScript projects. You can also copy individual rows or the entire dataset to clipboard.",
               },
             ].map((item) => (
               <li key={item.step} className="flex items-start gap-4">
@@ -846,135 +836,45 @@ const FakeDataGenerator = () => {
           </ol>
         </section>
 
-        {/* ─── Formulas / How It Works ─── */}
-        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            How Fake Data Generation Works
-          </h2>
-          <p className="text-gray-500 text-sm mb-6">
-            It combines random pools of realistic data. Here's the logic.
-          </p>
-
-          <div className="space-y-5">
-            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
-              <h3 className="font-bold text-gray-900 text-sm mb-2">
-                Random Pool Selection
-              </h3>
-              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
-                const name = rand(firstNames) + " " + rand(lastNames);
-              </div>
-              <p className="text-gray-500 text-xs leading-relaxed">
-                Selects random first and last names from curated lists specific
-                to the chosen locale (PK or Intl).
-              </p>
-            </div>
-
-            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5">
-              <h3 className="font-bold text-gray-900 text-sm mb-2">
-                Pattern-Based Construction
-              </h3>
-              <div className="bg-gray-900 text-green-400 font-mono text-sm px-4 py-3 rounded-xl mb-3 overflow-x-auto">
-                {"email = `${first}.${last}${randInt}@${domain}`;"}
-              </div>
-              <p className="text-gray-500 text-xs leading-relaxed">
-                Constructs emails, phones, and addresses using realistic
-                patterns (e.g., +92 for Pakistan, DHA for Karachi).
-              </p>
-            </div>
-
-            <div className="bg-sky-50 border border-sky-100 rounded-xl p-4">
-              <h3 className="font-bold text-sky-900 text-sm mb-2">
-                Privacy Note
-              </h3>
-              <p className="text-sky-800 text-xs leading-relaxed">
-                All data is randomly generated. No real personal information is
-                used. Everything happens locally in your browser.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── Real Examples ─── */}
-        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Sample Generated Data
-          </h2>
-          <p className="text-gray-500 text-sm mb-6">
-            See what realistic Pakistani vs International data looks like.
-          </p>
-
-          <div className="space-y-5">
-            <div className="border border-gray-100 rounded-2xl p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm bg-green-100 text-green-700 font-bold px-2.5 py-1 rounded-lg">
-                  Pakistani Locale
-                </span>
-              </div>
-              <div className="bg-green-50 border border-green-100 rounded-lg p-4">
-                <pre className="font-mono text-sm text-gray-800">
-                  {`{
-  "name": "Ayan Khan",
-  "email": "ayan.khan42@gmail.com",
-  "phone": "+92300-1234567",
-  "address": "123 Shahrah-e-Faisal, Karachi",
-  "company": "Systems Ltd",
-  "jobTitle": "Software Engineer"
-}`}
-                </pre>
-              </div>
-            </div>
-
-            <div className="border border-gray-100 rounded-2xl p-5">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-sm bg-blue-100 text-blue-700 font-bold px-2.5 py-1 rounded-lg">
-                  International Locale
-                </span>
-              </div>
-              <div className="bg-blue-50 border border-blue-100 rounded-lg p-4">
-                <pre className="font-mono text-sm text-gray-800">
-                  {`{
-  "name": "James Smith",
-  "email": "james.smith88@yahoo.com",
-  "phone": "+1300-9876543",
-  "address": "456 Oak Street, New York",
-  "company": "Acme Corp",
-  "jobTitle": "Product Manager"
-}`}
-                </pre>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ─── Use Cases ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            Who Uses Fake Data Generators?
+            What Can You Use Fake Data For? — Real Use Cases
           </h2>
           <p className="text-gray-500 text-sm mb-6">
-            Not just developers. Here's where dummy data matters.
+            Dummy data shows up in more places than most people expect.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
               {
-                icon: <Code size={20} className="text-sky-600" />,
-                title: "Developers",
-                desc: "Seed databases for local development and testing without using real customer data.",
+                icon: <Database size={20} className="text-sky-600" />,
+                title: "Database Seeding",
+                desc: "When you're setting up a new application or staging environment, you need rows in your tables before you can test your queries, joins, or UI components. Generating 100–200 fake user records and importing them via CSV is the fastest way to get your dev database populated with realistic-looking data.",
               },
               {
-                icon: <BarChart3 size={20} className="text-green-600" />,
-                title: "QA Testers",
-                desc: "Create diverse test cases with different locales, ages, and formats to find edge cases.",
+                icon: <Code size={20} className="text-green-600" />,
+                title: "API Testing and Mocking",
+                desc: "When your API endpoints expect user objects — with names, emails, phone numbers, and addresses — you need test payloads that look realistic. Export this tool's output as JSON and paste it directly into Postman, Insomnia, or your test files. No more manually writing fake user objects by hand.",
               },
               {
-                icon: <Zap size={20} className="text-violet-600" />,
-                title: "Designers",
-                desc: "Fill UI mockups with realistic names and addresses instead of 'Lorem Ipsum'.",
+                icon: <BarChart3 size={20} className="text-violet-600" />,
+                title: "UI Prototyping and Demos",
+                desc: "A user list with 'Test User 1', 'Test User 2' looks unfinished in a demo. Replace it with 50 rows of realistic names, job titles, and companies and your prototype suddenly looks production-ready. This is especially useful for client presentations and investor demos.",
               },
               {
-                icon: <HelpCircle size={20} className="text-amber-600" />,
-                title: "Students",
-                desc: "Practice SQL queries and data analysis on safe, dummy datasets.",
+                icon: <ShieldCheck size={20} className="text-amber-600" />,
+                title: "Privacy-Safe Development",
+                desc: "GDPR, CCPA, and similar regulations restrict what you can do with real user data in non-production environments. Fake data gives you realistic test datasets that are legally safe to use anywhere — staging, CI/CD pipelines, local development, and shared demo environments.",
+              },
+              {
+                icon: <FileText size={20} className="text-red-500" />,
+                title: "Form and Input Testing",
+                desc: "Testing form validation, character limits, or special character handling? Generate a dataset with varied names, long email addresses, and international formats to check edge cases your form might not handle well with clean test data.",
+              },
+              {
+                icon: <Users size={20} className="text-indigo-600" />,
+                title: "Machine Learning and Data Analysis",
+                desc: "Need a sample dataset to practice SQL queries, test a pandas script, or build a demo analytics dashboard? A CSV of 200 fake user records with names, ages, cities, and job titles is a useful starting point for data science practice and portfolio projects.",
               },
             ].map((item, i) => (
               <div
@@ -993,102 +893,218 @@ const FakeDataGenerator = () => {
           </div>
         </section>
 
+        {/* ─── CSV vs JSON ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            CSV vs JSON — Which Export Format Should You Use?
+          </h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            Both formats export exactly the same data — the difference is in how
+            you'll use it. Here's a simple guide.
+          </p>
+
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            <div className="bg-green-50 border border-green-100 rounded-xl p-5">
+              <h3 className="font-bold text-green-800 text-sm mb-3">
+                Use CSV when:
+              </h3>
+              <ul className="space-y-2 text-xs text-green-700">
+                <li>• Importing into a database (MySQL, PostgreSQL, SQLite)</li>
+                <li>• Opening in Excel or Google Sheets</li>
+                <li>• Loading into pandas with pd.read_csv()</li>
+                <li>• Seeding a database using a CSV import script</li>
+                <li>• Working with data analysis or BI tools</li>
+              </ul>
+            </div>
+            <div className="bg-sky-50 border border-sky-100 rounded-xl p-5">
+              <h3 className="font-bold text-sky-800 text-sm mb-3">
+                Use JSON when:
+              </h3>
+              <ul className="space-y-2 text-xs text-sky-700">
+                <li>• Testing REST APIs with Postman or Insomnia</li>
+                <li>• Seeding a MongoDB or Firestore database</li>
+                <li>• Using as mock data in React or Next.js projects</li>
+                <li>• Writing unit tests that need user object fixtures</li>
+                <li>• Working with any JavaScript or Node.js project</li>
+              </ul>
+            </div>
+          </div>
+
+          <p className="text-gray-600 text-sm leading-relaxed">
+            If you're not sure which to pick, download both — they're generated
+            from the same data and the download is instant either way.
+          </p>
+        </section>
+
+        {/* ─── Pakistani vs International ─── */}
+        <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            Pakistani vs International Locale — What's the Difference?
+          </h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Most fake data generators online only generate US or European data.
+            This tool is one of the few that generates realistic Pakistani dummy
+            data — names, cities, streets, companies, and phone numbers that
+            actually look like they belong to a Pakistani user.
+          </p>
+
+          <div className="overflow-x-auto mb-5">
+            <table className="w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
+              <thead>
+                <tr className="bg-gray-900 text-white">
+                  <th className="text-left px-4 py-3 font-semibold">Field</th>
+                  <th className="text-left px-4 py-3 font-semibold">
+                    🇵🇰 Pakistani
+                  </th>
+                  <th className="text-left px-4 py-3 font-semibold">
+                    🌍 International
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  [
+                    "Names",
+                    "Ayan Khan, Fatima Malik, Omar Hussain",
+                    "James Smith, Emma Johnson, Noah Garcia",
+                  ],
+                  [
+                    "Cities",
+                    "Karachi, Lahore, Islamabad, Faisalabad",
+                    "New York, London, Toronto, Sydney",
+                  ],
+                  [
+                    "Streets",
+                    "DHA Phase 2, Gulberg, Bahria Town",
+                    "Oak Street, Broadway, 5th Avenue",
+                  ],
+                  ["Phone", "+92-3XX-XXXXXXX format", "+1-XXX-XXXXXXX format"],
+                  [
+                    "Companies",
+                    "NetSol Technologies, Daraz, Habib Bank",
+                    "Acme Corp, TechFlow Inc, Vertex Labs",
+                  ],
+                  ["Country", "Pakistan", "United States"],
+                ].map((row, i) => (
+                  <tr
+                    key={i}
+                    className={`${i % 2 === 1 ? "bg-gray-50" : "bg-white"} border-b border-gray-100`}
+                  >
+                    <td className="px-4 py-3 font-medium text-gray-800">
+                      {row[0]}
+                    </td>
+                    <td className="px-4 py-3 text-gray-600 text-xs">
+                      {row[1]}
+                    </td>
+                    <td className="px-4 py-3 text-gray-600 text-xs">
+                      {row[2]}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <p className="text-gray-600 text-sm leading-relaxed">
+            If you're building an app for a Pakistani audience — an e-commerce
+            platform, a fintech app, a delivery service — the Pakistani locale
+            gives you test data that actually looks like your real users. The
+            international locale works for any project targeting US, UK, or
+            global audiences.
+          </p>
+        </section>
+
         {/* ─── SEO Content ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Why Realistic Dummy Data Matters
+            Why Use an Online Fake Data Generator Instead of Writing Test Data
+            Manually?
           </h2>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Most fake data generators only provide Western-style names and
-            addresses. If you are building apps for the Pakistani market, using
-            data like “John Smith” from “New York” is not realistic. This tool
-            solves that problem by offering a dedicated{" "}
-            <strong>Pakistani locale</strong> with authentic names such as Ahmed
-            Khan, Fatima Siddiqui, and cities like Karachi, Lahore, and
-            Islamabad.
+            Writing test data by hand gets tedious fast. If you need 50 fake
+            user records for a database seed script, manually typing names,
+            emails, and phone numbers for each one takes twenty minutes and the
+            result still looks fake — because you used the same first name three
+            times and all the emails follow the same pattern. A generator solves
+            both problems: it's instant, and the output is actually varied
+            enough to look realistic.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Each record includes properly formatted Pakistani phone numbers with
-            the{" "}
-            <code className="bg-gray-100 px-1.5 py-0.5 rounded text-sm">
-              +92
-            </code>{" "}
-            prefix, local addresses like DHA Phase 2 and Gulshan-e-Iqbal, and
-            familiar company names. You can also switch to the international
-            locale for US, UK, and global datasets.
+            Alternatively, some developers use Python's Faker library or
+            JavaScript's faker.js directly in their code. Those are great tools
+            if you're comfortable writing scripts. But for quick one-off needs —
+            you need 100 rows of test data right now, you don't want to set up a
+            script, and you just need a CSV file — a browser-based tool is
+            faster. No terminal, no package installs, no code to write.
           </p>
           <p className="text-gray-600 mb-4 leading-relaxed">
-            Whether you're seeding a MongoDB database, testing an API endpoint,
-            or filling a design prototype, having realistic data helps you catch
-            bugs that generic Lorem Ipsum text would miss.
+            The data generated here is random but structured. Every email is
+            valid in format (but doesn't belong to a real inbox). Every phone
+            number follows the right format for the selected locale. Names are
+            drawn from realistic pools, not random character strings. The result
+            is mock data that won't break your validation logic and looks
+            realistic enough for demos and prototypes.
           </p>
 
           <h3 className="text-lg font-bold text-gray-900 mb-3 mt-8">
-            Privacy Note
+            Privacy — Your Data Never Leaves Your Browser
           </h3>
           <p className="text-gray-600 leading-relaxed">
-            This tool runs 100% in your browser. No data is sent to any server.
-            All generated data is random and does not belong to any real person.
-            Close the tab and it's gone. That's how it should be.
-          </p>
-
-          <p className="text-gray-600 leading-relaxed mt-4">
-            Need to format JSON output? Try the{" "}
-            <Link
-              href="/tools/json-formatter"
-              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
-            >
-              JSON Formatter
-            </Link>
-            . Generating placeholder text? The{" "}
-            <Link
-              href="/tools/lorem-ipsum-generator"
-              className="text-sky-600 underline underline-offset-2 hover:text-sky-700"
-            >
-              Lorem Ipsum Generator
-            </Link>{" "}
-            has your back.
+            Everything runs locally in your browser. When you click Generate,
+            JavaScript creates the records on your device — no data is ever sent
+            to any server. There's no logging, no tracking, and nothing is
+            stored anywhere. Close the tab and the data is gone. That matters if
+            you're generating data that represents sensitive business scenarios,
+            even with fake values.
           </p>
         </section>
 
         {/* ─── FAQ ─── */}
         <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-10 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Frequently Asked Questions
+            Fake Data Generator — Frequently Asked Questions
           </h2>
           <div className="space-y-3 max-w-4xl mx-auto">
             {[
               {
-                q: "How to generate fake Pakistani names and addresses for testing?",
-                a: "Select the Pakistani locale, choose the fields you need (name, email, phone, address, etc.), set the number of records, and click Generate. The tool creates realistic Pakistani names, Karachi/Lahore/Islamabad addresses, and +92 phone numbers instantly.",
+                q: "What is a fake data generator?",
+                a: "A fake data generator is a tool that creates realistic-looking but completely fabricated data records — names, emails, phone numbers, addresses, and more. The data is randomly generated and doesn't belong to any real person. It's used by developers and testers who need realistic datasets for development, testing, and demos without using actual user data.",
               },
               {
-                q: "Can I download fake test data as CSV or JSON file?",
-                a: "Yes. After generating data, click the Download CSV or Download JSON button to save the file directly. You can also copy the data to your clipboard in either format.",
+                q: "What's the difference between fake data, dummy data, and mock data?",
+                a: "They all mean essentially the same thing in practice — artificially generated data used in place of real data. 'Fake data' is the most common casual term. 'Dummy data' is often used in the context of database seeding and placeholder content. 'Mock data' is frequently used in API testing and unit testing contexts. This tool generates all three — the terminology just depends on how you're using it.",
               },
               {
-                q: "How to create dummy data for database seeding?",
-                a: "Select all the fields that match your database schema, generate the records, and download as JSON. You can use the JSON output directly in your seed scripts for MongoDB, PostgreSQL, or any other database.",
+                q: "Can I use this as a random user generator?",
+                a: "Yes. Enable the name, email, username, age, phone, address, and job title fields and generate as many records as you need. Each record is a distinct fake user profile with internally consistent fields — the email uses the same name as the name field, for example. This makes it suitable for user list testing, signup form testing, and user profile demos.",
               },
               {
-                q: "Is the generated data safe to use for testing?",
-                a: "Yes, completely safe. All data is randomly generated and does not belong to any real person. No real personal information is used or stored.",
+                q: "How do I generate fake data for database seeding?",
+                a: "Select the fields matching your database schema, set your record count, click Generate, and download the CSV. Import the CSV into your database using your platform's CSV import feature — MySQL Workbench, pgAdmin, TablePlus, and most database tools support this directly. For MongoDB or Firestore, download JSON instead and import that.",
               },
               {
-                q: "How many fake records can I generate at once?",
-                a: "You can generate up to 200 records per batch. For larger datasets, generate multiple batches and combine the downloaded CSV or JSON files.",
+                q: "Is the generated data good for API testing?",
+                a: "Yes. Export to JSON and the output is a valid JSON array of objects — paste it directly into Postman as a request body, or use it as fixture data in your test files. Each object contains the fields you selected with realistic-looking values that will pass basic format validation.",
               },
               {
-                q: "Does this tool work offline or need an internet connection?",
-                a: "The data generation runs entirely in your browser using JavaScript. Once the page is loaded, you can generate data even if your internet connection drops. No data is sent to any server.",
+                q: "Does this generate Pakistani fake data?",
+                a: "Yes — this is one of the few online fake data generators that produces realistic Pakistani data. The Pakistani locale generates names like Ayan Khan and Fatima Malik, cities like Karachi and Lahore, streets like DHA Phase 2 and Bahria Town, and phone numbers in +92-3XX-XXXXXXX format. Useful for apps targeting Pakistani users.",
               },
               {
-                q: "Can I customize the phone number format?",
-                a: "Currently, the tool uses standard formats: +92 for Pakistan and +1 for International. Custom format support is planned for future updates.",
+                q: "Is the generated data private?",
+                a: "Completely. The generation happens in your browser using JavaScript — no data is sent to any server. Your inputs and generated records never leave your device. There's no logging, no account, and nothing is stored anywhere. This makes it safe to use even when generating data that represents sensitive business scenarios.",
               },
               {
-                q: "Are the passwords generated secure?",
-                a: "The generated passwords are for testing purposes only. They follow a simple pattern (Word+Number+Symbol) and should NOT be used for real accounts. Always use strong, random passwords for production systems.",
+                q: "Can I generate fake emails with this tool?",
+                a: "Yes. Enable the email field and the generator creates addresses in the format firstname.lastname###@domain.com, using domains like gmail.com, yahoo.com, outlook.com, and proton.me. The emails are valid in format but don't belong to real inboxes — perfect for form testing, UI demos, and database seeding.",
+              },
+              {
+                q: "How many records can I generate at once?",
+                a: "Up to 200 records per batch. For larger datasets, run multiple batches and combine the CSV files. Most development and testing scenarios work well within 200 records — if you need thousands of rows for performance testing, you'll get better results using a server-side tool like Faker.js or Python's Faker library.",
+              },
+              {
+                q: "What formats can I export the data in?",
+                a: "CSV and JSON. CSV is best for importing into databases, spreadsheets, and data analysis tools. JSON is best for API testing, JavaScript projects, and NoSQL databases. Both formats export the same data — just structured differently. You can also copy individual rows to clipboard directly from the table view.",
               },
             ].map((item, i) => (
               <div
@@ -1120,7 +1136,7 @@ const FakeDataGenerator = () => {
           </div>
         </section>
 
-        {/* ─── Related Tools (Short Descriptions) ─── */}
+        {/* ─── Related Tools ─── */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             Related Developer & Data Tools
@@ -1129,33 +1145,33 @@ const FakeDataGenerator = () => {
             {[
               {
                 href: "/tools/json-formatter",
-                title: "JSON Formatter",
-                desc: "Beautify JSON code.",
+                title: "JSON Formatter & Validator",
+                desc: "Beautify, minify and validate JSON — useful after exporting fake data as JSON.",
               },
               {
-                href: "/tools/lorem-ipsum-generator",
-                title: "Lorem Ipsum Generator",
-                desc: "Generate placeholder text.",
+                href: "/tools/markdown-to-html",
+                title: "Markdown to HTML Converter",
+                desc: "Convert your Markdown content into HTML for web display.",
               },
               {
-                href: "/tools/csv-to-json",
-                title: "CSV to JSON",
-                desc: "Convert spreadsheet data.",
+                href: "/tools/xml-sitemap-generator",
+                title: "XML Sitemap Generator",
+                desc: "Generate sitemap.xml files for SEO — another useful developer tool.",
+              },
+              {
+                href: "/tools/seo-meta-tags-generator",
+                title: "SEO Meta Tags Generator",
+                desc: "Create optimized meta titles and descriptions with live preview.",
               },
               {
                 href: "/tools/word-counter",
                 title: "Word Counter",
-                desc: "Count words & chars.",
+                desc: "Count words and characters — useful for testing text input fields.",
               },
               {
-                href: "/tools/case-converter",
-                title: "Case Converter",
-                desc: "Change text case.",
-              },
-              {
-                href: "/tools/base64-encode",
-                title: "Base64 Encoder",
-                desc: "Encode text safely.",
+                href: "/tools/url-encoder",
+                title: "URL Encoder",
+                desc: "Encode special characters in URLs — handy for API query parameters.",
               },
             ].map((tool) => (
               <Link

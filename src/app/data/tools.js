@@ -325,6 +325,13 @@ export const tools = [
       "Calculate your estimated APUSH exam score (1-5). Enter MCQ, SAQ, DBQ & LEQ scores to get instant composite score & AP grade prediction.",
     category: "Calculators",
   },
+  {
+    name: "Proportion Calculator",
+    path: "/tools/proportion-calculator",
+    description:
+      "Calculate proportions, ratios, percentages, and missing values instantly. Fast, accurate, and free online proportion calculator with no signup required.",
+    category: "Calculators",
+  },
 ];
 
 // ─── CATEGORIES (8 clean clusters) ──────────────────────────────────────────
